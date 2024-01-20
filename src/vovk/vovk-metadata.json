@@ -1,0 +1,26 @@
+{
+  "HelloController": {
+    "controllerName": "HelloController",
+    "_prefix": "hello",
+    "_handlers": {
+      "getHello": {
+        "path": "greeting",
+        "httpMethod": "GET"
+      },
+      "getStreamingHello": {
+        "path": "streaming",
+        "httpMethod": "GET"
+      }
+    }
+  },
+  "workers": {
+    "HelloWorkerService": {
+      "workerName": "HelloWorkerService",
+      "_handlers": {
+        "calculatePi": {
+          "isGenerator": true
+        }
+      }
+    }
+  }
+}
