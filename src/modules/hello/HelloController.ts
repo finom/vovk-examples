@@ -1,10 +1,8 @@
-import { get, head, prefix } from "vovk";
+import { get, prefix } from "vovk";
 import HelloService from "./HelloService"
 
 @prefix('hello')
-export default class HelloController {
-    static controllerName = 'HelloController';
-    
+export default class HelloController {    
     private static helloService = HelloService;
 
     /**
