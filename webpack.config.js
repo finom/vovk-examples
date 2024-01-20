@@ -13,7 +13,7 @@ module.exports = {
                 configFile: "tsconfig.webpack.json"
             }
         }],
-        exclude: /node_modules\/(?!\.vovk)/,
+        exclude: /node_modules/,
       },
     ],
   },
@@ -23,5 +23,6 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'commonjs',
   },
 };
