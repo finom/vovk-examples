@@ -13,5 +13,5 @@ export function getHello() {
 }
 
 export async function *getStreamingHello() {
-    yield* await HelloController.getStreamingHello({ isStream: true })
+    yield* await HelloController.getStreamingHello()
 }
