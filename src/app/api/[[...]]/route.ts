@@ -1,19 +1,11 @@
-import HelloController from '../../../vovk/hello/HelloController';
-import HelloWorkerService from '../../../vovk/hello/HelloWorkerService';
+import HelloController from '../../../modules/hello/HelloController';
+import HelloWorkerService from '../../../modules/hello/HelloWorkerService';
 import { initVovk } from 'vovk';
 
-export const { GET, POST, PUT, DELETE } = initVovk({
-  controllers: [HelloController],
-  workers: [HelloWorkerService],
-  async onMetadata(metadata, write) {
-    if (process.env.NODE_ENV === 'development') {
-      const [fs, path] = await Promise.all([import('fs/promises'), import('path')]);
-      const metadataPath = path.join(
-        __dirname.replace('.next/server/app', 'src/vovk'),
-        '../../vovk-metadata.json'
-      );
+const controllers = { HelloController };
+const workers = { HelloWorkerService };
 
-      await write(metadataPath, metadata, { fs, path });
-    }
-  },
-});
+export type Controllers = typeof controllers;
+export type Workers = typeof workers;
+
+export const { GET, POST, PUT, DELETE } = initVovk({ controllers, workers });

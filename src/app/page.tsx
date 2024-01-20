@@ -1,6 +1,6 @@
 "use client";
 import Image from 'next/image';
-import { getHello, getStreamingHello, calculatePi } from '../vovk/hello/HelloState';
+import { getHello, getStreamingHello, calculatePi } from '../modules/hello/HelloState';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 export default function Home() {

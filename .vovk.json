@@ -1,6 +1,6 @@
 {
   "HelloController": {
-    "controllerName": "HelloController",
+    "_controllerName": "HelloController",
     "_prefix": "hello",
     "_handlers": {
       "getHello": {
@@ -15,7 +15,7 @@
   },
   "workers": {
     "HelloWorkerService": {
-      "workerName": "HelloWorkerService",
+      "_workerName": "HelloWorkerService",
       "_handlers": {
         "calculatePi": {
           "isGenerator": true
