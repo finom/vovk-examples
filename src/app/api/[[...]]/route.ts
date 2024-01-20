@@ -2,7 +2,7 @@ import HelloController from '../../../modules/hello/HelloController';
 import HelloWorkerService from '../../../modules/hello/HelloWorkerService';
 import { initVovk } from 'vovk';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 const controllers = { HelloController };
 const workers = { HelloWorkerService };
