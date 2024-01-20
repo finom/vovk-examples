@@ -7,14 +7,15 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "tsc --noEmit && next lint",
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "vovk dev",
+    "build": "vovk build",
     "start": "next start",
     "lint": "next lint",
     "patch": "npm t && npm version patch && npm run build-client && npm publish && git push && git push --tags",
     "minor": "npm t && npm version minor && npm run build-client && npm publish && git push && git push --tags",
     "major": "npm t && npm version major && npm run build-client && npm publish && git push && git push --tags",
-    "build-client": "vovk generate --client-out .vovk && rm -rf dist && webpack --mode production && cp -R ./.vovk ./dist/.vovk"
+    "build-client": "vovk generate --client-out .vovk && rm -rf dist && webpack --mode production && cp -R ./.vovk ./dist/.vovk",
+    "vercel-build": "vovk generate && npm run build"
   },
   "dependencies": {
     "@vovkts/client": "^0.0.0",
