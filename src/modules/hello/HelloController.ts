@@ -1,4 +1,4 @@
-import { get, prefix } from "vovk";
+import { get, head, prefix } from "vovk";
 import HelloService from "./HelloService"
 
 @prefix('hello')
@@ -10,7 +10,7 @@ export default class HelloController {
     /**
      * Return a greeting from the HelloService
      */
-    @get('greeting')
+    @get('greeting', { cors: true })
     static async getHello() {
         return this.helloService.getHello();
     }
@@ -18,7 +18,7 @@ export default class HelloController {
     /**
      * Iterate over a stream of greetings from the HelloService
      */
-    @get('streaming')
+    @get('streaming', { cors: true })
     static async *getStreamingHello() {
         yield* this.helloService.getStreamingHello();
     }
