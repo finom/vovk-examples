@@ -17,5 +17,5 @@
     "declaration": true,
     "outDir": "./dist"
   },
-  "include": ["./node_modules/.vovk/*.d.ts", "./src/app/api/[[...]]/route.ts"],
+  "include": ["./.vovk/*", "./src/app/api/[[...]]/route.ts"],
 }
