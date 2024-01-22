@@ -17,5 +17,5 @@
     "declaration": true,
     "outDir": "./dist"
   },
-  "include": ["./index.ts", "./src/app/api/[[...]]/route.ts"],
+  "include": ["./index.ts", "./.vovk/entry.ts", "./src/app/api/[[...]]/route.ts"],
 }
