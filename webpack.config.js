@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './.vovk',
+  entry: './index.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
