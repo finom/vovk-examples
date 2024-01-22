@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './index.ts',
+  entry: './.vovk/entry.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -13,12 +13,12 @@ module.exports = {
                 configFile: "tsconfig.webpack.json"
             }
         }],
-        exclude: /node_modules/,
+        // exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.js'],
   },
   output: {
     filename: 'index.js',

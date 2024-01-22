@@ -14,7 +14,7 @@
     "patch": "npm t && npm version patch && npm run build-client && npm publish && git push && git push --tags",
     "minor": "npm t && npm version minor && npm run build-client && npm publish && git push && git push --tags",
     "major": "npm t && npm version major && npm run build-client && npm publish && git push && git push --tags",
-    "build-client": "VOVK_PREFIX=https://vovk-examples.vercel.app/api vovk generate --client-out .vovk && rm -rf dist && webpack --mode production && cp -R ./.vovk ./dist/.vovk",
+    "build-client": "webpack --mode production && cp -R ./.vovk ./dist/.vovk",
     "vercel-build": "vovk generate && npm run build"
   },
   "dependencies": {
