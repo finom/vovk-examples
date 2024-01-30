@@ -1,4 +1,3 @@
-'use server'
 import { Code } from "bright"
 
 const OWNER = 'finom';
@@ -43,6 +42,14 @@ const Github = async ({ paths }: Props) => {
     return (
         <div>
             <h1>Github</h1>
+            <div>
+                {files.map((file, i) => (
+                    <div key={i}>
+                        <h2>{paths[i]}</h2>
+                        <Code lang="ts">{file}</Code>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }
