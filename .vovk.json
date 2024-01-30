@@ -23,6 +23,16 @@
       }
     }
   },
+  "BasicControllerWithService": {
+    "_controllerName": "BasicControllerWithService",
+    "_prefix": "basic-with-service",
+    "_handlers": {
+      "getHello": {
+        "path": "greeting",
+        "httpMethod": "GET"
+      }
+    }
+  },
   "OpenAiController": {
     "_controllerName": "OpenAiController",
     "_prefix": "openai",

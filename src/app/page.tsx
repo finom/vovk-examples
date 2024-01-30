@@ -5,21 +5,18 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 /*
 Examples:
-- Simple request - BasicController
+- [x] Simple request - BasicController 
 - Simple request service + controller - BasicControllerWithService
 - Streaming request - StreamingController
 - Streaming response request - StreamingResponseController
 - Worker service - WorkerService
-- OpenAI service - OpenAIController
+- [x] OpenAI service - OpenAIController
 - Simple form + validation - SimpleFormController
 - React hook form + validation - ReactHookFormController
 
 Other repos:
 - Prisma + SQLIte or Postgres
-
-UI:
-- Result
-- Source code
+- Expo + React Native
 */
 
 export default function Home() {

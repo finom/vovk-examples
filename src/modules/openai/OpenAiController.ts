@@ -1,4 +1,4 @@
-import { VovkRequest, post, prefix } from 'vovk';
+import { type VovkRequest, post, prefix } from 'vovk';
 import OpenAI from 'openai';
 
 @prefix('openai')

@@ -23,5 +23,5 @@ input {
 }
 
 .input-group {
-    @apply flex flex-row;
+    @apply flex flex-row mt-2;
 }

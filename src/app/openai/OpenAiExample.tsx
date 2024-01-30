@@ -6,6 +6,7 @@ import type OpenAI from 'openai';
 export default function BasicExample() {
   const [messages, setMessages] = useState<OpenAI.Chat.Completions.ChatCompletionMessageParam[]>([]);
   const [userInput, setUserInput] = useState<string>('');
+
   const submit = async () => {
     if(!userInput) return;
     setUserInput('');
@@ -14,21 +15,20 @@ export default function BasicExample() {
 
     setMessages(messages => [ ...messages, userMessage ]);
 
-    const completion = await OpenAiController.createChatCompletion({
+    using completion = await OpenAiController.createChatCompletion({
       body: { messages: [ ...messages, userMessage ] },
     });
 
     setMessages(mesages => [ ...mesages, assistantMessage ]);
 
     for await (const chunk of completion) {
-      const deltaContent = chunk.choices[0]?.delta?.content ?? '';
-      setMessages(mesages => [
-        ...mesages.slice(0, -1),
-        { 
-          ...mesages[mesages.length - 1], 
-          content: mesages[mesages.length - 1].content + deltaContent 
-        },
-      ]);
+      setMessages(messages => {
+        const lastMessage = messages[messages.length - 1];
+        return [
+          ...messages.slice(0, -1),
+          { ...lastMessage, content: lastMessage.content + (chunk.choices[0]?.delta?.content ?? '') },
+        ];
+      });
     }
   };
 
