@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import { getHello, getStreamingHello, calculatePi } from '../modules/hello/HelloState';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import './globals.css'
 
 /*
 Examples:

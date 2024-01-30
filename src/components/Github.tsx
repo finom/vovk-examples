@@ -1,4 +1,5 @@
 import { Code } from "bright"
+import WindowAlike from "./WindowAlike";
 
 const OWNER = 'finom';
 const REPO = 'vovk-examples';
@@ -34,22 +35,20 @@ interface Props {
     paths: string[];
 }
 
+Code.theme = "github-light"
+
 const Github = async ({ paths }: Props) => {
     const files = await Promise.all(paths.map(getGithubFile));
 
-    console.log('files', files);
-
     return (
-        <div>
-            <h1>Github</h1>
-            <div>
-                {files.map((file, i) => (
-                    <div key={i}>
-                        <h2>{paths[i]}</h2>
-                        <Code lang="ts">{file}</Code>
-                    </div>
-                ))}
-            </div>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-4`}>
+            {files.map((file, i) => (
+                <div key={i}>
+                    <WindowAlike fileName={paths[i]}>
+                        <Code lang="tsx">{file.trim()}</Code>
+                    </WindowAlike>
+                </div>
+            ))}
         </div>
     );
 }
