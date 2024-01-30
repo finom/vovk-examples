@@ -13,6 +13,16 @@
       }
     }
   },
+  "BasicController": {
+    "_controllerName": "BasicController",
+    "_prefix": "basic",
+    "_handlers": {
+      "getHello": {
+        "path": "greeting",
+        "httpMethod": "GET"
+      }
+    }
+  },
   "workers": {
     "HelloWorkerService": {
       "_workerName": "HelloWorkerService",

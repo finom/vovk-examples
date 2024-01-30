@@ -2,8 +2,6 @@ import { worker } from 'vovk/worker'
 
 @worker()
 export default class HelloWorkerService {
-  static workerName = 'HelloWorkerService';
-
   /**
    * Calculate Pi using Leibniz formula
    * @param preciseness - number of iterations

@@ -2,6 +2,26 @@
 import Image from 'next/image';
 import { getHello, getStreamingHello, calculatePi } from '../modules/hello/HelloState';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import './globals.css'
+
+/*
+Examples:
+- Simple request - BasicController
+- Simple request service + controller - BasicControllerWithService
+- Streaming request - StreamingController
+- Streaming response request - StreamingResponseController
+- Worker service - WorkerService
+- OpenAI service - OpenAIController
+- Simple form + validation - SimpleFormController
+- React hook form + validation - ReactHookFormController
+
+Other repos:
+- Prisma + SQLIte or Postgres
+
+UI:
+- Result
+- Source code
+*/
 
 export default function Home() {
   const [serverResponse, setServerResponse] = useState<Awaited<ReturnType<typeof getHello>> | null>(null);
