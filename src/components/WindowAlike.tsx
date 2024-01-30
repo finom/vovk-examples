@@ -20,7 +20,9 @@ const WindowAlike = ({ children, fileName, className }: Props) => {
           <div className="w-2 h-2 bg-[#F3BD50] rounded-full md:w-[10px] md:h-[10px]" />
           <div className="w-2 h-2 bg-[#62C454] rounded-full md:w-[10px] md:h-[10px]" />
         </div>
-        <a href={url} target="_blank">{fileName}</a>
+        <a href={url} target="_blank">
+          {fileName}
+        </a>
       </div>
       <div className="rounded-3xl rounded-t-none bg-white dark:bg-[#f0f0e0] overflow-x-auto text-gray-800 text-xs md:text-sm px-3 py-0">
         {children}

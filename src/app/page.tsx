@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import Image from 'next/image';
 import { getHello, getStreamingHello, calculatePi } from '../modules/hello/HelloState';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -34,7 +34,7 @@ export default function Home() {
 
   const callGetStreamingHello = useCallback(async () => {
     for await (const { message } of getStreamingHello()) {
-      setStreamingHello(v => v + message);
+      setStreamingHello((v) => v + message);
     }
   }, []);
 
@@ -92,20 +92,20 @@ export default function Home() {
           priority
         />
       </div>
-      <div className='flex flex-col text-left max-w-full w-[700px] m-auto  mt-12'>
-          <div className='flex gap-2 flex-1 flex-col items-center mb-4'>
-            <div className="w-1/2">Simple response:</div>
-            <div className="w-1/2 font-bold">{serverResponse?.greeting ?? 'Loading...'}</div>
-          </div>
-          <div className='flex gap-2 flex-1 flex-col items-center mb-4'>
-            <div className="w-1/2">Calculating π by a Worker Service:</div>
-            <div className="w-1/2 font-bold">{pi}</div>
-          </div>
-          <div className='flex gap-2 flex-1 flex-col items-center'>
-            <div className="w-1/2">Streaming response:</div>
-            <div className="w-1/2 font-bold min-h-40">{streamingHello}</div>
-          </div>
+      <div className="flex flex-col text-left max-w-full w-[700px] m-auto  mt-12">
+        <div className="flex gap-2 flex-1 flex-col items-center mb-4">
+          <div className="w-1/2">Simple response:</div>
+          <div className="w-1/2 font-bold">{serverResponse?.greeting ?? 'Loading...'}</div>
         </div>
+        <div className="flex gap-2 flex-1 flex-col items-center mb-4">
+          <div className="w-1/2">Calculating π by a Worker Service:</div>
+          <div className="w-1/2 font-bold">{pi}</div>
+        </div>
+        <div className="flex gap-2 flex-1 flex-col items-center">
+          <div className="w-1/2">Streaming response:</div>
+          <div className="w-1/2 font-bold min-h-40">{streamingHello}</div>
+        </div>
+      </div>
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -176,5 +176,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }

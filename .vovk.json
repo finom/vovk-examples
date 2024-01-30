@@ -23,6 +23,16 @@
       }
     }
   },
+  "OpenAiController": {
+    "_controllerName": "OpenAiController",
+    "_prefix": "openai",
+    "_handlers": {
+      "createChatCompletion": {
+        "path": "chat",
+        "httpMethod": "POST"
+      }
+    }
+  },
   "workers": {
     "HelloWorkerService": {
       "_workerName": "HelloWorkerService",
