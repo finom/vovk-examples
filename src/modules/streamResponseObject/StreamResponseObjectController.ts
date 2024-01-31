@@ -6,8 +6,8 @@ export default class StreamResponseObjectController {
   private static streamService = StreamService;
 
   @get('tokens', { cors: true })
-  static async streamTokens(req: VovkRequest<{ hello: string }>) {
-    const response = new StreamResponse<Token>(req);
+  static async streamTokens() {
+    const response = new StreamResponse<Token>();
 
     void this.streamService.streamTokens(response);
 
