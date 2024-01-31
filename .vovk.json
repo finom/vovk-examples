@@ -33,6 +33,26 @@
       }
     }
   },
+  "StreamController": {
+    "_controllerName": "StreamController",
+    "_prefix": "stream",
+    "_handlers": {
+      "streamTokens": {
+        "path": "tokens",
+        "httpMethod": "GET"
+      }
+    }
+  },
+  "StreamResponseObjectController": {
+    "_controllerName": "StreamResponseObjectController",
+    "_prefix": "stream-with-object",
+    "_handlers": {
+      "streamTokens": {
+        "path": "tokens",
+        "httpMethod": "GET"
+      }
+    }
+  },
   "OpenAiController": {
     "_controllerName": "OpenAiController",
     "_prefix": "openai",

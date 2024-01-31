@@ -4,7 +4,8 @@ import { BasicControllerWithService } from '@vovkts/client';
 import type { VovkClientReturnType } from 'vovk';
 
 export default function BasicExampleWithService() {
-  const [serverResponse, setServerResponse] = useState<VovkClientReturnType<typeof BasicControllerWithService.getHello>>();
+  const [serverResponse, setServerResponse] =
+    useState<VovkClientReturnType<typeof BasicControllerWithService.getHello>>();
 
   return (
     <>

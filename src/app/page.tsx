@@ -4,11 +4,12 @@ import { getHello, getStreamingHello, calculatePi } from '../modules/hello/Hello
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /*
+REMINDER: ADD DESCRIPTIOPN TO EXAMPLES
 Examples:
 - [x] Simple request - BasicController 
-- Simple request service + controller - BasicControllerWithService
-- Streaming request - StreamingController
-- Streaming response request - StreamingResponseController
+- [x] Simple request service + controller - BasicControllerWithService
+- [ ] Streaming request - StreamingController
+- [ ] Streaming response request - StreamingResponseController
 - Worker service - WorkerService
 - [x] OpenAI service - OpenAIController
 - Simple form + validation - SimpleFormController

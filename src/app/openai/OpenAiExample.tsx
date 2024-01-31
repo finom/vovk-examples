@@ -8,21 +8,21 @@ export default function BasicExample() {
   const [userInput, setUserInput] = useState<string>('');
 
   const submit = async () => {
-    if(!userInput) return;
+    if (!userInput) return;
     setUserInput('');
     const userMessage: OpenAI.Chat.Completions.ChatCompletionMessageParam = { role: 'user', content: userInput };
     const assistantMessage: OpenAI.Chat.Completions.ChatCompletionMessageParam = { role: 'assistant', content: '' };
 
-    setMessages(messages => [ ...messages, userMessage ]);
+    setMessages((messages) => [...messages, userMessage]);
 
     using completion = await OpenAiController.createChatCompletion({
-      body: { messages: [ ...messages, userMessage ] },
+      body: { messages: [...messages, userMessage] },
     });
 
-    setMessages(mesages => [ ...mesages, assistantMessage ]);
+    setMessages((mesages) => [...mesages, assistantMessage]);
 
     for await (const chunk of completion) {
-      setMessages(messages => {
+      setMessages((messages) => {
         const lastMessage = messages[messages.length - 1];
         return [
           ...messages.slice(0, -1),
@@ -33,20 +33,21 @@ export default function BasicExample() {
   };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      submit();
-    }}> 
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit();
+      }}
+    >
       {messages.map((message, index) => (
         <div key={index}>
-          {message.role === 'assistant' ? '🤖' : '👤'}{' '}
-          {message.content as string}
+          {message.role === 'assistant' ? '🤖' : '👤'} {message.content as string}
         </div>
       ))}
-      <div className='input-group'>
-        <input 
-          placeholder='Type a message...'
-          value={userInput} 
+      <div className="input-group">
+        <input
+          placeholder="Type a message..."
+          value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
         <button disabled={!userInput}>Send</button>
