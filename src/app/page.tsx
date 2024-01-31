@@ -8,15 +8,15 @@ REMINDER: ADD DESCRIPTIOPN TO EXAMPLES
 Examples:
 - [x] Simple request - BasicController 
 - [x] Simple request service + controller - BasicControllerWithService
-- [ ] Streaming request - StreamingController
-- [ ] Streaming response request - StreamingResponseController
-- Worker service - WorkerService
+- [x] Streaming request - StreamingController
+- [x] Streaming response request - StreamingResponseController
+- [ ] Worker service - WorkerService
 - [x] OpenAI service - OpenAIController
-- Simple form + validation - SimpleFormController
-- React hook form + validation - ReactHookFormController
+- [ ] Simple form + validation - SimpleFormController
+- [ ] React hook form + validation - ReactHookFormController
 
 Other repos:
-- Prisma + SQLIte or Postgres
+- Prisma + SQLIte or Postgres ???
 - Expo + React Native
 */
 

@@ -31,7 +31,7 @@
     "openai": "^4.26.0",
     "react": "^18",
     "react-dom": "^18",
-    "vovk": "^0.2.3-beta.95",
+    "vovk": "^0.2.3-beta.96",
     "vovk-zod": "^0.0.14"
   },
   "devDependencies": {

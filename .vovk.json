@@ -71,6 +71,14 @@
           "isGenerator": true
         }
       }
+    },
+    "WorkerService": {
+      "_workerName": "WorkerService",
+      "_handlers": {
+        "calculatePi": {
+          "isGenerator": true
+        }
+      }
     }
   }
 }

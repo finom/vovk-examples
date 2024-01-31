@@ -7,6 +7,7 @@ import HelloWorkerService from '../../../modules/hello/HelloWorkerService';
 import BasicControllerWithService from '../../../modules/basicWithService/BasicControllerWithService';
 import StreamController from '../../../modules/stream/StreamController';
 import StreamResponseObjectController from '../../../modules/streamResponseObject/StreamResponseObjectController';
+import WorkerService from '../../../modules/worker/WorkerService';
 
 export const runtime = 'edge';
 
@@ -18,7 +19,7 @@ const controllers = {
   StreamResponseObjectController,
   OpenAiController,
 };
-const workers = { HelloWorkerService };
+const workers = { HelloWorkerService, WorkerService };
 
 export type Controllers = typeof controllers;
 export type Workers = typeof workers;
