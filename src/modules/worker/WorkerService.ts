@@ -3,20 +3,31 @@ import { worker } from 'vovk';
 @worker()
 export default class WorkerService {
   /**
-   * Calculate Pi using Leibniz formula
-   * @param preciseness - number of iterations
-   * @param iterationsToYield - number of iterations to yield
+   * Factorizes a large number into its prime factors
+   * @param number - the large number to factorize
    */
-  static *calculatePi(preciseness: number, iterationsToYield: number) {
-    let pi = 0;
-    let multiplier = 1;
+  static factorize(number: bigint): bigint[] {
+    let factors: bigint[] = [];
+    if (number < 2n) {
+      return [number];
+    }
 
-    for (let i = 0; i < preciseness; i++) {
-      pi += multiplier / (2 * i + 1);
-      multiplier *= -1;
-      if (i % iterationsToYield === 0) {
-        yield pi * 4;
+    while (number % 2n === 0n) {
+      factors.push(2n);
+      number /= 2n;
+    }
+
+    for (let i = 3n; i * i <= number; i += 2n) {
+      while (number % i === 0n) {
+        factors.push(i);
+        number /= i;
       }
     }
+
+    if (number > 1n) {
+      factors.push(number); // Remaining number is a prime factor
+    }
+
+    return factors;
   }
 }

@@ -75,7 +75,13 @@
     "WorkerService": {
       "_workerName": "WorkerService",
       "_handlers": {
-        "calculatePi": {
+        "factorize": {}
+      }
+    },
+    "WorkerYieldService": {
+      "_workerName": "WorkerYieldService",
+      "_handlers": {
+        "approximatePi": {
           "isGenerator": true
         }
       }

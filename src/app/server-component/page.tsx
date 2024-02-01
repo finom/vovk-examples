@@ -5,7 +5,7 @@ import Example from '@/components/Example';
 export default function ServerComponentPage() {
   return (
     <>
-      <Example title="Basic Controller" className="text-center">
+      <Example title="Server Component" className="text-center">
         <ServerComponentExample />
       </Example>
       <Github paths={['src/modules/basic/BasicController.ts', 'src/app/server-component/ServerComponentExample.tsx']} />

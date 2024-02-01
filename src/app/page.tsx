@@ -4,22 +4,21 @@ import { getHello, getStreamingHello, calculatePi } from '../modules/hello/Hello
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /*
-REMINDER: ADD DESCRIPTIOPN TO EXAMPLES
+REMINDER: ADD DESCRIPTIOPN TO EXAMPLES, Add root page, add dark mode
 Examples:
 - [x] Simple request - BasicController 
 - [x] Simple request service + controller - BasicControllerWithService
 - [x] Streaming request - StreamingController
 - [x] Streaming response request - StreamingResponseController
-- [ ] Worker service - WorkerService (TODO RENAME streaming)
+- [x] Worker service - WorkerService (TODO RENAME streaming)
 - [x] Worker Streaming Service
 - [x] OpenAI service - OpenAIController
 - [ ] Simple form + validation - SimpleFormController
 - [ ] React hook form + validation - ReactHookFormController
-- [ ] Server Components
+- [x] Server Components
 
 Other repos:
-- Prisma + SQLIte or Postgres ???
-- Expo + React Native
+- [ ] Expo + React Native
 */
 
 export default function Home() {
