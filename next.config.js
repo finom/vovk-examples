@@ -1,4 +1,4 @@
-require('vovk/config');
+require('vovk/env').config();
 /** @type {import('next').NextConfig} */
 const nextConfig = {}
 

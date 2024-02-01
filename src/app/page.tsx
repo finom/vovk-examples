@@ -10,10 +10,12 @@ Examples:
 - [x] Simple request service + controller - BasicControllerWithService
 - [x] Streaming request - StreamingController
 - [x] Streaming response request - StreamingResponseController
-- [ ] Worker service - WorkerService
+- [ ] Worker service - WorkerService (TODO RENAME streaming)
+- [x] Worker Streaming Service
 - [x] OpenAI service - OpenAIController
 - [ ] Simple form + validation - SimpleFormController
 - [ ] React hook form + validation - ReactHookFormController
+- [ ] Server Components
 
 Other repos:
 - Prisma + SQLIte or Postgres ???
