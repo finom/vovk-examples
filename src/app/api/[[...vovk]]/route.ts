@@ -9,6 +9,7 @@ import StreamController from '../../../modules/stream/StreamController';
 import StreamResponseObjectController from '../../../modules/stream-response-object/StreamResponseObjectController';
 import WorkerService from '../../../modules/worker/WorkerService';
 import WorkerYieldService from '../../../modules/worker-yield/WorkerYieldService';
+import FormController from '../../../modules/form/FormController';
 
 export const runtime = 'edge';
 
@@ -19,6 +20,7 @@ const controllers = {
   StreamController,
   StreamResponseObjectController,
   OpenAiController,
+  FormController,
 };
 const workers = { HelloWorkerService, WorkerService, WorkerYieldService };
 

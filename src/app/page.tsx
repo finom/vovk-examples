@@ -13,12 +13,12 @@ Examples:
 - [x] Worker service - WorkerService (TODO RENAME streaming)
 - [x] Worker Streaming Service
 - [x] OpenAI service - OpenAIController
-- [ ] Simple form + validation - SimpleFormController
-- [ ] React hook form + validation - ReactHookFormController
+- [x] Simple form + validation - SimpleFormController
+- [x] React hook form + validation - ReactHookFormController
 - [x] Server Components
 
 Other repos:
-- [ ] Expo + React Native
+- [ ] Vovk + React Native
 */
 
 export default function Home() {

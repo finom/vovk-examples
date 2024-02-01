@@ -10,8 +10,8 @@ export default function StreamControllerPage() {
       </Example>
       <Github
         paths={[
-          'src/modules/streamResponseObject/StreamService.ts',
-          'src/modules/streamResponseObject/StreamResponseObjectController.ts',
+          'src/modules/stream-response-object/StreamService.ts',
+          'src/modules/stream-response-object/StreamResponseObjectController.ts',
           'src/app/stream-response-object/StreamExample.tsx',
         ]}
       />

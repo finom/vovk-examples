@@ -10,8 +10,8 @@ export default function BasicControllerPage() {
       </Example>
       <Github
         paths={[
-          'src/modules/basicWithService/BasicService.ts',
-          'src/modules/basicWithService/BasicControllerWithService.ts',
+          'src/modules/basic-with-service/BasicService.ts',
+          'src/modules/basic-with-service/BasicControllerWithService.ts',
           'src/app/basic-with-service/BasicExampleWithService.tsx',
         ]}
       />
