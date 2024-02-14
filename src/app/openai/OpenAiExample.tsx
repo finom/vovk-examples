@@ -3,15 +3,16 @@ import { useState } from 'react';
 import { OpenAiController } from '@vovkts/client';
 import type OpenAI from 'openai';
 
+type Message = OpenAI.Chat.Completions.ChatCompletionMessageParam;
+
 export default function BasicExample() {
-  const [messages, setMessages] = useState<OpenAI.Chat.Completions.ChatCompletionMessageParam[]>([]);
-  const [userInput, setUserInput] = useState<string>('');
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [userInput, setUserInput] = useState('');
 
   const submit = async () => {
     if (!userInput) return;
     setUserInput('');
-    const userMessage: OpenAI.Chat.Completions.ChatCompletionMessageParam = { role: 'user', content: userInput };
-    const assistantMessage: OpenAI.Chat.Completions.ChatCompletionMessageParam = { role: 'assistant', content: '' };
+    const userMessage: Message = { role: 'user', content: userInput };
 
     setMessages((messages) => [...messages, userMessage]);
 
@@ -19,7 +20,7 @@ export default function BasicExample() {
       body: { messages: [...messages, userMessage] },
     });
 
-    setMessages((mesages) => [...mesages, assistantMessage]);
+    setMessages((mesages) => [...mesages, { role: 'assistant', content: '' } satisfies Message]);
 
     for await (const chunk of completion) {
       setMessages((messages) => {

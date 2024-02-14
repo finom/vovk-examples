@@ -32,9 +32,9 @@ export default function FormExample() {
       <button>Submit</button>
 
       {response && (
-        <div>
-          <h3>Response</h3>
-          <pre className="text-left">{JSON.stringify(response, null, 2)}</pre>
+        <div className="text-left">
+          <h3>Response:</h3>
+          <pre>{JSON.stringify(response, null, 2)}</pre>
         </div>
       )}
 

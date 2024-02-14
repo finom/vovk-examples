@@ -1,4 +1,4 @@
-import { StreamResponse } from 'vovk';
+import type { StreamResponse } from 'vovk';
 
 export type Token = { message: string };
 

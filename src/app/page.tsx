@@ -4,7 +4,11 @@ import { getHello, getStreamingHello, calculatePi } from '../modules/hello/Hello
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 /*
-REMINDER: ADD DESCRIPTIOPN TO EXAMPLES, Add root page, add dark mode
+
+REMINDER: 
+- Add description
+- Add root page
+- Add dark mode
 Examples:
 - [x] Simple request - BasicController 
 - [x] Simple request service + controller - BasicControllerWithService
@@ -18,7 +22,7 @@ Examples:
 - [x] Server Components
 
 Other repos:
-- [ ] Vovk + React Native
+- [x] Vovk + React Native
 */
 
 export default function Home() {

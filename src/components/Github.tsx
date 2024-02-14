@@ -1,5 +1,5 @@
 import { Code } from 'bright';
-import WindowAlike from './WindowAlike';
+import GithubTabs from './GithubTabs';
 
 const OWNER = 'finom';
 const REPO = 'vovk-examples';
@@ -35,18 +35,17 @@ interface Props {
   paths: string[];
 }
 
-Code.theme = 'github-light';
+Code.theme = 'github-dark';
 
 const Github = async ({ paths }: Props) => {
   const files = await Promise.all(paths.map(getGithubFile));
 
   return (
-    <div className={`grid grid-cols-1 ${files.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'} gap-4`}>
+    <div className={`bg-[#0d1117] rounded-lg`}>
+      <GithubTabs paths={paths} />
       {files.map((file, i) => (
-        <div key={i}>
-          <WindowAlike fileName={paths[i]}>
-            <Code lang="tsx">{file.trim()}</Code>
-          </WindowAlike>
+        <div key={i} className={`h-full github-tab-content ${i ? 'hidden' : ''}`} id={`tab${i}`}>
+          <Code lang="tsx">{file.trim()}</Code>
         </div>
       ))}
     </div>
