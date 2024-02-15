@@ -16,5 +16,7 @@ export default class StreamService {
       await new Promise((resolve) => setTimeout(resolve, 300));
       resp.send(token);
     }
+
+    await resp.close();
   }
 }

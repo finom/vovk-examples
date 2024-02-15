@@ -1,16 +1,12 @@
 'use client';
-
 import { useState } from 'react';
+import { GithubFile } from '@/types';
 
-interface Props {
-  paths: string[];
-}
-
-const GithubTabs = ({ paths }: Props) => {
+const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className="py-2 px-4 text-sm">
-      {paths.map((path, i) => (
+      {githubFiles.map(({ path }, i) => (
         <div key={path} className={`inline-block mr-4`}>
           <span
             title={path}
