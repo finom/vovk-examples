@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { FormController } from '@vovkts/client';
+import { FormController } from 'vovk-client';
 import type { VovkClientReturnType } from 'vovk';
 
 export default function FormExample() {

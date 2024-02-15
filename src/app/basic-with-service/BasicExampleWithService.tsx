@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { BasicControllerWithService } from '@vovkts/client';
+import { BasicControllerWithService } from 'vovk-client';
 import type { VovkClientReturnType } from 'vovk';
 
 export default function BasicExampleWithService() {

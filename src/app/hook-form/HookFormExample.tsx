@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { FormController } from '@vovkts/client';
+import { FormController } from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkClientBody, VovkClientReturnType } from 'vovk';
 import { zodResolver } from '@hookform/resolvers/zod';

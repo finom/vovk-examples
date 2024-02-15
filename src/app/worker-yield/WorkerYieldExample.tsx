@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
-import { WorkerYieldService } from '@vovkts/client';
+import { WorkerYieldService } from 'vovk-client';
 
 export default function WorkerYieldExample() {
   const [pi, setPi] = useState(3n);

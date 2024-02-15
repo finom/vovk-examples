@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { OpenAiController } from '@vovkts/client';
+import { OpenAiController } from 'vovk-client';
 import type OpenAI from 'openai';
 
 type Message = OpenAI.Chat.Completions.ChatCompletionMessageParam;

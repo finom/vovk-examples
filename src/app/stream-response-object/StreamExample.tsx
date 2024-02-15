@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { StreamResponseObjectController } from '@vovkts/client';
+import { StreamResponseObjectController } from 'vovk-client';
 import type { VovkClientYieldType } from 'vovk';
 
 export default function StreamExample() {

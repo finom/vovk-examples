@@ -1,4 +1,4 @@
-import { HelloWorkerService, HelloController } from '@vovkts/client';
+import { HelloWorkerService, HelloController } from 'vovk-client';
 
 const WorkerService =
   typeof Worker === 'undefined'

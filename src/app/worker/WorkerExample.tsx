@@ -1,6 +1,6 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
-import { WorkerService } from '@vovkts/client';
+import { WorkerService } from 'vovk-client';
 
 export default function BasicExample() {
   const [value, setValue] = useState('1234567891011133351123');
