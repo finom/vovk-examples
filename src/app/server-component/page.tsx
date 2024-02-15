@@ -5,7 +5,7 @@ import { PageMetadata } from '@/types';
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - Server Component Example',
-  description: `Vovk.ts client can also be used in a Server Component. To do so, you need to define "prefix" option that indicateds absolute URL to the root API endpoint that overrides default relative URL.`,
+  description: `Vovk.ts client can also be used in a Server Component. To do so, you need to define "prefix" option that indicates absolute URL to the root API endpoint that overrides default relative URL.`,
 };
 
 export default function ServerComponentPage() {
