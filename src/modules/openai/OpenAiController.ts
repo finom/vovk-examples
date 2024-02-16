@@ -1,8 +1,6 @@
 import { type VovkRequest, post, prefix } from 'vovk';
 import OpenAI from 'openai';
 
-console.log(process.env);
-
 @prefix('openai')
 export default class OpenAiController {
   private static openai = new OpenAI();
