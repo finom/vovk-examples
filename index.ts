@@ -1,1 +1,1 @@
-export * from './.vovk';
+export { HelloController } from './.vovk';
