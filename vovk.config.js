@@ -1,4 +1,4 @@
-const vc = process.env.VERCEL_URL;
+const vc = process.env.NEXT_PUBLIC_VERCEL_URL;
 
 /** @type {import('vovk').VovkRc} */
 const config = {
