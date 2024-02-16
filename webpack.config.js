@@ -6,6 +6,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\WorkerService\.ts$/,
+        use: { loader: 'worker-loader' },
+      },
+      {
         test: /\.ts$/,
         use: [
           {
