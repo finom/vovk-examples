@@ -8,6 +8,7 @@ type Message = OpenAI.Chat.Completions.ChatCompletionMessageParam;
 export default function BasicExample() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
+  const [error, setError] = useState<Error | null>(null);
 
   const submit = async () => {
     if (!userInput) return;
@@ -16,20 +17,24 @@ export default function BasicExample() {
 
     setMessages((messages) => [...messages, userMessage]);
 
-    using completion = await OpenAiController.createChatCompletion({
-      body: { messages: [...messages, userMessage] },
-    });
-
-    setMessages((mesages) => [...mesages, { role: 'assistant', content: '' } satisfies Message]);
-
-    for await (const chunk of completion) {
-      setMessages((messages) => {
-        const lastMessage = messages[messages.length - 1];
-        return [
-          ...messages.slice(0, -1),
-          { ...lastMessage, content: lastMessage.content + (chunk.choices[0]?.delta?.content ?? '') },
-        ];
+    try {
+      using completion = await OpenAiController.createChatCompletion({
+        body: { messages: [...messages, userMessage] },
       });
+
+      setMessages((mesages) => [...mesages, { role: 'assistant', content: '' } satisfies Message]);
+
+      for await (const chunk of completion) {
+        setMessages((messages) => {
+          const lastMessage = messages[messages.length - 1];
+          return [
+            ...messages.slice(0, -1),
+            { ...lastMessage, content: lastMessage.content + (chunk.choices[0]?.delta?.content ?? '') },
+          ];
+        });
+      }
+    } catch (error) {
+      setError(error as Error);
     }
   };
 
@@ -42,9 +47,10 @@ export default function BasicExample() {
     >
       {messages.map((message, index) => (
         <div key={index}>
-          {message.role === 'assistant' ? '🤖' : '👤'} {message.content as string}
+          {message.role === 'assistant' ? '🤖' : '👤'} {(message.content as string) || '...'}
         </div>
       ))}
+      {error && <div>❌ {error.message}</div>}
       <div className="input-group">
         <input
           placeholder="Type a message..."

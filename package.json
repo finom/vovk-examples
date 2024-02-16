@@ -33,7 +33,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
-    "vovk": "^0.2.3-beta.107",
+    "vovk": "^0.2.3-beta.128",
     "vovk-zod": "^0.1.1",
     "zod": "^3.22.4"
   },
@@ -51,7 +51,7 @@
     "tailwindcss": "^3.4.1",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
-    "webpack": "^5.90.1",
+    "webpack": "^5.90.2",
     "webpack-cli": "^5.1.4"
   }
 }
