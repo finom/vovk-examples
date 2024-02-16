@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     rules: [
-      {
+      /* {
         test: /WorkerService\.ts$/,
         use: { 
           loader: "worker-loader", 
@@ -13,7 +13,7 @@ module.exports = {
             inline: "fallback",
           }, 
         },
-      },
+      }, */
       {
         test: /\.ts$/,
         use: [

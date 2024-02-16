@@ -1,8 +1,7 @@
 import { WorkerService, StreamController } from './.vovk';
-import WorkerServiceWorker from './src/modules/worker/WorkerService'
+import WorkerServiceWorker from 'worker-loader?inline=fallback!./src/modules/worker/WorkerService';
 
 if (typeof Worker !== 'undefined') {
-  // @ts-expect-error
-  WorkerService.use(new (WorkerServiceWorker as typeof Worker)());
+  WorkerService.use(new (WorkerServiceWorker as unknown as typeof Worker)(''));
 }
 export { WorkerService, StreamController };
