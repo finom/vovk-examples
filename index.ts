@@ -1,8 +1,8 @@
 export * from './.vovk';
 import { WorkerService, WorkerYieldService } from './.vovk';
+import WorkerServiceWorker from 'worker-loader!./src/modules/worker/WorkerService.ts';
+import WorkerYieldServiceWorker from 'worker-loader!./src/modules/worker-yield/WorkerYieldService.ts';
 
-if (typeof Worker !== 'undefined') {
-  WorkerService.use(new Worker(new URL('./src/modules/worker/WorkerService.ts', import.meta.url)));
-  WorkerYieldService.use(new Worker(new URL('./src/modules/worker-yield/WorkerYieldService.ts', import.meta.url)));
-}
+WorkerService.use(new WorkerServiceWorker());
+WorkerYieldService.use(new WorkerYieldServiceWorker());
 export { WorkerService, WorkerYieldService };
