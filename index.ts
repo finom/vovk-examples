@@ -1,6 +1,8 @@
 import { WorkerService, StreamController } from './.vovk';
+import W from './src/modules/worker/WorkerService'
 
 if (typeof Worker !== 'undefined') {
-  WorkerService.use(new Worker(/* webpackChunkName: "foo-worker" */ new URL('./src/modules/worker/WorkerService.ts', import.meta.url)));
+  // @ts-expect-error
+  WorkerService.use(new (W as unknown as typeof Worker)());
 }
 export { WorkerService, StreamController };
