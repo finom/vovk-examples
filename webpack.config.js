@@ -23,10 +23,8 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   output: {
-    filename: '[name].[hash:8].js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     library: { type: 'commonjs2' },
-    sourceMapFilename: '[name].[hash:8].map',
-    chunkFilename: '[id].[hash:8].js',
   },
 };
