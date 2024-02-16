@@ -1,3 +1,3 @@
-import { HelloController } from './.vovk';
+import { StreamController } from './.vovk';
 
-export { HelloController }
+export { StreamController }
