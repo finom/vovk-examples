@@ -33,7 +33,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.50.1",
-    "vovk": "^1.0.1",
+    "vovk": "^1.0.3",
     "vovk-zod": "^0.1.1",
     "zod": "^3.22.4"
   },

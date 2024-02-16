@@ -1,18 +1,4 @@
 {
-  "HelloController": {
-    "_controllerName": "HelloController",
-    "_prefix": "hello",
-    "_handlers": {
-      "getHello": {
-        "path": "greeting",
-        "httpMethod": "GET"
-      },
-      "getStreamingHello": {
-        "path": "streaming",
-        "httpMethod": "GET"
-      }
-    }
-  },
   "BasicController": {
     "_controllerName": "BasicController",
     "_prefix": "basic",
@@ -68,8 +54,6 @@
     "_prefix": "form",
     "_handlers": {
       "createUser": {
-        "path": "create-user",
-        "httpMethod": "POST",
         "clientValidators": {
           "body": {
             "type": "object",
@@ -98,19 +82,13 @@
             "$schema": "http://json-schema.org/draft-07/schema#"
           },
           "query": null
-        }
+        },
+        "path": "create-user",
+        "httpMethod": "POST"
       }
     }
   },
   "workers": {
-    "HelloWorkerService": {
-      "_workerName": "HelloWorkerService",
-      "_handlers": {
-        "calculatePi": {
-          "isGenerator": true
-        }
-      }
-    },
     "WorkerService": {
       "_workerName": "WorkerService",
       "_handlers": {
