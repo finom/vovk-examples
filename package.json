@@ -8,7 +8,7 @@
   "scripts": {
     "test": "tsc --noEmit && next lint",
     "dev": "vovk dev",
-    "build": "vovk build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "patch": "npm t && npm version patch && npm run build-client && npm publish && git push && git push --tags",
