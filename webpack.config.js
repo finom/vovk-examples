@@ -25,6 +25,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
-    library: { type: 'commonjs2' }
+    library: { type: 'commonjs2' },
+    chunkFilename: '[id].[chunkhash].js',
   },
 };

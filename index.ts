@@ -5,4 +5,5 @@ import WorkerYieldServiceWorker from 'worker-loader!./src/modules/worker-yield/W
 
 WorkerService.use(new WorkerServiceWorker());
 WorkerYieldService.use(new WorkerYieldServiceWorker());
+
 export { WorkerService, WorkerYieldService };
