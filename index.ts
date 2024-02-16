@@ -1,7 +1,6 @@
 import { WorkerService, StreamController } from './.vovk';
-import WorkerServiceWorker from 'worker-loader!./src/modules/worker/WorkerService';
-console.log(WorkerService, WorkerServiceWorker);
-// @ts-ignore
-WorkerService.use(new (WorkerServiceWorker as unknown as typeof Worker)());
 
+if (typeof Worker !== 'undefined') {
+  WorkerService.use(new Worker(new URL('./src/modules/worker/WorkerService.ts', import.meta.url)));
+}
 export { WorkerService, StreamController };
