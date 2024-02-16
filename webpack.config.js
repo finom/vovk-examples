@@ -7,10 +7,10 @@ module.exports = {
     rules: [
       {
         test: /WorkerService\.ts$/,
-        use: { loader: "worker-loader" },
-        options: {
+        use: { loader: "worker-loader", options: {
           inline: "fallback",
-        },
+        }, },
+        
       },
       {
         test: /\.ts$/,
