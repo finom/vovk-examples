@@ -13,6 +13,7 @@ import { metadata as workerYieldMetadata } from './worker-yield/page';
 export default function Home() {
   return (
     <main>
+      <pre>{JSON.stringify(process.env, null, 2)}</pre>
       <h1 className="text-4xl font-bold text-center py-3">Vovk.ts Interactive Examples</h1>
       <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <CodeBox title={basicMetadata.title} href="/basic">{`

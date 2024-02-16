@@ -4,8 +4,6 @@ import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
 
-console.log(process.env);
-
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - OpenAI Chat Example',
   description: 'Real use-case of response streaming and async generators with OpenAI API.',
