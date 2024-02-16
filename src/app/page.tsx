@@ -1,18 +1,3 @@
-/*
-Other examples:
-- Vovk + React Native
-- Bundling
-- Static API
-
-TODO:
-- Global heading and link to main page
-- OG image and description
-- README
-- Remove && VOVK_PREFIX=https://vovk-examples.vercel.app/api from package.json?
-- Use https://www.npmjs.com/package/react-to-string for titles
-- Light mode?
-*/
-
 import CodeBox from '@/components/CodeBox';
 import { metadata as basicMetadata } from './basic/page';
 import { metadata as withServiceMetadata } from './basic-with-service/page';
