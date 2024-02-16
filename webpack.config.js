@@ -7,10 +7,12 @@ module.exports = {
     rules: [
       {
         test: /WorkerService\.ts$/,
-        use: { loader: "worker-loader", options: {
-          inline: "fallback",
-        }, },
-        
+        use: { 
+          loader: "worker-loader", 
+          options: {
+            inline: "fallback",
+          }, 
+        },
       },
       {
         test: /\.ts$/,
@@ -33,5 +35,6 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     library: { type: 'commonjs2' },
+    publicPath: '',
   },
 };
