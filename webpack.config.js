@@ -5,16 +5,11 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     rules: [
-      /* {
-        test: /WorkerService\.ts$/,
-        use: { 
-          loader: "worker-loader", 
-          options: {
-            inline: "fallback",
-          }, 
-        },
-      }, 
       {
+        test: /WorkerService\.ts$/,
+        type: 'asset/source',
+      },
+      /* {
         resourceQuery: /inline/,
         type: 'asset/inline',
       }, */
