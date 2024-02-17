@@ -17,6 +17,9 @@ module.exports = {
       {
         resourceQuery: /inline/,
         type: 'asset/inline',
+        generator: {
+          emit: false,
+        },
       },
       {
         test: /\.ts$/,
