@@ -1,6 +1,6 @@
 {
   "name": "vovk-examples",
-  "version": "0.1.55",
+  "version": "0.1.56",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
