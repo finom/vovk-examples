@@ -7,9 +7,7 @@ if (typeof Worker !== 'undefined') {
   WorkerYieldService.use(new (WorkerYieldServiceWorker as unknown as typeof Worker)(''));
 } */
 
-if (typeof Worker !== 'undefined') {
-  WorkerService.use(new Worker(new URL('./src/modules/worker/WorkerService.ts?inline', import.meta.url)));
-  // WorkerYieldService.use(new Worker(new URL('./relative/path/to/my/worker.js?inline', import.meta.url)));
-}
+WorkerService.use(new Worker(new URL('./src/modules/worker/WorkerService.ts?inline', import.meta.url)));
+// WorkerYieldService.use(new Worker(new URL('./relative/path/to/my/worker.js?inline', import.meta.url)));
 
 export { WorkerService, StreamController };
