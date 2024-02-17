@@ -13,8 +13,8 @@ export default class StreamService {
     ];
 
     for (const token of tokens) {
-      await new Promise((resolve) => setTimeout(resolve, 300));
       resp.send(token);
+      await new Promise((resolve) => setTimeout(resolve, 300));
     }
 
     await resp.close();

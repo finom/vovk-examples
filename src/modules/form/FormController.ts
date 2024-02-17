@@ -5,7 +5,7 @@ import { userSchema } from '../../zod';
 
 @prefix('form')
 export default class FormController {
-  @post('create-user')
+  @post('create-user', { cors: true })
   @vovkZod(userSchema)
   static async createUser(req: VovkRequest<z.infer<typeof userSchema>>) {
     const { firstName, lastName, email } = await req.json();

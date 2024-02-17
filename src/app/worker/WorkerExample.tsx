@@ -1,8 +1,8 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { WorkerService } from 'vovk-client';
 
-export default function BasicExample() {
+export default function WorkerExample() {
   const [value, setValue] = useState('1234567891011133351123');
   const [result, setResult] = useState<bigint[]>();
   const [isCalculating, setIsCalculating] = useState(false);

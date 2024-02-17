@@ -5,7 +5,7 @@ import getGithubFiles from '@/lib/getGithubFiles';
 import type { PageMetadata } from '@/types';
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Stream Controller using Response Object',
+  title: 'Vovk.ts - Stream using Response Object',
   description: `Instead of generators you can return StreamResponse object in order to get more control over your stream code.`,
 };
 

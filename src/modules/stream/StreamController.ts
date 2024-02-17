@@ -15,8 +15,8 @@ export default class StreamController {
     ];
 
     for (const token of tokens) {
-      await new Promise((resolve) => setTimeout(resolve, 300));
       yield token;
+      await new Promise((resolve) => setTimeout(resolve, 300));
     }
   }
 }

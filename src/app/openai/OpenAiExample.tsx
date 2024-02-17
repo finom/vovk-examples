@@ -5,7 +5,7 @@ import type OpenAI from 'openai';
 
 type Message = OpenAI.Chat.Completions.ChatCompletionMessageParam;
 
-export default function BasicExample() {
+export default function OpenAiExample() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [userInput, setUserInput] = useState('');
   const [error, setError] = useState<Error | null>(null);
