@@ -7,7 +7,17 @@ module.exports = {
     rules: [
       {
         test: /WorkerService\.ts$/,
-        type: 'asset/source',
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.webpack.json',
+            },
+          },
+          {
+            loader: 'raw-loader',
+          },
+        ],
       },
       /* {
         resourceQuery: /inline/,
