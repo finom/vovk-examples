@@ -5,7 +5,7 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     rules: [
-      {
+      /* {
         test: /WorkerService\.ts$/,
         use: [
           {
@@ -20,7 +20,7 @@ module.exports = {
           },
         ],
       },
-      /* {
+      {
         resourceQuery: /inline/,
         type: 'asset/inline',
       }, */
