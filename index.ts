@@ -10,4 +10,4 @@ if (typeof Worker !== 'undefined') {
 
 // WorkerYieldService.use(new Worker(new URL('./relative/path/to/my/worker.js?inline', import.meta.url)));
 
-export { WorkerService, StreamController };
+export { WorkerService, StreamController, WorkerYieldService };

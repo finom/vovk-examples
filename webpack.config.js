@@ -4,6 +4,7 @@ module.exports = {
   entry: {
     index: './index.ts',
     WorkerService: './src/modules/worker/WorkerService.ts',
+    WorkerYieldService: './src/modules/worker-yield/WorkerYieldService.ts',
   },
   devtool: 'inline-source-map',
   module: {
