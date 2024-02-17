@@ -13,11 +13,11 @@ module.exports = {
             inline: "fallback",
           }, 
         },
-      }, */
+      }, 
       {
         resourceQuery: /inline/,
         type: 'asset/inline',
-      },
+      }, */
       {
         test: /\.ts$/,
         use: [
