@@ -12,6 +12,7 @@ module.exports = {
             loader: 'ts-loader',
             options: {
               configFile: 'tsconfig.webpack.json',
+              transpileOnly: true, // Speeds up compilation without type checking
             },
           },
           {
