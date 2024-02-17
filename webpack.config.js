@@ -2,7 +2,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    main: './index.ts',
+    index: './index.ts',
+    WorkerService: './src/modules/worker/WorkerService.ts',
   },
   devtool: 'inline-source-map',
   module: {
@@ -44,7 +45,7 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   output: {
-    filename: 'index.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     library: { type: 'commonjs2' },
     publicPath: '',
