@@ -95,6 +95,7 @@ In the root of the project create `index.ts` with the following content:
 export * from './.vovk';
 ```
 
+
 As you can see the entry file exports everything as is but if needed you can rename variables or create an abstraction to make your library look nicer to the end user.
 
 
@@ -122,12 +123,21 @@ export function createUser(body: VovkClientBody<typeof FormController.createUser
 }
 ```
 
+You may want to exclude this file at the main **tsconfig.ts** in order to fix deployment errors because **.vovk** folder doesn't exists and the imports/re-exports are going to be considered as invalid.
+
+```json
+// tsconfig.ts
+"exclude": ["node_modules", "index.ts"],
+```
+
 As you also may notice the entry point file re-exports or imports the library from **.vovk** folder from the root of the repository. In our case the Vovk.ts library is compiled to this folder to avoid limitations trying to bundle files from **node_modules** and keep the configuration as simple as possible. This does nothing to the main application logic you implement and does nothing to the original generated client **node_modules/.vovk**, in other words your app doesn't need to reconfigured in order to create the package. You can add **.vovk** to **.gitignore** file to exclude it from Git index.
 
 ```gitignore
 # .gitignore
 .vovk
 ```
+
+
 
 ### Create an NPM script
 
