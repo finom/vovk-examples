@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply p-6 bg-slate-50;
+    @apply bg-slate-50;
 }
 
 button {

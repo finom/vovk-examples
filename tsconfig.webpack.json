@@ -17,6 +17,5 @@
     "declaration": true,
     "outDir": "./dist"
   },
-  "include": ["./.vovk/index.ts", "./src/app/api/[[...]]/route.ts", "./worker-syntax.d.ts"],
-  "files": ["./src/modules/worker/WorkerService.ts"]
+  "include": ["./node_modules/.vovk/index.ts", "./src/app/api/[[...]]/route.ts"]
 }

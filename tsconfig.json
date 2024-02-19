@@ -25,5 +25,5 @@
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"],
-  "files": ["./node_modules/.vovk/client.d.ts", "./worker-syntax.d.ts"]
+  "files": ["./node_modules/.vovk/client.d.ts"]
 }
