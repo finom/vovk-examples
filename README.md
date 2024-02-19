@@ -133,7 +133,7 @@ As you also may notice the entry point file re-exports or imports the library fr
 
 At the **package.json** create **build-client** NPM script
 
-```json
+```js
 ...
 "scripts": {
     ...
