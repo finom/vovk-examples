@@ -2,12 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --gh-dark: #0d1117;
+}
+
+.bg-code {
+    @apply bg-white dark:bg-[var(--gh-dark)];
+}
+
 body {
-    @apply bg-slate-50;
+    @apply bg-slate-50 dark:bg-[#0d1117f7];
 }
 
 button {
-    @apply py-2 px-4 rounded bg-slate-600 text-white hover:bg-slate-700 transition-colors my-2 disabled:opacity-70 disabled:pointer-events-none;
+    @apply py-2 px-4 rounded  transition-colors my-2 
+    disabled:opacity-70 disabled:pointer-events-none
+    bg-blue-500 text-white hover:bg-blue-700
+    dark:bg-slate-600 dark:text-white dark:hover:bg-slate-700;
     
 }
 
@@ -20,7 +31,9 @@ h1 {
 }
 
 input {
-    @apply shadow appearance-none rounded w-full py-1 px-3 text-gray-200 bg-slate-800 leading-tight focus:outline-none my-2;
+    @apply appearance-none rounded w-full py-1 px-3 leading-tight focus:outline-none my-2
+        border border-gray-200 dark:border-slate-600
+        dark:bg-slate-800 dark:text-gray-200;
 }
 
 .input-group {

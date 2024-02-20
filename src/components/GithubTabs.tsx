@@ -10,7 +10,11 @@ const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
         <div key={path} className={`inline-block mr-4`}>
           <span
             title={path}
-            className={`pb-0.5 cursor-pointer border-b-2 border-solid ${i === activeIndex ? 'text-gray-100 border-slate-500' : 'text-[#525975] border-transparent'}`}
+            className={`pb-0.5 cursor-pointer border-b-2 border-solid ${
+              i === activeIndex
+                ? 'text-neutral-900 border-blue-500 dark:text-gray-100 dark:border-slate-500'
+                : 'text-slate-400 dark:text-[#525975] border-transparent'
+            }`}
             onClick={() => {
               document.querySelectorAll('.github-tab-content').forEach((el) => el.classList.add('hidden'));
               document.getElementById(`tab${i}`)?.classList.remove('hidden');

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
 };
 
-export default function RootLayout({ children, ...xxx }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
   const theme = cookieStore.get('theme') ?? { value: 'light' };
   const isDarkMode = theme.value === 'dark';
@@ -27,11 +27,11 @@ export default function RootLayout({ children, ...xxx }: { children: React.React
         <meta property="og:image" content="https://vovk-examples.vercel.app/vovk-og.png" />
         <meta property="og:type" content="website" />
       </head>
-      <body className={`${inter.className} bg-[#0d1117f7] text-white`}>
+      <body className={`${inter.className} dark:text-white text-neutral-950`}>
         <header className="flex items-center justify-between px-6 py-3">
           <div className="flex items-center gap-2">
             <div className="flex flex-col">
-              <a href="https://vovk.dev" className="text-black dark:text-white ">
+              <a href="https://vovk.dev" className="text-black dark:text-white">
                 <VovkTextLogo width={150} />
               </a>
               <div>
@@ -41,7 +41,7 @@ export default function RootLayout({ children, ...xxx }: { children: React.React
           </div>
           <TopNav defaultIsDarkMode={isDarkMode} />
         </header>
-        <div className="p-6 ">{children}</div>
+        <div className="p-6">{children}</div>
       </body>
     </html>
   );
