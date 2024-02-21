@@ -131,10 +131,11 @@ You may want to exclude this file at the main **tsconfig.ts** in order to fix de
 "exclude": ["node_modules", "index.ts"],
 ```
 
-As you also may notice the entry point file re-exports or imports the library from **.vovk** folder from the root of the repository. In our case the Vovk.ts library is compiled to this folder to avoid limitations trying to bundle files from **node_modules** and keep the configuration as simple as possible. This does nothing to the main application logic you implement and does nothing to the original generated client **node_modules/.vovk**, in other words your app doesn't need to reconfigured in order to create the package. You can add **.vovk** to **.gitignore** file to exclude it from Git index.
+As you also may notice the entry point file re-exports or imports the library from **.vovk** folder from the root of the repository. In our case the Vovk.ts library is compiled to this folder to avoid limitations trying to bundle files from **node_modules** and keep the configuration as simple as possible. This does nothing to the main application logic you implement and does nothing to the original generated client **node_modules/.vovk**, in other words your app doesn't need to reconfigured in order to create the package. You can add **.vovk** to **.gitignore** file to exclude it from Git index as well ass the **dist** folder.
 
 ```gitignore
 # .gitignore
+dist
 .vovk
 ```
 
