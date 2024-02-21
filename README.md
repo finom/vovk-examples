@@ -74,7 +74,7 @@ module.exports = {
 
 ### Create a separate tsconfig
 
-Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include required files. See [full tsconfig here](./tailwind.config.ts)
+Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include required files. See [full tsconfig here](./tsconfig.webpack.json)
 
 ```ts
 {
