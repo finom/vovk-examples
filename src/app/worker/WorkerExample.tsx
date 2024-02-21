@@ -27,7 +27,12 @@ export default function WorkerExample() {
       }}
     >
       <div className="input-group">
-        <input placeholder="Type a large number..." value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+        <input
+          type="text"
+          placeholder="Type a large number..."
+          value={value}
+          onChange={(e) => setValue(e.currentTarget.value)}
+        />
         <button disabled={!regExp.test(value) || isCalculating}>
           {isCalculating ? 'Calculating...' : 'Factorize'}
         </button>

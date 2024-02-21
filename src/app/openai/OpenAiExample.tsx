@@ -53,6 +53,7 @@ export default function OpenAiExample() {
       {error && <div>❌ {error.message}</div>}
       <div className="input-group">
         <input
+          type="text"
           placeholder="Type a message..."
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}

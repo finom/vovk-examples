@@ -30,7 +30,7 @@ h1 {
     @apply text-2xl font-semibold mb-4 text-gray-700 dark:text-white;
 }
 
-input {
+input[type="text"] {
     @apply appearance-none rounded w-full py-1 px-3 leading-tight focus:outline-none my-2
         border border-gray-200 dark:border-slate-600
         dark:bg-slate-800 dark:text-gray-200;
