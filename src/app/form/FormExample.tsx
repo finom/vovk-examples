@@ -9,12 +9,14 @@ export default function FormExample() {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [disableClientValidation, setDisableClientValidation] = useState(false);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setResponse(
         await FormController.createUser({
           body: { firstName, lastName, email },
+          disableClientValidation,
         })
       );
       setError(null);
@@ -29,6 +31,15 @@ export default function FormExample() {
       <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
       <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label className="block mb-4">
+        <input
+          type="checkbox"
+          className="mr-2"
+          checked={disableClientValidation}
+          onChange={(e) => setDisableClientValidation(e.target.checked)}
+        />
+        Disable client-side validation
+      </label>
       <button>Submit</button>
 
       {response && (
