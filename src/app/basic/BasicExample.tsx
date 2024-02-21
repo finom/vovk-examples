@@ -10,8 +10,7 @@ export default function BasicExample() {
     <>
       <button
         onClick={async () => {
-          const response = await BasicController.getHello();
-          setServerResponse(response);
+          setServerResponse(await BasicController.getHello());
         }}
       >
         Get Greeting from Server

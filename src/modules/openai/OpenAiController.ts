@@ -5,7 +5,7 @@ import OpenAI from 'openai';
 export default class OpenAiController {
   private static openai = new OpenAI();
 
-  @post('chat', { cors: true })
+  @post('chat', { cors: true, headers: { 'Access-Control-Allow-Origin': 'https://vovk.dev' } })
   static async *createChatCompletion(
     req: VovkRequest<{ messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] }>
   ) {

@@ -14,10 +14,10 @@ const Title = ({ href, children }: Props) => {
       dark:bg-gray-950 dark:text-white dark:[background-image:none]
       p-[3px] flex items-center justify-between w-full py-1`}
     >
-      <div className="flex gap-[4px] ml-[8px]">
-        <div className="rounded-full h-[0.8em] w-[0.8em] bg-[#EB6B5E] dark:bg-white/20" />
-        <div className="rounded-full h-[0.8em] w-[0.8em] bg-[#F3BD50] dark:bg-white/20" />
-        <div className="rounded-full h-[0.8em] w-[0.8em] bg-[#62C454] dark:bg-white/20" />
+      <div className="flex gap-[4px] ml-[8px] py-1">
+        <div className="rounded-full h-[0.7rem] w-[0.7rem] bg-[#EB6B5E] dark:bg-white/20" />
+        <div className="rounded-full h-[0.7rem] w-[0.7rem] bg-[#F3BD50] dark:bg-white/20" />
+        <div className="rounded-full h-[0.7rem] w-[0.7rem] bg-[#62C454] dark:bg-white/20" />
       </div>
       <span className="opacity-80">{children}</span>
       <div className="w-[45px]" />

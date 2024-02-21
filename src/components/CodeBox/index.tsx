@@ -9,7 +9,7 @@ interface Props {
 
 const CodeBox = ({ title, href, children }: Props) => {
   return (
-    <div className="bg-code rounded-lg overflow-hidden">
+    <div className="bg-code rounded-lg overflow-hidden border-gray-300/20 dark:border-gray-700/20">
       <Title href={href}>{title.split('-')[1].trim()}</Title>
       <CodeBlock className="text-sm">{children}</CodeBlock>
     </div>

@@ -14,8 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = cookies();
-  const theme = cookieStore.get('theme') ?? { value: 'light' };
+  const theme = cookies().get('theme') ?? { value: 'light' };
   const isDarkMode = theme.value === 'dark';
 
   return (
