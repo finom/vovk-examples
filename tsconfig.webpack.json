@@ -15,7 +15,10 @@
     "jsx": "preserve",
     "incremental": true,
     "declaration": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["./node_modules/.vovk/index.ts", "./src/app/api/[[...]]/route.ts"]
+  "include": ["./src/app/api/[[...vovk]]/route.ts"]
 }

@@ -34,6 +34,7 @@ npm i -D ts-loader webpack webpack-cli
 Create a Webpack config that inits the loader. The `entry` and `output.filename` definitions can vary for your project but this syntax is going to enable Worker interface bundling that's explained below. See [full Webpack config here](./webpack.config.js).
 
 ```js
+// webpack.config.js
 const path = require('path');
 
 module.exports = {
@@ -82,7 +83,7 @@ Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include re
     "experimentalDecorators": true,
     "outDir": "./dist"
   },
-  "include": ["./.vovk/index.ts", "./src/app/api/[[...]]/route.ts"]
+  "include": ["./src/app/api/[[...vovk]]/route.ts"]
 }
 ```
 

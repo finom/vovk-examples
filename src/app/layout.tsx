@@ -27,8 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta property="og:type" content="website" />
       </head>
       <body className={`${inter.className} dark:text-white text-neutral-950`}>
-        <header className="flex items-center justify-between px-6 py-3">
-          <div className="flex items-center gap-2">
+        <header className="flex justify-between px-6 py-4 items-start">
+          <div className="flex gap-2">
             <div className="flex flex-col">
               <a href="https://vovk.dev" className="text-black dark:text-white">
                 <VovkTextLogo width={150} />

@@ -9,6 +9,8 @@ import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as workerMetadata } from './worker/page';
 import { metadata as workerYieldMetadata } from './worker-yield/page';
+import CodeBlock from '@/components/CodeBlock';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -67,7 +69,7 @@ export default function Home() {
         }
     `}</CodeBox>
         <CodeBox title={streamResponseObjectMetadata.title} href="/stream-response-object">{`
-        @get('tokens', { cors: true })
+        @get('tokens')
         static async streamTokens() {
           const response = new StreamResponse<Token>();
           void this.streamService.streamTokens(response);
@@ -86,6 +88,84 @@ export default function Home() {
           setPi(pi);
         }
     `}</CodeBox>
+      </div>
+      <h2 className="text-2xl font-bold text-center py-3">Other Examples</h2>
+      <div className="grid gap-4 xl:grid-cols-3">
+        <div>
+          <h3 className="font-bold text-lg text-center">React Native Example</h3>
+
+          <CodeBlock className="text-sm">{`
+          import { GreetingController } from 'vovk-client';
+
+          // ...
+          <Pressable 
+              onPress={async () => {
+                  setGreetingResponse(
+                      await GreetingController.getGreeting()
+                  );
+              }}
+          >
+              <Text>Get Greeting</Text>
+          </Pressable>
+          `}</CodeBlock>
+          <p>
+            Next.js + Vovk.ts can be used as a back-end for React Native applications. For details see{' '}
+            <Link className="text-nowrap" href="https://github.com/finom/vovk-react-native-example" target="_blank">
+              vovk-react-native-example
+            </Link>{' '}
+            repository.
+          </p>
+        </div>
+        <div>
+          <h3 className="font-bold text-lg text-center">Bundle the Client</h3>
+
+          <CodeBlock className="text-sm">{`
+          // webpack.config.js          
+          module.exports = {
+            entry: {
+              index: './index.ts',
+            },
+            devtool: 'inline-source-map',
+            // ...
+          };
+          `}</CodeBlock>
+          <p>
+            The client REST API library bundle can be compiled into a single package and distributed thru NPM, CDN or
+            any other way. The examples on this page are bundled with Webpack and served from NPM as{' '}
+            <Link className="text-nowrap" href="https://npmjs.com/package/vovk-examples" target="_blank">
+              vovk-examples
+            </Link>{' '}
+            package that&apos;s, in its turn is used by examples on{' '}
+            <Link className="text-nowrap" href="https://vovk.dev" target="_blank">
+              vovk.dev
+            </Link>{' '}
+            website.
+          </p>
+        </div>
+        <div>
+          <h3 className="font-bold text-lg text-center">Static JSON API</h3>
+
+          <CodeBlock className="text-sm">{`
+          import { initVovk, generateStaticAPI } from 'vovk';
+          
+          // ...
+          
+          export function generateStaticParams() {
+            return generateStaticAPI(controllers);
+          }
+          
+          export const { GET } = initVovk({ controllers, workers });
+          
+          `}</CodeBlock>
+          <p>
+            Thanks to <code>generateStaticParams</code> Next.js feature it&apos;s possible to generate static API that
+            is compiled at build time and served from a static hosting. This approach is used at one of the examples on{' '}
+            <Link className="text-nowrap" href="https://vovk.dev" target="_blank">
+              vovk.dev
+            </Link>{' '}
+            that is hosted on Github Pages.
+          </p>
+        </div>
       </div>
     </main>
   );
