@@ -3,10 +3,33 @@ import OpenAiExample from './OpenAiExample';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    Real use-case of{' '}
+    <Link href="https://docs.vovk.dev/docs/controller#streaming" target="_blank">
+      response streaming
+    </Link>{' '}
+    with{' '}
+    <Link
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator"
+      target="_blank"
+    >
+      async generators
+    </Link>{' '}
+    using{' '}
+    <Link href="https://www.npmjs.com/package/openai" target="_blank">
+      OpenAI API
+    </Link>
+    .
+  </>
+);
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - OpenAI Chat Example',
-  description: 'Real use-case of response streaming and async generators with OpenAI API.',
+  description: reactToString(description),
 };
 
 export default async function BasicControllerPage() {
@@ -16,7 +39,7 @@ export default async function BasicControllerPage() {
   ]);
   return (
     <>
-      <Example title={metadata.title} description={metadata.description}>
+      <Example title={metadata.title} description={description}>
         <OpenAiExample />
       </Example>
       <Github githubFiles={githubFiles} />

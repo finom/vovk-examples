@@ -47,13 +47,7 @@ export default function Home() {
           resolver: zodResolver(userSchema),
         });
     `}</CodeBox>
-        <CodeBox title={openaiMetadata.title} href="/openai">{`
-        yield* await openai.chat.completions.create({
-          messages,
-          model: 'gpt-3.5-turbo',
-          stream: true,
-        });
-    `}</CodeBox>
+
         <CodeBox title={serverComponentMetadata.title} href="/server-component">{`
         export default async function ServerComponent() {
           const response = await Controller.getHello();
@@ -68,6 +62,7 @@ export default function Home() {
           setTokens((tokens) => [...tokens, token]);
         }
     `}</CodeBox>
+
         <CodeBox title={streamResponseObjectMetadata.title} href="/stream-response-object">{`
         @get('tokens')
         static async streamTokens() {
@@ -76,6 +71,13 @@ export default function Home() {
           return response;
         }
     `}</CodeBox>
+        <CodeBox title={openaiMetadata.title} href="/openai">{`
+    yield* await openai.chat.completions.create({
+      messages,
+      model: 'gpt-3.5-turbo',
+      stream: true,
+    });
+`}</CodeBox>
         <CodeBox title={workerMetadata.title} href="/worker">{`
         WorkerService.use(/* ... */);
       
@@ -89,7 +91,7 @@ export default function Home() {
         }
     `}</CodeBox>
       </div>
-      <h2 className="text-2xl font-bold text-center py-3">Other Examples</h2>
+      <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>
       <div className="grid gap-4 xl:grid-cols-3">
         <div>
           <h3 className="font-bold text-lg text-center">React Native Example</h3>
@@ -139,7 +141,7 @@ export default function Home() {
             <Link className="text-nowrap" href="https://vovk.dev" target="_blank">
               vovk.dev
             </Link>{' '}
-            website.
+            website to render live demos.
           </p>
         </div>
         <div>

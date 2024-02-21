@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { WorkerService } from 'vovk-client';
 
 export default function WorkerExample() {
-  const [value, setValue] = useState('1234567891011133351123');
+  const [value, setValue] = useState('337751842839865299034216387');
   const [result, setResult] = useState<bigint[]>();
   const [isCalculating, setIsCalculating] = useState(false);
   const regExp = /^-?\d+$/;

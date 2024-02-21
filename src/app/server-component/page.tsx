@@ -3,10 +3,23 @@ import ServerComponentExample from './ServerComponentExample';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    Vovk.ts client can also be used in a{' '}
+    <Link href="https://nextjs.org/docs/app/building-your-application/rendering/server-components" target="_blank">
+      Server Component
+    </Link>
+    . To do so, you need to define &quot;prefix&quot; option that indicates absolute URL to the root API endpoint that
+    overrides default relative URL.
+  </>
+);
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - Server Component Example',
-  description: `Vovk.ts client can also be used in a Server Component. To do so, you need to define "prefix" option that indicates absolute URL to the root API endpoint that overrides default relative URL.`,
+  description: reactToString(description),
 };
 
 export default async function ServerComponentPage() {
@@ -17,7 +30,7 @@ export default async function ServerComponentPage() {
   ]);
   return (
     <>
-      <Example className="text-center" title={metadata.title} description={metadata.description}>
+      <Example className="text-center" title={metadata.title} description={description}>
         <ServerComponentExample />
       </Example>
       <Github githubFiles={githubFiles} />

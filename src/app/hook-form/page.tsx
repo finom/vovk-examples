@@ -3,10 +3,26 @@ import HookFormExample from './HookFormExample';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    Form handling with{' '}
+    <Link href="https://react-hook-form.com/" target="_blank">
+      react-hook-form
+    </Link>{' '}
+    and{' '}
+    <Link href="https://zod.dev/" target="_blank">
+      Zod
+    </Link>{' '}
+    validation .
+  </>
+);
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - React Hook Form Example',
-  description: 'Form handling with react-hook-form and Zod validation.',
+  description: reactToString(description),
 };
 
 export default async function HookFormControllerPage() {
@@ -17,7 +33,7 @@ export default async function HookFormControllerPage() {
   ]);
   return (
     <>
-      <Example title={metadata.title} className="text-center" description={metadata.description}>
+      <Example title={metadata.title} className="text-center" description={description}>
         <HookFormExample />
       </Example>
       <Github githubFiles={githubFiles} />

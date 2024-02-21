@@ -3,10 +3,28 @@ import Example from '@/components/Example';
 import StreamExample from './StreamExample';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    <Link href="https://docs.vovk.dev/docs/controller#streaming" target="_blank">
+      Response streaming
+    </Link>{' '}
+    with{' '}
+    <Link
+      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator"
+      target="_blank"
+    >
+      async generators
+    </Link>
+    .
+  </>
+);
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - Stream Example',
-  description: 'Response streaming and async generators.',
+  description: reactToString(description),
 };
 
 export default async function StreamControllerPage() {
@@ -16,7 +34,7 @@ export default async function StreamControllerPage() {
   ]);
   return (
     <>
-      <Example className="text-center" title={metadata.title} description={metadata.description}>
+      <Example className="text-center" title={metadata.title} description={description}>
         <StreamExample />
       </Example>
       <Github githubFiles={githubFiles} />

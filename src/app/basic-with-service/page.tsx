@@ -3,10 +3,26 @@ import BasicExampleWithService from './BasicExampleWithService';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    Basic usage of{' '}
+    <Link href="https://docs.vovk.dev/docs/controller" target="_blank">
+      Vovk Controller
+    </Link>{' '}
+    and{' '}
+    <Link href="https://docs.vovk.dev/docs/controller#service" target="_blank">
+      Service
+    </Link>
+    .
+  </>
+);
 
 export const metadata: PageMetadata = {
   title: 'Vovk.ts - Basic Controller with Service',
-  description: 'Basic usage of Vovk Controller and Service.',
+  description: reactToString(description),
 };
 
 export default async function BasicControllerPage() {
@@ -18,7 +34,7 @@ export default async function BasicControllerPage() {
 
   return (
     <>
-      <Example title={metadata.title} className="text-center" description={metadata.description}>
+      <Example title={metadata.title} className="text-center" description={description}>
         <BasicExampleWithService />
       </Example>
       <Github githubFiles={githubFiles} />
