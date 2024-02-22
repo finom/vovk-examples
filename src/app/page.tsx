@@ -35,7 +35,7 @@ export default function Home() {
         <CodeBox title={formMetadata.title} href="/form">{`
         setResponse(
           await FormController.createUser({
-            body: { firstName, lastName, email },
+            body: { name, email },
           })
         );
     `}</CodeBox>
