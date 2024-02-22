@@ -28,8 +28,11 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - OpenAI Chat Example',
+  title: 'OpenAI Chat Example',
   description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
 };
 
 export default async function BasicControllerPage() {

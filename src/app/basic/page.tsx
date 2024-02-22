@@ -17,8 +17,11 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Basic Controller Example',
+  title: 'Basic Controller Example',
   description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
 };
 
 export default async function BasicControllerPage() {

@@ -23,8 +23,11 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Stream Example',
+  title: 'Stream Example',
   description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
 };
 
 export default async function StreamControllerPage() {

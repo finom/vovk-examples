@@ -9,8 +9,19 @@ import HomeLink from '@/components/HomeLink';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Vovk.ts Examples',
+  metadataBase: new URL('https://vovk-examples.vercel.app'),
+  title: {
+    template: '%s | Vovk.ts Examples',
+    default: 'Vovk.ts Examples',
+  },
   description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
+  openGraph: {
+    title: 'Vovk.ts Examples',
+    description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
+    url: 'https://vovk-examples.vercel.app/',
+    type: 'website',
+    images: 'https://vovk-examples.vercel.app/vovk-og.png',
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -19,13 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en" className={isDarkMode ? 'dark' : undefined}>
-      <head>
-        <meta property="og:title" content={metadata.title as string} />
-        <meta property="og:description" content={metadata.description as string} />
-        <meta property="og:url" content="https://vovk-examples.vercel.app/" />
-        <meta property="og:image" content="https://vovk-examples.vercel.app/vovk-og.png" />
-        <meta property="og:type" content="website" />
-      </head>
+      <head />
       <body className={`${inter.className} dark:text-white text-neutral-950`}>
         <header className="flex justify-between px-6 py-4 items-start">
           <div className="flex gap-2">

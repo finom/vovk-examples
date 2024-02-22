@@ -21,8 +21,11 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Form Example',
+  title: 'Form Example',
   description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
 };
 
 export default async function FormControllerPage() {

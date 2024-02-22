@@ -28,8 +28,11 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Worker Service Class Generator Example',
+  title: 'Worker Service Class Generator Example',
   description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
 };
 
 export default async function WorkerServicePage() {
