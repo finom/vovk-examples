@@ -6,8 +6,7 @@ import type { VovkClientReturnType } from 'vovk';
 export default function FormExample() {
   const [response, setResponse] = useState<VovkClientReturnType<typeof FormController.createUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [disableClientValidation, setDisableClientValidation] = useState(false);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -15,7 +14,7 @@ export default function FormExample() {
     try {
       setResponse(
         await FormController.createUser({
-          body: { firstName, lastName, email },
+          body: { name, email },
           disableClientValidation,
         })
       );
@@ -28,8 +27,7 @@ export default function FormExample() {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type="text" placeholder="First Name" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-      <input type="text" placeholder="Last Name" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
       <label className="block mb-4">
         <input
@@ -49,11 +47,7 @@ export default function FormExample() {
         </div>
       )}
 
-      {error && (
-        <div>
-          <pre>{String(error)}</pre>
-        </div>
-      )}
+      {error && <div className="overflow-auto">❌ {String(error)}</div>}
     </form>
   );
 }

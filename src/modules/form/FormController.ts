@@ -8,11 +8,11 @@ export default class FormController {
   @post('create-user', { cors: true })
   @vovkZod(userSchema)
   static async createUser(req: VovkRequest<z.infer<typeof userSchema>>) {
-    const { firstName, lastName, email } = await req.json();
+    const { name, email } = await req.json();
 
     return {
       success: true,
-      user: { firstName, lastName, email },
+      user: { name, email },
     };
   }
 }

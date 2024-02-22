@@ -28,7 +28,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Worker Service Generator Example',
+  title: 'Vovk.ts - Worker Service Class Generator Example',
   description: reactToString(description),
 };
 

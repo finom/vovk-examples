@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main>
       <h1 className="text-4xl font-bold text-center py-3">Vovk.ts Interactive Examples</h1>
-      <div className="grid gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <CodeBox title={basicMetadata.title} href="/basic">{`
         export default class BasicController {
           @get('greeting')
@@ -92,11 +92,11 @@ export default function Home() {
     `}</CodeBox>
       </div>
       <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>
-      <div className="grid gap-4 xl:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 xl:grid-cols-3">
         <div>
-          <h3 className="font-bold text-lg text-center">React Native Example</h3>
-
-          <CodeBlock className="text-sm">{`
+          <h3 className="font-bold text-lg text-center mb-2">React Native Example</h3>
+          <div className="overflow-hidden max-w-full">
+            <CodeBlock className="text-sm">{`
           import { GreetingController } from 'vovk-client';
 
           // ...
@@ -110,6 +110,7 @@ export default function Home() {
               <Text>Get Greeting</Text>
           </Pressable>
           `}</CodeBlock>
+          </div>
           <p>
             Next.js + Vovk.ts can be used as a back-end for React Native applications. For details see{' '}
             <Link className="text-nowrap" href="https://github.com/finom/vovk-react-native-example" target="_blank">
@@ -119,9 +120,9 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-center">Bundle the Client</h3>
-
-          <CodeBlock className="text-sm">{`
+          <h3 className="font-bold text-lg text-center mt-4 mb-2">Bundle the Client</h3>
+          <div className="overflow-hidden">
+            <CodeBlock className="text-sm">{`
           // webpack.config.js          
           module.exports = {
             entry: {
@@ -131,6 +132,7 @@ export default function Home() {
             // ...
           };
           `}</CodeBlock>
+          </div>
           <p>
             The client REST API library bundle can be compiled into a single package and distributed thru NPM, CDN or
             any other way. The examples on this page are bundled with Webpack and served from NPM as{' '}
@@ -145,9 +147,9 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-center">Static JSON API</h3>
-
-          <CodeBlock className="text-sm">{`
+          <h3 className="font-bold text-lg text-center mt-4 mb-2">Static JSON API</h3>
+          <div className="overflow-hidden">
+            <CodeBlock className="text-sm">{`
           import { initVovk, generateStaticAPI } from 'vovk';
           
           // ...
@@ -159,6 +161,7 @@ export default function Home() {
           export const { GET } = initVovk({ controllers, workers });
           
           `}</CodeBlock>
+          </div>
           <p>
             Thanks to <code>generateStaticParams</code> Next.js feature it&apos;s possible to generate static API that
             is compiled at build time and served from a static hosting. This approach is used at one of the examples on{' '}

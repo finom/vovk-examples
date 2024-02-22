@@ -7,7 +7,7 @@ const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   return (
     <div className="py-2 px-4 text-sm">
       {githubFiles.map(({ path }, i) => (
-        <div key={path} className={`inline-block mr-4`}>
+        <div key={path} className={`inline-block mr-4 mb-1`}>
           <span
             title={path}
             className={`pb-0.5 cursor-pointer border-b-2 border-solid ${

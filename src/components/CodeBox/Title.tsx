@@ -19,7 +19,7 @@ const Title = ({ href, children }: Props) => {
         <div className="rounded-full h-[0.7rem] w-[0.7rem] bg-[#F3BD50] dark:bg-white/20" />
         <div className="rounded-full h-[0.7rem] w-[0.7rem] bg-[#62C454] dark:bg-white/20" />
       </div>
-      <span className="opacity-80">{children}</span>
+      <span className="opacity-80 text-center inline-block">{children}</span>
       <div className="w-[45px]" />
     </Link>
   );

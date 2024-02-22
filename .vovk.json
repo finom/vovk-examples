@@ -58,12 +58,7 @@
           "body": {
             "type": "object",
             "properties": {
-              "firstName": {
-                "type": "string",
-                "minLength": 2,
-                "maxLength": 20
-              },
-              "lastName": {
+              "name": {
                 "type": "string",
                 "minLength": 2,
                 "maxLength": 20
@@ -74,8 +69,7 @@
               }
             },
             "required": [
-              "firstName",
-              "lastName",
+              "name",
               "email"
             ],
             "additionalProperties": false,

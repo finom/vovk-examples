@@ -27,12 +27,10 @@ export default function HookFormExample() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <input type="text" placeholder="First Name" {...register('firstName')} />
-      <p>{errors.firstName?.message}</p>
-      <input type="text" placeholder="Last Name" {...register('lastName')} />
-      <p>{errors.lastName?.message}</p>
+      <input type="text" placeholder="Name" {...register('name')} />
+      {errors.name && <p>❌ {errors.name.message}</p>}
       <input type="text" placeholder="Email" {...register('email')} />
-      <p>{errors.email?.message}</p>
+      {errors.email && <p>❌ {errors.email.message}</p>}
       <button>Submit</button>
 
       {response && (

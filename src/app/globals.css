@@ -48,6 +48,6 @@ input[type="text"] {
     }
 }
 
-.github-tab-content > div {
+[data-bright-theme] {
     @apply !m-0;
 }
