@@ -2,7 +2,7 @@
 
 <a href="https://www.npmjs.com/package/vovk-examples"><img src="https://badge.fury.io/js/vovk-examples.svg" alt="npm version" /></a>
 
-Collection of examples of how you would use [Next.js](https://nextjs.org/) with [Vovk.ts](https://vovk.dev/) in practice. You can see them live on [vovk-examples.vercel.app](https://vovk-examples.vercel.app/). The client-side library generated with Vovk.ts is published as [vovk-examples](https://www.npmjs.com/package/vovk-examples) NPM package as an illustration on how you can distribute API library of your REST endpoints to be used by other developers or for another use-case.
+Collection of examples of how you would use [Next.js](https://nextjs.org/) with [Vovk.ts](https://vovk.dev/) in practice. You can see them live on [vovk-examples.vercel.app](https://vovk-examples.vercel.app/). The client-side library generated with Vovk.ts is published as [vovk-examples](https://www.npmjs.com/package/vovk-examples) NPM package as an illustration on how you can distribute API library of your REST endpoints to be used by other projects.
 
 Install:
 
@@ -20,6 +20,8 @@ const response = await BasicController.getHello();
 
 
 ## Making your own library
+
+The documentation assumes that you already have set up [Next.js](https://nextjs.org/) + [Vovk.ts](https://vovk.dev/) project and now you want to create an NPM package to publish a TypeScript library for your REST API.
 
 ### Set up Webpack
 
@@ -74,8 +76,7 @@ module.exports = {
 
 ### Create a separate tsconfig
 
-Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include required files. See [full tsconfig here](./tsconfig.webpack.json)
-
+Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include required files. See [full tsconfig here](./tsconfig.webpack.json).
 ```ts
 {
   "compilerOptions": {
@@ -126,12 +127,12 @@ export function createUser(body: VovkClientBody<typeof FormController.createUser
 
 You may want to exclude this file at the main **tsconfig.ts** in order to fix deployment errors because **.vovk** folder doesn't exists and the imports/re-exports are going to be considered as invalid.
 
-```json
+```js
 // tsconfig.ts
 "exclude": ["node_modules", "index.ts"],
 ```
 
-As you also may notice the entry point file re-exports or imports the library from **.vovk** folder from the root of the repository. In our case the Vovk.ts library is compiled to this folder to avoid limitations trying to bundle files from **node_modules** and keep the configuration as simple as possible. This does nothing to the main application logic you implement and does nothing to the original generated client **node_modules/.vovk**, in other words your app doesn't need to reconfigured in order to create the package. You can add **.vovk** to **.gitignore** file to exclude it from Git index as well ass the **dist** folder.
+As you also may notice the entry point file re-exports or imports the library from **.vovk** folder from the root of the repository. In our case the Vovk.ts library is compiled to this folder to avoid limitations trying to bundle files from **node_modules** and keep the configuration as simple as possible. This does nothing to the main application logic you implement and does nothing to the original generated client **node_modules/.vovk**, in other words your app doesn't need to reconfigured in order to create the package. You can add **.vovk** to **.gitignore** file to exclude it from Git index as well ass the **dist** folder that used as a destination for the compiled files.
 
 ```gitignore
 # .gitignore
@@ -156,7 +157,7 @@ At the **package.json** create **build-client** NPM script
 
 The script does the following:
 
-- Removes the existing **.vovk** (compiled by Vovk.ts) and **dist** (compiled by Webpacl) folders (you can use [rimraf](https://www.npmjs.com/package/rimraf) to do that on Windows).
+- Removes the existing **.vovk** (compiled by Vovk.ts) and **dist** (compiled by Webpack) folders (you can use [rimraf](https://www.npmjs.com/package/rimraf) to do that on Windows).
 - Runs `vovk generate` with `VOVK_PREFIX` variable that indicates the root endpoint of your REST API and `VOVK_OUT` that makes the client to be compiled to **.vovk** in the root of the project.
 - `webpack --mode production` compies the bundle.
 
@@ -182,7 +183,7 @@ await FormController.createUser(...);
 
 ### Compile a Worker
 
-As before, to make the configuration as simple as possible, you can compile your Worker Services separately from the main bundle.
+To keep the configuration as simple as possible, you can compile your Worker Service Classes separately from the main bundle.
 
 
 ```js
@@ -196,12 +197,13 @@ module.exports = {
   // ...
 ```
 
-The package is going to include additional files that are going to be initalised and injected to the worker interface when imported in another project. Check [Web Worker Service documentation](https://docs.vovk.dev/docs/worker) for more info.
+The package is going to include additional files that need to be initalised and injected to the worker client interface when the library imported in another project. Check [Worker Service Class documentation](https://docs.vovk.dev/docs/worker) for more info.
 
 ```ts
 import { WorkerService } from 'my-lib';
 
 // ...
+
 WorkerService.use(new Worker(new URL('my-lib/dist/WorkerService.js', import.meta.url)));
 
 await WorkerService.heavyCalculation();
