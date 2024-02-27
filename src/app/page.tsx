@@ -111,7 +111,7 @@ export default function Home() {
           </Pressable>
           `}</CodeBlock>
           </div>
-          <p>
+          <p className="mt-4">
             Next.js + Vovk.ts can be used as a back-end for React Native applications. For details see{' '}
             <Link className="text-nowrap" href="https://github.com/finom/vovk-react-native-example" target="_blank">
               vovk-react-native-example
@@ -133,7 +133,7 @@ export default function Home() {
           };
           `}</CodeBlock>
           </div>
-          <p>
+          <p className="mt-4">
             The client REST API library bundle can be compiled into a single package and distributed thru NPM, CDN or
             any other way. The examples on this page are bundled with Webpack and served from NPM as{' '}
             <Link className="text-nowrap" href="https://npmjs.com/package/vovk-examples" target="_blank">
@@ -162,7 +162,7 @@ export default function Home() {
           
           `}</CodeBlock>
           </div>
-          <p>
+          <p className="mt-4">
             Thanks to <code>generateStaticParams</code> Next.js feature it&apos;s possible to generate static API that
             is compiled at build time and served from a static hosting. This approach is used at one of the examples on{' '}
             <Link className="text-nowrap" href="https://vovk.dev" target="_blank">

@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { type FormEvent, useEffect, useState } from 'react';
 import { WorkerService } from 'vovk-client';
 
 export default function WorkerExample() {
@@ -14,7 +14,8 @@ export default function WorkerExample() {
     WorkerService.use(new Worker(new URL('../../modules/worker/WorkerService.ts', import.meta.url)));
   }, []);
 
-  const submit = async () => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!regExp.test(value)) return;
     setIsCalculating(true);
     setResult(await WorkerService.factorize(BigInt(value)));
@@ -22,12 +23,8 @@ export default function WorkerExample() {
   };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        submit();
-      }}
-    >
+    <form onSubmit={onSubmit}>
+      Is mobile: {String(navigator.userAgentData?.mobile)}
       <div className="input-group">
         <input
           type="text"
