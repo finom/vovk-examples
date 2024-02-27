@@ -24,7 +24,7 @@ export default function WorkerExample() {
 
   return (
     <form onSubmit={onSubmit}>
-      Is mobile: {String(navigator.userAgentData?.mobile)}
+      Is mobile: {String('ontouchstart' in document.documentElement)}
       <div className="input-group">
         <input
           type="text"
