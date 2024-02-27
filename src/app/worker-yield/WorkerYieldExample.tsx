@@ -6,7 +6,9 @@ export default function WorkerYieldExample() {
   const [pi, setPi] = useState(314n);
 
   const approximatePi = useCallback(async () => {
-    for await (const pi of WorkerYieldService.approximatePi(1000_000n, navigator.userAgentData?.mobile ? 100 : 1000)) {
+    // use smaller number for mobile devices
+    const yieldEvery = 'ontouchstart' in document.documentElement ? 100 : 1000;
+    for await (const pi of WorkerYieldService.approximatePi(1000_000n, yieldEvery)) {
       setPi(pi);
     }
   }, []);

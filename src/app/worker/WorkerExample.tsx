@@ -4,7 +4,8 @@ import { WorkerService } from 'vovk-client';
 
 export default function WorkerExample() {
   const [value, setValue] = useState(
-    navigator.userAgentData?.mobile ? '333944026345847228099687' : '337751842839865299034216387'
+    // use smaller number for mobile devices
+    'ontouchstart' in document.documentElement ? '333944026345847228099687' : '337751842839865299034216387'
   );
   const [result, setResult] = useState<bigint[]>();
   const [isCalculating, setIsCalculating] = useState(false);
@@ -24,7 +25,6 @@ export default function WorkerExample() {
 
   return (
     <form onSubmit={onSubmit}>
-      Is mobile: {String('ontouchstart' in document.documentElement)}
       <div className="input-group">
         <input
           type="text"
