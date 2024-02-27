@@ -8,7 +8,7 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    This example demonstrates π calculation with{' '}
+    This example demonstrates π approximation with{' '}
     <Link
       href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt"
       target="_blank"

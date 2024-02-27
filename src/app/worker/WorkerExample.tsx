@@ -4,7 +4,7 @@ import { WorkerService } from 'vovk-client';
 
 export default function WorkerExample() {
   const [value, setValue] = useState(
-    // use smaller number for mobile devices
+    // use smaller number on mobile devices
     'ontouchstart' in document.documentElement ? '333944026345847228099687' : '337751842839865299034216387'
   );
   const [result, setResult] = useState<bigint[]>();
