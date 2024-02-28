@@ -3,9 +3,10 @@ import { type FormEvent, useEffect, useState } from 'react';
 import { WorkerService } from 'vovk-client';
 
 export default function WorkerExample() {
+  const isMobile = typeof document !== 'undefined' && 'ontouchstart' in document.documentElement;
   const [value, setValue] = useState(
     // use smaller number on mobile devices
-    'ontouchstart' in document.documentElement ? '333944026345847228099687' : '337751842839865299034216387'
+    isMobile ? '333944026345847228099687' : '337751842839865299034216387'
   );
   const [result, setResult] = useState<bigint[]>();
   const [isCalculating, setIsCalculating] = useState(false);

@@ -17,7 +17,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vovk.ts - Stream using Response Object',
+  title: 'Stream using Response Object',
   description: reactToString(description),
 };
 

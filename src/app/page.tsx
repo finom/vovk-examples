@@ -12,10 +12,12 @@ import { metadata as workerYieldMetadata } from './worker-yield/page';
 import CodeBlock from '@/components/CodeBlock';
 import Link from 'next/link';
 
+// const shrikhand = Shrikhand({ subsets: ['latin'], weight: '400' });
+
 export default function Home() {
   return (
     <main>
-      <h1 className="text-4xl font-bold text-center py-3">Vovk.ts Interactive Examples</h1>
+      <h1 className={`text-4xl font-bold text-center py-3`}>Vovk.ts Interactive Examples</h1>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <CodeBox title={basicMetadata.title} href="/basic">{`
         export default class BasicController {
@@ -95,7 +97,7 @@ export default function Home() {
       <div className="grid gap-4 grid-cols-1 xl:grid-cols-3">
         <div>
           <h3 className="font-bold text-lg text-center mb-2">React Native Example</h3>
-          <div className="overflow-hidden max-w-full">
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
             <CodeBlock className="text-sm">{`
           import { GreetingController } from 'vovk-client';
 
@@ -121,7 +123,7 @@ export default function Home() {
         </div>
         <div>
           <h3 className="font-bold text-lg text-center mt-4 mb-2">Bundle the Client</h3>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
             <CodeBlock className="text-sm">{`
           // webpack.config.js          
           module.exports = {
@@ -148,7 +150,7 @@ export default function Home() {
         </div>
         <div>
           <h3 className="font-bold text-lg text-center mt-4 mb-2">Static JSON API</h3>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
             <CodeBlock className="text-sm">{`
           import { initVovk, generateStaticAPI } from 'vovk';
           

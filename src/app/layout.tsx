@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
     url: 'https://vovk-examples.vercel.app/',
     type: 'website',
-    images: 'https://vovk-examples.vercel.app/vovk-og.png',
+    images: 'https://vovk-examples.vercel.app/og/index-og.png',
   },
 };
 
