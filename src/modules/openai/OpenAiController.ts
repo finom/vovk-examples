@@ -3,7 +3,12 @@ import OpenAI from 'openai';
 
 @prefix('openai')
 export default class OpenAiController {
-  private static openai = new OpenAI();
+  private static _openai: OpenAI;
+
+  private static get openai() {
+    // to avoid errors if OPENAI_API_KEY is not set
+    return (this._openai ??= new OpenAI());
+  }
 
   @post('chat', { cors: true, headers: { 'Access-Control-Allow-Origin': 'https://vovk.dev' } })
   static async *createChatCompletion(
