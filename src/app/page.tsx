@@ -94,10 +94,10 @@ export default function Home() {
     `}</CodeBox>
       </div>
       <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>
-      <div className="grid gap-4 grid-cols-1 xl:grid-cols-3">
+      <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 items-start">
         <div>
-          <h3 className="font-bold text-lg text-center mb-2">React Native Example</h3>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
+          <h3 className="font-bold text-lg text-center mt-4 mb-2">React Native Example</h3>
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
             <CodeBlock className="text-sm">{`
           import { GreetingController } from 'vovk-client';
 
@@ -123,7 +123,7 @@ export default function Home() {
         </div>
         <div>
           <h3 className="font-bold text-lg text-center mt-4 mb-2">Bundle the Client</h3>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
             <CodeBlock className="text-sm">{`
           // webpack.config.js          
           module.exports = {
@@ -150,7 +150,7 @@ export default function Home() {
         </div>
         <div>
           <h3 className="font-bold text-lg text-center mt-4 mb-2">Static JSON API</h3>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10">
+          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
             <CodeBlock className="text-sm">{`
           import { initVovk, generateStaticAPI } from 'vovk';
           
