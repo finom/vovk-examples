@@ -3,8 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import TopNav from '@/components/TopNav';
 import { cookies } from 'next/headers';
-import VovkTextLogo from '@/components/VovkTextLogo';
 import HomeLink from '@/components/HomeLink';
+import VovkLogo from '@/components/VovkLogo';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -35,8 +35,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="flex justify-between px-6 py-4 items-start">
           <div className="flex gap-2">
             <div className="flex flex-col">
-              <a href="https://vovk.dev" className="text-black dark:text-white">
-                <VovkTextLogo width={150} />
+              <a href="https://vovk.dev" className="text-current hover:text-current">
+                <VovkLogo width={150} />
               </a>
               <div>
                 <HomeLink />
