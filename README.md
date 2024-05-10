@@ -183,7 +183,7 @@ await FormController.createUser(...);
 
 ### Compile a Worker
 
-To keep the configuration as simple as possible, you can compile your Worker Service Classes separately from the main bundle.
+To keep the configuration as simple as possible, you can compile your WPC Classes separately from the main bundle.
 
 
 ```js
@@ -191,20 +191,20 @@ To keep the configuration as simple as possible, you can compile your Worker Ser
 module.exports = {
   entry: {
     index: './index.ts',
-    WorkerService: './src/modules/worker/WorkerService.ts',
-    WorkerYieldService: './src/modules/worker-yield/WorkerYieldService.ts',
+    HelloWorker: './src/modules/worker/HelloWorker.ts',
+    HelloWorkerYield: './src/modules/worker-yield/HelloWorkerYield.ts',
   },
   // ...
 ```
 
-The package is going to include additional files that need to be initalised and injected to the worker client interface when the library imported in another project. Check [Worker Service Class documentation](https://docs.vovk.dev/docs/worker) for more info.
+The package is going to include additional files that need to be initalised and injected to the worker client interface when the library imported in another project. Check [WPC Class](https://vovk.dev/worker) for more info.
 
 ```ts
-import { WorkerService } from 'my-lib';
+import { HelloWorker } from 'my-lib';
 
 // ...
 
-WorkerService.use(new Worker(new URL('my-lib/dist/WorkerService.js', import.meta.url)));
+HelloWorker.use(new Worker(new URL('my-lib/dist/HelloWorker.js', import.meta.url)));
 
-await WorkerService.heavyCalculation();
+await HelloWorker.heavyCalculation();
 ```

@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
   entry: {
     index: './index.ts',
-    WorkerService: './src/modules/worker/WorkerService.ts',
-    WorkerYieldService: './src/modules/worker-yield/WorkerYieldService.ts',
+    HelloWorker: './src/modules/worker/HelloWorker.ts',
+    HelloWorkerYield: './src/modules/worker-yield/HelloWorkerYield.ts',
   },
   devtool: 'inline-source-map',
   module: {
