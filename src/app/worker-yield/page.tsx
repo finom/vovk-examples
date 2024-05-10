@@ -20,24 +20,24 @@ const description = (
       separate browser thread
     </Link>{' '}
     using a{' '}
-    <Link href="https://docs.vovk.dev/docs/worker" target="_blank">
-      Worker Service Class
+    <Link href="https://vovk.dev/worker" target="_blank">
+      WPC Class
     </Link>
     . The result is sent back to the main thread every 1000 iterations.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Worker Service Class Generator Example',
+  title: 'WPC Class Generator Example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
   },
 };
 
-export default async function WorkerServicePage() {
+export default async function HelloWorkerPage() {
   const githubFiles = await getGithubFiles([
-    'src/modules/worker-yield/WorkerYieldService.ts',
+    'src/modules/worker-yield/HelloWorkerYield.ts',
     'src/app/worker-yield/WorkerYieldExample.tsx',
   ]);
   return (

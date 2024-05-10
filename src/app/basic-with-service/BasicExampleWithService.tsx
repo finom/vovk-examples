@@ -1,11 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { BasicControllerWithService } from 'vovk-client';
-import type { VovkClientReturnType } from 'vovk';
+import type { VovkReturnType } from 'vovk';
 
 export default function BasicExampleWithService() {
-  const [serverResponse, setServerResponse] =
-    useState<VovkClientReturnType<typeof BasicControllerWithService.getHello>>();
+  const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof BasicControllerWithService.getHello>>();
 
   return (
     <>

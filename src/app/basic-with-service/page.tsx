@@ -9,11 +9,11 @@ import reactToString from 'react-to-string';
 const description = (
   <>
     Basic usage of{' '}
-    <Link href="https://docs.vovk.dev/docs/controller" target="_blank">
+    <Link href="https://vovk.dev/controller" target="_blank">
       Vovk Controller
     </Link>{' '}
     and{' '}
-    <Link href="https://docs.vovk.dev/docs/controller#service" target="_blank">
+    <Link href="https://vovk.dev/controller/service" target="_blank">
       Service
     </Link>
     .

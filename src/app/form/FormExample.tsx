@@ -1,10 +1,10 @@
 'use client';
 import { useState, type FormEvent } from 'react';
 import { FormController } from 'vovk-client';
-import type { VovkClientReturnType } from 'vovk';
+import type { VovkReturnType } from 'vovk';
 
 export default function FormExample() {
-  const [response, setResponse] = useState<VovkClientReturnType<typeof FormController.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof FormController.createUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

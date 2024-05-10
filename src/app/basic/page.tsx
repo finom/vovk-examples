@@ -9,7 +9,7 @@ import Link from 'next/link';
 const description = (
   <>
     Basic usage of{' '}
-    <Link href="https://docs.vovk.dev/docs/controller" target="_blank">
+    <Link href="https://vovk.dev/controller" target="_blank">
       Vovk Controller
     </Link>
     .

@@ -45,7 +45,7 @@ export default function Home() {
         const {
           register,
           handleSubmit,
-        } = useForm<VovkClientBody</* ... */>({
+        } = useForm<VovkBody</* ... */>({
           resolver: zodResolver(userSchema),
         });
     `}</CodeBox>
@@ -81,13 +81,13 @@ export default function Home() {
     });
 `}</CodeBox>
         <CodeBox title={workerMetadata.title} href="/worker">{`
-        WorkerService.use(/* ... */);
+        HelloWorker.employ(/* ... */);
       
-        await WorkerService.factorize(BigInt(value)));
+        await HelloWorker.factorize(BigInt(value)));
     `}</CodeBox>
         <CodeBox title={workerYieldMetadata.title} href="/worker-yield">{`
         for await (
-          const pi of WorkerService.approximatePi(/* ... */)
+          const pi of HelloWorker.approximatePi(/* ... */)
         ) {
           setPi(pi);
         }

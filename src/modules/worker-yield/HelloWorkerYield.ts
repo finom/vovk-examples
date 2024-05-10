@@ -1,7 +1,7 @@
 import { worker } from 'vovk';
 
 @worker()
-export default class WorkerYieldService {
+export default class HelloWorkerYield {
   /**
    * Calculate Pi using a series expansion with BigInt for high precision
    * @param scalePower - power of 10 to scale the calculations for precision

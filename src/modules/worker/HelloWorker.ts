@@ -1,7 +1,7 @@
 import { worker } from 'vovk';
 
 @worker()
-export default class WorkerService {
+export default class HelloWorker {
   /**
    * Factorizes a large number into its prime factors
    * @param number - the large number to factorize

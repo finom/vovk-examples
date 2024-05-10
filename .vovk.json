@@ -83,14 +83,14 @@
     }
   },
   "workers": {
-    "WorkerService": {
-      "_workerName": "WorkerService",
+    "HelloWorker": {
+      "_workerName": "HelloWorker",
       "_handlers": {
         "factorize": {}
       }
     },
-    "WorkerYieldService": {
-      "_workerName": "WorkerYieldService",
+    "HelloWorkerYield": {
+      "_workerName": "HelloWorkerYield",
       "_handlers": {
         "approximatePi": {
           "isGenerator": true

@@ -2,18 +2,18 @@
 import { useState } from 'react';
 import { FormController } from 'vovk-client';
 import { useForm } from 'react-hook-form';
-import type { VovkClientBody, VovkClientReturnType } from 'vovk';
+import type { VovkBody, VovkReturnType } from 'vovk';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { userSchema } from '../../zod';
 
 export default function HookFormExample() {
-  const [response, setResponse] = useState<VovkClientReturnType<typeof FormController.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof FormController.createUser> | null>(null);
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<VovkClientBody<typeof FormController.createUser>>({
+  } = useForm<VovkBody<typeof FormController.createUser>>({
     resolver: zodResolver(userSchema),
   });
 

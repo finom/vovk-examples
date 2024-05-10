@@ -8,8 +8,8 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    <Link href="https://docs.vovk.dev/docs/controller#streaming" target="_blank">
-      Response streaming
+    <Link href="https://vovk.dev/controller/streaming" target="_blank">
+      Text streaming
     </Link>{' '}
     with{' '}
     <Link

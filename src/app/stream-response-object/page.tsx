@@ -9,7 +9,7 @@ import reactToString from 'react-to-string';
 const description = (
   <>
     Instead of generators you can return{' '}
-    <Link href="https://docs.vovk.dev/docs/controller#streamresponse" target="_blank">
+    <Link href="https://vovk.dev/controller/streaming#streamresponse-class" target="_blank">
       StreamResponse
     </Link>{' '}
     object in order to get more control over your stream code.

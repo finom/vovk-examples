@@ -9,8 +9,8 @@ import reactToString from 'react-to-string';
 const description = (
   <>
     Real use-case of{' '}
-    <Link href="https://docs.vovk.dev/docs/controller#streaming" target="_blank">
-      response streaming
+    <Link href="https://vovk.dev/controller/streaming" target="_blank">
+      text streaming
     </Link>{' '}
     with{' '}
     <Link
