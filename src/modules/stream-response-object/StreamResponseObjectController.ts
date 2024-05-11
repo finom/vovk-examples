@@ -1,4 +1,4 @@
-import { prefix, get, type VovkRequest, StreamResponse } from 'vovk';
+import { prefix, get, StreamResponse } from 'vovk';
 import StreamService, { type Token } from './StreamService';
 
 @prefix('stream-with-object')
