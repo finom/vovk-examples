@@ -8,22 +8,16 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    <Link href="https://vovk.dev/controller/streaming" target="_blank">
-      Text streaming
-    </Link>{' '}
-    with{' '}
-    <Link
-      href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator"
-      target="_blank"
-    >
-      async generators
+    <Link href="https://github.com/vercel/ai" target="_blank">
+      AI SDK Example
     </Link>
-    .
+    . Notice how the Vercel library is used: result.toDataStreamResponse returns a Response object that is passed
+    forward as is.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Stream Example',
+  title: 'Vercel AI SDK',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
@@ -32,12 +26,12 @@ export const metadata: PageMetadata = {
 
 export default async function StreamControllerPage() {
   const githubFiles = await getGithubFiles([
-    'src/modules/stream/StreamController.ts',
-    'src/app/stream/StreamExample.tsx',
+    'src/modules/ai-sdk/AiSdkController.ts',
+    'src/app/ai-sdk/AiSdkExample.tsx',
   ]);
   return (
     <>
-      <Example className="text-center" title={metadata.title} description={description}>
+      <Example title={metadata.title} description={description}>
         <StreamExample />
       </Example>
       <Github githubFiles={githubFiles} />

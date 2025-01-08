@@ -4,6 +4,7 @@ import { metadata as withServiceMetadata } from './basic-with-service/page';
 import { metadata as formMetadata } from './form/page';
 import { metadata as hookFormMetadata } from './hook-form/page';
 import { metadata as openaiMetadata } from './openai/page';
+import { metadata as sdkMetadata } from './ai-sdk/page';
 import { metadata as serverComponentMetadata } from './server-component/page';
 import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
@@ -79,6 +80,15 @@ export default function Home() {
       model: 'gpt-3.5-turbo',
       stream: true,
     });
+`}</CodeBox>
+        <CodeBox title={sdkMetadata.title} href="/ai-sdk">{`
+    const result = streamText({
+      model: openai('gpt-4o-mini'),
+      system: 'You are a helpful assistant.',
+      messages,
+    });
+
+    return result.toDataStreamResponse();
 `}</CodeBox>
         <CodeBox title={workerMetadata.title} href="/worker">{`
         HelloWorker.employ(/* ... */);
