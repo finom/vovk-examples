@@ -1,10 +1,10 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { FormController } from 'vovk-client';
+import { FormRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 
 export default function FormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof FormController.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof FormRPC.createUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -13,7 +13,7 @@ export default function FormExample() {
     e.preventDefault();
     try {
       setResponse(
-        await FormController.createUser({
+        await FormRPC.createUser({
           body: { name, email },
           disableClientValidation,
         })

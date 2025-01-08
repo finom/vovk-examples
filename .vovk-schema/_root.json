@@ -1,0 +1,123 @@
+{
+  "emitSchema": true,
+  "segmentName": "",
+  "controllers": {
+    "BasicRPC": {
+      "controllerName": "BasicRPC",
+      "originalControllerName": "BasicController",
+      "prefix": "basic",
+      "handlers": {
+        "getHello": {
+          "path": "greeting",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "BasicRPCWithService": {
+      "controllerName": "BasicRPCWithService",
+      "originalControllerName": "BasicControllerWithService",
+      "prefix": "basic-with-service",
+      "handlers": {
+        "getHello": {
+          "path": "greeting",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "StreamRPC": {
+      "controllerName": "StreamRPC",
+      "originalControllerName": "StreamController",
+      "prefix": "stream",
+      "handlers": {
+        "streamTokens": {
+          "path": "tokens",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "StreamResponseObjectRPC": {
+      "controllerName": "StreamResponseObjectRPC",
+      "originalControllerName": "StreamResponseObjectController",
+      "prefix": "stream-with-object",
+      "handlers": {
+        "streamTokens": {
+          "path": "tokens",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "OpenAiRPC": {
+      "controllerName": "OpenAiRPC",
+      "originalControllerName": "OpenAiController",
+      "prefix": "openai",
+      "handlers": {
+        "createChatCompletion": {
+          "path": "chat",
+          "httpMethod": "POST"
+        }
+      }
+    },
+    "FormRPC": {
+      "controllerName": "FormRPC",
+      "originalControllerName": "FormController",
+      "prefix": "form",
+      "handlers": {
+        "createUser": {
+          "path": "create-user",
+          "httpMethod": "POST",
+          "validation": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 20
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                }
+              },
+              "required": [
+                "name",
+                "email"
+              ],
+              "additionalProperties": false,
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            }
+          }
+        }
+      }
+    },
+    "AiSdkRPC": {
+      "controllerName": "AiSdkRPC",
+      "originalControllerName": "AiSdkController",
+      "prefix": "ai-sdk",
+      "handlers": {
+        "chat": {
+          "path": "chat",
+          "httpMethod": "POST"
+        }
+      }
+    }
+  },
+  "workers": {
+    "HelloWPC": {
+      "workerName": "HelloWPC",
+      "originalWorkerName": "HelloWorker",
+      "handlers": {
+        "factorize": {}
+      }
+    },
+    "HelloWPCYield": {
+      "workerName": "HelloWPCYield",
+      "originalWorkerName": "HelloWorkerYield",
+      "handlers": {
+        "approximatePi": {
+          "isGenerator": true
+        }
+      }
+    }
+  }
+}

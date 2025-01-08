@@ -1,17 +1,17 @@
 'use client';
 import { useState } from 'react';
-import { StreamController } from 'vovk-client';
+import { StreamRPC } from 'vovk-client';
 import type { VovkYieldType } from 'vovk';
 
 export default function StreamExample() {
-  const [tokens, setTokens] = useState<VovkYieldType<typeof StreamController.streamTokens>[]>([]);
+  const [tokens, setTokens] = useState<VovkYieldType<typeof StreamRPC.streamTokens>[]>([]);
 
   return (
     <>
       <button
         onClick={async () => {
           setTokens([]);
-          using stream = await StreamController.streamTokens();
+          using stream = await StreamRPC.streamTokens();
           for await (const token of stream) {
             setTokens((tokens) => [...tokens, token]);
           }

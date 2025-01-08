@@ -1,9 +1,9 @@
-import type { StreamResponse } from 'vovk';
+import type { StreamJSONResponse } from 'vovk';
 
 export type Token = { message: string };
 
 export default class StreamService {
-  static async streamTokens(resp: StreamResponse<Token>) {
+  static async streamTokens(resp: StreamJSONResponse<Token>) {
     const tokens: Token[] = [
       { message: 'Hello,' },
       { message: ' World' },

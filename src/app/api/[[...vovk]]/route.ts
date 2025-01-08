@@ -8,18 +8,23 @@ import StreamResponseObjectController from '../../../modules/stream-response-obj
 import HelloWorker from '../../../modules/worker/HelloWorker';
 import HelloWorkerYield from '../../../modules/worker-yield/HelloWorkerYield';
 import FormController from '../../../modules/form/FormController';
+import AiSdkController from '@/modules/ai-sdk/AiSdkController';
 
 export const runtime = 'edge';
 
 const controllers = {
-  BasicController,
-  BasicControllerWithService,
-  StreamController,
-  StreamResponseObjectController,
-  OpenAiController,
-  FormController,
+  BasicRPC: BasicController,
+  BasicRPCWithService: BasicControllerWithService,
+  StreamRPC: StreamController,
+  StreamResponseObjectRPC: StreamResponseObjectController,
+  OpenAiRPC: OpenAiController,
+  FormRPC: FormController,
+  AiSdkRPC: AiSdkController,
 };
-const workers = { HelloWorker, HelloWorkerYield };
+const workers = {
+  HelloWPC: HelloWorker,
+  HelloWPCYield: HelloWorkerYield,
+};
 
 export type Controllers = typeof controllers;
 export type Workers = typeof workers;

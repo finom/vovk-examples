@@ -23,7 +23,7 @@ export default class OpenAiController {
 
     yield* await this.openai.chat.completions.create({
       messages,
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-4o-mini',
       stream: true,
     });
   }

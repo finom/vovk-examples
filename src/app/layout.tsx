@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import TopNav from '@/components/TopNav';
-import { cookies } from 'next/headers';
 import HomeLink from '@/components/HomeLink';
 import VovkLogo from '@/components/VovkLogo';
 
@@ -25,11 +24,8 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const theme = cookies().get('theme') ?? { value: 'light' };
-  const isDarkMode = theme.value === 'dark';
-
   return (
-    <html lang="en" className={isDarkMode ? 'dark' : undefined}>
+    <html lang="en">
       <head />
       <body className={`${inter.className} dark:text-white text-neutral-950`}>
         <header className="flex justify-between px-6 py-4 items-start">
@@ -43,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </div>
             </div>
           </div>
-          <TopNav defaultIsDarkMode={isDarkMode} />
+          <TopNav />
         </header>
         <div className="p-6">{children}</div>
       </body>

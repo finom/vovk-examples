@@ -1,25 +1,25 @@
 'use client';
 import { useState } from 'react';
-import { FormController } from 'vovk-client';
+import { FormRPC } from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { userSchema } from '../../zod';
 
 export default function HookFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof FormController.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof FormRPC.createUser> | null>(null);
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<VovkBody<typeof FormController.createUser>>({
+  } = useForm<VovkBody<typeof FormRPC.createUser>>({
     resolver: zodResolver(userSchema),
   });
 
   const onSubmit = async () => {
     setResponse(
-      await FormController.createUser({
+      await FormRPC.createUser({
         body: getValues(),
       })
     );

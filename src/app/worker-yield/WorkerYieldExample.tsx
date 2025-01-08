@@ -1,18 +1,18 @@
 'use client';
 import { useCallback, useEffect, useState } from 'react';
-import { HelloWorkerYield } from 'vovk-client';
+import { HelloWPCYield } from 'vovk-client';
 
 export default function WorkerYieldExample() {
   const [pi, setPi] = useState(314n);
 
   const approximatePi = useCallback(async () => {
-    for await (const pi of HelloWorkerYield.approximatePi(100_000n, 10_000)) {
+    for await (const pi of HelloWPCYield.approximatePi(100_000n, 10_000)) {
       setPi(pi);
     }
   }, []);
 
   useEffect(() => {
-    HelloWorkerYield.employ(new Worker(new URL('../../modules/worker-yield/HelloWorkerYield.ts', import.meta.url)));
+    HelloWPCYield.employ(new Worker(new URL('../../modules/worker-yield/HelloWorkerYield.ts', import.meta.url)));
 
     approximatePi();
   }, [approximatePi]);

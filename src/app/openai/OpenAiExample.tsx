@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { OpenAiController } from 'vovk-client';
+import { OpenAiRPC } from 'vovk-client';
 import type OpenAI from 'openai';
 
 type Message = OpenAI.Chat.Completions.ChatCompletionMessageParam;
@@ -18,7 +18,7 @@ export default function OpenAiExample() {
     setMessages((messages) => [...messages, userMessage]);
 
     try {
-      using completion = await OpenAiController.createChatCompletion({
+      using completion = await OpenAiRPC.createChatCompletion({
         body: { messages: [...messages, userMessage] },
       });
 

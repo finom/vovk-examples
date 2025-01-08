@@ -1,6 +1,6 @@
 'use client';
 import { type FormEvent, useEffect, useState } from 'react';
-import { HelloWorker } from 'vovk-client';
+import { HelloWPC } from 'vovk-client';
 
 export default function WorkerExample() {
   const isMobile = typeof document !== 'undefined' && 'ontouchstart' in document.documentElement;
@@ -13,14 +13,14 @@ export default function WorkerExample() {
   const regExp = /^-?\d+$/;
 
   useEffect(() => {
-    HelloWorker.employ(new Worker(new URL('../../modules/worker/HelloWorker.ts', import.meta.url)));
+    HelloWPC.employ(new Worker(new URL('../../modules/worker/HelloWorker.ts', import.meta.url)));
   }, []);
 
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!regExp.test(value)) return;
     setIsCalculating(true);
-    setResult(await HelloWorker.factorize(BigInt(value)));
+    setResult(await HelloWPC.factorize(BigInt(value)));
     setIsCalculating(false);
   };
 
