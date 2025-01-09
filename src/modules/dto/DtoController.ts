@@ -1,11 +1,11 @@
 import { prefix, post } from 'vovk';
-import { withZod } from 'vovk-zod';
-import { userSchema } from '../../zod';
+import { withDto } from 'vovk-dto';
+import { UserDto } from '../../dto';
 
-@prefix('form')
-export default class FormController {
+@prefix('dto')
+export default class DtoController {
   @post('create-user', { cors: true })
-  static createUser = withZod(userSchema, async (req) => {
+  static createUser = withDto(UserDto, async (req) => {
     const { name, email } = await req.json();
 
     return {

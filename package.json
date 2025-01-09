@@ -32,8 +32,11 @@
   "dependencies": {
     "@ai-sdk/openai": "^1.0.15",
     "@hookform/resolvers": "^3.10.0",
+    "@typescript-eslint/parser": "^8.19.1",
     "ai": "^4.0.30",
     "bright": "^1.0.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
     "next": "15.1.4",
     "openai": "^4.77.3",
     "react": "^19",

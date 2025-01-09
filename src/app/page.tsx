@@ -1,15 +1,16 @@
 import CodeBox from '@/components/CodeBox';
 import { metadata as basicMetadata } from './basic/page';
 import { metadata as withServiceMetadata } from './basic-with-service/page';
-import { metadata as formMetadata } from './form/page';
-import { metadata as hookFormMetadata } from './hook-form/page';
+import { metadata as zodMetadata } from './zod/page';
+import { metadata as yupMetadata } from './yup/page';
+import { metadata as dtoMetadata } from './dto/page';
+import { metadata as hookFormMetadata } from './zod-hook-form/page';
 import { metadata as openaiMetadata } from './openai/page';
 import { metadata as sdkMetadata } from './ai-sdk/page';
 import { metadata as serverComponentMetadata } from './server-component/page';
 import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as workerMetadata } from './worker/page';
-import { metadata as workerYieldMetadata } from './worker-yield/page';
 import CodeBlock from '@/components/CodeBlock';
 import Link from 'next/link';
 
@@ -18,7 +19,6 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <main>
-      <h1 className={`text-4xl font-bold text-center py-3`}>Vovk.ts Interactive Examples</h1>
       <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <CodeBox title={basicMetadata.title} href="/basic">{`
         export default class BasicController {
@@ -35,14 +35,14 @@ export default function Home() {
           }
         }      
     `}</CodeBox>
-        <CodeBox title={formMetadata.title} href="/form">{`
+        <CodeBox title={zodMetadata.title} href="/zod">{`
         setResponse(
-          await FormController.createUser({
+          await ZodRPC.createUser({
             body: { name, email },
           })
         );
     `}</CodeBox>
-        <CodeBox title={hookFormMetadata.title} href="/hook-form">{`
+        <CodeBox title={hookFormMetadata.title} href="/zod-hook-form">{`
         const {
           register,
           handleSubmit,
@@ -50,13 +50,26 @@ export default function Home() {
           resolver: zodResolver(userSchema),
         });
     `}</CodeBox>
+        <CodeBox title={yupMetadata.title} href="/yup">{`
+        setResponse(
+          await YupRPC.createUser({
+            body: { name, email },
+          })
+        );
+    `}</CodeBox>
+        <CodeBox title={dtoMetadata.title} href="/dto">{`
+        setResponse(
+          await DtoRPC.createUser({
+            body: { name, email },
+          })
+        );
+    `}</CodeBox>
 
-        <CodeBox title={serverComponentMetadata.title} href="/server-component">{`
-        export default async function ServerComponent() {
-          const response = await Controller.getHello();
-        
-          return <div>{response.greeting}</div>;
-        }        
+        <CodeBox title={serverComponentMetadata.title} href="/server-component">{`        
+        export default async function ServerComponentExample() {
+          const serverResponse = await BasicRPC.getHello();
+          return <div>{serverResponse.greeting}</div>;
+        }     
     `}</CodeBox>
         <CodeBox title={streamMetadata.title} href="/stream">{`
         using stream = await StreamController.streamTokens();
@@ -94,13 +107,6 @@ export default function Home() {
         HelloWorker.employ(/* ... */);
       
         await HelloWorker.factorize(BigInt(value)));
-    `}</CodeBox>
-        <CodeBox title={workerYieldMetadata.title} href="/worker-yield">{`
-        for await (
-          const pi of HelloWorker.approximatePi(/* ... */)
-        ) {
-          setPi(pi);
-        }
     `}</CodeBox>
       </div>
       <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>

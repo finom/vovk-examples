@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import TopNav from '@/components/TopNav';
 import HomeLink from '@/components/HomeLink';
 import VovkLogo from '@/components/VovkLogo';
+import Nav from '@/components/Nav';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,19 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head />
       <body className={`${inter.className} dark:text-white text-neutral-950`}>
-        <header className="flex justify-between px-6 py-4 items-start">
-          <div className="flex gap-2">
-            <div className="flex flex-col">
-              <a href="https://vovk.dev" className="text-current hover:text-current">
-                <VovkLogo width={150} />
-              </a>
-              <div>
-                <HomeLink />
-              </div>
-            </div>
-          </div>
-          <TopNav />
-        </header>
+        <Nav />
         <div className="p-6">{children}</div>
       </body>
     </html>

@@ -12,5 +12,5 @@ export const size = {
 export const contentType = 'image/png';
 
 export default function OgImage() {
-  return new ImageResponse(<ExampleOg image="worker-yield" />, size);
+  return new ImageResponse(<ExampleOg image="form" />, size);
 }

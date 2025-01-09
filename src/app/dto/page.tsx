@@ -1,5 +1,5 @@
 import Github from '@/components/Github';
-import FormExample from './FormExample';
+import DtoFormExample from './DtoFormExample';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
@@ -8,36 +8,36 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Basic form handling and{' '}
-    <Link href="https://zod.dev/" target="_blank">
-      Zod
+    Basic form handling and validation with{' '}
+    <Link href="hhttps://www.npmjs.com/package/class-validator" target="_blank">
+      class-validator
     </Link>{' '}
-    validation with{' '}
+    and{' '}
     <Link href="https://github.com/finom/vovk-zod" target="_blank">
-      vovk-zod
+      vovk-dto TODO LINK
     </Link>
     .
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Form Example',
+  title: 'Class Validator (DTO) Example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
   },
 };
 
-export default async function FormControllerPage() {
+export default async function ZodControllerPage() {
   const githubFiles = await getGithubFiles([
-    'src/zod.ts',
-    'src/modules/form/FormController.ts',
-    'src/app/form/FormExample.tsx',
+    'src/dto.ts',
+    'src/modules/dto/DtoController.ts',
+    'src/app/dto/DtoFormExample.tsx',
   ]);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>
-        <FormExample />
+        <DtoFormExample />
       </Example>
       <Github githubFiles={githubFiles} />
     </>

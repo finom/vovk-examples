@@ -1,5 +1,5 @@
 import Github from '@/components/Github';
-import HookFormExample from './HookFormExample';
+import ZodHookFormExample from './ZodHookFormExample';
 import Example from '@/components/Example';
 import { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
@@ -21,23 +21,23 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'React Hook Form Example',
+  title: 'Zod + React Hook Form Example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
   },
 };
 
-export default async function HookFormControllerPage() {
+export default async function ZodHookFormControllerPage() {
   const githubFiles = await getGithubFiles([
     'src/zod.ts',
-    'src/modules/form/FormController.ts',
-    'src/app/hook-form/HookFormExample.tsx',
+    'src/modules/zod/ZodController.ts',
+    'src/app/zod-hook-form/ZodHookFormExample.tsx',
   ]);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>
-        <HookFormExample />
+        <ZodHookFormExample />
       </Example>
       <Github githubFiles={githubFiles} />
     </>

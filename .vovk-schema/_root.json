@@ -57,10 +57,10 @@
         }
       }
     },
-    "FormRPC": {
-      "controllerName": "FormRPC",
-      "originalControllerName": "FormController",
-      "prefix": "form",
+    "ZodRPC": {
+      "controllerName": "ZodRPC",
+      "originalControllerName": "ZodController",
+      "prefix": "zod",
       "handlers": {
         "createUser": {
           "path": "create-user",
@@ -90,6 +90,55 @@
         }
       }
     },
+    "YupRPC": {
+      "controllerName": "YupRPC",
+      "originalControllerName": "YupController",
+      "prefix": "yup",
+      "handlers": {
+        "createUser": {
+          "path": "create-user",
+          "httpMethod": "POST",
+          "validation": {
+            "body": {
+              "type": "object",
+              "default": {},
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 20
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email"
+                }
+              },
+              "required": [
+                "name",
+                "email"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "DtoRPC": {
+      "controllerName": "DtoRPC",
+      "originalControllerName": "DtoController",
+      "prefix": "dto",
+      "handlers": {
+        "createUser": {
+          "path": "create-user",
+          "httpMethod": "POST",
+          "validation": {
+            "body": {
+              "isDTO": true
+            },
+            "query": null
+          }
+        }
+      }
+    },
     "AiSdkRPC": {
       "controllerName": "AiSdkRPC",
       "originalControllerName": "AiSdkController",
@@ -108,15 +157,6 @@
       "originalWorkerName": "HelloWorker",
       "handlers": {
         "factorize": {}
-      }
-    },
-    "HelloWPCYield": {
-      "workerName": "HelloWPCYield",
-      "originalWorkerName": "HelloWorkerYield",
-      "handlers": {
-        "approximatePi": {
-          "isGenerator": true
-        }
       }
     }
   }

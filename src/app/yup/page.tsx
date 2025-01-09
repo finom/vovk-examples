@@ -1,0 +1,45 @@
+import Github from '@/components/Github';
+import YupFormExample from './YupFormExample';
+import Example from '@/components/Example';
+import { PageMetadata } from '@/types';
+import getGithubFiles from '@/lib/getGithubFiles';
+import Link from 'next/link';
+import reactToString from 'react-to-string';
+
+const description = (
+  <>
+    Basic form handling and{' '}
+    <Link href="https://zod.dev/" target="_blank">
+      Yup
+    </Link>{' '}
+    validation with{' '}
+    <Link href="https://github.com/finom/vovk-yup" target="_blank">
+      vovk-yup TODO link
+    </Link>
+    .
+  </>
+);
+
+export const metadata: PageMetadata = {
+  title: 'Yup Example',
+  description: reactToString(description),
+  openGraph: {
+    description: reactToString(description),
+  },
+};
+
+export default async function YupControllerPage() {
+  const githubFiles = await getGithubFiles([
+    'src/yup.ts',
+    'src/modules/yup/YupController.ts',
+    'src/app/yup/YupFormExample.tsx',
+  ]);
+  return (
+    <>
+      <Example title={metadata.title} className="text-center" description={description}>
+        <YupFormExample />
+      </Example>
+      <Github githubFiles={githubFiles} />
+    </>
+  );
+}
