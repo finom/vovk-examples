@@ -149,6 +149,17 @@
           "httpMethod": "POST"
         }
       }
+    },
+    "ProxyRPC": {
+      "controllerName": "ProxyRPC",
+      "originalControllerName": "ProxyController",
+      "prefix": "proxy",
+      "handlers": {
+        "getHello": {
+          "path": "greeting",
+          "httpMethod": "GET"
+        }
+      }
     }
   },
   "workers": {

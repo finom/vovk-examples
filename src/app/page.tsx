@@ -11,6 +11,7 @@ import { metadata as serverComponentMetadata } from './server-component/page';
 import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as workerMetadata } from './worker/page';
+import { metadata as proxyMetadata } from './proxy/page';
 import CodeBlock from '@/components/CodeBlock';
 import Link from 'next/link';
 
@@ -102,6 +103,16 @@ export default function Home() {
     });
 
     return result.toDataStreamResponse();
+`}</CodeBox>
+
+        <CodeBox title={proxyMetadata.title} href="/proxy">{`    
+    @prefix('proxy')
+    export default class ProxyController {
+      @get('greeting')
+      static getHello() {
+        return fetch('https://vovk.dev/api/hello/greeting.json') as unknown as { greeting: 'Hello world!' };
+      }
+    }
 `}</CodeBox>
         <CodeBox title={workerMetadata.title} href="/worker">{`
         HelloWorker.employ(/* ... */);

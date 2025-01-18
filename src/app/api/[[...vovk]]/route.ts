@@ -10,6 +10,7 @@ import ZodController from '../../../modules/zod/ZodController';
 import AiSdkController from '@/modules/ai-sdk/AiSdkController';
 import DtoController from '@/modules/dto/DtoController';
 import YupController from '@/modules/yup/YupController';
+import ProxyController from '@/modules/proxy/ProxyController';
 
 export const runtime = 'edge';
 
@@ -23,6 +24,7 @@ const controllers = {
   YupRPC: YupController,
   DtoRPC: DtoController,
   AiSdkRPC: AiSdkController,
+  ProxyRPC: ProxyController,
 };
 
 const workers = {

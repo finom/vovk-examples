@@ -77,7 +77,7 @@ const Nav = () => (
           aria-current="true"
           href="https://vovk.dev"
         >
-          Home
+          Documentation
         </Link>
         <Link
           href="https://github.com/finom/vovk"
