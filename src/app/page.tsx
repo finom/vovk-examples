@@ -12,15 +12,22 @@ import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as workerMetadata } from './worker/page';
 import { metadata as proxyMetadata } from './proxy/page';
-import CodeBlock from '@/components/CodeBlock';
 import Link from 'next/link';
 
 // const shrikhand = Shrikhand({ subsets: ['latin'], weight: '400' });
 
+export const metadata = {
+  title: 'Vovk.ts',
+  description: 'Vovk.ts is a TypeScript-first framework for building APIs.',
+  openGraph: {
+    description: 'Vovk.ts is a TypeScript-first framework for building APIs.',
+  },
+};
+
 export default function Home() {
   return (
     <main>
-      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         <CodeBox title={basicMetadata.title} href="/basic">{`
         export default class BasicController {
           @get('greeting')
@@ -123,9 +130,8 @@ export default function Home() {
       <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>
       <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 items-start">
         <div>
-          <h3 className="font-bold text-lg text-center mt-4 mb-2">React Native Example</h3>
           <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
-            <CodeBlock className="text-sm">{`
+            <CodeBox title="React Native Example">{`
           import { GreetingController } from 'vovk-client';
 
           // ...
@@ -138,7 +144,7 @@ export default function Home() {
           >
               <Text>Get Greeting</Text>
           </Pressable>
-          `}</CodeBlock>
+          `}</CodeBox>
           </div>
           <p className="mt-4">
             Next.js + Vovk.ts can be used as a back-end for React Native applications. For details see{' '}
@@ -149,9 +155,8 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-center mt-4 mb-2">Bundle the Client</h3>
           <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
-            <CodeBlock className="text-sm">{`
+            <CodeBox title="Bundle the Client">{`
           // webpack.config.js          
           module.exports = {
             entry: {
@@ -160,7 +165,7 @@ export default function Home() {
             devtool: 'inline-source-map',
             // ...
           };
-          `}</CodeBlock>
+          `}</CodeBox>
           </div>
           <p className="mt-4">
             The client REST API library bundle can be compiled into a single package and distributed thru NPM, CDN or
@@ -176,9 +181,8 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <h3 className="font-bold text-lg text-center mt-4 mb-2">Static JSON API</h3>
           <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
-            <CodeBlock className="text-sm">{`
+            <CodeBox title="Static JSON API">{`
           import { initVovk, generateStaticAPI } from 'vovk';
           
           // ...
@@ -189,7 +193,7 @@ export default function Home() {
           
           export const { GET } = initVovk({ controllers, workers });
           
-          `}</CodeBlock>
+          `}</CodeBox>
           </div>
           <p className="mt-4">
             Thanks to <code>generateStaticParams</code> Next.js feature it&apos;s possible to generate static API that

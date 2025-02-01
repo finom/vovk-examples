@@ -1,5 +1,6 @@
 import { ImageResponse } from 'next/og';
-import ExampleOg from '@/components/ExampleOg';
+import ExampleOg, { getOgFonts } from '@/components/ExampleOg';
+import { metadata } from './page';
 
 export const runtime = 'edge';
 
@@ -11,6 +12,9 @@ export const size = {
 
 export const contentType = 'image/png';
 
-export default function OgImage() {
-  return new ImageResponse(<ExampleOg image="basic" />, size);
+export default async function OgImage() {
+  return new ImageResponse(<ExampleOg title={metadata.title} />, {
+    ...size,
+    ...(await getOgFonts()),
+  });
 }

@@ -1,14 +1,19 @@
+import type { ImageResponseOptions } from 'next/server';
+
 /* eslint-disable @next/next/no-img-element */
-const path = process.env.VERCEL_ENV ? `https://vovk-examples.vercel.app/og` : `http://localhost:${process.env.PORT}/og`;
+const path = process.env.VERCEL_ENV ? `https://vovk-examples.vercel.app/` : `http://localhost:${process.env.PORT}/`;
 
 interface Props {
-  image: string;
+  title: string;
 }
 
-export default function ExampleOg({ image }: Props) {
+export default function ExampleOg({ title }: Props) {
+  const logoSize = 2.3;
+  const bgSize = 1.29;
   return (
     <div
       style={{
+        position: 'relative',
         display: 'flex',
         width: '100%',
         height: '100%',
@@ -16,16 +21,75 @@ export default function ExampleOg({ image }: Props) {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        background: '#f8fafc',
+        background: 'black',
+        backgroundImage: 'linear-gradient(#00000010 0%, #ffffff13 100%)',
       }}
     >
       <img
-        src={`${path}/vovk-text-logo.png`}
-        alt="About Acme"
-        width="30%"
-        style={{ marginTop: '20px', marginBottom: '40px' }}
+        src={`${path}og-code.png`}
+        alt=""
+        width={1206 * bgSize}
+        height={648 * bgSize}
+        style={{
+          position: 'absolute',
+          opacity: 0.11,
+          left: '-85px',
+          top: '-90px',
+          transform: 'rotate(-5deg)',
+        }}
       />
-      <img src={`${path}/${image}.png`} alt="About Acme" width="90%" />
+      <img
+        src={`https://vovk.dev/vovk-logo-white.svg`}
+        alt=""
+        width={320 * logoSize}
+        height={92 * logoSize}
+        style={{ marginBottom: '5px' }}
+      />
+      <h1
+        style={{
+          color: '#fff',
+          fontSize: '78px',
+          fontWeight: 'bold',
+          textAlign: 'center',
+          marginBottom: '40px',
+          fontFamily: 'InterSemibold, sans-serif',
+        }}
+      >
+        {' '}
+        REST + RPC = ♥️
+      </h1>
+      <p
+        style={{
+          fontSize: '56px',
+          textAlign: 'center',
+          marginBottom: '0px',
+          color: '#a5a8b0',
+          fontFamily: 'Inter, sans-serif',
+        }}
+      >
+        {title}
+      </p>
     </div>
   );
 }
+
+export const getOgFonts = async () => ({
+  fonts: [
+    {
+      name: 'InterSemibold',
+      data: await (
+        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-SemiBold.ttf`, import.meta.url))
+      ).arrayBuffer(),
+      style: 'normal',
+      weight: 400,
+    },
+    {
+      name: 'Inter',
+      data: await (
+        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-Regular.ttf`, import.meta.url))
+      ).arrayBuffer(),
+      style: 'normal',
+      weight: 400,
+    },
+  ] as ImageResponseOptions['fonts'],
+});

@@ -14,12 +14,19 @@ export const metadata: Metadata = {
     default: 'Vovk.ts Examples',
   },
   description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
-  openGraph: {
-    title: 'Vovk.ts Examples',
-    description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
-    url: 'https://vovk-examples.vercel.app/',
-    type: 'website',
-    images: 'https://vovk-examples.vercel.app/og/index-og.png',
+  icons: {
+    icon: [
+      {
+        media: '(prefers-color-scheme: light)',
+        url: '/icon.svg',
+        href: '/icon.svg',
+      },
+      {
+        media: '(prefers-color-scheme: dark)',
+        url: '/icon-white.svg',
+        href: '/icon-white.svg',
+      },
+    ],
   },
 };
 

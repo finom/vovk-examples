@@ -3,7 +3,7 @@ import CodeBlock from '../CodeBlock';
 
 interface Props {
   title: string;
-  href: string;
+  href?: string;
   children: string;
 }
 
