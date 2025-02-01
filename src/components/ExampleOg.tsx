@@ -18,6 +18,8 @@ export default function ExampleOg({ title }: Props) {
         width: '100%',
         height: '100%',
         gap: '0',
+        paddingTop: '20px',
+        paddingBottom: '10px',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,15 +45,16 @@ export default function ExampleOg({ title }: Props) {
         alt=""
         width={320 * logoSize}
         height={92 * logoSize}
-        style={{ marginBottom: '5px' }}
+        style={{ marginBottom: '0px' }}
       />
       <h1
         style={{
           color: '#fff',
-          fontSize: '78px',
+          opacity: 0.6,
+          fontSize: '55px',
           fontWeight: 'bold',
           textAlign: 'center',
-          marginBottom: '40px',
+          marginBottom: '60px',
           fontFamily: 'InterSemibold, sans-serif',
         }}
       >
@@ -60,10 +63,10 @@ export default function ExampleOg({ title }: Props) {
       </h1>
       <p
         style={{
-          fontSize: '56px',
+          fontSize: '60px',
           textAlign: 'center',
           marginBottom: '0px',
-          color: '#a5a8b0',
+          color: '#fff',
           fontFamily: 'Inter, sans-serif',
         }}
       >
@@ -86,7 +89,7 @@ export const getOgFonts = async () => ({
     {
       name: 'Inter',
       data: await (
-        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-Regular.ttf`, import.meta.url))
+        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-Light.ttf`, import.meta.url))
       ).arrayBuffer(),
       style: 'normal',
       weight: 400,

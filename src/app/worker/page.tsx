@@ -28,7 +28,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'WPC Class Example',
+  title: 'Web Worker (WPC) example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

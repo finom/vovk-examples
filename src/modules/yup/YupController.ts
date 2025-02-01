@@ -1,11 +1,18 @@
 import { prefix, post } from 'vovk';
 import { withYup } from 'vovk-yup';
-import { userSchema } from '../../yup';
+import * as yup from 'yup';
 
 @prefix('yup')
 export default class YupController {
   @post('create-user', { cors: true })
-  static createUser = withYup(userSchema, async (req) => {
+  static createUser = withYup(yup.object({
+    name: yup
+      .string()
+      .min(2, 'Name must be at least 2 characters')
+      .max(20, 'Name cannot exceed 20 characters')
+      .required('Name is required'),
+    email: yup.string().email('Invalid email format').required('Email is required'),
+  }), async (req) => {
     const { name, email } = await req.json();
 
     return {

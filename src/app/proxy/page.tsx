@@ -9,7 +9,7 @@ import Link from 'next/link';
 const description = <>JSON proxy example.</>;
 
 export const metadata: PageMetadata = {
-  title: 'Proxy Controller Example',
+  title: 'Proxy endpoint example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

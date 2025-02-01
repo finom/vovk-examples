@@ -4,7 +4,7 @@ import { DtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 import validateOnClient from 'vovk-dto/validateOnClient';
 import { plainToInstance } from 'class-transformer';
-import { UpdateUserDto } from '@/dto';
+import { UpdateUserDto } from '@/modules/dto/dto';
 
 export default function DtoFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof DtoRPC.createUser> | null>(null);

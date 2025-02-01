@@ -127,11 +127,11 @@ export default function Home() {
         await HelloWorker.factorize(BigInt(value)));
     `}</CodeBox>
       </div>
-      <h2 className="text-3xl font-bold text-center py-3 mt-8">Other Examples</h2>
+      <h2 className="text-3xl font-semi text-center py-3 mt-10 mb-4">Other examples</h2>
       <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 items-start">
         <div>
           <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
-            <CodeBox title="React Native Example">{`
+            <CodeBox title="React Native example">{`
           import { GreetingController } from 'vovk-client';
 
           // ...
@@ -156,7 +156,7 @@ export default function Home() {
         </div>
         <div>
           <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
-            <CodeBox title="Bundle the Client">{`
+            <CodeBox title="Bundle the client">{`
           // webpack.config.js          
           module.exports = {
             entry: {

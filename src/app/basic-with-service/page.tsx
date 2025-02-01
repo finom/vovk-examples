@@ -8,20 +8,15 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Basic usage of{' '}
+    Basic usage example of{' '}
     <Link href="https://vovk.dev/controller" target="_blank">
-      Vovk Controller
-    </Link>{' '}
-    and{' '}
-    <Link href="https://vovk.dev/controller/service" target="_blank">
-      Service
-    </Link>
-    .
+      the Vovk.ts controller
+    </Link>{' '}with a service.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Basic Controller with Service',
+  title: 'Controller with service example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

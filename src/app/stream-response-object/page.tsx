@@ -17,7 +17,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Stream using Response Object',
+  title: 'JSON streaming with Response object',
   description: reactToString(description),
 };
 

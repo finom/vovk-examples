@@ -3,8 +3,8 @@ import { useState } from 'react';
 import { ZodRPC } from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { userSchema } from '../../zod';
+import { ajvResolver } from '@hookform/resolvers/ajv';
+import { fastFormats } from 'ajv-formats/dist/formats';
 
 export default function ZodHookFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.createUser> | null>(null);
@@ -14,7 +14,9 @@ export default function ZodHookFormExample() {
     getValues,
     formState: { errors },
   } = useForm<VovkBody<typeof ZodRPC.createUser>>({
-    resolver: zodResolver(userSchema),
+    resolver: ajvResolver(ZodRPC.createUser.schema.validation!.body, {
+      formats: fastFormats,
+    }),
   });
 
   const onSubmit = async () => {

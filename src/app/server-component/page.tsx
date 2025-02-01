@@ -18,7 +18,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Server Component Example',
+  title: 'Server component example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

@@ -1,6 +1,6 @@
 import { prefix, post } from 'vovk';
 import { withDto } from 'vovk-dto';
-import { UpdateUserDto } from '../../dto';
+import { UpdateUserDto } from './dto';
 
 @prefix('dto')
 export default class DtoController {

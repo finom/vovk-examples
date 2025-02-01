@@ -8,16 +8,18 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
+    The <code>result.toDataStreamResponse</code> method returns a <code>Response</code> object, which is forwarded
+    directly to the Next.js route handler. On the client side, you can use the <code>useChat</code> hook to consume the
+    stream and render chat messages seamlessly, as outlined in the{' '}
     <Link href="https://github.com/vercel/ai" target="_blank">
-      AI SDK Example
-    </Link>
-    . Notice how the Vercel library is used: result.toDataStreamResponse returns a Response object that is passed
-    forward as is.
+      AI SDK
+    </Link>{' '}
+    documentation.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Vercel AI SDK',
+  title: 'Vercel AI SDK example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

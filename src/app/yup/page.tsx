@@ -8,20 +8,20 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Basic form handling and{' '}
-    <Link href="https://zod.dev/" target="_blank">
+    Form input handling and{' '}
+    <Link href="https://yup-docs.vercel.app/" target="_blank">
       Yup
     </Link>{' '}
     validation with{' '}
     <Link href="https://github.com/finom/vovk-yup" target="_blank">
-      vovk-yup TODO link
+      vovk-yup
     </Link>
-    .
+    . The request input is validated on the client-side before being sent to the server where it is validated again.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Yup Example',
+  title: 'Yup validation example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
@@ -30,7 +30,6 @@ export const metadata: PageMetadata = {
 
 export default async function YupControllerPage() {
   const githubFiles = await getGithubFiles([
-    'src/yup.ts',
     'src/modules/yup/YupController.ts',
     'src/app/yup/YupFormExample.tsx',
   ]);

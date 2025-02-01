@@ -23,7 +23,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'Stream Example',
+  title: 'JSON streaming example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

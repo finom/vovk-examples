@@ -8,20 +8,25 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Basic form handling and validation with{' '}
-    <Link href="hhttps://www.npmjs.com/package/class-validator" target="_blank">
-      class-validator
+    Form input handling and{' '}
+    <Link href="https://www.npmjs.com/package/class-validator" target="_blank">
+      class validation
     </Link>{' '}
-    and{' '}
-    <Link href="https://github.com/finom/vovk-zod" target="_blank">
-      vovk-dto TODO LINK
+    with{' '}
+    <Link href="https://github.com/finom/vovk-yudtop" target="_blank">
+      vovk-dto
     </Link>
-    .
+    . The request input is validated on the client-side before being sent to the server where it is validated again.
+    Notice that the input data needs to be transformed with{' '}
+    <Link href="https://www.npmjs.com/package/class-transformer" target="_blank">
+      class-transformer
+    </Link>{' '}
+    into a DTO class in order to be validated on the client-side.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Class Validator (DTO) Example',
+  title: 'DTO validation example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
@@ -30,7 +35,7 @@ export const metadata: PageMetadata = {
 
 export default async function ZodControllerPage() {
   const githubFiles = await getGithubFiles([
-    'src/dto.ts',
+    'src/modules/dto/dto.ts',
     'src/modules/dto/DtoController.ts',
     'src/app/dto/DtoFormExample.tsx',
   ]);

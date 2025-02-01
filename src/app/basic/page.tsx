@@ -8,11 +8,10 @@ import Link from 'next/link';
 
 const description = (
   <>
-    Basic usage of{' '}
+    Basic usage example of{' '}
     <Link href="https://vovk.dev/controller" target="_blank">
-      Vovk Controller
-    </Link>
-    .
+      the Vovk.ts controller
+    </Link>.
   </>
 );
 

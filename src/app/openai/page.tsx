@@ -28,7 +28,7 @@ const description = (
 );
 
 export const metadata: PageMetadata = {
-  title: 'OpenAI Chat Example',
+  title: 'OpenAI chat example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),

@@ -8,7 +8,7 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Basic form handling and{' '}
+    Form input handling and{' '}
     <Link href="https://zod.dev/" target="_blank">
       Zod
     </Link>{' '}
@@ -16,12 +16,12 @@ const description = (
     <Link href="https://github.com/finom/vovk-zod" target="_blank">
       vovk-zod
     </Link>
-    .
+    . The request input is validated on the client-side before being sent to the server where it is validated again.
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Zod Example',
+  title: 'Zod validation example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
@@ -30,7 +30,6 @@ export const metadata: PageMetadata = {
 
 export default async function ZodControllerPage() {
   const githubFiles = await getGithubFiles([
-    'src/zod.ts',
     'src/modules/zod/ZodController.ts',
     'src/app/zod/ZodFormExample.tsx',
   ]);
