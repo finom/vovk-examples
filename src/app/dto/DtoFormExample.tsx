@@ -4,7 +4,7 @@ import { DtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 import validateOnClient from 'vovk-dto/validateOnClient';
 import { plainToInstance } from 'class-transformer';
-import { UpdateUserDto } from '@/modules/dto/dto';
+import { CreateUserDto } from '@/modules/dto/dto';
 
 export default function DtoFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof DtoRPC.createUser> | null>(null);
@@ -17,11 +17,11 @@ export default function DtoFormExample() {
     try {
       setResponse(
         await DtoRPC.createUser({
-          body: plainToInstance(UpdateUserDto, { name, email } satisfies UpdateUserDto),
+          body: plainToInstance(CreateUserDto, { name, email } satisfies CreateUserDto),
           disableClientValidation,
           // vovk.config doesn't include preferred validation library,
           // so we need to pass it manually for this example.
-          // This is not needed in a real project.
+          // This is not needed in a real project when validateOnClientPath is set.
           validateOnClient,
         })
       );

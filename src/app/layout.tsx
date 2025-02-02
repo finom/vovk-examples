@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   metadataBase: new URL('https://vovk-examples.vercel.app'),
   title: {
-    template: '%s | Vovk.ts Examples',
-    default: 'Vovk.ts Examples',
+    template: '%s | Vovk.ts examples',
+    default: 'Vovk.ts examples',
   },
-  description: 'Vovk.ts examples for HTTP requests, response streaming with OpenAI, Web Worker and more.',
+  description: 'Vovk.ts examples',
   icons: {
     icon: [
       {

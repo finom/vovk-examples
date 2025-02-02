@@ -20,7 +20,20 @@ const description = (
     <Link href="https://github.com/finom/vovk-zod" target="_blank">
       vovk-zod
     </Link>
-    . The request input is validated on the client-side before being sent to the server where it is validated again.
+    . The form is validated using RPC method schema emitted by <b>vovk-zod</b> with{' '}
+    <Link href="https://ajv.js.org/" target="_blank">
+      Ajv
+    </Link>
+    ,{' '}
+    <Link href="https://www.npmjs.com/package/ajv-formats" target="_blank">
+      Ajv formats
+    </Link>{' '}
+    and{' '}
+    <Link href="https://www.npmjs.com/package/@hookform/resolvers#ajv" target="_blank">
+      Ajv resolver
+    </Link>
+    . When the form is submitted, the request input is validated with the generic <code>validateOnClient</code> and,
+    when the request is sent to the server, it is validated again with the original Zod schema.
   </>
 );
 

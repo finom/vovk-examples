@@ -5,7 +5,6 @@ import BasicController from '../../../modules/basic/BasicController';
 import BasicControllerWithService from '../../../modules/basic-with-service/BasicControllerWithService';
 import StreamController from '../../../modules/stream/StreamController';
 import StreamResponseObjectController from '../../../modules/stream-response-object/StreamResponseObjectController';
-import HelloWorker from '../../../modules/worker/HelloWorker';
 import ZodController from '../../../modules/zod/ZodController';
 import AiSdkController from '@/modules/ai-sdk/AiSdkController';
 import DtoController from '@/modules/dto/DtoController';
@@ -27,11 +26,6 @@ const controllers = {
   ProxyRPC: ProxyController,
 };
 
-const workers = {
-  HelloWPC: HelloWorker,
-};
-
 export type Controllers = typeof controllers;
-export type Workers = typeof workers;
 
-export const { GET, POST, PUT, DELETE } = initVovk({ controllers, workers });
+export const { GET, POST, PUT, DELETE } = initVovk({ controllers });

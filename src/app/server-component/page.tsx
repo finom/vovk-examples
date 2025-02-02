@@ -8,12 +8,11 @@ import reactToString from 'react-to-string';
 
 const description = (
   <>
-    Vovk.ts client can also be used in a{' '}
+    Since Vovk.ts emits RPC library that use <code>fetch</code> to send requests, you can use its methods in a{' '}
     <Link href="https://nextjs.org/docs/app/building-your-application/rendering/server-components" target="_blank">
       Server Component
     </Link>
-    . To do so, you need to define &quot;prefix&quot; option that indicates absolute URL to the root API endpoint that
-    overrides default relative URL.
+    . To do so, you need to define &quot;origin&quot; config option. See the example config below.
   </>
 );
 
@@ -29,7 +28,7 @@ export default async function ServerComponentPage() {
   const githubFiles = await getGithubFiles([
     'src/modules/basic/BasicController.ts',
     'src/app/server-component/ServerComponentExample.tsx',
-    'vovk.config.js',
+    'vovk.config.mjs',
   ]);
   return (
     <>

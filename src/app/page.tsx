@@ -10,7 +10,6 @@ import { metadata as sdkMetadata } from './ai-sdk/page';
 import { metadata as serverComponentMetadata } from './server-component/page';
 import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
-import { metadata as workerMetadata } from './worker/page';
 import { metadata as proxyMetadata } from './proxy/page';
 import Link from 'next/link';
 
@@ -121,11 +120,6 @@ export default function Home() {
       }
     }
 `}</CodeBox>
-        <CodeBox title={workerMetadata.title} href="/worker">{`
-        HelloWorker.employ(/* ... */);
-      
-        await HelloWorker.factorize(BigInt(value)));
-    `}</CodeBox>
       </div>
       <h2 className="text-3xl font-semi text-center py-3 mt-10 mb-4">Other examples</h2>
       <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 items-start">
@@ -191,7 +185,7 @@ export default function Home() {
             return generateStaticAPI(controllers);
           }
           
-          export const { GET } = initVovk({ controllers, workers });
+          export const { GET } = initVovk({ controllers });
           
           `}</CodeBox>
           </div>

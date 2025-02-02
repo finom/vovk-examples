@@ -48,13 +48,14 @@
     "react-dom": "^19",
     "react-hook-form": "^7.54.2",
     "react-to-string": "^0.1.1",
-    "vovk": "^3.0.0-draft.54",
+    "vovk": "^3.0.0-draft.57",
     "vovk-cli": "^0.0.1-draft.47",
     "vovk-client": "^0.0.4-draft.17",
     "vovk-dto": "^0.0.1-draft.17",
     "vovk-mapped-types": "^0.0.6",
     "vovk-yup": "^0.0.1-draft.17",
     "vovk-zod": "^1.0.0-draft.18",
+    "yup": "^1.6.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {

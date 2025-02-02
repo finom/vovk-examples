@@ -1,7 +1,7 @@
 import { IsString, IsEmail, MinLength, MaxLength, IsUUID } from 'class-validator';
 import { OmitType } from 'vovk-mapped-types';
 
-export class UserDto {
+export default class UserDto {
   @IsUUID(4, { message: 'Invalid uuid format' })
   id: string;
 
@@ -15,4 +15,4 @@ export class UserDto {
   email: string;
 }
 
-export class UpdateUserDto extends OmitType(UserDto, ['id'] as const) {}
+export class CreateUserDto extends OmitType(UserDto, ['id'] as const) {}
