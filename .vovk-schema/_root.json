@@ -10,6 +10,14 @@
         "getHello": {
           "path": "greeting",
           "httpMethod": "GET"
+        },
+        "postHello": {
+          "path": "greeting",
+          "httpMethod": "POST"
+        },
+        "streamTokens": {
+          "path": "stream",
+          "httpMethod": "GET"
         }
       }
     },
@@ -159,15 +167,6 @@
           "path": "greeting",
           "httpMethod": "GET"
         }
-      }
-    }
-  },
-  "workers": {
-    "HelloWPC": {
-      "workerName": "HelloWPC",
-      "originalWorkerName": "HelloWorker",
-      "handlers": {
-        "factorize": {}
       }
     }
   }

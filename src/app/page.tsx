@@ -11,6 +11,7 @@ import { metadata as serverComponentMetadata } from './server-component/page';
 import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as proxyMetadata } from './proxy/page';
+import { metadata as reactQueryMetadata } from './react-query/page';
 import Link from 'next/link';
 
 // const shrikhand = Shrikhand({ subsets: ['latin'], weight: '400' });
@@ -119,6 +120,20 @@ export default function Home() {
         return fetch('https://vovk.dev/api/hello/greeting.json') as unknown as { greeting: 'Hello world!' };
       }
     }
+`}</CodeBox>
+        <CodeBox title={reactQueryMetadata.title} href="/react-query">{`    
+  const query = BasicRPC.getHello.useQuery();
+  const mutation = BasicRPC.postHello.useMutation();
+
+  return (
+    <button 
+      onClick={() => mutation.mutate({ 
+        body: { greeting: userInput } 
+      })}
+    >
+      Mutate
+    </button>
+  );
 `}</CodeBox>
       </div>
       <h2 className="text-3xl font-semi text-center py-3 mt-10 mb-4">Other examples</h2>
