@@ -1,11 +1,16 @@
 import { prefix, get, StreamJSONResponse } from 'vovk';
+import { openapi } from 'vovk-openapi';
 import StreamService, { type Token } from './StreamService';
 
 @prefix('stream-with-object')
 export default class StreamResponseObjectController {
+  @openapi({
+    summary: 'Stream tokens using Response object',
+    description: 'Stream tokens to the client using Response object',
+  })
   @get('tokens')
   static async streamTokens() {
-    // need to define CORS headers manually when returning Response instance
+    // define CORS headers for vovk.dev manually when returning Response instance
     const response = new StreamJSONResponse<Token>({
       headers: {
         ...StreamJSONResponse.defaultHeaders,

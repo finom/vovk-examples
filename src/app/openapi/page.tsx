@@ -1,23 +1,23 @@
 import Github from '@/components/Github';
-import BasicExampleWithService from './BasicExampleWithService';
+import BasicExample from './OpenapiExample';
 import Example from '@/components/Example';
-import { PageMetadata } from '@/types';
+import type { PageMetadata } from '@/types';
 import getGithubFiles from '@/lib/getGithubFiles';
-import Link from 'next/link';
 import reactToString from 'react-to-string';
+import Link from 'next/link';
 
 const description = (
   <>
-    Basic usage example of{' '}
+    OpenAPI example {' '}
     <Link href="https://vovk.dev/controller" target="_blank">
-      the Vovk.ts controller
-    </Link>{' '}
-    with a service.
+    OpenAPI example
+    </Link>
+    .
   </>
 );
 
 export const metadata: PageMetadata = {
-  title: 'Controller with service example',
+  title: 'OpenAPI example',
   description: reactToString(description),
   openGraph: {
     description: reactToString(description),
@@ -25,16 +25,11 @@ export const metadata: PageMetadata = {
 };
 
 export default async function BasicControllerPage() {
-  const githubFiles = await getGithubFiles([
-    'src/modules/basic-with-service/BasicService.ts',
-    'src/modules/basic-with-service/BasicControllerWithService.ts',
-    'src/app/basic-with-service/BasicExampleWithService.tsx',
-  ]);
-
+  const githubFiles = await getGithubFiles(['src/modules/static/openapi/OpenapiController.ts', 'src/app/openapi/OpenapiExample.tsx']);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>
-        <BasicExampleWithService />
+        <BasicExample />
       </Example>
       <Github githubFiles={githubFiles} />
     </>

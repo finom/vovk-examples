@@ -1,0 +1,28 @@
+{
+  "emitSchema": true,
+  "segmentName": "static",
+  "controllers": {
+    "OpenapiRPC": {
+      "controllerName": "OpenapiRPC",
+      "originalControllerName": "OpenapiController",
+      "prefix": "openapi",
+      "handlers": {
+        "getSpec": {
+          "path": "spec.json",
+          "httpMethod": "GET",
+          "openapi": {
+            "summary": "OpenAPI spec",
+            "description": "Get the OpenAPI spec for the examples API",
+            "x-codeSamples": [
+              {
+                "label": "vovk-client",
+                "lang": "typescript",
+                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getSpec();\n    \n  "
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

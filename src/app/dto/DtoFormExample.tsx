@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from 'react';
 import { DtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
-import validateOnClient from 'vovk-dto/validateOnClient';
+import { validateOnClient } from 'vovk-dto/validateOnClient';
 import { plainToInstance } from 'class-transformer';
 import { CreateUserDto } from '@/modules/dto/dto';
 

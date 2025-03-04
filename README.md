@@ -18,7 +18,6 @@ import { BasicController } from 'vovk-client';
 const response = await BasicController.getHello();
 ```
 
-
 ## Making your own library
 
 The documentation assumes that you already have set up [Next.js](https://nextjs.org/) + [Vovk.ts](https://vovk.dev/) project and now you want to create an NPM package to publish a TypeScript library for your REST API.
@@ -69,14 +68,12 @@ module.exports = {
     library: { type: 'commonjs2' },
   },
 };
-
 ```
-
-
 
 ### Create a separate tsconfig
 
 Create **tsconfig.webpack.json**, enable decorators, add `outDir` and include required files. See [full tsconfig here](./tsconfig.webpack.json).
+
 ```ts
 {
   "compilerOptions": {
@@ -97,9 +94,7 @@ In the root of the project create `index.ts` with the following content:
 export * from './.vovk';
 ```
 
-
 As you can see the entry file exports everything as is but if needed you can rename variables or create an abstraction to make your library look nicer to the end user.
-
 
 ```ts
 // index.ts
@@ -121,7 +116,7 @@ import { createUser } from 'my-lib';
 await createUser(...);
 */
 export function createUser(body: VovkClientBody<typeof FormController.createUser>) {
-    return FormController.createUser({ body })
+  return FormController.createUser({ body });
 }
 ```
 
@@ -139,8 +134,6 @@ As you also may notice the entry point file re-exports or imports the library fr
 dist
 .vovk
 ```
-
-
 
 ### Create an NPM script
 
@@ -161,7 +154,6 @@ The script does the following:
 - Runs `vovk generate` with `VOVK_PREFIX` variable that indicates the root endpoint of your REST API and `VOVK_OUT` that makes the client to be compiled to **.vovk** in the root of the project.
 - `webpack --mode production` compies the bundle.
 
-
 ### Compile and publish
 
 1. Run `npm run build-client`.
@@ -180,11 +172,9 @@ import { FormController } from 'my-lib';
 await FormController.createUser(...);
 ```
 
-
 ### Compile a Worker
 
 To keep the configuration as simple as possible, you can compile your WPC Classes separately from the main bundle.
-
 
 ```js
 // webpack.config.js

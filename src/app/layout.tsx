@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body className={`${inter.className} dark:text-white text-neutral-950`}>
         <Nav />
-        <div className="p-6 max-w-[90rem] mx-auto">{children}</div>
+        <div className="p-6 max-w-[90rem] mx-auto app-wrapper">{children}</div>
       </body>
     </html>
   );

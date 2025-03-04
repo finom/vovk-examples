@@ -2,10 +2,9 @@
 import { useState, type FormEvent } from 'react';
 import { ZodRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
-import validateOnClient from 'vovk-zod/validateOnClient';
 
 export default function ZodFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.updateUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -14,13 +13,10 @@ export default function ZodFormExample() {
     e.preventDefault();
     try {
       setResponse(
-        await ZodRPC.createUser({
+        await ZodRPC.updateUser({
           body: { name, email },
+          query: { id: 1 },
           disableClientValidation,
-          // vovk.config doesn't include preferred validation library,
-          // so we need to pass it manually for this example.
-          // This is not needed in a real project.
-          validateOnClient,
         })
       );
       setError(null);

@@ -1,6 +1,10 @@
 import { IsString, IsEmail, MinLength, MaxLength, IsUUID } from 'class-validator';
 import { OmitType } from 'vovk-mapped-types';
+import { JSONSchema, validationMetadatasToSchemas, targetConstructorToSchema } from 'class-validator-jsonschema';
 
+@JSONSchema({
+  description: 'User DTO',
+})
 export default class UserDto {
   @IsUUID(4, { message: 'Invalid uuid format' })
   id: string;
@@ -15,4 +19,7 @@ export default class UserDto {
   email: string;
 }
 
+@JSONSchema({
+  description: 'Create user DTO',
+})
 export class CreateUserDto extends OmitType(UserDto, ['id'] as const) {}

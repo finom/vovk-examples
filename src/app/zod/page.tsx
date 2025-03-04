@@ -29,10 +29,7 @@ export const metadata: PageMetadata = {
 };
 
 export default async function ZodControllerPage() {
-  const githubFiles = await getGithubFiles([
-    'src/modules/zod/ZodController.ts',
-    'src/app/zod/ZodFormExample.tsx',
-  ]);
+  const githubFiles = await getGithubFiles(['src/modules/zod/ZodController.ts', 'src/app/zod/ZodFormExample.tsx']);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>

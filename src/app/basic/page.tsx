@@ -11,7 +11,8 @@ const description = (
     Basic usage example of{' '}
     <Link href="https://vovk.dev/controller" target="_blank">
       the Vovk.ts controller
-    </Link>.
+    </Link>
+    .
   </>
 );
 

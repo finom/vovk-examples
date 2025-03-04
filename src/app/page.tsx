@@ -12,6 +12,7 @@ import { metadata as streamMetadata } from './stream/page';
 import { metadata as streamResponseObjectMetadata } from './stream-response-object/page';
 import { metadata as proxyMetadata } from './proxy/page';
 import { metadata as reactQueryMetadata } from './react-query/page';
+import { metadata as openapiMetadata } from './openapi/page';
 import Link from 'next/link';
 
 // const shrikhand = Shrikhand({ subsets: ['latin'], weight: '400' });
@@ -135,11 +136,19 @@ export default function Home() {
     </button>
   );
 `}</CodeBox>
+        <CodeBox title={openapiMetadata.title} href="/openapi">{`
+    @prefix('openapi')
+    export default class OpenApiController {
+      @openapi({
+        summary: 'Get greeting',
+        description: 'Get a greeting from the server',
+      })
+        `}</CodeBox>
       </div>
       <h2 className="text-3xl font-semi text-center py-3 mt-10 mb-4">Other examples</h2>
       <div className="grid gap-4 grid-cols-1 xl:grid-cols-3 items-start">
         <div>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
+          <div className="overflow-hidden rounded-lg">
             <CodeBox title="React Native example">{`
           import { GreetingController } from 'vovk-client';
 
@@ -164,7 +173,7 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
+          <div className="overflow-hidden rounded-lg">
             <CodeBox title="Bundle the client">{`
           // webpack.config.js          
           module.exports = {
@@ -190,7 +199,7 @@ export default function Home() {
           </p>
         </div>
         <div>
-          <div className="overflow-hidden border border-solid border-gray-900/10 dark:border-gray-100/10 rounded-lg">
+          <div className="overflow-hidden rounded-lg">
             <CodeBox title="Static JSON API">{`
           import { initVovk, generateStaticAPI } from 'vovk';
           

@@ -12,14 +12,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Get a greeting",
-            "description": "Get a greeting from the server",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
-              }
-            ]
+            "description": "Get a greeting from the server"
           }
         },
         "postHello": {
@@ -27,14 +20,7 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Post a greeting",
-            "description": "Post a greeting to the server",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.postHello();\n    \n  "
-              }
-            ]
+            "description": "Post a greeting to the server"
           }
         }
       }
@@ -49,14 +35,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Get a greeting using a service",
-            "description": "Get a greeting from the server using a service",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
-              }
-            ]
+            "description": "Get a greeting from the server using a service"
           }
         }
       }
@@ -71,14 +50,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Stream tokens",
-            "description": "Stream tokens to the client",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.streamTokens();\n    \n  "
-              }
-            ]
+            "description": "Stream tokens to the client"
           }
         }
       }
@@ -93,14 +65,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Stream tokens using Response object",
-            "description": "Stream tokens to the client using Response object",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.streamTokens();\n    \n  "
-              }
-            ]
+            "description": "Stream tokens to the client using Response object"
           }
         }
       }
@@ -115,14 +80,7 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a chat completion",
-            "description": "Create a chat completion using OpenAI and yield the response",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createChatCompletion();\n    \n  "
-              }
-            ]
+            "description": "Create a chat completion using OpenAI and yield the response"
           }
         }
       }
@@ -243,7 +201,8 @@
               ],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
-            }
+            },
+            "iteration": null
           },
           "path": "update-user/:id",
           "httpMethod": "POST",
@@ -412,13 +371,6 @@
                 }
               }
             ],
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.updateUser({\n    params: {\n        id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\"\n    },\n    body: {\n        name: \"string\",\n        email: \"user@example.com\"\n    },\n    query: {\n        id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\",\n        yyy: 0,\n        xxx: {\n          yyy: \"14:15:22Z\"\n        }\n    },\n});\n    \nconsole.log(response);\n/* \n{\n    success: true,\n    user: {\n      name: \"string\",\n      email: \"user@example.com\",\n      id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\"\n    }\n}\n*/\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
@@ -476,20 +428,17 @@
                 "name",
                 "email"
               ]
-            }
+            },
+            "query": null,
+            "output": null,
+            "params": null,
+            "iteration": null
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with Yup",
             "description": "Create a user with Yup for body validation",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createUser({\n    body: {},\n});\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
@@ -529,6 +478,7 @@
         "createUser": {
           "validation": {
             "body": {
+              "x-isDto": true,
               "properties": {
                 "name": {
                   "maxLength": 20,
@@ -544,31 +494,25 @@
               "required": [
                 "name",
                 "email"
-              ],
-              "x-isDto": true
+              ]
             },
             "query": null,
             "output": null,
-            "params": null
+            "params": null,
+            "iteration": null
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with DTO",
             "description": "Create a user with DTO for body validation",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createUser({\n    body: {\n        name: \"string\",\n        email: \"user@example.com\"\n    },\n});\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
               "content": {
                 "application/json": {
                   "schema": {
+                    "x-isDto": true,
                     "properties": {
                       "name": {
                         "maxLength": 20,
@@ -584,8 +528,7 @@
                     "required": [
                       "name",
                       "email"
-                    ],
-                    "x-isDto": true
+                    ]
                   }
                 }
               }
@@ -610,11 +553,6 @@
                 "label": "AI SDK",
                 "lang": "typescript",
                 "source": "xxxx"
-              },
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.chat();\n    \n  "
               }
             ]
           }
@@ -631,14 +569,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Proxy endpoint",
-            "description": "Get a greeting from vovk.dev",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
-              }
-            ]
+            "description": "Get a greeting from vovk.dev"
           }
         }
       }

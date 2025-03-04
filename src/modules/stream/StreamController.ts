@@ -1,9 +1,14 @@
 import { get, prefix } from 'vovk';
+import { openapi } from 'vovk-openapi';
 
 type Token = { message: string };
 
 @prefix('stream')
 export default class StreamController {
+  @openapi({
+    summary: 'Stream tokens',
+    description: 'Stream tokens to the client',
+  })
   @get('tokens', { cors: true })
   static async *streamTokens() {
     const tokens: Token[] = [

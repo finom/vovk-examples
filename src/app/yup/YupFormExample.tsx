@@ -2,7 +2,6 @@
 import { useState, type FormEvent } from 'react';
 import { YupRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
-import validateOnClient from 'vovk-yup/validateOnClient';
 
 export default function YupFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof YupRPC.createUser> | null>(null);
@@ -17,10 +16,6 @@ export default function YupFormExample() {
         await YupRPC.createUser({
           body: { name, email },
           disableClientValidation,
-          // vovk.config doesn't include preferred validation library,
-          // so we need to pass it manually for this example.
-          // This is not needed in a real project.
-          validateOnClient,
         })
       );
       setError(null);

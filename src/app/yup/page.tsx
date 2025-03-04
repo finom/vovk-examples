@@ -29,10 +29,7 @@ export const metadata: PageMetadata = {
 };
 
 export default async function YupControllerPage() {
-  const githubFiles = await getGithubFiles([
-    'src/modules/yup/YupController.ts',
-    'src/app/yup/YupFormExample.tsx',
-  ]);
+  const githubFiles = await getGithubFiles(['src/modules/yup/YupController.ts', 'src/app/yup/YupFormExample.tsx']);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>

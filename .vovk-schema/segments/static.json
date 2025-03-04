@@ -1,0 +1,21 @@
+{
+  "emitSchema": true,
+  "segmentName": "static",
+  "controllers": {
+    "OpenapiRPC": {
+      "controllerName": "OpenapiRPC",
+      "originalControllerName": "OpenapiController",
+      "prefix": "openapi",
+      "handlers": {
+        "getSpec": {
+          "path": "spec.json",
+          "httpMethod": "GET",
+          "openapi": {
+            "summary": "OpenAPI spec",
+            "description": "Get the OpenAPI spec for the examples API"
+          }
+        }
+      }
+    }
+  }
+}

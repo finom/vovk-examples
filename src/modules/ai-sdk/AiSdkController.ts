@@ -1,10 +1,23 @@
 import { HttpException, HttpStatus, post, prefix, type VovkRequest } from 'vovk';
+import { openapi } from 'vovk-openapi';
 import { streamText, type CoreMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
 
 @prefix('ai-sdk')
 export default class AiSdkController {
-  @post('chat', { cors: true })
+  @openapi({
+    summary: 'Vercel AI SDK',
+    description:
+      'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
+    'x-codeSamples': [
+      {
+        label: 'AI SDK',
+        lang: 'typescript',
+        source: `xxxx`,
+      },
+    ],
+  })
+  @post('chat')
   static async chat(req: VovkRequest<{ messages: CoreMessage[] }>) {
     const { messages } = await req.json();
     const LIMIT = 5;
