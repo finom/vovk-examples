@@ -15,7 +15,7 @@ export default function ZodFormExample() {
       setResponse(
         await ZodRPC.updateUser({
           body: { name, email },
-          query: { id: 1 },
+          query: { ids: '123' },
           disableClientValidation,
         })
       );

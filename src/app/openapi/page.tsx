@@ -8,9 +8,9 @@ import Link from 'next/link';
 
 const description = (
   <>
-    OpenAPI example {' '}
+    OpenAPI example{' '}
     <Link href="https://vovk.dev/controller" target="_blank">
-    OpenAPI example
+      OpenAPI example
     </Link>
     .
   </>
@@ -25,7 +25,10 @@ export const metadata: PageMetadata = {
 };
 
 export default async function BasicControllerPage() {
-  const githubFiles = await getGithubFiles(['src/modules/static/openapi/OpenapiController.ts', 'src/app/openapi/OpenapiExample.tsx']);
+  const githubFiles = await getGithubFiles([
+    'src/modules/static/openapi/OpenapiController.ts',
+    'src/app/openapi/OpenapiExample.tsx',
+  ]);
   return (
     <>
       <Example title={metadata.title} className="text-center" description={description}>

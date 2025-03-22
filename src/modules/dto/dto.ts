@@ -1,6 +1,6 @@
 import { IsString, IsEmail, MinLength, MaxLength, IsUUID } from 'class-validator';
-import { OmitType } from 'vovk-mapped-types';
-import { JSONSchema, validationMetadatasToSchemas, targetConstructorToSchema } from 'class-validator-jsonschema';
+import { OmitType } from 'dto-mapped-types';
+import { JSONSchema } from 'class-validator-jsonschema';
 
 @JSONSchema({
   description: 'User DTO',

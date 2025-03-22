@@ -12,14 +12,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Get a greeting",
-            "description": "Get a greeting from the server",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
-              }
-            ]
+            "description": "Get a greeting from the server"
           }
         },
         "postHello": {
@@ -27,14 +20,7 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Post a greeting",
-            "description": "Post a greeting to the server",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.postHello();\n    \n  "
-              }
-            ]
+            "description": "Post a greeting to the server"
           }
         }
       }
@@ -49,14 +35,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Get a greeting using a service",
-            "description": "Get a greeting from the server using a service",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
-              }
-            ]
+            "description": "Get a greeting from the server using a service"
           }
         }
       }
@@ -71,14 +50,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Stream tokens",
-            "description": "Stream tokens to the client",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.streamTokens();\n    \n  "
-              }
-            ]
+            "description": "Stream tokens to the client"
           }
         }
       }
@@ -93,14 +65,7 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Stream tokens using Response object",
-            "description": "Stream tokens to the client using Response object",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.streamTokens();\n    \n  "
-              }
-            ]
+            "description": "Stream tokens to the client using Response object"
           }
         }
       }
@@ -115,14 +80,7 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a chat completion",
-            "description": "Create a chat completion using OpenAI and yield the response",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createChatCompletion();\n    \n  "
-              }
-            ]
+            "description": "Create a chat completion using OpenAI and yield the response"
           }
         }
       }
@@ -243,7 +201,8 @@
               ],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
-            }
+            },
+            "iteration": null
           },
           "path": "update-user/:id",
           "httpMethod": "POST",
@@ -412,13 +371,6 @@
                 }
               }
             ],
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.updateUser({\n    params: {\n        id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\"\n    },\n    body: {\n        name: \"string\",\n        email: \"user@example.com\"\n    },\n    query: {\n        id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\",\n        yyy: 0,\n        xxx: {\n          yyy: \"14:15:22Z\"\n        }\n    },\n});\n    \nconsole.log(response);\n/* \n{\n    success: true,\n    user: {\n      name: \"string\",\n      email: \"user@example.com\",\n      id: \"497f6eca-6276-4993-bfeb-53cbbbba6f08\"\n    }\n}\n*/\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
@@ -460,7 +412,6 @@
           "validation": {
             "body": {
               "type": "object",
-              "default": {},
               "properties": {
                 "name": {
                   "type": "string",
@@ -476,20 +427,17 @@
                 "name",
                 "email"
               ]
-            }
+            },
+            "query": null,
+            "output": null,
+            "params": null,
+            "iteration": null
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with Yup",
             "description": "Create a user with Yup for body validation",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createUser({\n    body: {},\n});\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
@@ -497,7 +445,6 @@
                 "application/json": {
                   "schema": {
                     "type": "object",
-                    "default": {},
                     "properties": {
                       "name": {
                         "type": "string",
@@ -529,6 +476,7 @@
         "createUser": {
           "validation": {
             "body": {
+              "x-isDto": true,
               "properties": {
                 "name": {
                   "maxLength": 20,
@@ -544,31 +492,25 @@
               "required": [
                 "name",
                 "email"
-              ],
-              "x-isDto": true
+              ]
             },
             "query": null,
             "output": null,
-            "params": null
+            "params": null,
+            "iteration": null
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with DTO",
             "description": "Create a user with DTO for body validation",
-            "x-codeSamples": [
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.createUser({\n    body: {\n        name: \"string\",\n        email: \"user@example.com\"\n    },\n});\n    \n  "
-              }
-            ],
             "requestBody": {
               "description": "Request body",
               "required": true,
               "content": {
                 "application/json": {
                   "schema": {
+                    "x-isDto": true,
                     "properties": {
                       "name": {
                         "maxLength": 20,
@@ -584,8 +526,7 @@
                     "required": [
                       "name",
                       "email"
-                    ],
-                    "x-isDto": true
+                    ]
                   }
                 }
               }
@@ -610,11 +551,6 @@
                 "label": "AI SDK",
                 "lang": "typescript",
                 "source": "xxxx"
-              },
-              {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.chat();\n    \n  "
               }
             ]
           }
@@ -631,14 +567,526 @@
           "httpMethod": "GET",
           "openapi": {
             "summary": "Proxy endpoint",
-            "description": "Get a greeting from vovk.dev",
-            "x-codeSamples": [
+            "description": "Get a greeting from vovk.dev"
+          }
+        }
+      }
+    },
+    "UserRPC": {
+      "controllerName": "UserRPC",
+      "originalControllerName": "UserController",
+      "prefix": "users",
+      "handlers": {
+        "updateUser": {
+          "validation": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "User full name"
+                },
+                "age": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "User age"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "User email"
+                }
+              },
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
+              "additionalProperties": false,
+              "description": "User object",
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            },
+            "query": {
+              "type": "object",
+              "properties": {
+                "notify": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              "required": [
+                "notify"
+              ],
+              "additionalProperties": false,
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Success status"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "additionalProperties": false,
+              "description": "Response object",
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "User ID"
+                }
+              },
+              "required": [
+                "id"
+              ],
+              "additionalProperties": false,
+              "$schema": "http://json-schema.org/draft-07/schema#"
+            },
+            "iteration": null
+          },
+          "path": ":id",
+          "httpMethod": "POST",
+          "openapi": {
+            "summary": "Update user",
+            "description": "Update user by ID with Zod validation",
+            "parameters": [
               {
-                "label": "vovk-client",
-                "lang": "typescript",
-                "source": "import { MyRPC } from 'vovk-client';\n\nconst response = await MyRPC.getHello();\n    \n  "
+                "name": "notify",
+                "in": "query",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "format": "uuid",
+                  "description": "User ID"
+                }
               }
-            ]
+            ],
+            "responses": {
+              "200": {
+                "description": "Response object",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "description": "Success status"
+                        }
+                      },
+                      "required": [
+                        "success"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Response object",
+                      "$schema": "http://json-schema.org/draft-07/schema#"
+                    }
+                  }
+                }
+              }
+            },
+            "requestBody": {
+              "description": "User object",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "User full name"
+                      },
+                      "age": {
+                        "type": "number",
+                        "minimum": 0,
+                        "description": "User age"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "User email"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "age",
+                      "email"
+                    ],
+                    "additionalProperties": false,
+                    "description": "User object",
+                    "$schema": "http://json-schema.org/draft-07/schema#"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "UserYupRPC": {
+      "controllerName": "UserYupRPC",
+      "originalControllerName": "UserYupController",
+      "prefix": "users-yup",
+      "handlers": {
+        "updateUser": {
+          "validation": {
+            "body": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "User full name"
+                },
+                "age": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "User age"
+                },
+                "email": {
+                  "type": "string",
+                  "format": "email",
+                  "description": "User email"
+                }
+              },
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
+              "description": "User object"
+            },
+            "query": {
+              "type": "object",
+              "properties": {
+                "notify": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              "required": [
+                "notify"
+              ]
+            },
+            "output": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Success status"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "description": "Response object"
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "User ID"
+                }
+              },
+              "required": [
+                "id"
+              ]
+            },
+            "iteration": null
+          },
+          "path": ":id",
+          "httpMethod": "POST",
+          "openapi": {
+            "summary": "Update user",
+            "description": "Update user by ID with Yup validation",
+            "parameters": [
+              {
+                "name": "notify",
+                "in": "query",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "description": "User ID"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Response object",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "description": "Success status"
+                        }
+                      },
+                      "required": [
+                        "success"
+                      ],
+                      "description": "Response object"
+                    }
+                  }
+                }
+              }
+            },
+            "requestBody": {
+              "description": "User object",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "User full name"
+                      },
+                      "age": {
+                        "type": "number",
+                        "minimum": 0,
+                        "description": "User age"
+                      },
+                      "email": {
+                        "type": "string",
+                        "format": "email",
+                        "description": "User email"
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "age",
+                      "email"
+                    ],
+                    "description": "User object"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "UserDtoRPC": {
+      "controllerName": "UserDtoRPC",
+      "originalControllerName": "UserDtoController",
+      "prefix": "users-dto",
+      "handlers": {
+        "updateUser": {
+          "validation": {
+            "body": {
+              "x-isDto": true,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "User full name"
+                },
+                "age": {
+                  "minimum": 0,
+                  "type": "number",
+                  "description": "User age"
+                },
+                "email": {
+                  "format": "email",
+                  "type": "string",
+                  "description": "User email"
+                }
+              },
+              "type": "object",
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
+              "description": "User object"
+            },
+            "query": {
+              "x-isDto": true,
+              "properties": {
+                "notify": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              "type": "object",
+              "required": [
+                "notify"
+              ],
+              "description": "Query parameters"
+            },
+            "output": {
+              "x-isDto": true,
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Success status"
+                }
+              },
+              "type": "object",
+              "required": [
+                "success"
+              ],
+              "description": "Response object"
+            },
+            "params": {
+              "x-isDto": true,
+              "properties": {
+                "id": {
+                  "format": "uuid",
+                  "type": "string",
+                  "description": "User ID"
+                }
+              },
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "description": "Path parameters"
+            },
+            "iteration": null
+          },
+          "path": ":id",
+          "httpMethod": "POST",
+          "openapi": {
+            "summary": "Update user",
+            "description": "Update user by ID with DTO validation",
+            "parameters": [
+              {
+                "name": "notify",
+                "in": "query",
+                "required": true,
+                "schema": {
+                  "type": "string",
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
+                  "description": "Notification type"
+                }
+              },
+              {
+                "name": "id",
+                "in": "path",
+                "required": true,
+                "schema": {
+                  "format": "uuid",
+                  "type": "string",
+                  "description": "User ID"
+                }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Response object",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "x-isDto": true,
+                      "properties": {
+                        "success": {
+                          "type": "boolean",
+                          "description": "Success status"
+                        }
+                      },
+                      "type": "object",
+                      "required": [
+                        "success"
+                      ],
+                      "description": "Response object"
+                    }
+                  }
+                }
+              }
+            },
+            "requestBody": {
+              "description": "User object",
+              "required": true,
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "x-isDto": true,
+                    "properties": {
+                      "name": {
+                        "type": "string",
+                        "description": "User full name"
+                      },
+                      "age": {
+                        "minimum": 0,
+                        "type": "number",
+                        "description": "User age"
+                      },
+                      "email": {
+                        "format": "email",
+                        "type": "string",
+                        "description": "User email"
+                      }
+                    },
+                    "type": "object",
+                    "required": [
+                      "name",
+                      "age",
+                      "email"
+                    ],
+                    "description": "User object"
+                  }
+                }
+              }
+            }
           }
         }
       }

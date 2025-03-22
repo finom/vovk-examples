@@ -96,12 +96,15 @@ export default function Home() {
           return response;
         }
     `}</CodeBox>
+        <CodeBox title={openaiMetadata.title} href="/stream-frozen">{`
+    // frozen stream
+`}</CodeBox>
         <CodeBox title={openaiMetadata.title} href="/openai">{`
-    yield* await openai.chat.completions.create({
-      messages,
-      model: 'gpt-3.5-turbo',
-      stream: true,
-    });
+  yield* await openai.chat.completions.create({
+    messages,
+    model: 'gpt-3.5-turbo',
+    stream: true,
+  });
 `}</CodeBox>
         <CodeBox title={sdkMetadata.title} href="/ai-sdk">{`
     const result = streamText({

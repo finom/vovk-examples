@@ -59,7 +59,7 @@ export default function ExampleOg({ title }: Props) {
         }}
       >
         {' '}
-        REST + RPC = ♥️
+        RESTful + RPC = ♥️
       </h1>
       <p
         style={{
