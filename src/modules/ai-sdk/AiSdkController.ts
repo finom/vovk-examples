@@ -26,12 +26,10 @@ export default class AiSdkController {
       throw new HttpException(HttpStatus.BAD_REQUEST, `You can only send ${LIMIT} messages at a time`);
     }
 
-    const result = streamText({
+    return streamText({
       model: openai('gpt-4o-mini'),
       system: 'You are a helpful assistant.',
       messages,
-    });
-
-    return result.toDataStreamResponse();
+    }).toDataStreamResponse();
   }
 }

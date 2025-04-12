@@ -105,10 +105,7 @@
                   "format": "email"
                 }
               },
-              "required": [
-                "name",
-                "email"
-              ],
+              "required": ["name", "email"],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
             },
@@ -133,17 +130,11 @@
                       "description": "Time"
                     }
                   },
-                  "required": [
-                    "yyy"
-                  ],
+                  "required": ["yyy"],
                   "additionalProperties": false
                 }
               },
-              "required": [
-                "id",
-                "yyy",
-                "xxx"
-              ],
+              "required": ["id", "yyy", "xxx"],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
             },
@@ -171,18 +162,11 @@
                       "description": "User ID"
                     }
                   },
-                  "required": [
-                    "name",
-                    "email",
-                    "id"
-                  ],
+                  "required": ["name", "email", "id"],
                   "additionalProperties": false
                 }
               },
-              "required": [
-                "success",
-                "user"
-              ],
+              "required": ["success", "user"],
               "additionalProperties": false,
               "description": "Response XXX",
               "$schema": "http://json-schema.org/draft-07/schema#"
@@ -196,9 +180,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
             },
@@ -236,18 +218,11 @@
                               "description": "User ID"
                             }
                           },
-                          "required": [
-                            "name",
-                            "email",
-                            "id"
-                          ],
+                          "required": ["name", "email", "id"],
                           "additionalProperties": false
                         }
                       },
-                      "required": [
-                        "success",
-                        "user"
-                      ],
+                      "required": ["success", "user"],
                       "additionalProperties": false,
                       "description": "Response XXX",
                       "$schema": "http://json-schema.org/draft-07/schema#"
@@ -269,16 +244,11 @@
                           "properties": {
                             "message": {
                               "type": "string",
-                              "enum": [
-                                "Validation error 11",
-                                "Validation error 33"
-                              ]
+                              "enum": ["Validation error 11", "Validation error 33"]
                             },
                             "statusCode": {
                               "type": "integer",
-                              "enum": [
-                                400
-                              ]
+                              "enum": [400]
                             }
                           }
                         }
@@ -301,15 +271,11 @@
                           "properties": {
                             "message": {
                               "type": "string",
-                              "enum": [
-                                "Validation error 22"
-                              ]
+                              "enum": ["Validation error 22"]
                             },
                             "statusCode": {
                               "type": "integer",
-                              "enum": [
-                                500
-                              ]
+                              "enum": [500]
                             }
                           }
                         }
@@ -354,9 +320,7 @@
                       "description": "Time"
                     }
                   },
-                  "required": [
-                    "yyy"
-                  ],
+                  "required": ["yyy"],
                   "additionalProperties": false
                 }
               },
@@ -389,10 +353,7 @@
                         "format": "email"
                       }
                     },
-                    "required": [
-                      "name",
-                      "email"
-                    ],
+                    "required": ["name", "email"],
                     "additionalProperties": false,
                     "$schema": "http://json-schema.org/draft-07/schema#"
                   }
@@ -423,10 +384,7 @@
                   "format": "email"
                 }
               },
-              "required": [
-                "name",
-                "email"
-              ]
+              "required": ["name", "email"]
             },
             "query": null,
             "output": null,
@@ -456,10 +414,7 @@
                         "format": "email"
                       }
                     },
-                    "required": [
-                      "name",
-                      "email"
-                    ]
+                    "required": ["name", "email"]
                   }
                 }
               }
@@ -489,10 +444,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "name",
-                "email"
-              ]
+              "required": ["name", "email"]
             },
             "query": null,
             "output": null,
@@ -523,10 +475,7 @@
                       }
                     },
                     "type": "object",
-                    "required": [
-                      "name",
-                      "email"
-                    ]
+                    "required": ["name", "email"]
                   }
                 }
               }
@@ -597,11 +546,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "additionalProperties": false,
               "description": "User object",
               "$schema": "http://json-schema.org/draft-07/schema#"
@@ -611,17 +556,11 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
             },
@@ -633,9 +572,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "additionalProperties": false,
               "description": "Response object",
               "$schema": "http://json-schema.org/draft-07/schema#"
@@ -649,9 +586,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false,
               "$schema": "http://json-schema.org/draft-07/schema#"
             },
@@ -669,11 +604,7 @@
                 "required": true,
                 "schema": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
@@ -701,9 +632,7 @@
                           "description": "Success status"
                         }
                       },
-                      "required": [
-                        "success"
-                      ],
+                      "required": ["success"],
                       "additionalProperties": false,
                       "description": "Response object",
                       "$schema": "http://json-schema.org/draft-07/schema#"
@@ -735,11 +664,7 @@
                         "description": "User email"
                       }
                     },
-                    "required": [
-                      "name",
-                      "age",
-                      "email"
-                    ],
+                    "required": ["name", "age", "email"],
                     "additionalProperties": false,
                     "description": "User object",
                     "$schema": "http://json-schema.org/draft-07/schema#"
@@ -776,11 +701,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -788,17 +709,11 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "output": {
               "type": "object",
@@ -808,9 +723,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             },
             "params": {
@@ -821,9 +734,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "iteration": null
           },
@@ -839,11 +750,7 @@
                 "required": true,
                 "schema": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
@@ -870,9 +777,7 @@
                           "description": "Success status"
                         }
                       },
-                      "required": [
-                        "success"
-                      ],
+                      "required": ["success"],
                       "description": "Response object"
                     }
                   }
@@ -902,11 +807,7 @@
                         "description": "User email"
                       }
                     },
-                    "required": [
-                      "name",
-                      "age",
-                      "email"
-                    ],
+                    "required": ["name", "age", "email"],
                     "description": "User object"
                   }
                 }
@@ -942,11 +843,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -954,18 +851,12 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
               "type": "object",
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "description": "Query parameters"
             },
             "output": {
@@ -977,9 +868,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             },
             "params": {
@@ -992,9 +881,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "description": "Path parameters"
             },
             "iteration": null
@@ -1011,11 +898,7 @@
                 "required": true,
                 "schema": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
@@ -1044,9 +927,7 @@
                         }
                       },
                       "type": "object",
-                      "required": [
-                        "success"
-                      ],
+                      "required": ["success"],
                       "description": "Response object"
                     }
                   }
@@ -1077,11 +958,7 @@
                       }
                     },
                     "type": "object",
-                    "required": [
-                      "name",
-                      "age",
-                      "email"
-                    ],
+                    "required": ["name", "age", "email"],
                     "description": "User object"
                   }
                 }
