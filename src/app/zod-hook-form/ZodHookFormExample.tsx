@@ -7,21 +7,22 @@ import { ajvResolver } from '@hookform/resolvers/ajv';
 import { fastFormats } from 'ajv-formats/dist/formats';
 
 export default function ZodHookFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.updateUser> | null>(null);
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<VovkBody<typeof ZodRPC.createUser>>({
-    resolver: ajvResolver(ZodRPC.createUser.schema.validation!.body, {
+  } = useForm<VovkBody<typeof ZodRPC.updateUser>>({
+    resolver: ajvResolver(ZodRPC.updateUser.schema.validation!.body, {
       formats: fastFormats,
     }),
   });
 
   const onSubmit = async () => {
     setResponse(
-      await ZodRPC.createUser({
+      await ZodRPC.updateUser({
+        params: { id: '2' },
         body: getValues(),
       })
     );

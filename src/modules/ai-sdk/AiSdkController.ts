@@ -9,13 +9,6 @@ export default class AiSdkController {
     summary: 'Vercel AI SDK',
     description:
       'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
-    'x-codeSamples': [
-      {
-        label: 'AI SDK',
-        lang: 'typescript',
-        source: `xxxx`,
-      },
-    ],
   })
   @post('chat')
   static async chat(req: VovkRequest<{ messages: CoreMessage[] }>) {

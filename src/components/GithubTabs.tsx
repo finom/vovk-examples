@@ -5,7 +5,7 @@ import { GithubFile } from '@/types';
 const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
-    <div className="py-2 px-4 text-sm">
+    <div className="pb-2 px-4 text-sm mb-1">
       {githubFiles.map(({ path }, i) => (
         <div key={path} className={`inline-block mr-4 mb-1`}>
           <span

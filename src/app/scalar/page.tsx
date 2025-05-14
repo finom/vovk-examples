@@ -12,9 +12,7 @@ function App() {
       `}</style>
       <ApiReferenceReact
         configuration={{
-          spec: {
-            url: '/api/static/openapi/spec.json',
-          },
+          url: '/api/static/openapi/spec.json',
           hideModels: true,
           servers: [
             {

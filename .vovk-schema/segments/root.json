@@ -3,10 +3,10 @@
   "emitSchema": true,
   "segmentName": "",
   "controllers": {
-    "BasicRPC": {
-      "rpcModuleName": "BasicRPC",
-      "originalControllerName": "BasicController",
-      "prefix": "basic",
+    "HelloWorldRPC": {
+      "rpcModuleName": "HelloWorldRPC",
+      "originalControllerName": "HelloWorldController",
+      "prefix": "hello-world",
       "handlers": {
         "getHello": {
           "path": "greeting",
@@ -28,8 +28,8 @@
     },
     "BasicRPCWithService": {
       "rpcModuleName": "BasicRPCWithService",
-      "originalControllerName": "BasicControllerWithService",
-      "prefix": "basic-with-service",
+      "originalControllerName": "HelloWorldControllerWithService",
+      "prefix": "hello-world-with-service",
       "handlers": {
         "getHello": {
           "path": "greeting",
@@ -115,37 +115,6 @@
                 "not": {}
               }
             },
-            "query": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
-                },
-                "yyy": {
-                  "type": "number"
-                },
-                "xxx": {
-                  "type": "object",
-                  "properties": {
-                    "yyy": {
-                      "type": "string",
-                      "format": "time",
-                      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(\\.\\d+)?$"
-                    }
-                  },
-                  "required": [
-                    "yyy"
-                  ]
-                }
-              },
-              "required": [
-                "id",
-                "yyy",
-                "xxx"
-              ]
-            },
             "params": {
               "type": "object",
               "properties": {
@@ -158,119 +127,11 @@
               "required": [
                 "id"
               ]
-            },
-            "output": {
-              "type": "object",
-              "properties": {
-                "success": {
-                  "type": "boolean"
-                },
-                "user": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "string",
-                      "minLength": 2,
-                      "maxLength": 20
-                    },
-                    "email": {
-                      "type": "string",
-                      "format": "email",
-                      "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                    },
-                    "id": {
-                      "type": "string",
-                      "format": "uuid",
-                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
-                    }
-                  },
-                  "required": [
-                    "name",
-                    "email",
-                    "id"
-                  ],
-                  "additionalProperties": {
-                    "not": {}
-                  }
-                }
-              },
-              "required": [
-                "success",
-                "user"
-              ],
-              "additionalProperties": {
-                "not": {}
-              }
             }
           },
           "path": "update-user/:id",
           "httpMethod": "POST",
           "openapi": {
-            "responses": {
-              "400": {
-                "description": "400 Bad Request",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/VovkErrorResponse"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "message": {
-                              "type": "string",
-                              "enum": [
-                                "Validation error 11",
-                                "Validation error 33"
-                              ]
-                            },
-                            "statusCode": {
-                              "type": "integer",
-                              "enum": [
-                                400
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              },
-              "500": {
-                "description": "500 Internal Server Error",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "allOf": [
-                        {
-                          "$ref": "#/components/schemas/VovkErrorResponse"
-                        },
-                        {
-                          "type": "object",
-                          "properties": {
-                            "message": {
-                              "type": "string",
-                              "enum": [
-                                "Validation error 22"
-                              ]
-                            },
-                            "statusCode": {
-                              "type": "integer",
-                              "enum": [
-                                500
-                              ]
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            },
             "summary": "Create a user with Zod",
             "description": "Create a user with Zod for body validation"
           }
@@ -359,14 +220,7 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Vercel AI SDK",
-            "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model",
-            "x-codeSamples": [
-              {
-                "label": "AI SDK",
-                "lang": "typescript",
-                "source": "xxxx"
-              }
-            ]
+            "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model"
           }
         }
       }

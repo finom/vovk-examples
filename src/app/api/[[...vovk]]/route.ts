@@ -1,8 +1,8 @@
 import { initVovk } from 'vovk';
 
 import OpenAiController from '../../../modules/openai/OpenAiController';
-import BasicController from '../../../modules/basic/BasicController';
-import BasicControllerWithService from '../../../modules/basic-with-service/BasicControllerWithService';
+import HelloWorldController from '../../../modules/hello-world/HelloWorldController';
+import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService';
 import StreamController from '../../../modules/stream/StreamController';
 import StreamResponseObjectController from '../../../modules/stream-response-object/StreamResponseObjectController';
 import ZodController from '../../../modules/zod/ZodController';
@@ -17,7 +17,7 @@ import UserDtoController from '../../../modules/showcase/UserDtoController';
 export const runtime = 'edge';
 
 const controllers = {
-  BasicRPC: BasicController,
+  HelloWorldRPC: HelloWorldController,
   BasicRPCWithService: BasicControllerWithService,
   StreamRPC: StreamController,
   StreamResponseObjectRPC: StreamResponseObjectController,

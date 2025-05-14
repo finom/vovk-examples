@@ -17,17 +17,6 @@
           }
         }
       }
-    },
-    "FrozenStreamRPC": {
-      "rpcModuleName": "FrozenStreamRPC",
-      "originalControllerName": "FrozenStreamController",
-      "prefix": "frozen-stream",
-      "handlers": {
-        "getFrozenStream": {
-          "path": "llm.jsonl",
-          "httpMethod": "GET"
-        }
-      }
     }
   }
 }

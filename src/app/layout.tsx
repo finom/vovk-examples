@@ -1,11 +1,9 @@
+import { Footer, Layout, Navbar } from 'nextra-theme-docs';
+import { Banner, Head } from 'nextra/components';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { getPageMap } from 'nextra/page-map';
+import 'nextra-theme-docs/style.css';
 import './globals.css';
-import HomeLink from '@/components/HomeLink';
-import VovkLogo from '@/components/VovkLogo';
-import Nav from '@/components/Nav';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vovk-examples.vercel.app'),
@@ -30,13 +28,46 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const banner = <Banner storageKey="some-key">Nextra 4.0 is released 🎉</Banner>;
+const navbar = (
+  <Navbar
+    logo={<b>Nextra</b>}
+    // ... Your additional navbar options
+  />
+);
+const footer = <Footer>MIT {new Date().getFullYear()} © Nextra.</Footer>;
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <head />
-      <body className={`${inter.className} dark:text-white text-neutral-950`}>
-        <Nav />
-        <div className="p-6 max-w-[90rem] mx-auto app-wrapper">{children}</div>
+    <html
+      // Not required, but good for SEO
+      lang="en"
+      // Required to be set
+      dir="ltr"
+      // Suggested by `next-themes` package https://github.com/pacocoursey/next-themes#with-app
+      suppressHydrationWarning
+    >
+      <Head
+        color={{
+          hue: 268,
+          saturation: 77,
+          lightness: {
+            light: 44,
+            dark: 100,
+          },
+        }}
+      />
+      <body>
+        <Layout
+          banner={banner}
+          navbar={navbar}
+          pageMap={await getPageMap()}
+          docsRepositoryBase="https://github.com/shuding/nextra/tree/main/docs"
+          footer={footer}
+          // ... Your additional layout options
+        >
+          {children}
+        </Layout>
       </body>
     </html>
   );

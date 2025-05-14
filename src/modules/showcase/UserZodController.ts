@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { prefix, post } from 'vovk';
+import { prefix, post, type VovkOutput } from 'vovk';
 import { openapi } from 'vovk-openapi';
 import { withZod } from 'vovk-zod';
 
@@ -37,7 +37,7 @@ export default class UserController {
       console.log(`Updating user ${id}:`, { name, age, notify });
       return {
         success: true,
-      };
+      } satisfies VovkOutput<typeof UserController.updateUser>;
     },
   });
 }

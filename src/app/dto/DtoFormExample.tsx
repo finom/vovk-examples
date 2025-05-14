@@ -21,7 +21,7 @@ export default function DtoFormExample() {
           disableClientValidation,
           // vovk.config doesn't include preferred validation library,
           // so we need to pass it manually for this example.
-          // This is not needed in a real project when validateOnClientPath is set.
+          // This is not needed in a real project when config.imports.validateOnClient is set.
           validateOnClient,
         })
       );

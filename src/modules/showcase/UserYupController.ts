@@ -1,5 +1,5 @@
 import * as yup from 'yup';
-import { prefix, post } from 'vovk';
+import { prefix, post, type VovkOutput } from 'vovk';
 import { openapi } from 'vovk-openapi';
 import { withYup } from 'vovk-yup';
 
@@ -47,7 +47,7 @@ export default class UserYupController {
       console.log(`Updating user ${id}:`, { name, age, notify });
       return {
         success: true,
-      };
+      } satisfies VovkOutput<typeof UserYupController.updateUser>;
     },
   });
 }

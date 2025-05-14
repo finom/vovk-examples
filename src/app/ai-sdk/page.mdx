@@ -1,0 +1,28 @@
+---
+title: Vercel AI SDK example
+description: Vercel AI SDK example
+---
+
+import AiSdkExample from './AiSdkExample';
+import GithubFiles from '@/components/GithubFiles';
+import Example from '@/components/Example';
+
+
+# Vercel AI SDK example
+
+  The `result.toDataStreamResponse` method returns a `Response` object, which is forwarded directly to the Next.js route handler. On the client side, you can use the `useChat` hook to consume the stream and render chat messages seamlessly, as outlined in the [AI SDK](https://github.com/vercel/ai) documentation.
+
+## Result
+
+<Example>
+    <AiSdkExample />
+</Example>
+
+## Code
+
+<GithubFiles
+  paths={[
+    'src/modules/ai-sdk/AiSdkController.ts',
+    'src/app/ai-sdk/AiSdkExample.tsx',
+  ]}
+/>

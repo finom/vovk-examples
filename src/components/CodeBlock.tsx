@@ -32,7 +32,7 @@ const CodeBlock = ({ lineNumbers, className, children }: Props) => {
 
   const code = newLines.join('\n');
   return (
-    <>
+    <div className="border dark:!border-gray-800 text-sm">
       <div data-theme="dark" className="hidden dark:block">
         <Code lang="tsx" className={className} lineNumbers={lineNumbers}>
           {code}
@@ -43,7 +43,7 @@ const CodeBlock = ({ lineNumbers, className, children }: Props) => {
           {code}
         </Code>
       </div>
-    </>
+    </div>
   );
 };
 

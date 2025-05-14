@@ -7,6 +7,16 @@ interface Props {
   title: string;
 }
 
+export const constants = {
+  runtime: 'edge',
+  alt: 'Vovk.ts',
+  size: {
+    width: 1200,
+    height: 600,
+  },
+  contentType: 'image/png',
+};
+
 export default function ExampleOg({ title }: Props) {
   const logoSize = 2.3;
   const bgSize = 1.29;
