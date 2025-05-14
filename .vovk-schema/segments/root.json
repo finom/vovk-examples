@@ -1,9 +1,10 @@
 {
+  "$schema": "https://vovk.dev/api/schema/v3/segment.json",
   "emitSchema": true,
   "segmentName": "",
   "controllers": {
     "BasicRPC": {
-      "controllerName": "BasicRPC",
+      "rpcModuleName": "BasicRPC",
       "originalControllerName": "BasicController",
       "prefix": "basic",
       "handlers": {
@@ -26,7 +27,7 @@
       }
     },
     "BasicRPCWithService": {
-      "controllerName": "BasicRPCWithService",
+      "rpcModuleName": "BasicRPCWithService",
       "originalControllerName": "BasicControllerWithService",
       "prefix": "basic-with-service",
       "handlers": {
@@ -41,7 +42,7 @@
       }
     },
     "StreamRPC": {
-      "controllerName": "StreamRPC",
+      "rpcModuleName": "StreamRPC",
       "originalControllerName": "StreamController",
       "prefix": "stream",
       "handlers": {
@@ -56,7 +57,7 @@
       }
     },
     "StreamResponseObjectRPC": {
-      "controllerName": "StreamResponseObjectRPC",
+      "rpcModuleName": "StreamResponseObjectRPC",
       "originalControllerName": "StreamResponseObjectController",
       "prefix": "stream-with-object",
       "handlers": {
@@ -71,7 +72,7 @@
       }
     },
     "OpenAiRPC": {
-      "controllerName": "OpenAiRPC",
+      "rpcModuleName": "OpenAiRPC",
       "originalControllerName": "OpenAiController",
       "prefix": "openai",
       "handlers": {
@@ -86,7 +87,7 @@
       }
     },
     "ZodRPC": {
-      "controllerName": "ZodRPC",
+      "rpcModuleName": "ZodRPC",
       "originalControllerName": "ZodController",
       "prefix": "zod",
       "handlers": {
@@ -102,12 +103,17 @@
                 },
                 "email": {
                   "type": "string",
-                  "format": "email"
+                  "format": "email",
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": ["name", "email"],
-              "additionalProperties": false,
-              "$schema": "http://json-schema.org/draft-07/schema#"
+              "required": [
+                "name",
+                "email"
+              ],
+              "additionalProperties": {
+                "not": {}
+              }
             },
             "query": {
               "type": "object",
@@ -115,11 +121,10 @@
                 "id": {
                   "type": "string",
                   "format": "uuid",
-                  "description": "User ID"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
                 },
                 "yyy": {
-                  "type": "number",
-                  "description": "Number"
+                  "type": "number"
                 },
                 "xxx": {
                   "type": "object",
@@ -127,16 +132,32 @@
                     "yyy": {
                       "type": "string",
                       "format": "time",
-                      "description": "Time"
+                      "pattern": "^([01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(\\.\\d+)?$"
                     }
                   },
-                  "required": ["yyy"],
-                  "additionalProperties": false
+                  "required": [
+                    "yyy"
+                  ]
                 }
               },
-              "required": ["id", "yyy", "xxx"],
-              "additionalProperties": false,
-              "$schema": "http://json-schema.org/draft-07/schema#"
+              "required": [
+                "id",
+                "yyy",
+                "xxx"
+              ]
+            },
+            "params": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                }
+              },
+              "required": [
+                "id"
+              ]
             },
             "output": {
               "type": "object",
@@ -154,84 +175,40 @@
                     },
                     "email": {
                       "type": "string",
-                      "format": "email"
+                      "format": "email",
+                      "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                     },
                     "id": {
                       "type": "string",
                       "format": "uuid",
-                      "description": "User ID"
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
                     }
                   },
-                  "required": ["name", "email", "id"],
-                  "additionalProperties": false
+                  "required": [
+                    "name",
+                    "email",
+                    "id"
+                  ],
+                  "additionalProperties": {
+                    "not": {}
+                  }
                 }
               },
-              "required": ["success", "user"],
-              "additionalProperties": false,
-              "description": "Response XXX",
-              "$schema": "http://json-schema.org/draft-07/schema#"
-            },
-            "params": {
-              "type": "object",
-              "properties": {
-                "id": {
-                  "type": "string",
-                  "format": "uuid",
-                  "description": "User ID"
-                }
-              },
-              "required": ["id"],
-              "additionalProperties": false,
-              "$schema": "http://json-schema.org/draft-07/schema#"
-            },
-            "iteration": null
+              "required": [
+                "success",
+                "user"
+              ],
+              "additionalProperties": {
+                "not": {}
+              }
+            }
           },
           "path": "update-user/:id",
           "httpMethod": "POST",
           "openapi": {
             "responses": {
-              "200": {
-                "description": "Response XXX",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean"
-                        },
-                        "user": {
-                          "type": "object",
-                          "properties": {
-                            "name": {
-                              "type": "string",
-                              "minLength": 2,
-                              "maxLength": 20
-                            },
-                            "email": {
-                              "type": "string",
-                              "format": "email"
-                            },
-                            "id": {
-                              "type": "string",
-                              "format": "uuid",
-                              "description": "User ID"
-                            }
-                          },
-                          "required": ["name", "email", "id"],
-                          "additionalProperties": false
-                        }
-                      },
-                      "required": ["success", "user"],
-                      "additionalProperties": false,
-                      "description": "Response XXX",
-                      "$schema": "http://json-schema.org/draft-07/schema#"
-                    }
-                  }
-                }
-              },
               "400": {
-                "description": "400 response",
+                "description": "400 Bad Request",
                 "content": {
                   "application/json": {
                     "schema": {
@@ -244,11 +221,16 @@
                           "properties": {
                             "message": {
                               "type": "string",
-                              "enum": ["Validation error 11", "Validation error 33"]
+                              "enum": [
+                                "Validation error 11",
+                                "Validation error 33"
+                              ]
                             },
                             "statusCode": {
                               "type": "integer",
-                              "enum": [400]
+                              "enum": [
+                                400
+                              ]
                             }
                           }
                         }
@@ -258,7 +240,7 @@
                 }
               },
               "500": {
-                "description": "500 response",
+                "description": "500 Internal Server Error",
                 "content": {
                   "application/json": {
                     "schema": {
@@ -271,11 +253,15 @@
                           "properties": {
                             "message": {
                               "type": "string",
-                              "enum": ["Validation error 22"]
+                              "enum": [
+                                "Validation error 22"
+                              ]
                             },
                             "statusCode": {
                               "type": "integer",
-                              "enum": [500]
+                              "enum": [
+                                500
+                              ]
                             }
                           }
                         }
@@ -286,86 +272,13 @@
               }
             },
             "summary": "Create a user with Zod",
-            "description": "Create a user with Zod for body validation",
-            "parameters": [
-              {
-                "name": "id",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "format": "uuid",
-                  "description": "User ID"
-                }
-              },
-              {
-                "name": "yyy",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "number",
-                  "description": "Number"
-                }
-              },
-              {
-                "name": "xxx",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "yyy": {
-                      "type": "string",
-                      "format": "time",
-                      "description": "Time"
-                    }
-                  },
-                  "required": ["yyy"],
-                  "additionalProperties": false
-                }
-              },
-              {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "format": "uuid",
-                  "description": "User ID"
-                }
-              }
-            ],
-            "requestBody": {
-              "description": "Request body",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "minLength": 2,
-                        "maxLength": 20
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "required": ["name", "email"],
-                    "additionalProperties": false,
-                    "$schema": "http://json-schema.org/draft-07/schema#"
-                  }
-                }
-              }
-            }
+            "description": "Create a user with Zod for body validation"
           }
         }
       }
     },
     "YupRPC": {
-      "controllerName": "YupRPC",
+      "rpcModuleName": "YupRPC",
       "originalControllerName": "YupController",
       "prefix": "yup",
       "handlers": {
@@ -384,47 +297,23 @@
                   "format": "email"
                 }
               },
-              "required": ["name", "email"]
-            },
-            "query": null,
-            "output": null,
-            "params": null,
-            "iteration": null
+              "required": [
+                "name",
+                "email"
+              ]
+            }
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with Yup",
-            "description": "Create a user with Yup for body validation",
-            "requestBody": {
-              "description": "Request body",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "minLength": 2,
-                        "maxLength": 20
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email"
-                      }
-                    },
-                    "required": ["name", "email"]
-                  }
-                }
-              }
-            }
+            "description": "Create a user with Yup for body validation"
           }
         }
       }
     },
     "DtoRPC": {
-      "controllerName": "DtoRPC",
+      "rpcModuleName": "DtoRPC",
       "originalControllerName": "DtoController",
       "prefix": "dto",
       "handlers": {
@@ -432,6 +321,7 @@
           "validation": {
             "body": {
               "x-isDto": true,
+              "definitions": {},
               "properties": {
                 "name": {
                   "maxLength": 20,
@@ -444,48 +334,23 @@
                 }
               },
               "type": "object",
-              "required": ["name", "email"]
-            },
-            "query": null,
-            "output": null,
-            "params": null,
-            "iteration": null
+              "required": [
+                "name",
+                "email"
+              ]
+            }
           },
           "path": "create-user",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Create a user with DTO",
-            "description": "Create a user with DTO for body validation",
-            "requestBody": {
-              "description": "Request body",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "x-isDto": true,
-                    "properties": {
-                      "name": {
-                        "maxLength": 20,
-                        "type": "string",
-                        "minLength": 2
-                      },
-                      "email": {
-                        "format": "email",
-                        "type": "string"
-                      }
-                    },
-                    "type": "object",
-                    "required": ["name", "email"]
-                  }
-                }
-              }
-            }
+            "description": "Create a user with DTO for body validation"
           }
         }
       }
     },
     "AiSdkRPC": {
-      "controllerName": "AiSdkRPC",
+      "rpcModuleName": "AiSdkRPC",
       "originalControllerName": "AiSdkController",
       "prefix": "ai-sdk",
       "handlers": {
@@ -507,7 +372,7 @@
       }
     },
     "ProxyRPC": {
-      "controllerName": "ProxyRPC",
+      "rpcModuleName": "ProxyRPC",
       "originalControllerName": "ProxyController",
       "prefix": "proxy",
       "handlers": {
@@ -522,7 +387,7 @@
       }
     },
     "UserRPC": {
-      "controllerName": "UserRPC",
+      "rpcModuleName": "UserRPC",
       "originalControllerName": "UserController",
       "prefix": "users",
       "handlers": {
@@ -532,50 +397,38 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string",
-                  "description": "User full name"
+                  "type": "string"
                 },
                 "age": {
                   "type": "number",
-                  "minimum": 0,
-                  "description": "User age"
+                  "minimum": 0
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
-                  "description": "User email"
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": ["name", "age", "email"],
-              "additionalProperties": false,
-              "description": "User object",
-              "$schema": "http://json-schema.org/draft-07/schema#"
+              "required": [
+                "name",
+                "age",
+                "email"
+              ]
             },
             "query": {
               "type": "object",
               "properties": {
                 "notify": {
-                  "type": "string",
-                  "enum": ["email", "push", "none"],
-                  "description": "Notification type"
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ]
                 }
               },
-              "required": ["notify"],
-              "additionalProperties": false,
-              "$schema": "http://json-schema.org/draft-07/schema#"
-            },
-            "output": {
-              "type": "object",
-              "properties": {
-                "success": {
-                  "type": "boolean",
-                  "description": "Success status"
-                }
-              },
-              "required": ["success"],
-              "additionalProperties": false,
-              "description": "Response object",
-              "$schema": "http://json-schema.org/draft-07/schema#"
+              "required": [
+                "notify"
+              ]
             },
             "params": {
               "type": "object",
@@ -583,101 +436,36 @@
                 "id": {
                   "type": "string",
                   "format": "uuid",
-                  "description": "User ID"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
                 }
               },
-              "required": ["id"],
-              "additionalProperties": false,
-              "$schema": "http://json-schema.org/draft-07/schema#"
+              "required": [
+                "id"
+              ]
             },
-            "iteration": null
+            "output": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "success"
+              ]
+            }
           },
           "path": ":id",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
-            "description": "Update user by ID with Zod validation",
-            "parameters": [
-              {
-                "name": "notify",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "enum": ["email", "push", "none"],
-                  "description": "Notification type"
-                }
-              },
-              {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "format": "uuid",
-                  "description": "User ID"
-                }
-              }
-            ],
-            "responses": {
-              "200": {
-                "description": "Response object",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Success status"
-                        }
-                      },
-                      "required": ["success"],
-                      "additionalProperties": false,
-                      "description": "Response object",
-                      "$schema": "http://json-schema.org/draft-07/schema#"
-                    }
-                  }
-                }
-              }
-            },
-            "requestBody": {
-              "description": "User object",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "User full name"
-                      },
-                      "age": {
-                        "type": "number",
-                        "minimum": 0,
-                        "description": "User age"
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email",
-                        "description": "User email"
-                      }
-                    },
-                    "required": ["name", "age", "email"],
-                    "additionalProperties": false,
-                    "description": "User object",
-                    "$schema": "http://json-schema.org/draft-07/schema#"
-                  }
-                }
-              }
-            }
+            "description": "Update user by ID with Zod validation"
           }
         }
       }
     },
     "UserYupRPC": {
-      "controllerName": "UserYupRPC",
+      "rpcModuleName": "UserYupRPC",
       "originalControllerName": "UserYupController",
       "prefix": "users-yup",
       "handlers": {
@@ -701,7 +489,11 @@
                   "description": "User email"
                 }
               },
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "description": "User object"
             },
             "query": {
@@ -709,22 +501,17 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": ["email", "push", "none"],
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
                   "description": "Notification type"
                 }
               },
-              "required": ["notify"]
-            },
-            "output": {
-              "type": "object",
-              "properties": {
-                "success": {
-                  "type": "boolean",
-                  "description": "Success status"
-                }
-              },
-              "required": ["success"],
-              "description": "Response object"
+              "required": [
+                "notify"
+              ]
             },
             "params": {
               "type": "object",
@@ -734,91 +521,35 @@
                   "description": "User ID"
                 }
               },
-              "required": ["id"]
+              "required": [
+                "id"
+              ]
             },
-            "iteration": null
+            "output": {
+              "type": "object",
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Success status"
+                }
+              },
+              "required": [
+                "success"
+              ],
+              "description": "Response object"
+            }
           },
           "path": ":id",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
-            "description": "Update user by ID with Yup validation",
-            "parameters": [
-              {
-                "name": "notify",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "enum": ["email", "push", "none"],
-                  "description": "Notification type"
-                }
-              },
-              {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "description": "User ID"
-                }
-              }
-            ],
-            "responses": {
-              "200": {
-                "description": "Response object",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "type": "object",
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Success status"
-                        }
-                      },
-                      "required": ["success"],
-                      "description": "Response object"
-                    }
-                  }
-                }
-              }
-            },
-            "requestBody": {
-              "description": "User object",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "User full name"
-                      },
-                      "age": {
-                        "type": "number",
-                        "minimum": 0,
-                        "description": "User age"
-                      },
-                      "email": {
-                        "type": "string",
-                        "format": "email",
-                        "description": "User email"
-                      }
-                    },
-                    "required": ["name", "age", "email"],
-                    "description": "User object"
-                  }
-                }
-              }
-            }
+            "description": "Update user by ID with Yup validation"
           }
         }
       }
     },
     "UserDtoRPC": {
-      "controllerName": "UserDtoRPC",
+      "rpcModuleName": "UserDtoRPC",
       "originalControllerName": "UserDtoController",
       "prefix": "users-dto",
       "handlers": {
@@ -826,6 +557,7 @@
           "validation": {
             "body": {
               "x-isDto": true,
+              "definitions": {},
               "properties": {
                 "name": {
                   "type": "string",
@@ -843,36 +575,36 @@
                 }
               },
               "type": "object",
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "description": "User object"
             },
             "query": {
               "x-isDto": true,
+              "definitions": {},
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": ["email", "push", "none"],
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
                   "description": "Notification type"
                 }
               },
               "type": "object",
-              "required": ["notify"],
+              "required": [
+                "notify"
+              ],
               "description": "Query parameters"
-            },
-            "output": {
-              "x-isDto": true,
-              "properties": {
-                "success": {
-                  "type": "boolean",
-                  "description": "Success status"
-                }
-              },
-              "type": "object",
-              "required": ["success"],
-              "description": "Response object"
             },
             "params": {
               "x-isDto": true,
+              "definitions": {},
               "properties": {
                 "id": {
                   "format": "uuid",
@@ -881,89 +613,32 @@
                 }
               },
               "type": "object",
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "description": "Path parameters"
             },
-            "iteration": null
+            "output": {
+              "x-isDto": true,
+              "definitions": {},
+              "properties": {
+                "success": {
+                  "type": "boolean",
+                  "description": "Success status"
+                }
+              },
+              "type": "object",
+              "required": [
+                "success"
+              ],
+              "description": "Response object"
+            }
           },
           "path": ":id",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
-            "description": "Update user by ID with DTO validation",
-            "parameters": [
-              {
-                "name": "notify",
-                "in": "query",
-                "required": true,
-                "schema": {
-                  "type": "string",
-                  "enum": ["email", "push", "none"],
-                  "description": "Notification type"
-                }
-              },
-              {
-                "name": "id",
-                "in": "path",
-                "required": true,
-                "schema": {
-                  "format": "uuid",
-                  "type": "string",
-                  "description": "User ID"
-                }
-              }
-            ],
-            "responses": {
-              "200": {
-                "description": "Response object",
-                "content": {
-                  "application/json": {
-                    "schema": {
-                      "x-isDto": true,
-                      "properties": {
-                        "success": {
-                          "type": "boolean",
-                          "description": "Success status"
-                        }
-                      },
-                      "type": "object",
-                      "required": ["success"],
-                      "description": "Response object"
-                    }
-                  }
-                }
-              }
-            },
-            "requestBody": {
-              "description": "User object",
-              "required": true,
-              "content": {
-                "application/json": {
-                  "schema": {
-                    "x-isDto": true,
-                    "properties": {
-                      "name": {
-                        "type": "string",
-                        "description": "User full name"
-                      },
-                      "age": {
-                        "minimum": 0,
-                        "type": "number",
-                        "description": "User age"
-                      },
-                      "email": {
-                        "format": "email",
-                        "type": "string",
-                        "description": "User email"
-                      }
-                    },
-                    "type": "object",
-                    "required": ["name", "age", "email"],
-                    "description": "User object"
-                  }
-                }
-              }
-            }
+            "description": "Update user by ID with DTO validation"
           }
         }
       }

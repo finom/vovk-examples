@@ -1,0 +1,161 @@
+diff --git a/node_modules/@ai-sdk/openai/dist/index.js b/node_modules/@ai-sdk/openai/dist/index.js
+index ad3c86e..f270a27 100644
+--- a/node_modules/@ai-sdk/openai/dist/index.js
++++ b/node_modules/@ai-sdk/openai/dist/index.js
+@@ -31,7 +31,7 @@ var import_provider_utils11 = require("@ai-sdk/provider-utils");
+ // src/openai-chat-language-model.ts
+ var import_provider3 = require("@ai-sdk/provider");
+ var import_provider_utils3 = require("@ai-sdk/provider-utils");
+-var import_zod2 = require("zod");
++var import_zod2 = require("zod3");
+ 
+ // src/convert-to-openai-chat-messages.ts
+ var import_provider = require("@ai-sdk/provider");
+@@ -235,7 +235,7 @@ function mapOpenAIFinishReason(finishReason) {
+ }
+ 
+ // src/openai-error.ts
+-var import_zod = require("zod");
++var import_zod = require("zod3");
+ var import_provider_utils2 = require("@ai-sdk/provider-utils");
+ var openaiErrorDataSchema = import_zod.z.object({
+   error: import_zod.z.object({
+@@ -1101,7 +1101,7 @@ var reasoningModels = {
+ // src/openai-completion-language-model.ts
+ var import_provider5 = require("@ai-sdk/provider");
+ var import_provider_utils4 = require("@ai-sdk/provider-utils");
+-var import_zod3 = require("zod");
++var import_zod3 = require("zod3");
+ 
+ // src/convert-to-openai-completion-prompt.ts
+ var import_provider4 = require("@ai-sdk/provider");
+@@ -1474,7 +1474,7 @@ var openaiCompletionChunkSchema = import_zod3.z.union([
+ // src/openai-embedding-model.ts
+ var import_provider6 = require("@ai-sdk/provider");
+ var import_provider_utils5 = require("@ai-sdk/provider-utils");
+-var import_zod4 = require("zod");
++var import_zod4 = require("zod3");
+ var OpenAIEmbeddingModel = class {
+   constructor(modelId, settings, config) {
+     this.specificationVersion = "v1";
+@@ -1540,7 +1540,7 @@ var openaiTextEmbeddingResponseSchema = import_zod4.z.object({
+ 
+ // src/openai-image-model.ts
+ var import_provider_utils6 = require("@ai-sdk/provider-utils");
+-var import_zod5 = require("zod");
++var import_zod5 = require("zod3");
+ 
+ // src/openai-image-settings.ts
+ var modelMaxImagesPerCall = {
+@@ -1626,7 +1626,7 @@ var openaiImageResponseSchema = import_zod5.z.object({
+ 
+ // src/openai-transcription-model.ts
+ var import_provider_utils7 = require("@ai-sdk/provider-utils");
+-var import_zod6 = require("zod");
++var import_zod6 = require("zod3");
+ var openAIProviderOptionsSchema = import_zod6.z.object({
+   include: import_zod6.z.array(import_zod6.z.string()).nullish(),
+   language: import_zod6.z.string().nullish(),
+@@ -1795,7 +1795,7 @@ var openaiTranscriptionResponseSchema = import_zod6.z.object({
+ 
+ // src/responses/openai-responses-language-model.ts
+ var import_provider_utils9 = require("@ai-sdk/provider-utils");
+-var import_zod7 = require("zod");
++var import_zod7 = require("zod3");
+ 
+ // src/responses/convert-to-openai-responses-messages.ts
+ var import_provider7 = require("@ai-sdk/provider");
+@@ -2624,7 +2624,7 @@ var openaiResponsesProviderOptionsSchema = import_zod7.z.object({
+ });
+ 
+ // src/openai-tools.ts
+-var import_zod8 = require("zod");
++var import_zod8 = require("zod3");
+ var WebSearchPreviewParameters = import_zod8.z.object({});
+ function webSearchPreviewTool({
+   searchContextSize,
+@@ -2646,7 +2646,7 @@ var openaiTools = {
+ 
+ // src/openai-speech-model.ts
+ var import_provider_utils10 = require("@ai-sdk/provider-utils");
+-var import_zod9 = require("zod");
++var import_zod9 = require("zod3");
+ var OpenAIProviderOptionsSchema = import_zod9.z.object({
+   instructions: import_zod9.z.string().nullish(),
+   speed: import_zod9.z.number().min(0.25).max(4).default(1).nullish()
+diff --git a/node_modules/@ai-sdk/openai/internal/dist/index.js b/node_modules/@ai-sdk/openai/internal/dist/index.js
+index a29b3fd..ea400db 100644
+--- a/node_modules/@ai-sdk/openai/internal/dist/index.js
++++ b/node_modules/@ai-sdk/openai/internal/dist/index.js
+@@ -35,7 +35,7 @@ module.exports = __toCommonJS(internal_exports);
+ // src/openai-chat-language-model.ts
+ var import_provider3 = require("@ai-sdk/provider");
+ var import_provider_utils3 = require("@ai-sdk/provider-utils");
+-var import_zod2 = require("zod");
++var import_zod2 = require("zod3");
+ 
+ // src/convert-to-openai-chat-messages.ts
+ var import_provider = require("@ai-sdk/provider");
+@@ -239,7 +239,7 @@ function mapOpenAIFinishReason(finishReason) {
+ }
+ 
+ // src/openai-error.ts
+-var import_zod = require("zod");
++var import_zod = require("zod3");
+ var import_provider_utils2 = require("@ai-sdk/provider-utils");
+ var openaiErrorDataSchema = import_zod.z.object({
+   error: import_zod.z.object({
+@@ -1105,7 +1105,7 @@ var reasoningModels = {
+ // src/openai-completion-language-model.ts
+ var import_provider5 = require("@ai-sdk/provider");
+ var import_provider_utils4 = require("@ai-sdk/provider-utils");
+-var import_zod3 = require("zod");
++var import_zod3 = require("zod3");
+ 
+ // src/convert-to-openai-completion-prompt.ts
+ var import_provider4 = require("@ai-sdk/provider");
+@@ -1478,7 +1478,7 @@ var openaiCompletionChunkSchema = import_zod3.z.union([
+ // src/openai-embedding-model.ts
+ var import_provider6 = require("@ai-sdk/provider");
+ var import_provider_utils5 = require("@ai-sdk/provider-utils");
+-var import_zod4 = require("zod");
++var import_zod4 = require("zod3");
+ var OpenAIEmbeddingModel = class {
+   constructor(modelId, settings, config) {
+     this.specificationVersion = "v1";
+@@ -1544,7 +1544,7 @@ var openaiTextEmbeddingResponseSchema = import_zod4.z.object({
+ 
+ // src/openai-image-model.ts
+ var import_provider_utils6 = require("@ai-sdk/provider-utils");
+-var import_zod5 = require("zod");
++var import_zod5 = require("zod3");
+ 
+ // src/openai-image-settings.ts
+ var modelMaxImagesPerCall = {
+@@ -1630,7 +1630,7 @@ var openaiImageResponseSchema = import_zod5.z.object({
+ 
+ // src/openai-transcription-model.ts
+ var import_provider_utils7 = require("@ai-sdk/provider-utils");
+-var import_zod6 = require("zod");
++var import_zod6 = require("zod3");
+ var openAIProviderOptionsSchema = import_zod6.z.object({
+   include: import_zod6.z.array(import_zod6.z.string()).nullish(),
+   language: import_zod6.z.string().nullish(),
+@@ -1799,7 +1799,7 @@ var openaiTranscriptionResponseSchema = import_zod6.z.object({
+ 
+ // src/openai-speech-model.ts
+ var import_provider_utils8 = require("@ai-sdk/provider-utils");
+-var import_zod7 = require("zod");
++var import_zod7 = require("zod3");
+ var OpenAIProviderOptionsSchema = import_zod7.z.object({
+   instructions: import_zod7.z.string().nullish(),
+   speed: import_zod7.z.number().min(0.25).max(4).default(1).nullish()
+@@ -1898,7 +1898,7 @@ var OpenAISpeechModel = class {
+ 
+ // src/responses/openai-responses-language-model.ts
+ var import_provider_utils10 = require("@ai-sdk/provider-utils");
+-var import_zod8 = require("zod");
++var import_zod8 = require("zod3");
+ 
+ // src/responses/convert-to-openai-responses-messages.ts
+ var import_provider7 = require("@ai-sdk/provider");

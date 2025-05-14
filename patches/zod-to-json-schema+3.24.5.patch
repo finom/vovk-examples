@@ -1,0 +1,379 @@
+diff --git a/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js b/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js
+index 1b2fcec..fd8025c 100644
+--- a/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js
++++ b/node_modules/zod-to-json-schema/dist/cjs/parsers/array.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.parseArrayDef = void 0;
+-const zod_1 = require("zod");
++const zod_1 = require("zod3");
+ const errorMessages_js_1 = require("../errorMessages.js");
+ const parseDef_js_1 = require("../parseDef.js");
+ function parseArrayDef(def, refs) {
+diff --git a/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js b/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js
+index bda43dd..0ff372f 100644
+--- a/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js
++++ b/node_modules/zod-to-json-schema/dist/cjs/parsers/object.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.parseObjectDef = void 0;
+-const zod_1 = require("zod");
++const zod_1 = require("zod3");
+ const parseDef_js_1 = require("../parseDef.js");
+ function parseObjectDef(def, refs) {
+     const forceOptionalIntoNullable = refs.target === "openAi";
+diff --git a/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js b/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js
+index d2b05a0..3ef652b 100644
+--- a/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js
++++ b/node_modules/zod-to-json-schema/dist/cjs/parsers/record.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.parseRecordDef = void 0;
+-const zod_1 = require("zod");
++const zod_1 = require("zod3");
+ const parseDef_js_1 = require("../parseDef.js");
+ const string_js_1 = require("./string.js");
+ const branded_js_1 = require("./branded.js");
+diff --git a/node_modules/zod-to-json-schema/dist/cjs/selectParser.js b/node_modules/zod-to-json-schema/dist/cjs/selectParser.js
+index ac75d38..34eb9a1 100644
+--- a/node_modules/zod-to-json-schema/dist/cjs/selectParser.js
++++ b/node_modules/zod-to-json-schema/dist/cjs/selectParser.js
+@@ -1,7 +1,7 @@
+ "use strict";
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.selectParser = void 0;
+-const zod_1 = require("zod");
++const zod_1 = require("zod3");
+ const any_js_1 = require("./parsers/any.js");
+ const array_js_1 = require("./parsers/array.js");
+ const bigint_js_1 = require("./parsers/bigint.js");
+diff --git a/node_modules/zod-to-json-schema/dist/esm/parsers/array.js b/node_modules/zod-to-json-schema/dist/esm/parsers/array.js
+index 16bdd24..e1c182c 100644
+--- a/node_modules/zod-to-json-schema/dist/esm/parsers/array.js
++++ b/node_modules/zod-to-json-schema/dist/esm/parsers/array.js
+@@ -1,4 +1,4 @@
+-import { ZodFirstPartyTypeKind } from "zod";
++import { ZodFirstPartyTypeKind } from "zod3";
+ import { setResponseValueAndErrors } from "../errorMessages.js";
+ import { parseDef } from "../parseDef.js";
+ export function parseArrayDef(def, refs) {
+diff --git a/node_modules/zod-to-json-schema/dist/esm/parsers/object.js b/node_modules/zod-to-json-schema/dist/esm/parsers/object.js
+index 00b4a29..3c010fc 100644
+--- a/node_modules/zod-to-json-schema/dist/esm/parsers/object.js
++++ b/node_modules/zod-to-json-schema/dist/esm/parsers/object.js
+@@ -1,4 +1,4 @@
+-import { ZodOptional } from "zod";
++import { ZodOptional } from "zod3";
+ import { parseDef } from "../parseDef.js";
+ export function parseObjectDef(def, refs) {
+     const forceOptionalIntoNullable = refs.target === "openAi";
+diff --git a/node_modules/zod-to-json-schema/dist/esm/parsers/record.js b/node_modules/zod-to-json-schema/dist/esm/parsers/record.js
+index 70ec718..8f26951 100644
+--- a/node_modules/zod-to-json-schema/dist/esm/parsers/record.js
++++ b/node_modules/zod-to-json-schema/dist/esm/parsers/record.js
+@@ -1,4 +1,4 @@
+-import { ZodFirstPartyTypeKind, } from "zod";
++import { ZodFirstPartyTypeKind, } from "zod3";
+ import { parseDef } from "../parseDef.js";
+ import { parseStringDef } from "./string.js";
+ import { parseBrandedDef } from "./branded.js";
+diff --git a/node_modules/zod-to-json-schema/dist/esm/selectParser.js b/node_modules/zod-to-json-schema/dist/esm/selectParser.js
+index 84bdde8..e9340ca 100644
+--- a/node_modules/zod-to-json-schema/dist/esm/selectParser.js
++++ b/node_modules/zod-to-json-schema/dist/esm/selectParser.js
+@@ -1,4 +1,4 @@
+-import { ZodFirstPartyTypeKind } from "zod";
++import { ZodFirstPartyTypeKind } from "zod3";
+ import { parseAnyDef } from "./parsers/any.js";
+ import { parseArrayDef } from "./parsers/array.js";
+ import { parseBigintDef } from "./parsers/bigint.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/Options.d.ts b/node_modules/zod-to-json-schema/dist/types/Options.d.ts
+index a992906..f3a2dc8 100644
+--- a/node_modules/zod-to-json-schema/dist/types/Options.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/Options.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodSchema, ZodTypeDef } from "zod";
++import { ZodSchema, ZodTypeDef } from "zod3";
+ import { Refs, Seen } from "./Refs";
+ import { JsonSchema7Type } from "./parseTypes";
+ export type Targets = "jsonSchema7" | "jsonSchema2019-09" | "openApi3" | "openAi";
+diff --git a/node_modules/zod-to-json-schema/dist/types/Refs.d.ts b/node_modules/zod-to-json-schema/dist/types/Refs.d.ts
+index 24b31df..3e039ec 100644
+--- a/node_modules/zod-to-json-schema/dist/types/Refs.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/Refs.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodTypeDef } from "zod";
++import { ZodTypeDef } from "zod3";
+ import { Options, Targets } from "./Options.js";
+ import { JsonSchema7Type } from "./parseTypes.js";
+ export type Refs = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parseDef.d.ts b/node_modules/zod-to-json-schema/dist/types/parseDef.d.ts
+index 8850046..4ee110d 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parseDef.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parseDef.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodTypeDef } from "zod";
++import { ZodTypeDef } from "zod3";
+ import { Refs } from "./Refs.js";
+ import { JsonSchema7Type } from "./parseTypes.js";
+ export declare function parseDef(def: ZodTypeDef, refs: Refs, forceResolution?: boolean): JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/array.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/array.d.ts
+index 2f284c8..ed7a9f2 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/array.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/array.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodArrayDef } from "zod";
++import { ZodArrayDef } from "zod3";
+ import { ErrorMessages } from "../errorMessages.js";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/bigint.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/bigint.d.ts
+index d87fe1d..0a46e83 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/bigint.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/bigint.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodBigIntDef } from "zod";
++import { ZodBigIntDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ import { ErrorMessages } from "../errorMessages.js";
+ export type JsonSchema7BigintType = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/branded.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/branded.d.ts
+index c62eca2..d800845 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/branded.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/branded.d.ts
+@@ -1,3 +1,3 @@
+-import { ZodBrandedDef } from "zod";
++import { ZodBrandedDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ export declare function parseBrandedDef(_def: ZodBrandedDef<any>, refs: Refs): import("../parseTypes.js").JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/catch.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/catch.d.ts
+index efb622e..467cc07 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/catch.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/catch.d.ts
+@@ -1,3 +1,3 @@
+-import { ZodCatchDef } from "zod";
++import { ZodCatchDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ export declare const parseCatchDef: (def: ZodCatchDef<any>, refs: Refs) => import("../parseTypes.js").JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/date.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/date.d.ts
+index fbca673..ab30f24 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/date.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/date.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodDateDef } from "zod";
++import { ZodDateDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ import { ErrorMessages } from "../errorMessages.js";
+ import { JsonSchema7NumberType } from "./number.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/default.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/default.d.ts
+index f4e60a0..f8806b1 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/default.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/default.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodDefaultDef } from "zod";
++import { ZodDefaultDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export declare function parseDefaultDef(_def: ZodDefaultDef, refs: Refs): JsonSchema7Type & {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/effects.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/effects.d.ts
+index 59b1eab..cdfaa5f 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/effects.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/effects.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodEffectsDef } from "zod";
++import { ZodEffectsDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export declare function parseEffectsDef(_def: ZodEffectsDef, refs: Refs): JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/enum.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/enum.d.ts
+index 777db20..0b2af83 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/enum.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/enum.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodEnumDef } from "zod";
++import { ZodEnumDef } from "zod3";
+ export type JsonSchema7EnumType = {
+     type: "string";
+     enum: string[];
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/intersection.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/intersection.d.ts
+index 9e239b0..43b3d42 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/intersection.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/intersection.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodIntersectionDef } from "zod";
++import { ZodIntersectionDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export type JsonSchema7AllOfType = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/literal.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/literal.d.ts
+index b17c90e..119ac1a 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/literal.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/literal.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodLiteralDef } from "zod";
++import { ZodLiteralDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ export type JsonSchema7LiteralType = {
+     type: "string" | "number" | "integer" | "boolean";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/map.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/map.d.ts
+index 2591f8d..a9760d9 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/map.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/map.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodMapDef } from "zod";
++import { ZodMapDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ import { JsonSchema7RecordType } from "./record.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/nativeEnum.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/nativeEnum.d.ts
+index 37789a7..f336256 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/nativeEnum.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/nativeEnum.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodNativeEnumDef } from "zod";
++import { ZodNativeEnumDef } from "zod3";
+ export type JsonSchema7NativeEnumType = {
+     type: "string" | "number" | ["string", "number"];
+     enum: (string | number)[];
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/nullable.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/nullable.d.ts
+index 07d50f0..0005f9f 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/nullable.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/nullable.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodNullableDef } from "zod";
++import { ZodNullableDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ import { JsonSchema7NullType } from "./null.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/number.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/number.d.ts
+index 3f89202..b7f3a67 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/number.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/number.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodNumberDef } from "zod";
++import { ZodNumberDef } from "zod3";
+ import { ErrorMessages } from "../errorMessages.js";
+ import { Refs } from "../Refs.js";
+ export type JsonSchema7NumberType = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/object.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/object.d.ts
+index e9a4281..170d4d0 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/object.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/object.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodObjectDef } from "zod";
++import { ZodObjectDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export type JsonSchema7ObjectType = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/optional.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/optional.d.ts
+index e19b861..fe14e40 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/optional.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/optional.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodOptionalDef } from "zod";
++import { ZodOptionalDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export declare const parseOptionalDef: (def: ZodOptionalDef, refs: Refs) => JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/pipeline.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/pipeline.d.ts
+index 93216fc..6a2f2af 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/pipeline.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/pipeline.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodPipelineDef } from "zod";
++import { ZodPipelineDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ import { JsonSchema7AllOfType } from "./intersection.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/promise.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/promise.d.ts
+index fc88725..1a37bef 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/promise.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/promise.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodPromiseDef } from "zod";
++import { ZodPromiseDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export declare function parsePromiseDef(def: ZodPromiseDef, refs: Refs): JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/readonly.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/readonly.d.ts
+index cf95b34..50d1678 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/readonly.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/readonly.d.ts
+@@ -1,3 +1,3 @@
+-import { ZodReadonlyDef } from "zod";
++import { ZodReadonlyDef } from "zod3";
+ import { Refs } from "../Refs.js";
+ export declare const parseReadonlyDef: (def: ZodReadonlyDef<any>, refs: Refs) => import("../parseTypes.js").JsonSchema7Type | undefined;
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/record.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/record.d.ts
+index 165d214..0c5b783 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/record.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/record.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodMapDef, ZodRecordDef, ZodTypeAny } from "zod";
++import { ZodMapDef, ZodRecordDef, ZodTypeAny } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ import { JsonSchema7EnumType } from "./enum.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/set.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/set.d.ts
+index 8d22456..ff03ce4 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/set.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/set.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodSetDef } from "zod";
++import { ZodSetDef } from "zod3";
+ import { ErrorMessages } from "../errorMessages.js";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/string.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/string.d.ts
+index d35747d..099c0f3 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/string.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/string.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodStringDef } from "zod";
++import { ZodStringDef } from "zod3";
+ import { ErrorMessages } from "../errorMessages.js";
+ import { Refs } from "../Refs.js";
+ /**
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/tuple.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/tuple.d.ts
+index 3bd7cc0..b6fb782 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/tuple.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/tuple.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodTupleDef, ZodTupleItems, ZodTypeAny } from "zod";
++import { ZodTupleDef, ZodTupleItems, ZodTypeAny } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export type JsonSchema7TupleType = {
+diff --git a/node_modules/zod-to-json-schema/dist/types/parsers/union.d.ts b/node_modules/zod-to-json-schema/dist/types/parsers/union.d.ts
+index 9c6776a..c0d97ef 100644
+--- a/node_modules/zod-to-json-schema/dist/types/parsers/union.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/parsers/union.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodDiscriminatedUnionDef, ZodUnionDef } from "zod";
++import { ZodDiscriminatedUnionDef, ZodUnionDef } from "zod3";
+ import { JsonSchema7Type } from "../parseTypes.js";
+ import { Refs } from "../Refs.js";
+ export declare const primitiveMappings: {
+diff --git a/node_modules/zod-to-json-schema/dist/types/selectParser.d.ts b/node_modules/zod-to-json-schema/dist/types/selectParser.d.ts
+index bc8a19e..b796164 100644
+--- a/node_modules/zod-to-json-schema/dist/types/selectParser.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/selectParser.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodFirstPartyTypeKind } from "zod";
++import { ZodFirstPartyTypeKind } from "zod3";
+ import { Refs } from "./Refs.js";
+ import { JsonSchema7Type } from "./parseTypes.js";
+ export type InnerDefGetter = () => any;
+diff --git a/node_modules/zod-to-json-schema/dist/types/zodToJsonSchema.d.ts b/node_modules/zod-to-json-schema/dist/types/zodToJsonSchema.d.ts
+index 9e2a840..e667def 100644
+--- a/node_modules/zod-to-json-schema/dist/types/zodToJsonSchema.d.ts
++++ b/node_modules/zod-to-json-schema/dist/types/zodToJsonSchema.d.ts
+@@ -1,4 +1,4 @@
+-import { ZodSchema } from "zod";
++import { ZodSchema } from "zod3";
+ import { Options, Targets } from "./Options.js";
+ import { JsonSchema7Type } from "./parseTypes.js";
+ declare const zodToJsonSchema: <Target extends Targets = "jsonSchema7">(schema: ZodSchema<any>, options?: string | Partial<Options<Target>> | undefined) => (Target extends "jsonSchema7" ? JsonSchema7Type : object) & {

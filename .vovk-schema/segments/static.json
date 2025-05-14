@@ -1,9 +1,10 @@
 {
+  "$schema": "https://vovk.dev/api/schema/v3/segment.json",
   "emitSchema": true,
   "segmentName": "static",
   "controllers": {
     "OpenapiRPC": {
-      "controllerName": "OpenapiRPC",
+      "rpcModuleName": "OpenapiRPC",
       "originalControllerName": "OpenapiController",
       "prefix": "openapi",
       "handlers": {
@@ -18,7 +19,7 @@
       }
     },
     "FrozenStreamRPC": {
-      "controllerName": "FrozenStreamRPC",
+      "rpcModuleName": "FrozenStreamRPC",
       "originalControllerName": "FrozenStreamController",
       "prefix": "frozen-stream",
       "handlers": {
