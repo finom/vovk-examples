@@ -1,0 +1,142 @@
+{
+  "config": {
+    "$schema": "https://vovk.dev/api/spec/v3/config.json",
+    "clientTemplateDefs": {
+      "ts": {
+        "templatePath": "vovk-cli/client-templates/ts/",
+        "requires": {
+          "schemaTs": "."
+        },
+        "isTsClient": true
+      },
+      "cjs": {
+        "templatePath": "vovk-cli/client-templates/cjs/",
+        "requires": {
+          "schemaCjs": "."
+        },
+        "isTsClient": true
+      },
+      "mjs": {
+        "templatePath": "vovk-cli/client-templates/mjs/",
+        "requires": {
+          "schemaCjs": "."
+        },
+        "isTsClient": true
+      },
+      "schemaTs": {
+        "templatePath": "vovk-cli/client-templates/schemaTs/"
+      },
+      "schemaCjs": {
+        "templatePath": "vovk-cli/client-templates/schemaCjs/"
+      },
+      "schemaJson": {
+        "templatePath": "vovk-cli/client-templates/schemaJson/"
+      },
+      "standaloneTypesTs": {
+        "templatePath": "vovk-cli/client-templates/standaloneTypesTs/",
+        "requires": {
+          "schemaJson": "."
+        }
+      },
+      "readme": {
+        "templatePath": "vovk-cli/client-templates/readme/"
+      },
+      "packageJson": {
+        "templatePath": "vovk-cli/client-templates/packageJson/"
+      },
+      "mixins": {
+        "templatePath": "vovk-cli/client-templates/mixins/"
+      },
+      "rs": {
+        "templatePath": "vovk-rust/template/",
+        "composedClient": {
+          "outDir": "dist_rust"
+        },
+        "requires": {
+          "schemaJson": "./data"
+        }
+      },
+      "py": {
+        "templatePath": "vovk-python/template/",
+        "composedClient": {
+          "outDir": "dist_python"
+        },
+        "requires": {
+          "schemaJson": "./data"
+        }
+      }
+    },
+    "imports": {
+      "fetcher": [
+        "vovk"
+      ],
+      "validateOnClient": [
+        "vovk-ajv"
+      ],
+      "createRPC": [
+        "vovk-react-query"
+      ]
+    },
+    "emitConfig": [
+      "$schema",
+      "clientTemplateDefs",
+      "imports",
+      "emitConfig",
+      "composedClient",
+      "segmentedClient",
+      "bundle",
+      "modulesDir",
+      "schemaOutDir",
+      "origin",
+      "rootEntry",
+      "rootSegmentModulesDirName",
+      "logLevel",
+      "prettifyClient",
+      "devHttps",
+      "moduleTemplates",
+      "libs",
+      "segmentConfig",
+      "openApiMixins"
+    ],
+    "composedClient": {
+      "enabled": true,
+      "fromTemplates": [
+        "mjs",
+        "cjs"
+      ],
+      "outDir": "./node_modules/.vovk-client"
+    },
+    "segmentedClient": {
+      "enabled": false,
+      "fromTemplates": [
+        "ts"
+      ],
+      "outDir": "src/client"
+    },
+    "bundle": {
+      "outDir": "dist",
+      "tsClientOutDir": "tmp_ts_rpc",
+      "dontDeleteTsClientOutDirAfter": false,
+      "sourcemap": false,
+      "requires": {
+        "readme": ".",
+        "packageJson": "."
+      }
+    },
+    "modulesDir": "src/modules",
+    "schemaOutDir": "./.vovk-schema",
+    "origin": "http://localhost:3000",
+    "rootEntry": "api",
+    "rootSegmentModulesDirName": "",
+    "logLevel": "info",
+    "prettifyClient": false,
+    "devHttps": false,
+    "moduleTemplates": {
+      "service": "vovk-cli/module-templates/service.ts.ejs",
+      "controller": "vovk-cli/module-templates/controller.ts.ejs"
+    },
+    "libs": {},
+    "segmentConfig": {},
+    "openApiMixins": {}
+  }
+}

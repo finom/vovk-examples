@@ -1,24 +1,28 @@
 import { prefix, get } from 'vovk';
 import { openapi, fromSchema } from 'vovk-openapi';
-import { fullSchema } from 'vovk-client/fullSchema';
+import { schema } from 'vovk-client/schema';
 
 @prefix('openapi')
-export default class OpenapiController {
+export default class OpenApiController {
   @openapi({
     summary: 'OpenAPI spec',
     description: 'Get the OpenAPI spec for the examples API',
   })
   @get('spec.json')
   static getSpec = async () => {
-    return fromSchema('api', fullSchema, {
-      info: {
-        title: 'Vovk examples API',
-        description: 'API for https://vovk-examples.vercel.app/',
-        license: {
-          name: 'MIT',
-          url: 'https://opensource.org/licenses/MIT',
+    return fromSchema({
+      rootEntry: 'api',
+      schema,
+      openAPIObject: {
+        info: {
+          title: 'Vovk examples API',
+          description: 'API for https://vovk-examples.vercel.app/',
+          license: {
+            name: 'MIT',
+            url: 'https://opensource.org/licenses/MIT',
+          },
+          version: '1.0.0',
         },
-        version: '1.0.0',
       },
     });
   };

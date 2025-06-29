@@ -2,11 +2,9 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-
 @theme {
   --gh-dark: #0d1117;
 }
-
 
 *,
 ::after,

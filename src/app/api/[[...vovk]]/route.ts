@@ -1,4 +1,4 @@
-import { initVovk } from 'vovk';
+import { initSegment } from 'vovk';
 
 import OpenAiController from '../../../modules/openai/OpenAiController';
 import HelloWorldController from '../../../modules/hello-world/HelloWorldController';
@@ -13,6 +13,7 @@ import ProxyController from '@/modules/proxy/ProxyController';
 import UserZodController from '../../../modules/showcase/UserZodController';
 import UserYupController from '../../../modules/showcase/UserYupController';
 import UserDtoController from '../../../modules/showcase/UserDtoController';
+import ProgressiveController from '../../../modules/progressive/ProgressiveController';
 
 export const runtime = 'edge';
 
@@ -30,11 +31,12 @@ const controllers = {
   UserRPC: UserZodController,
   UserYupRPC: UserYupController,
   UserDtoRPC: UserDtoController,
+  ProgressiveRPC: ProgressiveController,
 };
 
 export type Controllers = typeof controllers;
 
-export const { GET, POST, PUT, DELETE } = initVovk({
+export const { GET, POST, PUT, DELETE } = initSegment({
   controllers,
   onError: (error) => {
     console.error(error);

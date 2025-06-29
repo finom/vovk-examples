@@ -204,7 +204,7 @@ export default function Home() {
         <div>
           <div className="overflow-hidden rounded-lg">
             <CodeBox title="Static JSON API">{`
-          import { initVovk, generateStaticAPI } from 'vovk';
+          import { initSegment, generateStaticAPI } from 'vovk';
           
           // ...
           
@@ -212,7 +212,7 @@ export default function Home() {
             return generateStaticAPI(controllers);
           }
           
-          export const { GET } = initVovk({ controllers });
+          export const { GET } = initSegment({ controllers });
           
           `}</CodeBox>
           </div>

@@ -1,7 +1,7 @@
 import { prefix, post, HttpStatus } from 'vovk';
 import { openapi } from 'vovk-openapi';
 import { withZod } from 'vovk-zod';
-import { z } from 'zod';
+import { z } from 'zod/v4';
 
 @prefix('zod')
 export default class ZodController {
@@ -12,12 +12,12 @@ export default class ZodController {
   @post('update-user/:id')
   static updateUser = withZod({
     params: z.object({
-      id: z.string().uuid().describe('User ID'),
+      id: z.uuid().describe('User ID'),
     }),
     body: z
       .object({
         name: z.string().min(2).max(20),
-        email: z.string().email(),
+        email: z.email(),
       })
       .strict(),
     async handle(req) {

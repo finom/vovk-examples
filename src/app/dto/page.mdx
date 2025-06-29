@@ -7,23 +7,16 @@ import DtoFormExample from './DtoFormExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-
 # Hello World with a Service example
 
-  Form input handling and [class validation](https://www.npmjs.com/package/class-validator) with [vovk-dto](https://www.npmjs.com/package/vovk-dto). The request input is validated on the client-side before being sent to the server where it is validated again. Notice that the input data needs to be transformed with [class-transformer](https://www.npmjs.com/package/class-transformer) into a DTO class in order to be validated on the client-side.
+Form input handling and [class validation](https://www.npmjs.com/package/class-validator) with [vovk-dto](https://www.npmjs.com/package/vovk-dto). The request input is validated on the client-side before being sent to the server where it is validated again. Notice that the input data needs to be transformed with [class-transformer](https://www.npmjs.com/package/class-transformer) into a DTO class in order to be validated on the client-side.
 
 ## Result
 
 <Example>
-    <DtoFormExample />
+  <DtoFormExample />
 </Example>
 
 ## Code
 
-<GithubFiles
-  paths={[
-    'src/modules/dto/dto.ts',
-    'src/modules/dto/DtoController.ts',
-    'src/app/dto/DtoFormExample.tsx',
-  ]}
-/>
+<GithubFiles paths={['src/modules/dto/dto.ts', 'src/modules/dto/DtoController.ts', 'src/app/dto/DtoFormExample.tsx']} />

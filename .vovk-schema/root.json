@@ -1,7 +1,8 @@
 {
-  "$schema": "https://vovk.dev/api/schema/v3/segment.json",
+  "$schema": "https://vovk.dev/api/spec/v3/segment.json",
   "emitSchema": true,
   "segmentName": "",
+  "segmentType": "segment",
   "controllers": {
     "HelloWorldRPC": {
       "rpcModuleName": "HelloWorldRPC",
@@ -94,6 +95,7 @@
         "updateUser": {
           "validation": {
             "body": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "name": {
@@ -111,14 +113,14 @@
                 "name",
                 "email"
               ],
-              "additionalProperties": {
-                "not": {}
-              }
+              "additionalProperties": false
             },
             "params": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "id": {
+                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
@@ -126,7 +128,8 @@
               },
               "required": [
                 "id"
-              ]
+              ],
+              "additionalProperties": false
             }
           },
           "path": "update-user/:id",
@@ -222,6 +225,14 @@
             "summary": "Vercel AI SDK",
             "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model"
           }
+        },
+        "functionCalling": {
+          "path": "function-calling",
+          "httpMethod": "POST",
+          "openapi": {
+            "summary": "Function Calling",
+            "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to call a function"
+          }
         }
       }
     },
@@ -248,16 +259,21 @@
         "updateUser": {
           "validation": {
             "body": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "User object",
               "type": "object",
               "properties": {
                 "name": {
+                  "description": "User full name",
                   "type": "string"
                 },
                 "age": {
+                  "description": "User age",
                   "type": "number",
                   "minimum": 0
                 },
                 "email": {
+                  "description": "User email",
                   "type": "string",
                   "format": "email",
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
@@ -267,12 +283,16 @@
                 "name",
                 "age",
                 "email"
-              ]
+              ],
+              "additionalProperties": false
             },
             "query": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "notify": {
+                  "description": "Notification type",
+                  "type": "string",
                   "enum": [
                     "email",
                     "push",
@@ -282,12 +302,15 @@
               },
               "required": [
                 "notify"
-              ]
+              ],
+              "additionalProperties": false
             },
             "params": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "id": {
+                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
@@ -295,18 +318,23 @@
               },
               "required": [
                 "id"
-              ]
+              ],
+              "additionalProperties": false
             },
             "output": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "Response object",
               "type": "object",
               "properties": {
                 "success": {
+                  "description": "Success status",
                   "type": "boolean"
                 }
               },
               "required": [
                 "success"
-              ]
+              ],
+              "additionalProperties": false
             }
           },
           "path": ":id",
@@ -494,6 +522,84 @@
             "summary": "Update user",
             "description": "Update user by ID with DTO validation"
           }
+        }
+      }
+    },
+    "ProgressiveRPC": {
+      "rpcModuleName": "ProgressiveRPC",
+      "originalControllerName": "ProgressiveController",
+      "prefix": "progressive",
+      "handlers": {
+        "streamProgressiveResponse": {
+          "validation": {
+            "iteration": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "users": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "users"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "tasks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "completed": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "completed"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "tasks"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          },
+          "path": "",
+          "httpMethod": "GET"
         }
       }
     }

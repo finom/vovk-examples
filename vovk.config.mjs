@@ -6,7 +6,7 @@ const config = {
     createRPC: 'vovk-react-query',
     validateOnClient: 'vovk-ajv',
   },
-  emitConfig: true
+  emitConfig: true,
 };
 
 export default config;

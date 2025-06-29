@@ -58,8 +58,8 @@ export default class UserDtoController {
       const notify = req.nextUrl.searchParams.get('notify');
       // do something with the data
       console.log(`Updating user ${id}:`, { name, age, email, notify });
-      return { 
-        success: true 
+      return {
+        success: true,
       } satisfies UpdateUserResponseDto;
     },
   });

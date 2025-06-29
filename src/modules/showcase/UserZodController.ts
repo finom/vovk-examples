@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v4';
 import { prefix, post, type VovkOutput } from 'vovk';
 import { openapi } from 'vovk-openapi';
 import { withZod } from 'vovk-zod';
@@ -15,11 +15,11 @@ export default class UserController {
       .object({
         name: z.string().describe('User full name'),
         age: z.number().min(0).describe('User age'),
-        email: z.string().email().describe('User email'),
+        email: z.email().describe('User email'),
       })
       .describe('User object'),
     params: z.object({
-      id: z.string().uuid().describe('User ID'),
+      id: z.uuid().describe('User ID'),
     }),
     query: z.object({
       notify: z.enum(['email', 'push', 'none']).describe('Notification type'),
