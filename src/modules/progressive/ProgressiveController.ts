@@ -8,8 +8,7 @@ import ProgressiveService from './ProgressiveService';
 export default class ProgressiveController {
   @get()
   static streamProgressiveResponse = withZod({
-    // validateEachIteration: true,
-    disableServerSideValidation: ['iteration'], // TODO: remove after fixes
+    validateEachIteration: true,
     iteration: z.union([
       z.strictObject({
         users: z.array(
@@ -29,10 +28,8 @@ export default class ProgressiveController {
         ),
       }),
     ]),
-    async handle() {
-      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
-        await headers()
-      );
+    async handle(req) {
+      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
 
       void ProgressiveService.streamProgressiveResponse(response);
 

@@ -1,8 +1,5 @@
 import { IsString, IsNumber, Min, IsEmail, IsUUID, IsIn, IsBoolean } from 'class-validator';
 import { JSONSchema } from 'class-validator-jsonschema';
-import { prefix, post } from 'vovk';
-import { openapi } from 'vovk-openapi';
-import { withDto } from 'vovk-dto';
 
 @JSONSchema({ description: 'User object' })
 export class UpdateUserBodyDto {
@@ -39,28 +36,4 @@ export class UpdateUserResponseDto {
   @IsBoolean()
   @JSONSchema({ description: 'Success status' })
   success!: boolean;
-}
-
-@prefix('users-dto')
-export default class UserDtoController {
-  @openapi({
-    summary: 'Update user',
-    description: 'Update user by ID with DTO validation',
-  })
-  @post(':id')
-  static updateUser = withDto({
-    body: UpdateUserBodyDto,
-    params: UpdateUserParamsDto,
-    query: UpdateUserQueryDto,
-    output: UpdateUserResponseDto,
-    async handle(req, { id }) {
-      const { name, age, email } = await req.json();
-      const notify = req.nextUrl.searchParams.get('notify');
-      // do something with the data
-      console.log(`Updating user ${id}:`, { name, age, email, notify });
-      return {
-        success: true,
-      } satisfies UpdateUserResponseDto;
-    },
-  });
 }

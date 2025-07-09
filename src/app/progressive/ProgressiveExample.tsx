@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { progressive } from 'vovk';
 import { ProgressiveRPC } from 'vovk-client';
 
-export default async function ProgressivePage() {
+export default async function ProgressiveExample() {
   const { users: usersPromise, tasks: tasksPromise } = progressive(ProgressiveRPC.streamProgressiveResponse);
 
   return (

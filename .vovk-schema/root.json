@@ -87,132 +87,6 @@
         }
       }
     },
-    "ZodRPC": {
-      "rpcModuleName": "ZodRPC",
-      "originalControllerName": "ZodController",
-      "prefix": "zod",
-      "handlers": {
-        "updateUser": {
-          "validation": {
-            "body": {
-              "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 2,
-                  "maxLength": 20
-                },
-                "email": {
-                  "type": "string",
-                  "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
-                }
-              },
-              "required": [
-                "name",
-                "email"
-              ],
-              "additionalProperties": false
-            },
-            "params": {
-              "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "type": "object",
-              "properties": {
-                "id": {
-                  "description": "User ID",
-                  "type": "string",
-                  "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
-                }
-              },
-              "required": [
-                "id"
-              ],
-              "additionalProperties": false
-            }
-          },
-          "path": "update-user/:id",
-          "httpMethod": "POST",
-          "openapi": {
-            "summary": "Create a user with Zod",
-            "description": "Create a user with Zod for body validation"
-          }
-        }
-      }
-    },
-    "YupRPC": {
-      "rpcModuleName": "YupRPC",
-      "originalControllerName": "YupController",
-      "prefix": "yup",
-      "handlers": {
-        "createUser": {
-          "validation": {
-            "body": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "type": "string",
-                  "minLength": 2,
-                  "maxLength": 20
-                },
-                "email": {
-                  "type": "string",
-                  "format": "email"
-                }
-              },
-              "required": [
-                "name",
-                "email"
-              ]
-            }
-          },
-          "path": "create-user",
-          "httpMethod": "POST",
-          "openapi": {
-            "summary": "Create a user with Yup",
-            "description": "Create a user with Yup for body validation"
-          }
-        }
-      }
-    },
-    "DtoRPC": {
-      "rpcModuleName": "DtoRPC",
-      "originalControllerName": "DtoController",
-      "prefix": "dto",
-      "handlers": {
-        "createUser": {
-          "validation": {
-            "body": {
-              "x-isDto": true,
-              "definitions": {},
-              "properties": {
-                "name": {
-                  "maxLength": 20,
-                  "type": "string",
-                  "minLength": 2
-                },
-                "email": {
-                  "format": "email",
-                  "type": "string"
-                }
-              },
-              "type": "object",
-              "required": [
-                "name",
-                "email"
-              ]
-            }
-          },
-          "path": "create-user",
-          "httpMethod": "POST",
-          "openapi": {
-            "summary": "Create a user with DTO",
-            "description": "Create a user with DTO for body validation"
-          }
-        }
-      }
-    },
     "AiSdkRPC": {
       "rpcModuleName": "AiSdkRPC",
       "originalControllerName": "AiSdkController",
@@ -251,8 +125,8 @@
         }
       }
     },
-    "UserRPC": {
-      "rpcModuleName": "UserRPC",
+    "UserZodRPC": {
+      "rpcModuleName": "UserZodRPC",
       "originalControllerName": "UserController",
       "prefix": "users",
       "handlers": {
@@ -337,7 +211,7 @@
               "additionalProperties": false
             }
           },
-          "path": ":id",
+          "path": "{id}",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
@@ -421,7 +295,7 @@
               "description": "Response object"
             }
           },
-          "path": ":id",
+          "path": "{id}",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
@@ -516,7 +390,7 @@
               "description": "Response object"
             }
           },
-          "path": ":id",
+          "path": "{id}",
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user",
@@ -596,6 +470,45 @@
                   "additionalProperties": false
                 }
               ]
+            }
+          },
+          "path": "",
+          "httpMethod": "GET"
+        }
+      }
+    },
+    "PollRPC": {
+      "rpcModuleName": "PollRPC",
+      "originalControllerName": "PollController",
+      "prefix": "poll",
+      "handlers": {
+        "streamPollResponse": {
+          "validation": {
+            "query": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "i": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "i"
+              ],
+              "additionalProperties": false
+            },
+            "iteration": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "i": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "i"
+              ],
+              "additionalProperties": false
             }
           },
           "path": "",

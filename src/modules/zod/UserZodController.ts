@@ -9,7 +9,7 @@ export default class UserController {
     summary: 'Update user',
     description: 'Update user by ID with Zod validation',
   })
-  @post(':id')
+  @post('{id}')
   static updateUser = withZod({
     body: z
       .object({

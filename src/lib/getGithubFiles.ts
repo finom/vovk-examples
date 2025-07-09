@@ -2,7 +2,7 @@ import type { GithubFile } from '@/types';
 
 const OWNER = 'finom';
 const REPO = 'vovk-examples';
-const REF = 'main';
+const REF = 'v3';
 
 async function performDirectGithubRequest(path: string) {
   const resp = await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/${REF}/${path}?t=${Date.now()}`);

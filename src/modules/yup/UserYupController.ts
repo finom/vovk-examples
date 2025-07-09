@@ -9,7 +9,7 @@ export default class UserYupController {
     summary: 'Update user',
     description: 'Update user by ID with Yup validation',
   })
-  @post(':id')
+  @post('{id}')
   static updateUser = withYup({
     body: yup
       .object()

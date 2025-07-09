@@ -1,0 +1,22 @@
+---
+title: Progressive Response example
+description: Progressive Response example
+---
+
+import PollExample from './PollExample';
+import GithubFiles from '@/components/GithubFiles';
+import Example from '@/components/Example';
+
+# Progressive Response example
+
+Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-yup). The request input is validated on the client-side before being sent to the server where it is validated again.
+
+## Result
+
+<Example>
+  <PollExample />
+</Example>
+
+## Code
+
+<GithubFiles paths={['src/modules/poll/PollController.ts', 'src/app/poll/PollExample.tsx']} />

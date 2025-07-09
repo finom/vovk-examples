@@ -5,17 +5,17 @@ import HelloWorldController from '../../../modules/hello-world/HelloWorldControl
 import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService';
 import StreamController from '../../../modules/stream/StreamController';
 import StreamResponseObjectController from '../../../modules/stream-response-object/StreamResponseObjectController';
-import ZodController from '../../../modules/zod/ZodController';
-import AiSdkController from '@/modules/ai-sdk/AiSdkController';
-import DtoController from '@/modules/dto/DtoController';
-import YupController from '@/modules/yup/YupController';
-import ProxyController from '@/modules/proxy/ProxyController';
-import UserZodController from '../../../modules/showcase/UserZodController';
-import UserYupController from '../../../modules/showcase/UserYupController';
-import UserDtoController from '../../../modules/showcase/UserDtoController';
+import AiSdkController from '../../../modules/ai-sdk/AiSdkController';
+import ProxyController from '../../../modules/proxy/ProxyController';
+import UserZodController from '../../../modules/zod/UserZodController';
+import UserYupController from '../../../modules/yup/UserYupController';
+import UserDtoController from '../../../modules/dto/UserDtoController';
 import ProgressiveController from '../../../modules/progressive/ProgressiveController';
+import PollController from '../../../modules/poll/PollController';
 
 export const runtime = 'edge';
+
+export const maxDuration = 1;
 
 const controllers = {
   HelloWorldRPC: HelloWorldController,
@@ -23,15 +23,13 @@ const controllers = {
   StreamRPC: StreamController,
   StreamResponseObjectRPC: StreamResponseObjectController,
   OpenAiRPC: OpenAiController,
-  ZodRPC: ZodController,
-  YupRPC: YupController,
-  DtoRPC: DtoController,
   AiSdkRPC: AiSdkController,
   ProxyRPC: ProxyController,
-  UserRPC: UserZodController,
+  UserZodRPC: UserZodController,
   UserYupRPC: UserYupController,
   UserDtoRPC: UserDtoController,
   ProgressiveRPC: ProgressiveController,
+  PollRPC: PollController,
 };
 
 export type Controllers = typeof controllers;
@@ -39,6 +37,6 @@ export type Controllers = typeof controllers;
 export const { GET, POST, PUT, DELETE } = initSegment({
   controllers,
   onError: (error) => {
-    console.error(error);
+    console.error('Segment error: ', error);
   },
 });

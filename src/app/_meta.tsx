@@ -29,6 +29,8 @@ const meta: MetaRecord = {
   'zod-hook-form': 'Zod with React Hook Form',
   showcase: 'Showcase',
   'ai-sdk': 'AI SDK',
+  poll: 'Poll',
+  progressive: 'Progressive',
 };
 
 export default meta;

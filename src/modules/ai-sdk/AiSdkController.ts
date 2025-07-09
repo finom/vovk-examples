@@ -2,7 +2,7 @@ import { createLLMTools, HttpException, HttpStatus, KnownAny, post, prefix, type
 import { openapi } from 'vovk-openapi';
 import { jsonSchema, streamText, tool, type CoreMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
-import { ZodRPC, DtoRPC } from 'vovk-client';
+import { UserZodRPC, UserDtoRPC } from 'vovk-client';
 
 @prefix('ai-sdk')
 export default class AiSdkController {
@@ -36,9 +36,9 @@ export default class AiSdkController {
   static async functionCalling(req: VovkRequest<{ messages: CoreMessage[] }>) {
     const { messages } = await req.json();
     const LIMIT = 5;
-    const { functions } = createLLMTools({
-      modules: { ZodRPC, DtoRPC },
-      onSuccess: (d) => console.log('Success', d),
+    const { tools: llmTools } = createLLMTools({
+      modules: { UserZodRPC, UserDtoRPC },
+      onExecute: (d) => console.log('Success', d),
       onError: (e) => console.error('Error', e),
     });
 
@@ -47,7 +47,7 @@ export default class AiSdkController {
     }
 
     const tools = Object.fromEntries(
-      functions.map(({ name, execute, description, parameters }) => [
+      llmTools.map(({ name, execute, description, parameters }) => [
         name,
         tool<KnownAny, KnownAny>({
           execute: async (args, { toolCallId }) => {

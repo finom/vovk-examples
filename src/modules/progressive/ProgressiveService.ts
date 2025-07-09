@@ -30,6 +30,6 @@ export default class ProgressiveService {
     Promise.all([
       this.getUsers().then((users) => resp.send({ users })),
       this.getTasks().then((tasks) => resp.send({ tasks })),
-    ]).then(resp.close).catch(resp.throw)
+    ]).then(resp.close).catch(resp.throw);
   }
 }

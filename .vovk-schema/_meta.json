@@ -125,7 +125,7 @@
     },
     "modulesDir": "src/modules",
     "schemaOutDir": "./.vovk-schema",
-    "origin": "http://localhost:3000",
+    "origin": "",
     "rootEntry": "api",
     "rootSegmentModulesDirName": "",
     "logLevel": "info",

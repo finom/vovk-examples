@@ -1,10 +1,10 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { DtoRPC } from 'vovk-client';
+import { UserDtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 import { validateOnClient } from 'vovk-dto/validateOnClient';
 import { plainToInstance } from 'class-transformer';
-import { CreateUserDto } from '@/modules/dto/dto';
+import { UpdateUserBodyDto } from '@/modules/dto/UserDto';
 
 export default function DtoFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof DtoRPC.createUser> | null>(null);
@@ -16,8 +16,8 @@ export default function DtoFormExample() {
     e.preventDefault();
     try {
       setResponse(
-        await DtoRPC.createUser({
-          body: plainToInstance(CreateUserDto, { name, email } satisfies CreateUserDto),
+        await UserDtoRPC.updateUser({
+          body: plainToInstance(UpdateUserBodyDto, { name, email } satisfies UpdateUserBodyDto),
           disableClientValidation,
           // vovk.config doesn't include preferred validation library,
           // so we need to pass it manually for this example.
