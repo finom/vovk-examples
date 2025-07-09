@@ -91,7 +91,7 @@ export const getOgFonts = async () => ({
     {
       name: 'InterSemibold',
       data: await (
-        await fetch(`https://vovk-ai-demo.vercel.app/fonts/Inter/static/Inter_24pt-SemiBold.ttf`)
+        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-SemiBold.ttf`, import.meta.url))
       ).arrayBuffer(),
       style: 'normal',
       weight: 400,
@@ -99,7 +99,7 @@ export const getOgFonts = async () => ({
     {
       name: 'Inter',
       data: await (
-        await fetch(`https://vovk-ai-demo.vercel.app/fonts/Inter/static/Inter_24pt-Light.ttf`)
+        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-Light.ttf`, import.meta.url))
       ).arrayBuffer(),
       style: 'normal',
       weight: 400,
