@@ -1,8 +1,7 @@
-import { createLLMTools, HttpException, HttpStatus, KnownAny, post, prefix, type VovkRequest } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { createLLMTools, HttpException, HttpStatus, KnownAny, post, prefix, openapi, type VovkRequest } from 'vovk';
 import { jsonSchema, streamText, tool, type CoreMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
-import { UserZodRPC, UserDtoRPC } from 'vovk-client';
+import { UserZodRPC } from 'vovk-client';
 
 @prefix('ai-sdk')
 export default class AiSdkController {
@@ -21,14 +20,14 @@ export default class AiSdkController {
     }
 
     return streamText({
-      model: openai('gpt-4o-mini'),
+      model: openai('gpt-4.1-nano'),
       system: 'You are a helpful assistant.',
       messages,
     }).toDataStreamResponse();
   }
 
   @openapi({
-    summary: 'Function Calling',
+    summary: 'Vercel AI SDK with Function Calling',
     description:
       'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to call a function',
   })
@@ -37,7 +36,7 @@ export default class AiSdkController {
     const { messages } = await req.json();
     const LIMIT = 5;
     const { tools: llmTools } = createLLMTools({
-      modules: { UserZodRPC, UserDtoRPC },
+      modules: { UserZodRPC },
       onExecute: (d) => console.log('Success', d),
       onError: (e) => console.error('Error', e),
     });
@@ -60,14 +59,14 @@ export default class AiSdkController {
     );
 
     return streamText({
-      model: openai('gpt-4.1'),
+      model: openai('gpt-4.1-nano'),
       toolCallStreaming: true,
       system:
         'You are a helpful assistant. Always provide a clear confirmation message after executing any function. Explain what was done and what the results were after the user request is executed.',
       messages,
       tools,
       onError: (e) => console.error('streamText error', e),
-      onFinish: ({ finishReason, ...x }) => {
+      onFinish: ({ finishReason }) => {
         if (finishReason === 'tool-calls') {
           console.log('Tool calls finished');
         }

@@ -9,7 +9,7 @@ import Example from '@/components/Example';
 
 # Progressive Response example
 
-Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-yup). The request input is validated on the client-side before being sent to the server where it is validated again.
+Demonstrates an experimental feature called "Progressive Response" that implemented with `JSONLinesResponse` on the server and handled with `progressive` function on the client. For demonstational purposes users and tasks resolve in random order, using `setTimeout` with a random delay of 0-10 seconds. Reload the page to see the effect again.
 
 ## Result
 
@@ -19,4 +19,10 @@ Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https
 
 ## Code
 
-<GithubFiles paths={['src/modules/progressive/ProgressiveController.ts', 'src/app/progressive/ProgressiveExample.tsx']} />
+<GithubFiles
+  paths={[
+    'src/modules/progressive/ProgressiveService.ts',
+    'src/modules/progressive/ProgressiveController.ts',
+    'src/app/progressive/ProgressiveExample.tsx',
+  ]}
+/>

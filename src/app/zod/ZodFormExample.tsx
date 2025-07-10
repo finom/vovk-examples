@@ -1,21 +1,23 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { ZodRPC } from 'vovk-client';
+import { UserZodRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 
 export default function ZodFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.updateUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof UserZodRPC.updateUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [age, setAge] = useState(30);
   const [disableClientValidation, setDisableClientValidation] = useState(false);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setResponse(
-        await ZodRPC.updateUser({
-          body: { name, email },
-          query: { ids: '123' },
+        await UserZodRPC.updateUser({
+          body: { name, email, age },
+          query: { notify: 'push' },
+          params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
           disableClientValidation,
         })
       );
@@ -30,6 +32,8 @@ export default function ZodFormExample() {
     <form onSubmit={onSubmit}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Age:</label>
+      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
       <label className="block mb-4">
         <input
           type="checkbox"

@@ -1,12 +1,11 @@
 import { z } from 'zod/v4';
-import { prefix, post, type VovkOutput } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { prefix, post, openapi, type VovkOutput } from 'vovk';
 import { withZod } from 'vovk-zod';
 
-@prefix('users')
-export default class UserController {
+@prefix('users-zod')
+export default class UserZodController {
   @openapi({
-    summary: 'Update user',
+    summary: 'Update user (Zod)',
     description: 'Update user by ID with Zod validation',
   })
   @post('{id}')
@@ -14,7 +13,7 @@ export default class UserController {
     body: z
       .object({
         name: z.string().describe('User full name'),
-        age: z.number().min(0).describe('User age'),
+        age: z.number().min(0).max(120).describe('User age'),
         email: z.email().describe('User email'),
       })
       .describe('User object'),
@@ -37,7 +36,7 @@ export default class UserController {
       console.log(`Updating user ${id}:`, { name, age, notify });
       return {
         success: true,
-      } satisfies VovkOutput<typeof UserController.updateUser>;
+      } satisfies VovkOutput<typeof UserZodController.updateUser>;
     },
   });
 }

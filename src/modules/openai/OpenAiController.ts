@@ -1,5 +1,4 @@
-import { type VovkRequest, post, prefix, HttpException, HttpStatus } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { type VovkRequest, post, prefix, openapi, HttpException, HttpStatus } from 'vovk';
 import OpenAI from 'openai';
 
 @prefix('openai')
@@ -22,7 +21,7 @@ export default class OpenAiController {
 
     yield* await openai.chat.completions.create({
       messages,
-      model: 'gpt-4o-mini',
+      model: 'gpt-4.1-nano',
       stream: true,
     });
   }

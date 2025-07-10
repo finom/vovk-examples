@@ -1,5 +1,4 @@
-import { get, post, prefix, VovkRequest } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { get, post, prefix, openapi, type VovkRequest } from 'vovk';
 
 @prefix('hello-world')
 export default class HelloWorldController {

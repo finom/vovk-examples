@@ -1,36 +1,39 @@
 import type { MetaRecord } from 'nextra';
 
-/**
- * type MetaRecordValue =
- *  | TitleSchema
- *  | PageItemSchema
- *  | SeparatorSchema
- *  | MenuSchema
- *
- * type MetaRecord = Record<string, MetaRecordValue>
- **/
+const separator = (title: string) => ({ type: 'separator', title });
+
 const meta: MetaRecord = {
-  index: 'Home',
-  'hello-world': 'Hello World',
-  'hello-world-with-service': 'Hello World with a Service',
-  openai: 'OpenAI chat',
-  proxy: 'Proxy',
-  'react-query': 'React Query',
-  'server-component': 'Server Component',
-  dto: 'DTO',
-  stream: 'Stream',
   scalar: {
-    title: 'Scalar',
+    title: 'OpenAPI',
     type: 'page',
   },
-  'stream-response-object': 'Stream Response Object',
-  yup: 'Yup',
-  zod: 'Zod',
-  'zod-hook-form': 'Zod with React Hook Form',
-  showcase: 'Showcase',
-  'ai-sdk': 'AI SDK',
+  documentation: {
+    title: 'vovk.dev',
+    type: 'page',
+    href: 'https://vovk.dev/',
+  },
+
+  index: 'Home',
+  '#common': separator('Common'),
+  'hello-world': 'Hello World',
+  'hello-world-with-service': 'Hello World with a Service',
+  proxy: 'Proxy',
+  'react-query': 'React Query',
+  '#experimental': separator('Experimental'),
   poll: 'Poll',
   progressive: 'Progressive',
+  '#validation': separator('Validation'),
+  zod: 'Zod',
+  dto: 'DTO',
+  valibot: 'Valibot',
+  arktype: 'Arktype',
+  yup: 'Yup',
+  'zod-hook-form': 'Zod with React Hook Form',
+  '#streaming': separator('JSONLines and AI'),
+  stream: 'JSONLines',
+  openai: 'OpenAI chat',
+  'stream-response-object': 'JSONLines Response Object',
+  'ai-sdk': 'AI SDK',
 };
 
 export default meta;

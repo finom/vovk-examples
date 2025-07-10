@@ -1,20 +1,23 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { YupRPC } from 'vovk-client';
+import { UserYupRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 
 export default function YupFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof YupRPC.createUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof UserYupRPC.updateUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [age, setAge] = useState(30);
   const [disableClientValidation, setDisableClientValidation] = useState(false);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       setResponse(
-        await YupRPC.createUser({
-          body: { name, email },
+        await UserYupRPC.updateUser({
+          body: { name, email, age },
+          query: { notify: 'push' },
+          params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
           disableClientValidation,
         })
       );
@@ -29,6 +32,8 @@ export default function YupFormExample() {
     <form onSubmit={onSubmit}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Age:</label>
+      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
       <label className="block mb-4">
         <input
           type="checkbox"

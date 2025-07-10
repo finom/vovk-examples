@@ -12,10 +12,12 @@ import UserYupController from '../../../modules/yup/UserYupController';
 import UserDtoController from '../../../modules/dto/UserDtoController';
 import ProgressiveController from '../../../modules/progressive/ProgressiveController';
 import PollController from '../../../modules/poll/PollController';
+import UserArktypeController from '../../../modules/arktype/UserArktypeController';
+import UserValibotController from '../../../modules/valibot/UserValibotController';
 
 export const runtime = 'edge';
 
-export const maxDuration = 1;
+export const maxDuration = 60;
 
 const controllers = {
   HelloWorldRPC: HelloWorldController,
@@ -28,6 +30,8 @@ const controllers = {
   UserZodRPC: UserZodController,
   UserYupRPC: UserYupController,
   UserDtoRPC: UserDtoController,
+  UserArktypeRPC: UserArktypeController,
+  UserValibotRPC: UserValibotController,
   ProgressiveRPC: ProgressiveController,
   PollRPC: PollController,
 };

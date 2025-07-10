@@ -1,5 +1,4 @@
-import { headers } from 'next/headers';
-import { get, JSONLinesResponse, prefix, VovkIteration } from 'vovk';
+import { get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
 import { withZod } from 'vovk-zod';
 import { z } from 'zod/v4';
 import ProgressiveService from './ProgressiveService';
@@ -29,7 +28,9 @@ export default class ProgressiveController {
       }),
     ]),
     async handle(req) {
-      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
+      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
+        req
+      );
 
       void ProgressiveService.streamProgressiveResponse(response);
 

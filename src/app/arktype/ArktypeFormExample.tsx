@@ -1,13 +1,10 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserDtoRPC } from 'vovk-client';
+import { UserArktypeRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
-import { validateOnClient } from 'vovk-dto/validateOnClient';
-import { plainToInstance } from 'class-transformer';
-import { UpdateUserBodyDto } from '@/modules/dto/UserDto';
 
-export default function DtoFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof UserDtoRPC.updateUser> | null>(null);
+export default function ArktypeFormExample() {
+  const [response, setResponse] = useState<VovkReturnType<typeof UserArktypeRPC.updateUser> | null>(null);
   const [error, setError] = useState<Error | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -17,15 +14,11 @@ export default function DtoFormExample() {
     e.preventDefault();
     try {
       setResponse(
-        await UserDtoRPC.updateUser({
-          body: plainToInstance(UpdateUserBodyDto, { name, email, age } satisfies UpdateUserBodyDto),
+        await UserArktypeRPC.updateUser({
+          body: { name, email, age },
           query: { notify: 'push' },
           params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
           disableClientValidation,
-          // vovk.config doesn't include preferred validation library,
-          // so we need to pass it manually for this example.
-          // This is not needed in a real project when config.imports.validateOnClient is set to 'vovk-dto/validateOnClient'.
-          validateOnClient,
         })
       );
       setError(null);

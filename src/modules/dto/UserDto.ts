@@ -1,4 +1,4 @@
-import { IsString, IsNumber, Min, IsEmail, IsUUID, IsIn, IsBoolean } from 'class-validator';
+import { IsString, IsNumber, Min, IsEmail, IsUUID, IsIn, IsBoolean, Max } from 'class-validator';
 import { JSONSchema } from 'class-validator-jsonschema';
 
 @JSONSchema({ description: 'User object' })
@@ -9,6 +9,7 @@ export class UpdateUserBodyDto {
 
   @IsNumber()
   @Min(0)
+  @Max(120)
   @JSONSchema({ description: 'User age' })
   age!: number;
 

@@ -8,7 +8,6 @@ interface Props {
 }
 
 export const constants = {
-  runtime: 'edge',
   alt: 'Vovk.ts',
   size: {
     width: 1200,

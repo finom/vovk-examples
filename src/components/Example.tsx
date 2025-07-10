@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface Props {
   className?: string;
@@ -8,6 +8,7 @@ interface Props {
 }
 
 const Example = ({ className, title, description, children }: Props) => {
+  console.log('big dick');
   return (
     <>
       {title && <h1 className="text-center">{title}</h1>}

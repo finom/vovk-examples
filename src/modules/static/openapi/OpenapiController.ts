@@ -1,5 +1,4 @@
-import { prefix, get } from 'vovk';
-import { openapi, fromSchema } from 'vovk-openapi';
+import { prefix, get, openapi, vovkSchemaToOpenAPI } from 'vovk';
 import { schema } from 'vovk-client/schema';
 
 @prefix('openapi')
@@ -10,7 +9,7 @@ export default class OpenApiController {
   })
   @get('spec.json')
   static getSpec = async () => {
-    return fromSchema({
+    return vovkSchemaToOpenAPI({
       rootEntry: 'api',
       schema,
       openAPIObject: {

@@ -1,9 +1,9 @@
-import { JSONLinesResponse, VovkIteration } from 'vovk';
+import { JSONLinesResponse, type VovkIteration } from 'vovk';
 import type ProgressiveController from './ProgressiveController';
 
 export default class ProgressiveService {
   static async getUsers() {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 10_000));
     return [
       { id: 1, name: 'John Doe' },
       { id: 2, name: 'Jane Smith' },
@@ -14,7 +14,7 @@ export default class ProgressiveService {
   }
 
   static async getTasks() {
-    await new Promise((resolve) => setTimeout(resolve, 3000));
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 10_000));
     return [
       { id: 1, title: 'Task One', completed: false },
       { id: 2, title: 'Task Two', completed: true },
@@ -30,6 +30,8 @@ export default class ProgressiveService {
     Promise.all([
       this.getUsers().then((users) => resp.send({ users })),
       this.getTasks().then((tasks) => resp.send({ tasks })),
-    ]).then(resp.close).catch(resp.throw);
+    ])
+      .then(resp.close)
+      .catch(resp.throw);
   }
 }

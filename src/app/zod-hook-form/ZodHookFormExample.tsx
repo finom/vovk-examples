@@ -1,29 +1,30 @@
 'use client';
 import { useState } from 'react';
-import { ZodRPC } from 'vovk-client';
+import { UserZodRPC } from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
 import { ajvResolver } from '@hookform/resolvers/ajv';
 import { fastFormats } from 'ajv-formats/dist/formats';
 
 export default function ZodHookFormExample() {
-  const [response, setResponse] = useState<VovkReturnType<typeof ZodRPC.updateUser> | null>(null);
+  const [response, setResponse] = useState<VovkReturnType<typeof UserZodRPC.updateUser> | null>(null);
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<VovkBody<typeof ZodRPC.updateUser>>({
-    resolver: ajvResolver(ZodRPC.updateUser.schema.validation!.body, {
+  } = useForm<VovkBody<typeof UserZodRPC.updateUser>>({
+    resolver: ajvResolver(UserZodRPC.updateUser.schema.validation!.body, {
       formats: fastFormats,
     }),
   });
 
   const onSubmit = async () => {
     setResponse(
-      await ZodRPC.updateUser({
-        params: { id: '2' },
+      await UserZodRPC.updateUser({
         body: getValues(),
+        query: { notify: 'push' },
+        params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
       })
     );
   };
@@ -34,6 +35,9 @@ export default function ZodHookFormExample() {
       {errors.name && <p>❌ {errors.name.message}</p>}
       <input type="text" placeholder="Email" {...register('email')} />
       {errors.email && <p>❌ {errors.email.message}</p>}
+      <label>Age:</label>
+      <input type="number" placeholder="Age" {...register('age', { valueAsNumber: true })} />
+      {errors.age && <p>❌ {errors.age.message}</p>}
       <button>Submit</button>
 
       {response && (

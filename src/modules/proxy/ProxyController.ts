@@ -1,5 +1,4 @@
-import { get, prefix } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { get, prefix, openapi } from 'vovk';
 
 @prefix('proxy')
 export default class ProxyController {

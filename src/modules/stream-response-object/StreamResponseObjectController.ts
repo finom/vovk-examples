@@ -1,5 +1,4 @@
-import { prefix, get, JSONLinesResponse } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { prefix, get, openapi, JSONLinesResponse } from 'vovk';
 import StreamService, { type Token } from './StreamService';
 
 @prefix('stream-with-object')
@@ -9,13 +8,11 @@ export default class StreamResponseObjectController {
     description: 'Stream tokens to the client using Response object',
   })
   @get('tokens')
-  static async streamTokens() {
-    // define CORS headers for vovk.dev manually when returning Response instance
-    const response = new JSONLinesResponse<Token>({
+  static async streamTokens(req: Request) {
+    const response = new JSONLinesResponse<Token>(req, {
       headers: {
-        ...JSONLinesResponse.defaultHeaders,
         'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS, HEAD',
+        'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
       },
     });

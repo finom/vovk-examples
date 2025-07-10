@@ -1,12 +1,11 @@
 import * as yup from 'yup';
-import { prefix, post, type VovkOutput } from 'vovk';
-import { openapi } from 'vovk-openapi';
+import { prefix, post, openapi, type VovkOutput } from 'vovk';
 import { withYup } from 'vovk-yup';
 
 @prefix('users-yup')
 export default class UserYupController {
   @openapi({
-    summary: 'Update user',
+    summary: 'Update user (Yup)',
     description: 'Update user by ID with Yup validation',
   })
   @post('{id}')
@@ -16,7 +15,7 @@ export default class UserYupController {
       .required()
       .shape({
         name: yup.string().required().meta({ description: 'User full name' }),
-        age: yup.number().min(0).required().meta({ description: 'User age' }),
+        age: yup.number().min(0).max(120).required().meta({ description: 'User age' }),
         email: yup.string().email().required().meta({ description: 'User email' }),
       })
       .meta({ description: 'User object' }),

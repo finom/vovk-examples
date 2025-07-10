@@ -1,15 +1,15 @@
 ---
-title: Progressive Response example
-description: Progressive Response example
+title: Polling example
+description: Polling example
 ---
 
 import PollExample from './PollExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# Progressive Response example
+# Polling example
 
-Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-yup). The request input is validated on the client-side before being sent to the server where it is validated again.
+Demonstrates infinite polling. The client sends `i` parameter to the server, the server increments it and streams the result back to the client. After 10 iterations, the server ends the response and the client starts polling again.
 
 ## Result
 
