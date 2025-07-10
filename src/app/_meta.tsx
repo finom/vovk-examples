@@ -32,7 +32,6 @@ const meta: MetaRecord = {
   'stream-response-object': 'JSONLines Response Object',
   'ai-sdk': 'AI SDK',
   poll: 'Polling',
-
 };
 
 export default meta;
