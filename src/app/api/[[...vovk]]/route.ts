@@ -10,7 +10,6 @@ import ProxyController from '../../../modules/proxy/ProxyController';
 import UserZodController from '../../../modules/zod/UserZodController';
 import UserYupController from '../../../modules/yup/UserYupController';
 import UserDtoController from '../../../modules/dto/UserDtoController';
-import ProgressiveController from '../../../modules/progressive/ProgressiveController';
 import PollController from '../../../modules/poll/PollController';
 import UserArktypeController from '../../../modules/arktype/UserArktypeController';
 import UserValibotController from '../../../modules/valibot/UserValibotController';
@@ -32,7 +31,6 @@ const controllers = {
   UserDtoRPC: UserDtoController,
   UserArktypeRPC: UserArktypeController,
   UserValibotRPC: UserValibotController,
-  ProgressiveRPC: ProgressiveController,
   PollRPC: PollController,
 };
 

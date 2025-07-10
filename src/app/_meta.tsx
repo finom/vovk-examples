@@ -19,9 +19,6 @@ const meta: MetaRecord = {
   'hello-world-with-service': 'Hello World with a Service',
   proxy: 'Proxy',
   'react-query': 'React Query',
-  '#experimental': separator('Experimental'),
-  poll: 'Poll',
-  progressive: 'Progressive',
   '#validation': separator('Validation'),
   zod: 'Zod',
   dto: 'DTO',
@@ -34,6 +31,8 @@ const meta: MetaRecord = {
   openai: 'OpenAI chat',
   'stream-response-object': 'JSONLines Response Object',
   'ai-sdk': 'AI SDK',
+  poll: 'Polling',
+
 };
 
 export default meta;
