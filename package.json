@@ -2,7 +2,7 @@
   "name": "vovk-examples",
   "version": "1.0.3",
   "description": "Vovk examples",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
     "patch": "npm t && npm version patch",
     "minor": "npm t && npm version minor",
     "major": "npm t && npm version major",
-    "postversion": "npm run bundle && npm publish --prefix dist && git push && git push --tags",
+    "postversion": "npm run bundle && npm publish dist && git push && git push --tags",
     "generate": "vovk generate",
     "bundle": "vovk bundle",
     "vercel-build": "vovk generate && npm run build"
