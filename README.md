@@ -18,7 +18,7 @@
 The main library with [zero dependencies](https://bundlephobia.com/result?p=vovk) that's going to be used in production. It provides a wrapper for Next.js API routes, internal RPC API, utilities and types.
 
 ```sh
-npm install vovk
+npm install vovk-examples
 ```
 
 For more information, please visit the [getting started guide](https://vovk.dev/getting-started) or check out the [Vovk.ts examples](https://vovk-examples.vercel.app/).
