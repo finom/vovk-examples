@@ -12,20 +12,18 @@ export default function PollExample() {
           query: { i: i.toString() },
         });
 
-        for await (const iteration of iterable) {
-          ({ i } = iteration);
+        for await ({ i } of iterable) {
           setTick(i);
         }
 
-        i++;
+        i++; // update it to send on the next "while" loop iteration
       }
     })();
   }, []);
 
   return (
     <div>
-      <h1>Poll ticker</h1>
-
+      <p>Poll ticker</p>
       <h2>{tick}</h2>
     </div>
   );

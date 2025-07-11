@@ -25,13 +25,15 @@ const meta: MetaRecord = {
   valibot: 'Valibot',
   arktype: 'Arktype',
   yup: 'Yup',
-  'zod-hook-form': 'Zod with React Hook Form',
+  'zod-hook-form': { title: 'Zod with React Hook Form', display: 'hidden' }, // TODO https://github.com/react-hook-form/resolvers/issues/791
   '#streaming': separator('JSONLines and AI'),
   stream: 'JSONLines',
   openai: 'OpenAI chat',
   'stream-response-object': 'JSONLines Response Object',
   'ai-sdk': 'AI SDK',
+  '#experimental': separator('Experimental'),
   poll: 'Polling',
+  progressive: 'Progressive response',
 };
 
 export default meta;

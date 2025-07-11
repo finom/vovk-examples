@@ -12,6 +12,9 @@ export default class OpenApiController {
     return vovkSchemaToOpenAPI({
       rootEntry: 'api',
       schema,
+      package: {
+        name: 'vovk-examples',
+      },
       openAPIObject: {
         info: {
           title: 'Vovk examples API',

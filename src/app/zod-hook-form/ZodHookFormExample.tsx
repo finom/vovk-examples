@@ -16,6 +16,7 @@ export default function ZodHookFormExample() {
   } = useForm<VovkBody<typeof UserZodRPC.updateUser>>({
     resolver: ajvResolver(UserZodRPC.updateUser.schema.validation!.body, {
       formats: fastFormats,
+
     }),
   });
 

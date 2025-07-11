@@ -13,12 +13,18 @@ import UserDtoController from '../../../modules/dto/UserDtoController';
 import PollController from '../../../modules/poll/PollController';
 import UserArktypeController from '../../../modules/arktype/UserArktypeController';
 import UserValibotController from '../../../modules/valibot/UserValibotController';
+import ProgressiveController from '../../../modules/progressive/ProgressiveController';
 
 export const runtime = 'edge';
 
 export const maxDuration = 60;
 
 const controllers = {
+  UserZodRPC: UserZodController,
+  UserYupRPC: UserYupController,
+  UserDtoRPC: UserDtoController,
+  UserArktypeRPC: UserArktypeController,
+  UserValibotRPC: UserValibotController,
   HelloWorldRPC: HelloWorldController,
   BasicRPCWithService: BasicControllerWithService,
   StreamRPC: StreamController,
@@ -26,12 +32,8 @@ const controllers = {
   OpenAiRPC: OpenAiController,
   AiSdkRPC: AiSdkController,
   ProxyRPC: ProxyController,
-  UserZodRPC: UserZodController,
-  UserYupRPC: UserYupController,
-  UserDtoRPC: UserDtoController,
-  UserArktypeRPC: UserArktypeController,
-  UserValibotRPC: UserValibotController,
   PollRPC: PollController,
+  ProgressiveRPC: ProgressiveController,
 };
 
 export type Controllers = typeof controllers;

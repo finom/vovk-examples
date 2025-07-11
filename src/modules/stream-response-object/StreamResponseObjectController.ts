@@ -10,10 +10,10 @@ export default class StreamResponseObjectController {
   @get('tokens')
   static async streamTokens(req: Request) {
     const response = new JSONLinesResponse<Token>(req, {
-      headers: {
+      headers: { // CORS
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Allow-Headers': 'Authorization',
       },
     });
 

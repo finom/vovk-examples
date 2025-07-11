@@ -4,7 +4,7 @@ import { UserDtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 import { validateOnClient } from 'vovk-dto/validateOnClient';
 import { plainToInstance } from 'class-transformer';
-import { UpdateUserBodyDto } from '@/modules/dto/UserDto';
+import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto } from '@/modules/dto/UserDto';
 
 export default function DtoFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof UserDtoRPC.updateUser> | null>(null);
@@ -19,8 +19,8 @@ export default function DtoFormExample() {
       setResponse(
         await UserDtoRPC.updateUser({
           body: plainToInstance(UpdateUserBodyDto, { name, email, age } satisfies UpdateUserBodyDto),
-          query: { notify: 'push' },
-          params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
+          query: plainToInstance(UpdateUserQueryDto, { notify: 'push' } satisfies UpdateUserQueryDto),
+          params: plainToInstance(UpdateUserParamsDto, { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' } satisfies UpdateUserParamsDto),
           disableClientValidation,
           // vovk.config doesn't include preferred validation library,
           // so we need to pass it manually for this example.

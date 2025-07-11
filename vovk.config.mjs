@@ -9,6 +9,7 @@ const config = {
     validateOnClient: 'vovk-ajv',
   },
   emitConfig: true,
+  logLevel: 'debug',
 };
 
 export default config;

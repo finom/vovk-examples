@@ -67,9 +67,15 @@
       }
     },
     "imports": {
-      "fetcher": ["vovk"],
-      "validateOnClient": ["vovk-ajv"],
-      "createRPC": ["vovk-react-query"]
+      "fetcher": [
+        "vovk"
+      ],
+      "validateOnClient": [
+        "vovk-ajv"
+      ],
+      "createRPC": [
+        "vovk-react-query"
+      ]
     },
     "emitConfig": [
       "$schema",
@@ -94,12 +100,17 @@
     ],
     "composedClient": {
       "enabled": true,
-      "fromTemplates": ["mjs", "cjs"],
+      "fromTemplates": [
+        "mjs",
+        "cjs"
+      ],
       "outDir": "./node_modules/.vovk-client"
     },
     "segmentedClient": {
       "enabled": false,
-      "fromTemplates": ["ts"],
+      "fromTemplates": [
+        "ts"
+      ],
       "outDir": "src/client"
     },
     "bundle": {
@@ -117,7 +128,7 @@
     "origin": "http://localhost:3000",
     "rootEntry": "api",
     "rootSegmentModulesDirName": "",
-    "logLevel": "info",
+    "logLevel": "debug",
     "prettifyClient": false,
     "devHttps": false,
     "moduleTemplates": {
