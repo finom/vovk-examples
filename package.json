@@ -15,7 +15,7 @@
     "lint": "next lint",
     "patch": "npm t && npm version patch",
     "minor": "npm t && npm version minor",
-    "major": "npm t && npm version major",
+    "BREAKING-major": "npm t && npm version major",
     "postversion": "npm run bundle && npm publish ./dist && git push && git push --tags",
     "generate": "vovk generate",
     "bundle": "vovk bundle",
