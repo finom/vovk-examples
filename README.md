@@ -23,7 +23,7 @@ npm install vovk
 
 For more information, please visit the [getting started guide](https://vovk.dev/getting-started) or check out the [Vovk.ts examples](https://vovk-examples.vercel.app/).
 
--------
+---
 
 # vovk-examples
 

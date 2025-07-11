@@ -20,7 +20,9 @@ export default function DtoFormExample() {
         await UserDtoRPC.updateUser({
           body: plainToInstance(UpdateUserBodyDto, { name, email, age } satisfies UpdateUserBodyDto),
           query: plainToInstance(UpdateUserQueryDto, { notify: 'push' } satisfies UpdateUserQueryDto),
-          params: plainToInstance(UpdateUserParamsDto, { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' } satisfies UpdateUserParamsDto),
+          params: plainToInstance(UpdateUserParamsDto, {
+            id: '5a279068-35d6-4d67-94e0-c21ef4052eea',
+          } satisfies UpdateUserParamsDto),
           disableClientValidation,
           // vovk.config doesn't include preferred validation library,
           // so we need to pass it manually for this example.

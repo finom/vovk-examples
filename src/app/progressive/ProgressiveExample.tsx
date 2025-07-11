@@ -16,30 +16,33 @@ export default function ProgressiveExample() {
     setTasks(null);
     const { users: usersPromise, tasks: tasksPromise } = progressive(ProgressiveRPC.streamProgressiveResponse);
     setIsLoaded(false);
-    Promise.all([usersPromise.then(setUsers), tasksPromise.then(setTasks)])
-      .finally(() => setIsLoaded(true));
+    Promise.all([usersPromise.then(setUsers), tasksPromise.then(setTasks)]).finally(() => setIsLoaded(true));
   };
 
   return (
     <>
-      <button onClick={load} disabled={isLoaded === false}>Load</button>
+      <button onClick={load} disabled={isLoaded === false}>
+        Load
+      </button>
       {isLoaded !== null && <h2>Users</h2>}
       {isLoaded !== null && !users && <ListSkeleton />}
-      {!!users?.length && users?.map((user) => (
-        <ul key={user.id}>
-          <li>{user.name}</li>
-        </ul>
-      ))}
+      {!!users?.length &&
+        users?.map((user) => (
+          <ul key={user.id}>
+            <li>{user.name}</li>
+          </ul>
+        ))}
 
       {isLoaded !== null && <h2>Tasks</h2>}
       {isLoaded !== null && !tasks && <ListSkeleton />}
-      {!!tasks?.length && tasks?.map((task) => (
-        <ul key={task.id}>
-          <li>
-            {task.title} {task.completed ? '✅' : ''}
-          </li>
-        </ul>
-      ))}
+      {!!tasks?.length &&
+        tasks?.map((task) => (
+          <ul key={task.id}>
+            <li>
+              {task.title} {task.completed ? '✅' : ''}
+            </li>
+          </ul>
+        ))}
     </>
   );
 }
