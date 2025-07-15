@@ -27,6 +27,13 @@ const config = {
   },
   emitConfig: true,
   logLevel: 'debug',
+  segmentConfig: {
+    '': {
+      reExports: {
+        'default as GithubFiles': './src/components/GithubFiles',
+      }
+    },
+  },
 };
 
 export default config;
