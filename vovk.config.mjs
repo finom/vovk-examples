@@ -30,8 +30,8 @@ const config = {
   segmentConfig: {
     '': {
       reExports: {
-        'default as GithubFiles': './src/components/GithubFiles',
-      }
+        // 'default as GithubFiles': './src/components/GithubFiles',
+      },
     },
   },
 };

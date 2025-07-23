@@ -18,6 +18,7 @@ const meta: MetaRecord = {
   'hello-world': 'Hello World',
   'hello-world-with-service': 'Hello World with a Service',
   proxy: 'Proxy',
+  'static-params': 'Static Params',
   'react-query': 'React Query',
   '#validation': separator('Validation'),
   zod: 'Zod',

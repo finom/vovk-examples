@@ -1,0 +1,24 @@
+---
+title: Static Params example
+description: Static Params example with "staticParams" decorator option
+---
+
+import StaticParamsExample from './StaticParamsExample';
+import GithubFiles from '@/components/GithubFiles';
+import Example from '@/components/Example';
+
+# Static Params example
+
+This example demonstrates a static API represented by a single handler that renders 6 sets of static parameters: section (`a | b`) and page (`1 | 2 | 3`).
+
+## Result
+
+<Example>
+  <StaticParamsExample />
+</Example>
+
+## Code
+
+<GithubFiles
+  paths={['src/modules/static/staticParams/StaticParamsController.ts', 'src/app/static-params/StaticParamsExample.tsx']}
+/>

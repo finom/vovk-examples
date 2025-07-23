@@ -18,6 +18,49 @@
           }
         }
       }
+    },
+    "StaticParamsRPC": {
+      "rpcModuleName": "StaticParamsRPC",
+      "originalControllerName": "StaticParamsController",
+      "prefix": "static-params",
+      "handlers": {
+        "getStaticParams": {
+          "validation": {
+            "params": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "section": {
+                  "type": "string",
+                  "enum": [
+                    "a",
+                    "b"
+                  ]
+                },
+                "page": {
+                  "type": "string",
+                  "enum": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
+                }
+              },
+              "required": [
+                "section",
+                "page"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "path": "{section}/page{page}.json",
+          "httpMethod": "GET",
+          "openapi": {
+            "summary": "Static Params",
+            "description": "Get the static params: section and page"
+          }
+        }
+      }
     }
   }
 }
