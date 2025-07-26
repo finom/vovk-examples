@@ -42,7 +42,7 @@ const controllers = {
 
 export type Controllers = typeof controllers;
 
-export const { GET, POST, PUT, DELETE } = initSegment({
+export const { GET, POST, PUT, DELETE, OPTIONS } = initSegment({
   controllers,
   onError: (error) => {
     console.error('Segment error: ', error);
