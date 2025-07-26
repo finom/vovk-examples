@@ -1,4 +1,5 @@
 // @ts-check
+console.log('process.env.NODE_ENV', process.env.NODE_ENV);
 /** @type {import('vovk').VovkConfig} */
 const config = {
   // you can use NEXT_PUBLIC_VERCEL_URL env var for preview deployments on Vercel
