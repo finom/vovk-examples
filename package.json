@@ -18,7 +18,7 @@
     "BREAKING-major": "npm t && npm version major",
     "postversion": "npm run bundle && npm publish ./dist && git push && git push --tags",
     "generate": "vovk generate",
-    "bundle": "vovk bundle",
+    "bundle": "NODE_ENV=production vovk bundle",
     "vercel-build": "vovk generate && npm run build"
   },
   "prettier": {
