@@ -3,8 +3,8 @@ import { initSegment } from 'vovk';
 import OpenAiController from '../../../modules/openai/OpenAiController';
 import HelloWorldController from '../../../modules/hello-world/HelloWorldController';
 import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService';
-import StreamController from '../../../modules/stream/StreamController';
-import StreamResponseObjectController from '../../../modules/stream-response-object/StreamResponseObjectController';
+import JSONLinesController from '../../../modules/jsonlines/JSONLinesController';
+import JSONLinesResponseController from '../../../modules/jsonlines-response/JSONLinesResponseController';
 import AiSdkController from '../../../modules/ai-sdk/AiSdkController';
 import ProxyController from '../../../modules/proxy/ProxyController';
 import UserZodController from '../../../modules/zod/UserZodController';
@@ -31,8 +31,8 @@ const controllers = {
   UserValibotRPC: UserValibotController,
   HelloWorldRPC: HelloWorldController,
   BasicRPCWithService: BasicControllerWithService,
-  StreamRPC: StreamController,
-  StreamResponseObjectRPC: StreamResponseObjectController,
+  JSONLinesRPC: JSONLinesController,
+  JSONLinesResponseRPC: JSONLinesResponseController,
   OpenAiRPC: OpenAiController,
   AiSdkRPC: AiSdkController,
   ProxyRPC: ProxyController,

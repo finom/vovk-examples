@@ -67,9 +67,15 @@
       }
     },
     "imports": {
-      "fetcher": ["vovk"],
-      "validateOnClient": ["vovk-ajv"],
-      "createRPC": ["vovk-react-query"]
+      "fetcher": [
+        "vovk"
+      ],
+      "validateOnClient": [
+        "vovk-ajv"
+      ],
+      "createRPC": [
+        "vovk-react-query"
+      ]
     },
     "emitConfig": [
       "$schema",
@@ -94,12 +100,17 @@
     ],
     "composedClient": {
       "enabled": true,
-      "fromTemplates": ["mjs", "cjs"],
+      "fromTemplates": [
+        "mjs",
+        "cjs"
+      ],
       "outDir": "./node_modules/.vovk-client"
     },
     "segmentedClient": {
       "enabled": false,
-      "fromTemplates": ["ts"],
+      "fromTemplates": [
+        "ts"
+      ],
       "outDir": "src/client"
     },
     "bundle": {
@@ -111,7 +122,11 @@
         "readme": ".",
         "packageJson": "."
       },
-      "package": {},
+      "package": {
+        "dependencies": {
+          "react-loading-skeleton": "^3.5.0"
+        }
+      },
       "readme": {
         "banner": "<p align=\"center\"> \n  <picture>\n    <source width=\"300\" media=\"(prefers-color-scheme: dark)\" srcset=\"https://vovk.dev/vovk-logo-white.svg\">\n    <source width=\"300\" media=\"(prefers-color-scheme: light)\" srcset=\"https://vovk.dev/vovk-logo.svg\">\n    <img width=\"300\" alt=\"vovk\" src=\"https://vovk.dev/vovk-logo.svg\">\n  </picture><br>\n  <strong>RESTful + RPC = ♥️</strong>\n</p>\n\n<p align=\"center\">\n  Back-end meta-framework for <a href=\"https://nextjs.org/docs/app\">Next.js</a>\n</p>"
       }
@@ -131,7 +146,10 @@
     "libs": {},
     "segmentConfig": {
       "": {
-        "reExports": {}
+        "reExports": {
+          "default as ProgressiveExample": "./src/app/progressive/ProgressiveExample",
+          "default as JSONLinesExample": "./src/app/jsonlines/JSONLinesExample"
+        }
       }
     },
     "openApiMixins": {}

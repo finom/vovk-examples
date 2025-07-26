@@ -28,9 +28,9 @@ const meta: MetaRecord = {
   yup: 'Yup',
   'zod-hook-form': { title: 'Zod with React Hook Form', display: 'hidden' }, // TODO https://github.com/react-hook-form/resolvers/issues/791
   '#streaming': separator('JSONLines and AI'),
-  stream: 'JSONLines',
+  jsonlines: 'JSONLines',
+  'jsonlines-response': 'JSONLinesResponse Object',
   openai: 'OpenAI chat',
-  'stream-response-object': 'JSONLines Response Object',
   'ai-sdk': 'AI SDK',
   '#experimental': separator('Experimental'),
   poll: 'Polling',

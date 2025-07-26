@@ -2,7 +2,7 @@ import type { JSONLinesResponse } from 'vovk';
 
 export type Token = { message: string };
 
-export default class StreamService {
+export default class JSONLinesService {
   static async streamTokens(resp: JSONLinesResponse<Token>) {
     const tokens: Token[] = [
       { message: 'Hello,' },

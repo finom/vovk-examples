@@ -1,0 +1,28 @@
+---
+title: JSON Lines streaming with Response object
+description: JSON Lines streaming with Response object
+---
+
+import JSONLinesResponseExample from './JSONLinesResponseExample';
+import GithubFiles from '@/components/GithubFiles';
+import Example from '@/components/Example';
+
+# JSON Lines streaming with Response object
+
+This example uses [JSONLinesResponse](https://vovk.dev/controller/jsonlines#jsonlinesresponse) object in order to get more control over the stream logic.
+
+## Result
+
+<Example>
+  <JSONLinesResponseExample />
+</Example>
+
+## Code
+
+<GithubFiles
+  paths={[
+    'src/modules/jsonlines-response/JSONLinesResponseService.ts',
+    'src/modules/jsonlines-response/JSONLinesResponseController.ts',
+    'src/app/jsonlines-response/JSONLinesResponseExample.tsx',
+  ]}
+/>
