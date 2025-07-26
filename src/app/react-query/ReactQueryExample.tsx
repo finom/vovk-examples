@@ -1,11 +1,11 @@
 'use client';
-import { HelloWorldRPC, StreamRPC } from 'vovk-client';
+import { HelloWorldRPC, JSONLinesRPC } from 'vovk-client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useState } from 'react';
 
 export function Example() {
   const query = HelloWorldRPC.getHello.useQuery();
-  const stream = StreamRPC.streamTokens.useQuery();
+  const stream = JSONLinesRPC.streamTokens.useQuery();
   const mutation = HelloWorldRPC.postHello.useMutation();
 
   const [userInput, setUserInput] = useState('');
