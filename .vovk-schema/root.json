@@ -33,11 +33,7 @@
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "additionalProperties": false
             },
             "query": {
@@ -47,16 +43,10 @@
                 "notify": {
                   "description": "Notification type",
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ]
+                  "enum": ["email", "push", "none"]
                 }
               },
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "additionalProperties": false
             },
             "params": {
@@ -70,9 +60,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false
             },
             "output": {
@@ -85,9 +73,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "additionalProperties": false
             }
           },
@@ -95,6 +81,94 @@
           "httpMethod": "POST",
           "openapi": {
             "summary": "Update user (Zod)",
+            "description": "Update user by ID with Zod validation"
+          }
+        }
+      }
+    },
+    "UserZodWithServiceRPC": {
+      "rpcModuleName": "UserZodWithServiceRPC",
+      "originalControllerName": "UserZodWithServiceController",
+      "prefix": "users-zod-with-service",
+      "handlers": {
+        "updateUser": {
+          "validation": {
+            "body": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "User object",
+              "type": "object",
+              "properties": {
+                "name": {
+                  "description": "User full name",
+                  "type": "string"
+                },
+                "age": {
+                  "description": "User age",
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 120
+                },
+                "email": {
+                  "description": "User email",
+                  "type": "string",
+                  "format": "email",
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                }
+              },
+              "required": ["name", "age", "email"],
+              "additionalProperties": false
+            },
+            "query": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "notify": {
+                  "description": "Notification type",
+                  "type": "string",
+                  "enum": ["email", "push", "none"]
+                }
+              },
+              "required": ["notify"],
+              "additionalProperties": false
+            },
+            "params": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "User ID",
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                }
+              },
+              "required": ["id"],
+              "additionalProperties": false
+            },
+            "output": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "description": "Response object",
+              "type": "object",
+              "properties": {
+                "success": {
+                  "description": "Success status",
+                  "type": "boolean"
+                },
+                "id": {
+                  "description": "User ID",
+                  "type": "string",
+                  "format": "uuid",
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                }
+              },
+              "required": ["success", "id"],
+              "additionalProperties": false
+            }
+          },
+          "path": "{id}",
+          "httpMethod": "POST",
+          "openapi": {
+            "summary": "Update user (Zod with service)",
             "description": "Update user by ID with Zod validation"
           }
         }
@@ -126,11 +200,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -138,17 +208,11 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "type": "object",
@@ -158,9 +222,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "type": "object",
@@ -170,9 +232,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -213,11 +273,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -226,18 +282,12 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
               "type": "object",
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "description": "Query parameters"
             },
             "params": {
@@ -251,9 +301,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "description": "Path parameters"
             },
             "output": {
@@ -266,9 +314,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -309,11 +355,7 @@
                   "description": "User full name"
                 }
               },
-              "required": [
-                "age",
-                "email",
-                "name"
-              ]
+              "required": ["age", "email", "name"]
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -337,9 +379,7 @@
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -368,9 +408,7 @@
                   "format": "uuid"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -381,9 +419,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ]
+              "required": ["success"]
             }
           },
           "path": "{id}",
@@ -422,11 +458,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -434,17 +466,11 @@
               "type": "object",
               "properties": {
                 "notify": {
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -456,9 +482,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -469,9 +493,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -620,9 +642,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "i"
-              ],
+              "required": ["i"],
               "additionalProperties": false
             },
             "iteration": {
@@ -633,9 +653,7 @@
                   "type": "number"
                 }
               },
-              "required": [
-                "i"
-              ],
+              "required": ["i"],
               "additionalProperties": false
             }
           },
@@ -669,17 +687,12 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "id",
-                          "name"
-                        ],
+                        "required": ["id", "name"],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": [
-                    "users"
-                  ],
+                  "required": ["users"],
                   "additionalProperties": false
                 },
                 {
@@ -700,18 +713,12 @@
                             "type": "boolean"
                           }
                         },
-                        "required": [
-                          "id",
-                          "title",
-                          "completed"
-                        ],
+                        "required": ["id", "title", "completed"],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": [
-                    "tasks"
-                  ],
+                  "required": ["tasks"],
                   "additionalProperties": false
                 }
               ]

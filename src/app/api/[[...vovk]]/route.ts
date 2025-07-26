@@ -14,6 +14,8 @@ import PollController from '../../../modules/poll/PollController';
 import UserArktypeController from '../../../modules/arktype/UserArktypeController';
 import UserValibotController from '../../../modules/valibot/UserValibotController';
 import ProgressiveController from '../../../modules/progressive/ProgressiveController';
+import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController';
+// import UserZod3Controller from '../../../modules/zod3/UserZod3Controller';
 
 export const runtime = 'edge';
 
@@ -21,6 +23,8 @@ export const maxDuration = 60;
 
 const controllers = {
   UserZodRPC: UserZodController,
+  UserZodWithServiceRPC: UserZodWithServiceController,
+  // UserZod3RPC: UserZod3Controller, uncomment when https://github.com/StefanTerdell/zod-to-json-schema/issues/178 is resolved
   UserYupRPC: UserYupController,
   UserDtoRPC: UserDtoController,
   UserArktypeRPC: UserArktypeController,

@@ -30,7 +30,7 @@ const config = {
   segmentConfig: {
     '': {
       reExports: {
-        // 'default as GithubFiles': './src/components/GithubFiles',
+        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
       },
     },
   },
