@@ -5,7 +5,7 @@ import ProgressiveService from './ProgressiveService';
 
 @prefix('progressive')
 export default class ProgressiveController {
-  @get()
+  @get('', { cors: true })
   static streamProgressiveResponse = withZod({
     validateEachIteration: true,
     iteration: z.union([
