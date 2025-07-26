@@ -24,6 +24,11 @@ const config = {
   Back-end meta-framework for <a href="https://nextjs.org/docs/app">Next.js</a>
 </p>`,
     },
+    package: {
+      dependencies: {
+        'react-loading-skeleton': '^3.5.0',
+      },
+    }
   },
   emitConfig: true,
   logLevel: 'debug',
