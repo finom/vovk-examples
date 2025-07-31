@@ -54,7 +54,7 @@
     "dto-mapped-types": "^0.0.7",
     "lodash": "^4.17.21",
     "next": "^15.4.3",
-    "nextra": "^4.2.17",
+    "nextra": "^4.3.0",
     "nextra-theme-docs": "^4.2.17",
     "openai": "^5.10.2",
     "openapi3-ts": "^4.5.0",
