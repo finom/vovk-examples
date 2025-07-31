@@ -1,6 +1,12 @@
 'use client';
 import { HelloWorldRPC, JSONLinesRPC } from 'vovk-client';
-import { QueryClient, QueryClientProvider, useQuery, useMutation, experimental_streamedQuery as streamedQuery } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+  useMutation,
+  experimental_streamedQuery as streamedQuery,
+} from '@tanstack/react-query';
 import { useState } from 'react';
 
 export function Example() {
@@ -10,9 +16,9 @@ export function Example() {
   });
   const stream = useQuery({
     queryKey: JSONLinesRPC.streamTokens.queryKey(['todo']),
-    queryFn: streamedQuery({ 
+    queryFn: streamedQuery({
       queryFn: () => JSONLinesRPC.streamTokens(),
-    })
+    }),
   });
   const mutation = useMutation({
     mutationFn: HelloWorldRPC.postHello,
