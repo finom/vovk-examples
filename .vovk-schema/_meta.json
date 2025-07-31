@@ -74,7 +74,7 @@
         "vovk-ajv"
       ],
       "createRPC": [
-        "vovk-react-query"
+        "vovk"
       ]
     },
     "emitConfig": [
@@ -133,7 +133,7 @@
     },
     "modulesDir": "src/modules",
     "schemaOutDir": "./.vovk-schema",
-    "origin": "http://localhost:3000",
+    "origin": "http://localhost:3001",
     "rootEntry": "api",
     "rootSegmentModulesDirName": "",
     "logLevel": "debug",

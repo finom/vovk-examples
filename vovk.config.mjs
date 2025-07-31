@@ -6,7 +6,6 @@ const config = {
     ? `https://vovk-examples.vercel.app`
     : 'http://localhost:' + (process.env.PORT ?? 3000),
   imports: {
-    createRPC: 'vovk-react-query',
     validateOnClient: 'vovk-ajv',
   },
   bundle: {

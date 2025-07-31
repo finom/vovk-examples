@@ -22,7 +22,7 @@ export default function ProgressiveExample() {
   return (
     <>
       <button onClick={load} disabled={isLoaded === false}>
-        Load
+        Load users and tasks {isLoaded ? 'again' : ''}
       </button>
       {isLoaded !== null && <h2>Users</h2>}
       {isLoaded !== null && !users && <ListSkeleton />}

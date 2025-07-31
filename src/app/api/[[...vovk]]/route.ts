@@ -17,7 +17,7 @@ import ProgressiveController from '../../../modules/progressive/ProgressiveContr
 import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController';
 // import UserZod3Controller from '../../../modules/zod3/UserZod3Controller';
 
-export const runtime = 'edge';
+// export const runtime = 'edge';
 
 export const maxDuration = 60;
 

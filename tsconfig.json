@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2022",
     "lib": ["dom", "dom.iterable", "esnext"],
+    
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -9,10 +10,11 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "strictPropertyInitialization": false,
+    "allowImportingTsExtensions": false,
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
