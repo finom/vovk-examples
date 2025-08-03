@@ -10,6 +10,12 @@ const config = {
     validateOnClient: 'vovk-ajv',
   },
   bundle: {
+    reExports: {
+        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
+        'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
+        'default as GithubCode': './src/components/GithubCode',
+        'default as getGithubFiles': '@/lib/getGithubFiles',
+      },
     readme: {
       banner: `<p align="center"> 
   <picture>
@@ -32,16 +38,6 @@ const config = {
   },
   emitConfig: ['clientTemplateDefs'],
   logLevel: 'debug',
-  segmentConfig: {
-    '': {
-      /* reExports: {
-        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
-        'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
-        'default as GithubCode': './src/components/GithubCode',
-        'default as getGithubFiles': '@/lib/getGithubFiles',
-      }, */
-    },
-  },
 };
 
 export default config;
