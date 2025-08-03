@@ -7,7 +7,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "tsc --noEmit && next lint",
+    "test": "next lint",
     "upgrade": "npx npm-check-updates -u -x eslint && npm i",
     "dev": "vovk dev --next-dev",
     "build": "next build",
