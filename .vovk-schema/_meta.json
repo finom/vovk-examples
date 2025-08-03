@@ -1,6 +1,5 @@
 {
   "config": {
-    "$schema": "https://vovk.dev/api/spec/v3/config.json",
     "clientTemplateDefs": {
       "ts": {
         "templatePath": "vovk-cli/client-templates/ts/",
@@ -90,95 +89,6 @@
         }
       }
     },
-    "imports": {
-      "fetcher": [
-        "vovk"
-      ],
-      "validateOnClient": [
-        "vovk-ajv"
-      ],
-      "createRPC": [
-        "vovk"
-      ]
-    },
-    "emitConfig": [
-      "$schema",
-      "clientTemplateDefs",
-      "imports",
-      "emitConfig",
-      "composedClient",
-      "segmentedClient",
-      "bundle",
-      "modulesDir",
-      "schemaOutDir",
-      "origin",
-      "rootEntry",
-      "rootSegmentModulesDirName",
-      "logLevel",
-      "prettifyClient",
-      "devHttps",
-      "moduleTemplates",
-      "libs",
-      "segmentConfig",
-      "openApiMixins"
-    ],
-    "composedClient": {
-      "enabled": true,
-      "fromTemplates": [
-        "mjs",
-        "cjs"
-      ],
-      "outDir": "./node_modules/.vovk-client"
-    },
-    "segmentedClient": {
-      "enabled": false,
-      "fromTemplates": [
-        "ts"
-      ],
-      "outDir": "src/client"
-    },
-    "bundle": {
-      "tsClientOutDir": "tmp_prebundle",
-      "dontDeleteTsClientOutDirAfter": false,
-      "requires": {
-        "readme": ".",
-        "packageJson": "."
-      },
-      "package": {
-        "dependencies": {
-          "react-loading-skeleton": "^3.5.0"
-        }
-      },
-      "readme": {
-        "banner": "<p align=\"center\"> \n  <picture>\n    <source width=\"300\" media=\"(prefers-color-scheme: dark)\" srcset=\"https://vovk.dev/vovk-logo-white.svg\">\n    <source width=\"300\" media=\"(prefers-color-scheme: light)\" srcset=\"https://vovk.dev/vovk-logo.svg\">\n    <img width=\"300\" alt=\"vovk\" src=\"https://vovk.dev/vovk-logo.svg\">\n  </picture><br>\n  <strong>RESTful + RPC = ♥️</strong>\n</p>\n\n<p align=\"center\">\n  Back-end meta-framework for <a href=\"https://nextjs.org/docs/app\">Next.js</a>\n</p>"
-      },
-      "tsdownBuildOptions": {
-        "outDir": "dist"
-      }
-    },
-    "modulesDir": "src/modules",
-    "schemaOutDir": "./.vovk-schema",
-    "origin": "http://localhost:3000",
-    "rootEntry": "api",
-    "rootSegmentModulesDirName": "",
-    "logLevel": "debug",
-    "prettifyClient": false,
-    "devHttps": false,
-    "moduleTemplates": {
-      "service": "vovk-cli/module-templates/service.ts.ejs",
-      "controller": "vovk-cli/module-templates/controller.ts.ejs"
-    },
-    "libs": {},
-    "segmentConfig": {
-      "": {
-        "reExports": {
-          "default as ProgressiveExample": "./src/app/progressive/ProgressiveExample",
-          "default as JSONLinesExample": "./src/app/jsonlines/JSONLinesExample",
-          "default as GithubCode": "./src/components/GithubCode",
-          "default as getGithubFiles": "@/lib/getGithubFiles"
-        }
-      }
-    },
-    "openApiMixins": {}
+    "$schema": "https://vovk.dev/api/spec/v3/config.json"
   }
 }
