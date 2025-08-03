@@ -2,7 +2,7 @@ import GithubTabs from './GithubTabs';
 import type { GithubFile } from '@/types';
 import CodeBlock from './CodeBlock';
 
-const Github = async ({ githubFiles }: { githubFiles: GithubFile[] }) => {
+const GithubCode = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   return (
     <div className={`bg-code rounded-lg mt-4`}>
       <GithubTabs githubFiles={githubFiles} />
@@ -15,4 +15,4 @@ const Github = async ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   );
 };
 
-export default Github;
+export default GithubCode;

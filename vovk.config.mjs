@@ -37,6 +37,8 @@ const config = {
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
+        'default as GithubCode': './src/components/GithubCode',
+        'default as getGithubFiles': '@/lib/getGithubFiles',
       },
     },
   },

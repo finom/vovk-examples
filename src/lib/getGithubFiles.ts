@@ -1,37 +1,35 @@
 import type { GithubFile } from '@/types';
 
-const OWNER = 'finom';
-const REPO = 'vovk-examples';
-const REF = 'v3';
 
-async function performDirectGithubRequest(path: string) {
-  const resp = await fetch(`https://raw.githubusercontent.com/${OWNER}/${REPO}/${REF}/${path}?t=${Date.now()}`);
+
+async function performDirectGithubRequest(path: string, { owner, repo, ref }: { owner: string, repo: string, ref: string }) {
+  const resp = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${path}?t=${Date.now()}`);
   return resp.text();
 }
 
-async function getGithubFile(path: string) {
+async function getGithubFile(path: string, { owner, repo, ref }: { owner: string, repo: string, ref: string }) {
   let resp;
 
   try {
-    resp = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${REF}&t=${Date.now()}`, {
+    resp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${ref}&t=${Date.now()}`, {
       headers: {
         Accept: 'application/vnd.github.VERSION.raw',
       },
     });
   } catch (e) {
     // fallback in case if API limmit is exceeded
-    return performDirectGithubRequest(path);
+    return performDirectGithubRequest(path, { owner, repo, ref });
   }
 
   if (resp.status !== 200) {
-    return performDirectGithubRequest(path);
+    return performDirectGithubRequest(path, { owner, repo, ref });
   }
 
   return resp.text();
 }
 
-export default async function getGithubFiles(githubPaths: string[]): Promise<GithubFile[]> {
-  const githubContents = await Promise.all(githubPaths.map(getGithubFile));
+export default async function getGithubFiles(githubPaths: string[], { owner, repo, ref }: { owner: string, repo: string, ref: string }): Promise<GithubFile[]> {
+  const githubContents = await Promise.all(githubPaths.map((path) => getGithubFile(path, { owner, repo, ref })));
   const githubFiles = githubContents.map((content, i) => ({ path: githubPaths[i], content }));
 
   return githubFiles;
