@@ -1,13 +1,14 @@
 import type { GithubFile } from '@/types';
 
-
-
-async function performDirectGithubRequest(path: string, { owner, repo, ref }: { owner: string, repo: string, ref: string }) {
+async function performDirectGithubRequest(
+  path: string,
+  { owner, repo, ref }: { owner: string; repo: string; ref: string }
+) {
   const resp = await fetch(`https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${path}?t=${Date.now()}`);
   return resp.text();
 }
 
-async function getGithubFile(path: string, { owner, repo, ref }: { owner: string, repo: string, ref: string }) {
+async function getGithubFile(path: string, { owner, repo, ref }: { owner: string; repo: string; ref: string }) {
   let resp;
 
   try {
@@ -28,7 +29,10 @@ async function getGithubFile(path: string, { owner, repo, ref }: { owner: string
   return resp.text();
 }
 
-export default async function getGithubFiles(githubPaths: string[], { owner, repo, ref }: { owner: string, repo: string, ref: string }): Promise<GithubFile[]> {
+export default async function getGithubFiles(
+  githubPaths: string[],
+  { owner, repo, ref }: { owner: string; repo: string; ref: string }
+): Promise<GithubFile[]> {
   const githubContents = await Promise.all(githubPaths.map((path) => getGithubFile(path, { owner, repo, ref })));
   const githubFiles = githubContents.map((content, i) => ({ path: githubPaths[i], content }));
 
