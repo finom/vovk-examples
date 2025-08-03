@@ -5,23 +5,23 @@
       "ts": {
         "templatePath": "vovk-cli/client-templates/ts/",
         "requires": {
-          "schemaTs": "."
-        },
-        "isTsClient": true
+          "schemaTs": ".",
+          "mixins": "."
+        }
       },
       "cjs": {
         "templatePath": "vovk-cli/client-templates/cjs/",
         "requires": {
-          "schemaCjs": "."
-        },
-        "isTsClient": true
+          "schemaCjs": ".",
+          "mixins": "."
+        }
       },
       "mjs": {
         "templatePath": "vovk-cli/client-templates/mjs/",
         "requires": {
-          "schemaCjs": "."
-        },
-        "isTsClient": true
+          "schemaCjs": ".",
+          "mixins": "."
+        }
       },
       "schemaTs": {
         "templatePath": "vovk-cli/client-templates/schemaTs/"
@@ -41,29 +41,65 @@
       "mixins": {
         "templatePath": "vovk-cli/client-templates/mixins/"
       },
+      "rsSrc": {
+        "templatePath": "vovk-rust/client-templates/rsSrc/",
+        "requires": {
+          "schemaJson": "./"
+        }
+      },
+      "rsPkg": {
+        "templatePath": "vovk-rust/client-templates/rsPkg/",
+        "requires": {
+          "rsReadme": "./"
+        }
+      },
+      "rsReadme": {
+        "templatePath": "vovk-rust/client-templates/rsReadme/"
+      },
       "rs": {
-        "templatePath": "vovk-rust/template/",
         "composedClient": {
           "outDir": "dist_rust"
         },
         "requires": {
-          "schemaJson": "./data/"
+          "rsSrc": "./src/",
+          "rsPkg": "./"
         }
       },
+      "pySrc": {
+        "templatePath": "vovk-python/client-templates/pySrc/",
+        "requires": {
+          "schemaJson": "."
+        }
+      },
+      "pyPkg": {
+        "templatePath": "vovk-python/client-templates/pyPkg/",
+        "requires": {
+          "pyReadme": "./"
+        }
+      },
+      "pyReadme": {
+        "templatePath": "vovk-python/client-templates/pyReadme/"
+      },
       "py": {
-        "templatePath": "vovk-python/template/",
         "composedClient": {
           "outDir": "dist_python"
         },
         "requires": {
-          "schemaJson": "./src/[package_name]/"
+          "pySrc": "./src/[package_name]/",
+          "pyPkg": "./"
         }
       }
     },
     "imports": {
-      "fetcher": ["vovk"],
-      "validateOnClient": ["vovk-ajv"],
-      "createRPC": ["vovk"]
+      "fetcher": [
+        "vovk"
+      ],
+      "validateOnClient": [
+        "vovk-ajv"
+      ],
+      "createRPC": [
+        "vovk"
+      ]
     },
     "emitConfig": [
       "$schema",
@@ -88,16 +124,21 @@
     ],
     "composedClient": {
       "enabled": true,
-      "fromTemplates": ["mjs", "cjs"],
+      "fromTemplates": [
+        "mjs",
+        "cjs"
+      ],
       "outDir": "./node_modules/.vovk-client"
     },
     "segmentedClient": {
       "enabled": false,
-      "fromTemplates": ["ts"],
+      "fromTemplates": [
+        "ts"
+      ],
       "outDir": "src/client"
     },
     "bundle": {
-      "tsClientOutDir": "tmp_ts_rpc",
+      "tsClientOutDir": "tmp_prebundle",
       "dontDeleteTsClientOutDirAfter": false,
       "requires": {
         "readme": ".",
@@ -117,7 +158,7 @@
     },
     "modulesDir": "src/modules",
     "schemaOutDir": "./.vovk-schema",
-    "origin": "http://localhost:3001",
+    "origin": "http://localhost:3000",
     "rootEntry": "api",
     "rootSegmentModulesDirName": "",
     "logLevel": "debug",
@@ -132,7 +173,9 @@
       "": {
         "reExports": {
           "default as ProgressiveExample": "./src/app/progressive/ProgressiveExample",
-          "default as JSONLinesExample": "./src/app/jsonlines/JSONLinesExample"
+          "default as JSONLinesExample": "./src/app/jsonlines/JSONLinesExample",
+          "default as GithubCode": "./src/components/GithubCode",
+          "default as getGithubFiles": "@/lib/getGithubFiles"
         }
       }
     },
