@@ -15,6 +15,7 @@ import UserArktypeController from '../../../modules/arktype/UserArktypeControlle
 import UserValibotController from '../../../modules/valibot/UserValibotController';
 import ProgressiveController from '../../../modules/progressive/ProgressiveController';
 import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController';
+import FormZodController from '../../../modules/form/FormZodController';
 // import UserZod3Controller from '../../../modules/zod3/UserZod3Controller';
 
 // export const runtime = 'edge';
@@ -38,6 +39,7 @@ const controllers = {
   ProxyRPC: ProxyController,
   PollRPC: PollController,
   ProgressiveRPC: ProgressiveController,
+  FormZodRPC: FormZodController,
 };
 
 export type Controllers = typeof controllers;

@@ -1,5 +1,5 @@
 {
-  "$schema": "https://vovk.dev/api/spec/v3/segment.json",
+  "$schema": "https://vovk.dev/api/schema/v3/segment.json",
   "emitSchema": true,
   "segmentName": "static",
   "segmentType": "segment",
@@ -32,24 +32,14 @@
               "properties": {
                 "section": {
                   "type": "string",
-                  "enum": [
-                    "a",
-                    "b"
-                  ]
+                  "enum": ["a", "b"]
                 },
                 "page": {
                   "type": "string",
-                  "enum": [
-                    "1",
-                    "2",
-                    "3"
-                  ]
+                  "enum": ["1", "2", "3"]
                 }
               },
-              "required": [
-                "section",
-                "page"
-              ],
+              "required": ["section", "page"],
               "additionalProperties": false
             }
           },

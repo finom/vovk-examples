@@ -12,22 +12,22 @@ export default class UserZodController {
   static updateUser = withZod({
     body: z
       .object({
-        name: z.string().describe('User full name'),
-        age: z.number().min(0).max(120).describe('User age'),
-        email: z.email().describe('User email'),
+        name: z.string().meta({ description: 'User full name' }),
+        age: z.number().min(0).max(120).meta({ description: 'User age' }),
+        email: z.email().meta({ description: 'User email' }),
       })
-      .describe('User object'),
+      .meta({ description: 'User object' }),
     params: z.object({
-      id: z.uuid().describe('User ID'),
+      id: z.uuid().meta({ description: 'User ID' }),
     }),
     query: z.object({
-      notify: z.enum(['email', 'push', 'none']).describe('Notification type'),
+      notify: z.enum(['email', 'push', 'none']).meta({ description: 'Notification type' }),
     }),
     output: z
       .object({
-        success: z.boolean().describe('Success status'),
+        success: z.boolean().meta({ description: 'Success status' }),
       })
-      .describe('Response object'),
+      .meta({ description: 'Response object' }),
     async handle(req, { id }) {
       const { name, age } = await req.json();
       const notify = req.nextUrl.searchParams.get('notify');

@@ -12,7 +12,6 @@ const meta: MetaRecord = {
     type: 'page',
     href: 'https://vovk.dev/',
   },
-
   index: 'Home',
   '#common': separator('Common'),
   'hello-world': 'Hello World',
@@ -20,6 +19,7 @@ const meta: MetaRecord = {
   proxy: 'Proxy',
   'static-params': 'Static Params',
   'react-query': 'React Query',
+  form: 'Form with files',
   '#validation': separator('Validation'),
   zod: 'Zod',
   dto: 'DTO',

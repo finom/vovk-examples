@@ -47,10 +47,7 @@
         }
       },
       "rsPkg": {
-        "templatePath": "vovk-rust/client-templates/rsPkg/",
-        "requires": {
-          "rsReadme": "./"
-        }
+        "templatePath": "vovk-rust/client-templates/rsPkg/"
       },
       "rsReadme": {
         "templatePath": "vovk-rust/client-templates/rsReadme/"
@@ -61,7 +58,8 @@
         },
         "requires": {
           "rsSrc": "./src/",
-          "rsPkg": "./"
+          "rsPkg": "./",
+          "rsReadme": "./"
         }
       },
       "pySrc": {
@@ -71,10 +69,7 @@
         }
       },
       "pyPkg": {
-        "templatePath": "vovk-python/client-templates/pyPkg/",
-        "requires": {
-          "pyReadme": "./"
-        }
+        "templatePath": "vovk-python/client-templates/pyPkg/"
       },
       "pyReadme": {
         "templatePath": "vovk-python/client-templates/pyReadme/"
@@ -85,10 +80,11 @@
         },
         "requires": {
           "pySrc": "./src/[package_name]/",
-          "pyPkg": "./"
+          "pyPkg": "./",
+          "pyReadme": "./"
         }
       }
     },
-    "$schema": "https://vovk.dev/api/spec/v3/config.json"
+    "$schema": "https://vovk.dev/api/schema/v3/config.json"
   }
 }

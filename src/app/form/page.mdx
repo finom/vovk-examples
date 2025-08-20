@@ -1,0 +1,22 @@
+---
+title: Form with files
+description: Form with files example
+---
+
+import ZodFormExample from './ZodFormWithFilesExample';
+import GithubFiles from '@/components/GithubFiles';
+import Example from '@/components/Example';
+
+# Form with files
+
+Example of form with files using Zod validation. Notice that "portfolio samples" can be uploaded as multiple files as well as a single file, and the validation model for this field is defined as a union of `z.file()` and `z.array(z.file())`.
+
+## Result
+
+<Example>
+  <ZodFormExample />
+</Example>
+
+## Code
+
+<GithubFiles paths={['src/modules/form/FormZodController.ts', 'src/app/form/ZodFormWithFilesExample.tsx']} />

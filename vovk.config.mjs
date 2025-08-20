@@ -11,10 +11,10 @@ const config = {
   },
   bundle: {
     reExports: {
-        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
-        'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
-        'default as getGithubFiles': '@/lib/getGithubFiles',
-      },
+      'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
+      'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
+      'default as getGithubFiles': '@/lib/getGithubFiles',
+    },
     readme: {
       banner: `<p align="center"> 
   <picture>
