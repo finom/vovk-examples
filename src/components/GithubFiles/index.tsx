@@ -1,5 +1,5 @@
-import getGithubFiles from '@/lib/getGithubFiles';
-import GithubCode from './GithubCode';
+import getGithubFiles from '@/lib/getGithubFiles.ts';
+import GithubCode from './GithubCode.tsx';
 
 interface Props {
   paths: string[];

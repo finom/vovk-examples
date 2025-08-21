@@ -1,4 +1,4 @@
-import type { GithubFile } from '@/types';
+import type { GithubFile } from '@/types.ts';
 
 async function performDirectGithubRequest(
   path: string,

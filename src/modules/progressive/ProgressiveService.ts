@@ -1,5 +1,5 @@
 import { JSONLinesResponse, type VovkIteration } from 'vovk';
-import type ProgressiveController from './ProgressiveController';
+import type ProgressiveController from './ProgressiveController.ts';
 
 export default class ProgressiveService {
   static async getUsers() {

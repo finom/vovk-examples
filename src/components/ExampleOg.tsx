@@ -1,4 +1,4 @@
-import type { ImageResponseOptions } from 'next/server';
+import type { ImageResponseOptions } from 'next/server.js';
 
 /* eslint-disable @next/next/no-img-element */
 const path = process.env.VERCEL_ENV ? `https://vovk-examples.vercel.app/` : `http://localhost:${process.env.PORT}/`;

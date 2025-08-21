@@ -10,6 +10,9 @@ const config = {
     validateOnClient: 'vovk-ajv',
   },
   bundle: {
+    tsdownBuildOptions: {
+      tsconfig: './tsconfig.bundle.json',
+    },
     reExports: {
       'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
       'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',

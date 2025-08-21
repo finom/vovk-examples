@@ -2,19 +2,17 @@
   "compilerOptions": {
     "target": "es2022",
     "lib": ["dom", "dom.iterable", "esnext"],
-
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
-    "esModuleInterop": true,
     "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "strictPropertyInitialization": false,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "jsx": "preserve",
     "incremental": true,
     "plugins": [
@@ -24,8 +22,10 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "vovk/*": ["./node_modules/vovk/*"]
-    }
+      "vovk/*": ["./node_modules/vovk/*"],
+      "next/link.js": ["./src/next-component-workarounds/Link.ts"]
+    },
+    "esModuleInterop": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules", "index.ts"]

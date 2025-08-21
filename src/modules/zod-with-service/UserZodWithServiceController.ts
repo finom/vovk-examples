@@ -1,7 +1,7 @@
 import { z } from 'zod/v4';
 import { prefix, post, openapi } from 'vovk';
 import { withZod } from 'vovk-zod';
-import UserZodService from './UserZodService';
+import UserZodService from './UserZodService.ts';
 
 @prefix('users-zod-with-service')
 export default class UserZodWithServiceController {

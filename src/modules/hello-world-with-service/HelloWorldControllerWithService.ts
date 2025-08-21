@@ -1,5 +1,5 @@
 import { get, prefix, openapi } from 'vovk';
-import HelloWorldService from './HelloWorldService';
+import HelloWorldService from './HelloWorldService.ts';
 
 @prefix('hello-world-with-service')
 export default class HelloWorldControllerWithService {

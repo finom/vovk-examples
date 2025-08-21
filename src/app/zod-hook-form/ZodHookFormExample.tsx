@@ -1,10 +1,14 @@
 'use client';
 import { useState } from 'react';
-import { UserZodRPC } from 'vovk-client';
+import * as x from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
 import { ajvResolver } from '@hookform/resolvers/ajv';
-import { fastFormats } from 'ajv-formats/dist/formats';
+import { fastFormats } from 'ajv-formats/dist/formats.js';
+
+const UserZodRPC = x.UserZodRPC;
+
+console.log('x', x);
 
 export default function ZodHookFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof UserZodRPC.updateUser> | null>(null);

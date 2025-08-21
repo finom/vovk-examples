@@ -1,6 +1,6 @@
-import GithubTabs from './GithubTabs';
-import type { GithubFile } from '@/types';
-import CodeBlock from './CodeBlock';
+import GithubTabs from './GithubTabs.tsx';
+import type { GithubFile } from '@/types.ts';
+import CodeBlock from './CodeBlock.tsx';
 
 const GithubCode = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
   return (

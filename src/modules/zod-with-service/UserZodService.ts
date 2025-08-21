@@ -1,5 +1,5 @@
 import type { VovkBody, VovkOutput, VovkParams, VovkQuery } from 'vovk';
-import type UserZodWithServiceController from './UserZodWithServiceController';
+import type UserZodWithServiceController from './UserZodWithServiceController.ts';
 
 export default class UserZodService {
   static updateUser(

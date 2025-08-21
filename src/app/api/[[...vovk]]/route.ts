@@ -1,24 +1,24 @@
 import { initSegment } from 'vovk';
 
-import OpenAiController from '../../../modules/openai/OpenAiController';
-import HelloWorldController from '../../../modules/hello-world/HelloWorldController';
-import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService';
-import JSONLinesController from '../../../modules/jsonlines/JSONLinesController';
-import JSONLinesResponseController from '../../../modules/jsonlines-response/JSONLinesResponseController';
-import AiSdkController from '../../../modules/ai-sdk/AiSdkController';
-import ProxyController from '../../../modules/proxy/ProxyController';
-import UserZodController from '../../../modules/zod/UserZodController';
-import UserYupController from '../../../modules/yup/UserYupController';
-import UserDtoController from '../../../modules/dto/UserDtoController';
-import PollController from '../../../modules/poll/PollController';
-import UserArktypeController from '../../../modules/arktype/UserArktypeController';
-import UserValibotController from '../../../modules/valibot/UserValibotController';
-import ProgressiveController from '../../../modules/progressive/ProgressiveController';
-import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController';
-import FormZodController from '../../../modules/form/FormZodController';
-// import UserZod3Controller from '../../../modules/zod3/UserZod3Controller';
+import OpenAiController from '../../../modules/openai/OpenAiController.ts';
+import HelloWorldController from '../../../modules/hello-world/HelloWorldController.ts';
+import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService.ts';
+import JSONLinesController from '../../../modules/jsonlines/JSONLinesController.ts';
+import JSONLinesResponseController from '../../../modules/jsonlines-response/JSONLinesResponseController.ts';
+import AiSdkController from '../../../modules/ai-sdk/AiSdkController.ts';
+import ProxyController from '../../../modules/proxy/ProxyController.ts';
+import UserZodController from '../../../modules/zod/UserZodController.ts';
+import UserYupController from '../../../modules/yup/UserYupController.ts';
+import UserDtoController from '../../../modules/dto/UserDtoController.ts';
+import PollController from '../../../modules/poll/PollController.ts';
+import UserArktypeController from '../../../modules/arktype/UserArktypeController.ts';
+import UserValibotController from '../../../modules/valibot/UserValibotController.ts';
+import ProgressiveController from '../../../modules/progressive/ProgressiveController.ts';
+import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController.ts';
+import FormZodController from '../../../modules/form/FormZodController.ts';
+// import UserZod3Controller from '../../../modules/zod3/UserZod3Controller.ts';
 
-// export const runtime = 'edge';
+// export const runtime = 'edge.ts';
 
 export const maxDuration = 60;
 

@@ -1,5 +1,5 @@
-import { ImageResponse } from 'next/og';
-import ExampleOg, { getOgFonts, constants } from '@/components/ExampleOg';
+import { ImageResponse } from 'next/og.js';
+import ExampleOg, { getOgFonts, constants } from '@/components/ExampleOg.tsx';
 
 export const { alt, size, contentType } = constants;
 

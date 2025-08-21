@@ -2,9 +2,9 @@
 import { useState, type FormEvent } from 'react';
 import { UserDtoRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
-import { validateOnClient } from 'vovk-dto/validateOnClient';
+import { validateOnClient } from 'vovk-dto/validateOnClient.js';
 import { plainToInstance } from 'class-transformer';
-import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto } from '@/modules/dto/UserDto';
+import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto } from '@/modules/dto/UserDto.ts';
 
 export default function DtoFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof UserDtoRPC.updateUser> | null>(null);

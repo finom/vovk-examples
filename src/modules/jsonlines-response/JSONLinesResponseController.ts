@@ -1,5 +1,5 @@
 import { prefix, get, openapi, JSONLinesResponse } from 'vovk';
-import StreamService, { type Token } from './JSONLinesService';
+import StreamService, { type Token } from './JSONLinesService.ts';
 
 @prefix('jsonlines-response-object')
 export default class JSONLinesResponseController {
