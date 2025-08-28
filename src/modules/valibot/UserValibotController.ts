@@ -1,4 +1,4 @@
-import { prefix, post, openapi, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
 import { toJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
@@ -8,7 +8,7 @@ const withValibot = createStandardValidation({
 
 @prefix('users-valibot')
 export default class UserValibotController {
-  @openapi({
+  @operation({
     summary: 'Update user (Valibot)',
     description: 'Update user by ID with Valibot validation',
   })

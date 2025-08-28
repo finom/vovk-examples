@@ -1,10 +1,10 @@
 import { z } from 'zod/v3';
-import { prefix, post, openapi, type VovkOutput } from 'vovk';
+import { prefix, post, operation, type VovkOutput } from 'vovk';
 import { withZod } from 'vovk-zod/v3';
 
 @prefix('users-zod3')
 export default class UserZod3Controller {
-  @openapi({
+  @operation({
     summary: 'Update user (Zod 3)',
     description: 'Update user by ID with Zod 3 validation',
   })

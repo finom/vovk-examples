@@ -1,4 +1,4 @@
-import { prefix, post, openapi, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
 import { type } from 'arktype';
 
 const withArk = createStandardValidation({
@@ -7,7 +7,7 @@ const withArk = createStandardValidation({
 
 @prefix('users-arktype')
 export default class UserArktypeController {
-  @openapi({
+  @operation({
     summary: 'Update user (Arktype)',
     description: 'Update user by ID with Arktype validation',
   })

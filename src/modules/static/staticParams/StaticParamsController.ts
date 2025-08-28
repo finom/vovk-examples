@@ -1,10 +1,10 @@
 import { z } from 'zod/v4';
-import { prefix, get, openapi } from 'vovk';
+import { prefix, get, operation } from 'vovk';
 import { withZod } from 'vovk-zod';
 
 @prefix('static-params')
 export default class StaticParamsController {
-  @openapi({
+  @operation({
     summary: 'Static Params',
     description: 'Get the static params: section and page',
   })

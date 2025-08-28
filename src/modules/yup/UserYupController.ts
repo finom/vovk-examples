@@ -1,10 +1,10 @@
 import * as yup from 'yup';
-import { prefix, post, openapi, type VovkOutput } from 'vovk';
+import { prefix, post, operation, type VovkOutput } from 'vovk';
 import { withYup } from 'vovk-yup';
 
 @prefix('users-yup')
 export default class UserYupController {
-  @openapi({
+  @operation({
     summary: 'Update user (Yup)',
     description: 'Update user by ID with Yup validation',
   })

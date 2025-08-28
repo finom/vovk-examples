@@ -1,9 +1,9 @@
-import { prefix, get, openapi, JSONLinesResponse } from 'vovk';
+import { prefix, get, operation, JSONLinesResponse } from 'vovk';
 import StreamService, { type Token } from './JSONLinesService.ts';
 
 @prefix('jsonlines-response-object')
 export default class JSONLinesResponseController {
-  @openapi({
+  @operation({
     summary: 'Stream tokens using Response object',
     description: 'Stream tokens to the client using Response object',
   })

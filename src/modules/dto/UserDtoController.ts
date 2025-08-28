@@ -1,10 +1,10 @@
-import { prefix, post, openapi } from 'vovk';
+import { prefix, post, operation } from 'vovk';
 import { withDto } from 'vovk-dto';
 import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto, UpdateUserResponseDto } from './UserDto.ts';
 
 @prefix('users-dto')
 export default class UserDtoController {
-  @openapi({
+  @operation({
     summary: 'Update user (DTO)',
     description: 'Update user by ID with DTO validation',
   })

@@ -7,12 +7,12 @@
     "OpenApiRPC": {
       "rpcModuleName": "OpenApiRPC",
       "originalControllerName": "OpenApiController",
-      "prefix": "openapi",
+      "prefix": "",
       "handlers": {
         "getSpec": {
-          "path": "spec.json",
+          "path": "openapi.json",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "OpenAPI spec",
             "description": "Get the OpenAPI spec for the examples API"
           }
@@ -32,23 +32,33 @@
               "properties": {
                 "section": {
                   "type": "string",
-                  "enum": ["a", "b"]
+                  "enum": [
+                    "a",
+                    "b"
+                  ]
                 },
                 "page": {
                   "type": "string",
-                  "enum": ["1", "2", "3"]
+                  "enum": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
                 }
               },
-              "required": ["section", "page"],
+              "required": [
+                "section",
+                "page"
+              ],
               "additionalProperties": false
             }
           },
-          "path": "{section}/page{page}.json",
-          "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Static Params",
             "description": "Get the static params: section and page"
-          }
+          },
+          "path": "{section}/page{page}.json",
+          "httpMethod": "GET"
         }
       }
     }

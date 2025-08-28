@@ -1,8 +1,8 @@
-import { get, prefix, openapi } from 'vovk';
+import { get, prefix, operation } from 'vovk';
 
 @prefix('proxy')
 export default class ProxyController {
-  @openapi({
+  @operation({
     summary: 'Proxy endpoint',
     description: 'Get a greeting from vovk.dev',
   })

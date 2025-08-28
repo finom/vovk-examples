@@ -1,17 +1,17 @@
-import { createLLMTools, HttpException, HttpStatus, KnownAny, post, prefix, openapi, type VovkRequest } from 'vovk';
-import { jsonSchema, type ModelMessage, streamText, tool } from 'ai';
+import { createLLMTools, HttpException, HttpStatus, KnownAny, post, prefix, operation, type VovkRequest } from 'vovk';
+import { jsonSchema, type ModelMessage, streamText, tool, convertToModelMessages, UIMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
 import { UserZodRPC } from 'vovk-client';
 
 @prefix('ai-sdk')
 export default class AiSdkController {
-  @openapi({
+  @operation({
     summary: 'Vercel AI SDK',
     description:
       'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
   })
   @post('chat')
-  static async chat(req: VovkRequest<{ messages: ModelMessage[] }>) {
+  static async chat(req: VovkRequest<{ messages: UIMessage[] }>) {
     const { messages } = await req.json();
     const LIMIT = 5;
 
@@ -20,19 +20,19 @@ export default class AiSdkController {
     }
 
     return streamText({
-      model: openai('gpt-4.1-nano'),
+      model: openai('gpt-5-nano'),
       system: 'You are a helpful assistant.',
-      messages,
-    }).toTextStreamResponse();
+      messages: convertToModelMessages(messages),
+    }).toUIMessageStreamResponse();
   }
 
-  @openapi({
+  @operation({
     summary: 'Vercel AI SDK with Function Calling',
     description:
       'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to call a function',
   })
   @post('function-calling')
-  static async functionCalling(req: VovkRequest<{ messages: ModelMessage[] }>) {
+  static async functionCalling(req: VovkRequest<{ messages: UIMessage[] }>) {
     const { messages } = await req.json();
     const LIMIT = 5;
     const { tools: llmTools } = createLLMTools({
@@ -59,11 +59,11 @@ export default class AiSdkController {
     );
 
     return streamText({
-      model: openai('gpt-4.1-nano'),
+      model: openai('gpt-5-nano'),
       // toolCallStreaming: true,
       system:
         'You are a helpful assistant. Always provide a clear confirmation message after executing any function. Explain what was done and what the results were after the user request is executed.',
-      messages,
+      messages: convertToModelMessages(messages),
       tools,
       onError: (e) => console.error('streamText error', e),
       onFinish: ({ finishReason }) => {
@@ -71,6 +71,6 @@ export default class AiSdkController {
           console.log('Tool calls finished');
         }
       },
-    }).toTextStreamResponse();
+    }).toUIMessageStreamResponse();
   }
 }

@@ -1,10 +1,10 @@
 import { z } from 'zod/v4';
-import { prefix, post, openapi, type VovkOutput } from 'vovk';
+import { prefix, post, operation, type VovkOutput } from 'vovk';
 import { withZod } from 'vovk-zod';
 
 @prefix('form-zod')
 export default class FormZodController {
-  @openapi({
+  @operation({
     summary: 'Submit form (Zod)',
     description: 'Submit form with Zod validation',
   })

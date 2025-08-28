@@ -33,7 +33,11 @@
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "additionalProperties": false
             },
             "query": {
@@ -43,10 +47,16 @@
                 "notify": {
                   "description": "Notification type",
                   "type": "string",
-                  "enum": ["email", "push", "none"]
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ]
                 }
               },
-              "required": ["notify"],
+              "required": [
+                "notify"
+              ],
               "additionalProperties": false
             },
             "params": {
@@ -57,10 +67,12 @@
                   "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "additionalProperties": false
             },
             "output": {
@@ -73,16 +85,18 @@
                   "type": "boolean"
                 }
               },
-              "required": ["success"],
+              "required": [
+                "success"
+              ],
               "additionalProperties": false
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (Zod)",
             "description": "Update user by ID with Zod validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -115,7 +129,11 @@
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "additionalProperties": false
             },
             "query": {
@@ -125,10 +143,16 @@
                 "notify": {
                   "description": "Notification type",
                   "type": "string",
-                  "enum": ["email", "push", "none"]
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ]
                 }
               },
-              "required": ["notify"],
+              "required": [
+                "notify"
+              ],
               "additionalProperties": false
             },
             "params": {
@@ -139,10 +163,12 @@
                   "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "additionalProperties": false
             },
             "output": {
@@ -158,19 +184,22 @@
                   "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": ["success", "id"],
+              "required": [
+                "success",
+                "id"
+              ],
               "additionalProperties": false
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (Zod with service)",
             "description": "Update user by ID with Zod validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -200,7 +229,11 @@
                   "description": "User email"
                 }
               },
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "description": "User object"
             },
             "query": {
@@ -208,11 +241,17 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": ["email", "push", "none"],
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
                   "description": "Notification type"
                 }
               },
-              "required": ["notify"]
+              "required": [
+                "notify"
+              ]
             },
             "params": {
               "type": "object",
@@ -222,7 +261,9 @@
                   "description": "User ID"
                 }
               },
-              "required": ["id"]
+              "required": [
+                "id"
+              ]
             },
             "output": {
               "type": "object",
@@ -232,16 +273,18 @@
                   "description": "Success status"
                 }
               },
-              "required": ["success"],
+              "required": [
+                "success"
+              ],
               "description": "Response object"
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (Yup)",
             "description": "Update user by ID with Yup validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -273,7 +316,11 @@
                 }
               },
               "type": "object",
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "description": "User object"
             },
             "query": {
@@ -282,12 +329,18 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": ["email", "push", "none"],
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
                   "description": "Notification type"
                 }
               },
               "type": "object",
-              "required": ["notify"],
+              "required": [
+                "notify"
+              ],
               "description": "Query parameters"
             },
             "params": {
@@ -301,7 +354,9 @@
                 }
               },
               "type": "object",
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "description": "Path parameters"
             },
             "output": {
@@ -314,16 +369,18 @@
                 }
               },
               "type": "object",
-              "required": ["success"],
+              "required": [
+                "success"
+              ],
               "description": "Response object"
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (DTO)",
             "description": "Update user by ID with DTO validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -355,7 +412,11 @@
                   "description": "User full name"
                 }
               },
-              "required": ["age", "email", "name"]
+              "required": [
+                "age",
+                "email",
+                "name"
+              ]
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -379,7 +440,9 @@
                   "description": "Notification type"
                 }
               },
-              "required": ["notify"]
+              "required": [
+                "notify"
+              ]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -408,7 +471,9 @@
                   "format": "uuid"
                 }
               },
-              "required": ["id"]
+              "required": [
+                "id"
+              ]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -419,15 +484,17 @@
                   "description": "Success status"
                 }
               },
-              "required": ["success"]
+              "required": [
+                "success"
+              ]
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (Arktype)",
             "description": "Update user by ID with Arktype validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -458,7 +525,11 @@
                   "description": "User email"
                 }
               },
-              "required": ["name", "age", "email"],
+              "required": [
+                "name",
+                "age",
+                "email"
+              ],
               "description": "User object"
             },
             "query": {
@@ -466,11 +537,17 @@
               "type": "object",
               "properties": {
                 "notify": {
-                  "enum": ["email", "push", "none"],
+                  "enum": [
+                    "email",
+                    "push",
+                    "none"
+                  ],
                   "description": "Notification type"
                 }
               },
-              "required": ["notify"]
+              "required": [
+                "notify"
+              ]
             },
             "params": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -482,7 +559,9 @@
                   "description": "User ID"
                 }
               },
-              "required": ["id"]
+              "required": [
+                "id"
+              ]
             },
             "output": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -493,16 +572,18 @@
                   "description": "Success status"
                 }
               },
-              "required": ["success"],
+              "required": [
+                "success"
+              ],
               "description": "Response object"
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Update user (Valibot)",
             "description": "Update user by ID with Valibot validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     },
@@ -514,7 +595,7 @@
         "getHello": {
           "path": "greeting",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Get a greeting",
             "description": "Get a greeting from the server"
           }
@@ -522,7 +603,7 @@
         "postHello": {
           "path": "greeting",
           "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Post a greeting",
             "description": "Post a greeting to the server"
           }
@@ -537,7 +618,7 @@
         "getHello": {
           "path": "greeting",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Get a greeting using a service",
             "description": "Get a greeting from the server using a service"
           }
@@ -552,7 +633,7 @@
         "streamTokens": {
           "path": "tokens",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Stream tokens",
             "description": "Stream tokens to the client"
           }
@@ -567,7 +648,7 @@
         "streamTokens": {
           "path": "tokens",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Stream tokens using Response object",
             "description": "Stream tokens to the client using Response object"
           }
@@ -582,7 +663,7 @@
         "createChatCompletion": {
           "path": "chat",
           "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Create a chat completion",
             "description": "Create a chat completion using OpenAI and yield the response"
           }
@@ -597,7 +678,7 @@
         "chat": {
           "path": "chat",
           "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Vercel AI SDK",
             "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model"
           }
@@ -605,7 +686,7 @@
         "functionCalling": {
           "path": "function-calling",
           "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Vercel AI SDK with Function Calling",
             "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to call a function"
           }
@@ -620,7 +701,7 @@
         "getHello": {
           "path": "greeting",
           "httpMethod": "GET",
-          "openapi": {
+          "operationObject": {
             "summary": "Proxy endpoint",
             "description": "Get a greeting from vovk.dev"
           }
@@ -642,7 +723,9 @@
                   "type": "string"
                 }
               },
-              "required": ["i"],
+              "required": [
+                "i"
+              ],
               "additionalProperties": false
             },
             "iteration": {
@@ -653,7 +736,9 @@
                   "type": "number"
                 }
               },
-              "required": ["i"],
+              "required": [
+                "i"
+              ],
               "additionalProperties": false
             }
           },
@@ -687,12 +772,17 @@
                             "type": "string"
                           }
                         },
-                        "required": ["id", "name"],
+                        "required": [
+                          "id",
+                          "name"
+                        ],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": ["users"],
+                  "required": [
+                    "users"
+                  ],
                   "additionalProperties": false
                 },
                 {
@@ -713,12 +803,18 @@
                             "type": "boolean"
                           }
                         },
-                        "required": ["id", "title", "completed"],
+                        "required": [
+                          "id",
+                          "title",
+                          "completed"
+                        ],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": ["tasks"],
+                  "required": [
+                    "tasks"
+                  ],
                   "additionalProperties": false
                 }
               ]
@@ -749,7 +845,9 @@
                 },
                 "resume": {
                   "description": "Resume file",
-                  "examples": ["application/pdf"],
+                  "examples": [
+                    "application/pdf"
+                  ],
                   "type": "string",
                   "format": "binary",
                   "contentEncoding": "binary",
@@ -774,7 +872,11 @@
                   ]
                 }
               },
-              "required": ["email", "resume", "portfolioSamples"],
+              "required": [
+                "email",
+                "resume",
+                "portfolioSamples"
+              ],
               "additionalProperties": false,
               "x-isForm": true
             },
@@ -786,10 +888,12 @@
                   "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": ["id"],
+              "required": [
+                "id"
+              ],
               "additionalProperties": false
             },
             "output": {
@@ -808,7 +912,9 @@
                   "properties": {
                     "name": {
                       "description": "Resume file name",
-                      "examples": ["resume.pdf"],
+                      "examples": [
+                        "resume.pdf"
+                      ],
                       "type": "string"
                     },
                     "size": {
@@ -818,11 +924,17 @@
                     },
                     "type": {
                       "description": "Resume file type",
-                      "examples": ["application/pdf"],
+                      "examples": [
+                        "application/pdf"
+                      ],
                       "type": "string"
                     }
                   },
-                  "required": ["name", "size", "type"],
+                  "required": [
+                    "name",
+                    "size",
+                    "type"
+                  ],
                   "additionalProperties": false
                 },
                 "portfolioSamples": {
@@ -833,7 +945,9 @@
                     "properties": {
                       "name": {
                         "description": "Portfolio sample file name",
-                        "examples": ["portfolio.zip"],
+                        "examples": [
+                          "portfolio.zip"
+                        ],
                         "type": "string"
                       },
                       "size": {
@@ -843,25 +957,35 @@
                       },
                       "type": {
                         "description": "Portfolio sample file type",
-                        "examples": ["application/zip"],
+                        "examples": [
+                          "application/zip"
+                        ],
                         "type": "string"
                       }
                     },
-                    "required": ["name", "size", "type"],
+                    "required": [
+                      "name",
+                      "size",
+                      "type"
+                    ],
                     "additionalProperties": false
                   }
                 }
               },
-              "required": ["email", "resume", "portfolioSamples"],
+              "required": [
+                "email",
+                "resume",
+                "portfolioSamples"
+              ],
               "additionalProperties": false
             }
           },
-          "path": "{id}",
-          "httpMethod": "POST",
-          "openapi": {
+          "operationObject": {
             "summary": "Submit form (Zod)",
             "description": "Submit form with Zod validation"
-          }
+          },
+          "path": "{id}",
+          "httpMethod": "POST"
         }
       }
     }

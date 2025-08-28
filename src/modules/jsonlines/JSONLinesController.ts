@@ -1,10 +1,10 @@
-import { get, prefix, openapi } from 'vovk';
+import { get, prefix, operation } from 'vovk';
 
 type Token = { message: string };
 
 @prefix('jsonlines')
 export default class JSONLinesController {
-  @openapi({
+  @operation({
     summary: 'Stream tokens',
     description: 'Stream tokens to the client',
   })

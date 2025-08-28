@@ -1,8 +1,8 @@
-import { get, post, prefix, openapi, type VovkRequest } from 'vovk';
+import { get, post, prefix, operation, type VovkRequest } from 'vovk';
 
 @prefix('hello-world')
 export default class HelloWorldController {
-  @openapi({
+  @operation({
     summary: 'Get a greeting',
     description: 'Get a greeting from the server',
   })
@@ -11,7 +11,7 @@ export default class HelloWorldController {
     return { greeting: 'Hello world!' };
   }
 
-  @openapi({
+  @operation({
     summary: 'Post a greeting',
     description: 'Post a greeting to the server',
   })

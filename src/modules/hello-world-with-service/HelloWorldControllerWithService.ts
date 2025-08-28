@@ -1,9 +1,9 @@
-import { get, prefix, openapi } from 'vovk';
+import { get, prefix, operation } from 'vovk';
 import HelloWorldService from './HelloWorldService.ts';
 
 @prefix('hello-world-with-service')
 export default class HelloWorldControllerWithService {
-  @openapi({
+  @operation({
     summary: 'Get a greeting using a service',
     description: 'Get a greeting from the server using a service',
   })

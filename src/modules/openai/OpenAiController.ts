@@ -1,9 +1,9 @@
-import { type VovkRequest, post, prefix, openapi, HttpException, HttpStatus } from 'vovk';
+import { type VovkRequest, post, prefix, operation, HttpException, HttpStatus } from 'vovk';
 import OpenAI from 'openai';
 
 @prefix('openai')
 export default class OpenAiController {
-  @openapi({
+  @operation({
     summary: 'Create a chat completion',
     description: 'Create a chat completion using OpenAI and yield the response',
   })

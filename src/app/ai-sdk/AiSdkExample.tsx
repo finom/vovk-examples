@@ -8,7 +8,7 @@ export default function Page() {
 
   const { messages, sendMessage, error, status } = useChat({
     transport: new DefaultChatTransport({
-      api: '/api/ai-sdk/function-calling',
+      api: '/api/ai-sdk/chat',
     }),
   });
 
@@ -26,7 +26,7 @@ export default function Page() {
         <div key={message.id}>
           {message.role === 'assistant' ? '🤖' : '👤'}{' '}
           {message.parts.map((part, partIndex) => (
-            <span key={partIndex}>{part.type === 'text' ? part.text : '...'}</span>
+            <span key={partIndex}>{part.type === 'text' ? part.text : ''}</span>
           ))}
         </div>
       ))}
