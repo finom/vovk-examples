@@ -32,14 +32,24 @@
               "properties": {
                 "section": {
                   "type": "string",
-                  "enum": ["a", "b"]
+                  "enum": [
+                    "a",
+                    "b"
+                  ]
                 },
                 "page": {
                   "type": "string",
-                  "enum": ["1", "2", "3"]
+                  "enum": [
+                    "1",
+                    "2",
+                    "3"
+                  ]
                 }
               },
-              "required": ["section", "page"],
+              "required": [
+                "section",
+                "page"
+              ],
               "additionalProperties": false
             }
           },
