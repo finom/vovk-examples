@@ -33,11 +33,7 @@
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "additionalProperties": false
             },
             "query": {
@@ -47,16 +43,10 @@
                 "notify": {
                   "description": "Notification type",
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ]
+                  "enum": ["email", "push", "none"]
                 }
               },
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "additionalProperties": false
             },
             "params": {
@@ -70,9 +60,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false
             },
             "output": {
@@ -85,9 +73,7 @@
                   "type": "boolean"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "additionalProperties": false
             }
           },
@@ -129,11 +115,7 @@
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "additionalProperties": false
             },
             "query": {
@@ -143,16 +125,10 @@
                 "notify": {
                   "description": "Notification type",
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ]
+                  "enum": ["email", "push", "none"]
                 }
               },
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "additionalProperties": false
             },
             "params": {
@@ -166,9 +142,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false
             },
             "output": {
@@ -187,10 +161,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "success",
-                "id"
-              ],
+              "required": ["success", "id"],
               "additionalProperties": false
             }
           },
@@ -229,11 +200,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -241,17 +208,11 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "type": "object",
@@ -261,9 +222,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "type": "object",
@@ -273,9 +232,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -316,11 +273,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -329,18 +282,12 @@
               "properties": {
                 "notify": {
                   "type": "string",
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
               "type": "object",
-              "required": [
-                "notify"
-              ],
+              "required": ["notify"],
               "description": "Query parameters"
             },
             "params": {
@@ -354,9 +301,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "description": "Path parameters"
             },
             "output": {
@@ -369,9 +314,7 @@
                 }
               },
               "type": "object",
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -412,11 +355,7 @@
                   "description": "User full name"
                 }
               },
-              "required": [
-                "age",
-                "email",
-                "name"
-              ]
+              "required": ["age", "email", "name"]
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -440,9 +379,7 @@
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -471,9 +408,7 @@
                   "format": "uuid"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -484,9 +419,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ]
+              "required": ["success"]
             }
           },
           "operationObject": {
@@ -525,11 +458,7 @@
                   "description": "User email"
                 }
               },
-              "required": [
-                "name",
-                "age",
-                "email"
-              ],
+              "required": ["name", "age", "email"],
               "description": "User object"
             },
             "query": {
@@ -537,17 +466,11 @@
               "type": "object",
               "properties": {
                 "notify": {
-                  "enum": [
-                    "email",
-                    "push",
-                    "none"
-                  ],
+                  "enum": ["email", "push", "none"],
                   "description": "Notification type"
                 }
               },
-              "required": [
-                "notify"
-              ]
+              "required": ["notify"]
             },
             "params": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -559,9 +482,7 @@
                   "description": "User ID"
                 }
               },
-              "required": [
-                "id"
-              ]
+              "required": ["id"]
             },
             "output": {
               "$schema": "http://json-schema.org/draft-07/schema#",
@@ -572,9 +493,7 @@
                   "description": "Success status"
                 }
               },
-              "required": [
-                "success"
-              ],
+              "required": ["success"],
               "description": "Response object"
             }
           },
@@ -723,9 +642,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "i"
-              ],
+              "required": ["i"],
               "additionalProperties": false
             },
             "iteration": {
@@ -736,9 +653,7 @@
                   "type": "number"
                 }
               },
-              "required": [
-                "i"
-              ],
+              "required": ["i"],
               "additionalProperties": false
             }
           },
@@ -772,17 +687,12 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "id",
-                          "name"
-                        ],
+                        "required": ["id", "name"],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": [
-                    "users"
-                  ],
+                  "required": ["users"],
                   "additionalProperties": false
                 },
                 {
@@ -803,18 +713,12 @@
                             "type": "boolean"
                           }
                         },
-                        "required": [
-                          "id",
-                          "title",
-                          "completed"
-                        ],
+                        "required": ["id", "title", "completed"],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": [
-                    "tasks"
-                  ],
+                  "required": ["tasks"],
                   "additionalProperties": false
                 }
               ]
@@ -845,9 +749,7 @@
                 },
                 "resume": {
                   "description": "Resume file",
-                  "examples": [
-                    "application/pdf"
-                  ],
+                  "examples": ["application/pdf"],
                   "type": "string",
                   "format": "binary",
                   "contentEncoding": "binary",
@@ -872,11 +774,7 @@
                   ]
                 }
               },
-              "required": [
-                "email",
-                "resume",
-                "portfolioSamples"
-              ],
+              "required": ["email", "resume", "portfolioSamples"],
               "additionalProperties": false,
               "x-isForm": true
             },
@@ -891,9 +789,7 @@
                   "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
                 }
               },
-              "required": [
-                "id"
-              ],
+              "required": ["id"],
               "additionalProperties": false
             },
             "output": {
@@ -912,9 +808,7 @@
                   "properties": {
                     "name": {
                       "description": "Resume file name",
-                      "examples": [
-                        "resume.pdf"
-                      ],
+                      "examples": ["resume.pdf"],
                       "type": "string"
                     },
                     "size": {
@@ -924,17 +818,11 @@
                     },
                     "type": {
                       "description": "Resume file type",
-                      "examples": [
-                        "application/pdf"
-                      ],
+                      "examples": ["application/pdf"],
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "name",
-                    "size",
-                    "type"
-                  ],
+                  "required": ["name", "size", "type"],
                   "additionalProperties": false
                 },
                 "portfolioSamples": {
@@ -945,9 +833,7 @@
                     "properties": {
                       "name": {
                         "description": "Portfolio sample file name",
-                        "examples": [
-                          "portfolio.zip"
-                        ],
+                        "examples": ["portfolio.zip"],
                         "type": "string"
                       },
                       "size": {
@@ -957,26 +843,16 @@
                       },
                       "type": {
                         "description": "Portfolio sample file type",
-                        "examples": [
-                          "application/zip"
-                        ],
+                        "examples": ["application/zip"],
                         "type": "string"
                       }
                     },
-                    "required": [
-                      "name",
-                      "size",
-                      "type"
-                    ],
+                    "required": ["name", "size", "type"],
                     "additionalProperties": false
                   }
                 }
               },
-              "required": [
-                "email",
-                "resume",
-                "portfolioSamples"
-              ],
+              "required": ["email", "resume", "portfolioSamples"],
               "additionalProperties": false
             }
           },
