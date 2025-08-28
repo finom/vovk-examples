@@ -1,14 +1,10 @@
 'use client';
 import { useState } from 'react';
-import * as x from 'vovk-client';
+import { UserZodRPC } from 'vovk-client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
 import { ajvResolver } from '@hookform/resolvers/ajv';
 import { fastFormats } from 'ajv-formats/dist/formats.js';
-
-const UserZodRPC = x.UserZodRPC;
-
-console.log('x', x);
 
 export default function ZodHookFormExample() {
   const [response, setResponse] = useState<VovkReturnType<typeof UserZodRPC.updateUser> | null>(null);
@@ -18,6 +14,7 @@ export default function ZodHookFormExample() {
     getValues,
     formState: { errors },
   } = useForm<VovkBody<typeof UserZodRPC.updateUser>>({
+    // @ts-expect-error This example isn't working as vovk-examples uses newer version of JSON Schema
     resolver: ajvResolver(UserZodRPC.updateUser.schema.validation!.body, {
       formats: fastFormats,
     }),
