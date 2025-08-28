@@ -12,6 +12,7 @@ const config = {
     },
   },
   bundle: {
+    keepPrebundleDir: true,
     tsdownBuildOptions: {
       tsconfig: './tsconfig.bundle.json',
     },
