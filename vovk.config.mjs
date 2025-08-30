@@ -18,9 +18,9 @@ const config = {
     },
     generatorConfig: {
       reExports: {
-        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample',
-        'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample',
-        'default as getGithubFiles': '@/lib/getGithubFiles',
+        'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.ts',
+        'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.ts',
+        'default as getGithubFiles': '@/lib/getGithubFiles.ts',
       },
       readme: {
         banner: `<p align="center"> 
