@@ -43,7 +43,7 @@ const config = {
       },
     },
   },
-  emitConfig: ['clientTemplateDefs'],
+  emitConfig: true,
   logLevel: 'debug',
 };
 

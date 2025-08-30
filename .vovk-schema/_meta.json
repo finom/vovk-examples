@@ -1,6 +1,7 @@
 {
   "$schema": "https://vovk.dev/api/schema/v3/meta.json",
   "config": {
+    "$schema": "https://vovk.dev/api/schema/v3/config.json",
     "clientTemplateDefs": {
       "openapiTs": {
         "templatePath": "vovk-cli/client-templates/openapiTs/",
@@ -104,6 +105,84 @@
         }
       }
     },
-    "$schema": "https://vovk.dev/api/schema/v3/config.json"
+    "emitConfig": [
+      "$schema",
+      "clientTemplateDefs",
+      "emitConfig",
+      "composedClient",
+      "segmentedClient",
+      "bundle",
+      "modulesDir",
+      "schemaOutDir",
+      "rootEntry",
+      "rootSegmentModulesDirName",
+      "logLevel",
+      "devHttps",
+      "moduleTemplates",
+      "libs",
+      "generatorConfig"
+    ],
+    "composedClient": {
+      "enabled": true,
+      "fromTemplates": [
+        "mjs",
+        "cjs"
+      ],
+      "outDir": "./node_modules/.vovk-client",
+      "prettifyClient": false
+    },
+    "segmentedClient": {
+      "enabled": false,
+      "fromTemplates": [
+        "ts"
+      ],
+      "outDir": "src/client",
+      "prettifyClient": true
+    },
+    "bundle": {
+      "prebundleOutDir": "tmp_prebundle",
+      "keepPrebundleDir": true,
+      "requires": {
+        "readme": ".",
+        "packageJson": "."
+      },
+      "generatorConfig": {
+        "reExports": {
+          "default as ProgressiveExample": "./src/app/progressive/ProgressiveExample",
+          "default as JSONLinesExample": "./src/app/jsonlines/JSONLinesExample",
+          "default as getGithubFiles": "@/lib/getGithubFiles"
+        },
+        "readme": {
+          "banner": "<p align=\"center\"> \n  <picture>\n    <source width=\"300\" media=\"(prefers-color-scheme: dark)\" srcset=\"https://vovk.dev/vovk-logo-white.svg\">\n    <source width=\"300\" media=\"(prefers-color-scheme: light)\" srcset=\"https://vovk.dev/vovk-logo.svg\">\n    <img width=\"300\" alt=\"vovk\" src=\"https://vovk.dev/vovk-logo.svg\">\n  </picture><br>\n  <strong>RESTful + RPC = ♥️</strong>\n</p>\n\n<p align=\"center\">\n  Back-end meta-framework for <a href=\"https://nextjs.org/docs/app\">Next.js</a>\n</p>"
+        },
+        "package": {
+          "dependencies": {
+            "react-loading-skeleton": "^3.5.0"
+          }
+        }
+      },
+      "tsdownBuildOptions": {
+        "outDir": "dist",
+        "tsconfig": "./tsconfig.bundle.json"
+      }
+    },
+    "modulesDir": "src/modules",
+    "schemaOutDir": "./.vovk-schema",
+    "rootEntry": "api",
+    "rootSegmentModulesDirName": "",
+    "logLevel": "info",
+    "devHttps": false,
+    "moduleTemplates": {
+      "service": "vovk-cli/module-templates/service.ts.ejs",
+      "controller": "vovk-cli/module-templates/controller.ts.ejs"
+    },
+    "libs": {},
+    "generatorConfig": {
+      "origin": "http://localhost:3000",
+      "imports": {
+        "validateOnClient": "vovk-ajv"
+      },
+      "segments": {}
+    }
   }
 }
