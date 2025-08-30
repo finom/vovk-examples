@@ -20,7 +20,7 @@ const config = {
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.ts',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.ts',
-        'default as getGithubFiles': '@/lib/getGithubFilesx.ts',
+        'default as getGithubFiles': '@/lib/getGithubFiles.ts',
       },
       readme: {
         banner: `<p align="center"> 
@@ -43,7 +43,7 @@ const config = {
       },
     },
   },
-  emitConfig: true,
+  emitConfig: ['libs'],
   logLevel: 'debug',
 };
 
