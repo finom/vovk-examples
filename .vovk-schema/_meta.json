@@ -1,31 +1,5 @@
 {
   "$schema": "https://vovk.dev/api/schema/v3/meta.json",
-  "package": {
-    "name": "vovk-examples",
-    "version": "2.0.22",
-    "description": "Vovk examples",
-    "license": "MIT",
-    "main": "./index.cjs",
-    "module": "./index.mjs",
-    "types": "./index.d.mts",
-    "exports": {
-      ".": {
-        "import": "./index.mjs",
-        "require": "./index.cjs",
-        "types": "./index.d.mts"
-      },
-      "./schema": {
-        "import": "./schema.cjs",
-        "require": "./schema.cjs",
-        "types": "./schema.d.cts"
-      },
-      "./openapi": {
-        "import": "./openapi.cjs",
-        "require": "./openapi.cjs",
-        "types": "./openapi.d.cts"
-      }
-    }
-  },
   "config": {
     "clientTemplateDefs": {
       "openapiTs": {
