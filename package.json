@@ -67,7 +67,7 @@
     "react-loading-skeleton": "^3.5.0",
     "react-to-string": "^0.1.1",
     "valibot": "^1.1.0",
-    "vovk": "^3.0.0-draft.408",
+    "vovk": "^3.0.0-draft.409",
     "vovk-ajv": "^0.0.0-draft.100",
     "vovk-apis": "^0.0.1-draft.0",
     "vovk-client": "^0.0.4-draft.128",
@@ -92,7 +92,7 @@
     "reflect-metadata": "^0.2.2",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2",
-    "vovk-cli": "^0.0.1-draft.346",
+    "vovk-cli": "^0.0.1-draft.347",
     "vovk-python": "^0.0.1-draft.70",
     "vovk-rust": "^0.0.1-draft.56"
   }
