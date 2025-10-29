@@ -3,7 +3,7 @@ import type { MetaRecord } from 'nextra';
 const separator = (title: string) => ({ type: 'separator', title });
 
 const meta: MetaRecord = {
-  scalar: {
+  openapi: {
     title: 'OpenAPI',
     type: 'page',
   },
@@ -14,8 +14,8 @@ const meta: MetaRecord = {
   },
   index: 'Home',
   '#common': separator('Common'),
-  'hello-world': 'Hello World',
-  'hello-world-with-service': 'Hello World with a Service',
+  'hello-world': 'Basic Controller',
+  'hello-world-with-service': 'Basic Controller with a Service',
   proxy: 'Proxy',
   'static-params': 'Static Params',
   'react-query': 'React Query',

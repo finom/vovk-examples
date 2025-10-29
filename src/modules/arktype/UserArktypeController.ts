@@ -2,7 +2,15 @@ import { prefix, post, operation, type VovkOutput, createStandardValidation, Kno
 import { type } from 'arktype';
 
 const withArk = createStandardValidation({
-  toJSONSchema: (model: type) => model.toJsonSchema(),
+  toJSONSchema: (model: type) => model.toJsonSchema({
+    fallback: { 
+      proto: (ctx) => ctx.proto === File ? {
+        type: "string",
+        format: "binary",
+      } : ctx.base,
+      default: (ctx) => ctx.base
+    }
+  })
 });
 
 @prefix('users-arktype')
@@ -17,6 +25,7 @@ export default class UserArktypeController {
       name: type('string').describe('User full name'),
       age: type('0 < number < 120').describe('User age'),
       email: type('string.email').describe('User email'),
+      // file: type('File').describe('User file'),
     }),
     params: type({
       id: type('string.uuid').describe('User ID'),

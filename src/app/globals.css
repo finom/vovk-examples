@@ -6,13 +6,6 @@
   --gh-dark: #0d1117;
 }
 
-*,
-::after,
-::before,
-::backdrop,
-::file-selector-button {
-  border-color: var(--color-gray-200, currentColor);
-}
 .example {
   @apply mt-4;
 

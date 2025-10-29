@@ -16,6 +16,12 @@ export class UpdateUserBodyDto {
   @IsEmail()
   @JSONSchema({ description: 'User email' })
   email!: string;
+
+  /* 
+  @IsDefined({ message: 'File is required' })
+  @JSONSchema({ description: 'User file', type: 'string', format: 'binary' })
+  file!: File; 
+  */
 }
 
 @JSONSchema({ description: 'Path parameters' })

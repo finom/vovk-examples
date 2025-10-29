@@ -523,12 +523,18 @@
                   "type": "string",
                   "format": "email",
                   "description": "User email"
+                },
+                "file": {
+                  "type": "string",
+                  "format": "binary",
+                  "description": "User file"
                 }
               },
               "required": [
                 "name",
                 "age",
-                "email"
+                "email",
+                "file"
               ],
               "description": "User object"
             },

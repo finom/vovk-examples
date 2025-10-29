@@ -1,9 +1,15 @@
-import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
 import { toJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
 const withValibot = createStandardValidation({
-  toJSONSchema: (model: v.BaseSchema<KnownAny, KnownAny, KnownAny>) => toJsonSchema(model),
+  toJSONSchema: (model) => toJsonSchema(model, {
+    overrideSchema(context) {
+      if (context.valibotSchema.type === 'file') {
+        return { type: 'string', format: 'binary' };
+      }
+    },
+  }),
 });
 
 @prefix('users-valibot')
@@ -19,6 +25,7 @@ export default class UserValibotController {
         name: v.pipe(v.string(), v.description('User full name')),
         age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
         email: v.pipe(v.string(), v.email(), v.description('User email')),
+        file: v.pipe(v.file(), v.description('User file')),
       }),
       v.description('User object')
     ),

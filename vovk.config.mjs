@@ -1,22 +1,18 @@
 // @ts-check
 /** @type {import('vovk').VovkConfig} */
 const config = {
-  // you can use NEXT_PUBLIC_VERCEL_URL env var for preview deployments on Vercel
-  generatorConfig: {
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? `https://vovk-examples.vercel.app`
-        : 'http://localhost:' + (process.env.PORT ?? 3000),
+  outputConfig: {
     imports: {
       validateOnClient: 'vovk-ajv',
     },
   },
-  bundle: {
+  /* bundle: {
     keepPrebundleDir: true,
     tsdownBuildOptions: {
       tsconfig: './tsconfig.bundle.json',
     },
-    generatorConfig: {
+    outputConfig: {
+      origin: 'https://examples.vovk.dev',
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.tsx',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.tsx',
@@ -42,8 +38,7 @@ const config = {
         },
       },
     },
-  },
-  emitConfig: ['libs'],
+  }, */
   logLevel: 'debug',
 };
 

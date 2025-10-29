@@ -17,8 +17,8 @@ export const constants = {
 };
 
 export default function ExampleOg({ title }: Props) {
-  const logoSize = 2.3;
-  const bgSize = 1.29;
+  const logoSize = 2.5;
+  const bgSize = 0.73;
   return (
     <div
       style={{
@@ -33,22 +33,11 @@ export default function ExampleOg({ title }: Props) {
         justifyContent: 'center',
         alignItems: 'center',
         background: 'black',
-        backgroundImage: 'linear-gradient(#00000010 0%, #ffffff13 100%)',
+        backgroundImage:
+          'url(https://vovk.dev/og-pattern.png)',
+        backgroundSize: '48px 48px',
       }}
     >
-      <img
-        src={`${path}og-code.png`}
-        alt=""
-        width={1206 * bgSize}
-        height={648 * bgSize}
-        style={{
-          position: 'absolute',
-          opacity: 0.11,
-          left: '-85px',
-          top: '-90px',
-          transform: 'rotate(-5deg)',
-        }}
-      />
       <img
         src={`https://vovk.dev/vovk-logo-white.svg`}
         alt=""
@@ -60,7 +49,7 @@ export default function ExampleOg({ title }: Props) {
         style={{
           color: '#fff',
           opacity: 0.6,
-          fontSize: '55px',
+          fontSize: '60px',
           fontWeight: 'bold',
           textAlign: 'center',
           marginBottom: '60px',
@@ -68,15 +57,16 @@ export default function ExampleOg({ title }: Props) {
         }}
       >
         {' '}
-        RESTful + RPC = ♥️
+        Back-end for Next.js
       </h1>
       <p
         style={{
-          fontSize: '60px',
+           opacity: 0.8,
+          fontSize: '75px',
           textAlign: 'center',
           marginBottom: '0px',
           color: '#fff',
-          fontFamily: 'Inter, sans-serif',
+          fontFamily: 'InterSemibold, sans-serif',
         }}
       >
         {title}

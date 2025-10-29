@@ -21,7 +21,7 @@ export default class OpenAiController {
 
     yield* await openai.chat.completions.create({
       messages,
-      model: 'gpt-4.1-nano',
+      model: 'gpt-5-nano',
       stream: true,
     });
   }

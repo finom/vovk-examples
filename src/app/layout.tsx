@@ -7,7 +7,7 @@ import './globals.css';
 import VovkLogo from '@/components/VovkLogo.tsx';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://vovk-examples.vercel.app'),
+  metadataBase: new URL('https://examples.vovk.dev'),
   title: {
     template: '%s | Vovk.ts examples',
     default: 'Vovk.ts examples',
