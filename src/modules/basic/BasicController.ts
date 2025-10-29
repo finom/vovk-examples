@@ -1,7 +1,7 @@
 import { get, post, prefix, operation, type VovkRequest } from 'vovk';
 
-@prefix('hello-world')
-export default class HelloWorldController {
+@prefix('basic')
+export default class BasicController {
   @operation({
     summary: 'Get a greeting',
     description: 'Get a greeting from the server',

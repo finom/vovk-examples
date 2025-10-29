@@ -1,5 +1,5 @@
 'use client';
-import { HelloWorldRPC, JSONLinesRPC } from 'vovk-client';
+import { BasicRPC, JSONLinesRPC } from 'vovk-client';
 import {
   QueryClient,
   QueryClientProvider,
@@ -11,8 +11,8 @@ import { useState } from 'react';
 
 export function Example() {
   const query = useQuery({
-    queryKey: HelloWorldRPC.getHello.queryKey(),
-    queryFn: () => HelloWorldRPC.getHello(),
+    queryKey: BasicRPC.getHello.queryKey(),
+    queryFn: () => BasicRPC.getHello(),
   });
   const stream = useQuery({
     queryKey: JSONLinesRPC.streamTokens.queryKey(['todo']),
@@ -21,7 +21,7 @@ export function Example() {
     }),
   });
   const mutation = useMutation({
-    mutationFn: HelloWorldRPC.postHello,
+    mutationFn: BasicRPC.postHello,
   });
 
   const [userInput, setUserInput] = useState('');

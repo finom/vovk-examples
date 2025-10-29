@@ -1,14 +1,14 @@
 import { get, prefix, operation } from 'vovk';
-import HelloWorldService from './HelloWorldService.ts';
+import BasicService from './BasicService.ts';
 
-@prefix('hello-world-with-service')
-export default class HelloWorldControllerWithService {
+@prefix('basic-with-service')
+export default class BasicControllerWithService {
   @operation({
     summary: 'Get a greeting using a service',
     description: 'Get a greeting from the server using a service',
   })
   @get('greeting')
   static getHello() {
-    return HelloWorldService.getHello();
+    return BasicService.getHello();
   }
 }

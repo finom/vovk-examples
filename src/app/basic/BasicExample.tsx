@@ -1,16 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { HelloWorldRPC } from 'vovk-client';
+import { BasicRPC } from 'vovk-client';
 import type { VovkReturnType } from 'vovk';
 
-export default function HelloWorldExample() {
-  const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof HelloWorldRPC.getHello>>();
+export default function BasicExample() {
+  const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof BasicRPC.getHello>>();
 
   return (
     <>
       <button
         onClick={async () => {
-          setServerResponse(await HelloWorldRPC.getHello());
+          setServerResponse(await BasicRPC.getHello());
         }}
       >
         Get a greeting from the server

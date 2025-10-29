@@ -1,8 +1,8 @@
 import { initSegment } from 'vovk';
 
 import OpenAiController from '../../../modules/openai/OpenAiController.ts';
-import HelloWorldController from '../../../modules/hello-world/HelloWorldController.ts';
-import BasicControllerWithService from '../../../modules/hello-world-with-service/HelloWorldControllerWithService.ts';
+import BasicController from '../../../modules/basic/BasicController.ts';
+import BasicControllerWithService from '../../../modules/basic-with-service/BasicControllerWithService.ts';
 import JSONLinesController from '../../../modules/jsonlines/JSONLinesController.ts';
 import JSONLinesResponseController from '../../../modules/jsonlines-response/JSONLinesResponseController.ts';
 import AiSdkController from '../../../modules/ai-sdk/AiSdkController.ts';
@@ -30,7 +30,7 @@ const controllers = {
   UserDtoRPC: UserDtoController,
   UserArktypeRPC: UserArktypeController,
   UserValibotRPC: UserValibotController,
-  HelloWorldRPC: HelloWorldController,
+  BasicRPC: BasicController,
   BasicRPCWithService: BasicControllerWithService,
   JSONLinesRPC: JSONLinesController,
   JSONLinesResponseRPC: JSONLinesResponseController,

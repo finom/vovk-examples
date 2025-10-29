@@ -587,10 +587,10 @@
         }
       }
     },
-    "HelloWorldRPC": {
-      "rpcModuleName": "HelloWorldRPC",
-      "originalControllerName": "HelloWorldController",
-      "prefix": "hello-world",
+    "BasicRPC": {
+      "rpcModuleName": "BasicRPC",
+      "originalControllerName": "BasicController",
+      "prefix": "basic",
       "handlers": {
         "getHello": {
           "path": "greeting",
@@ -612,8 +612,8 @@
     },
     "BasicRPCWithService": {
       "rpcModuleName": "BasicRPCWithService",
-      "originalControllerName": "HelloWorldControllerWithService",
-      "prefix": "hello-world-with-service",
+      "originalControllerName": "BasicControllerWithService",
+      "prefix": "basic-with-service",
       "handlers": {
         "getHello": {
           "path": "greeting",
