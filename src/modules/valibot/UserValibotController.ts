@@ -25,7 +25,6 @@ export default class UserValibotController {
         name: v.pipe(v.string(), v.description('User full name')),
         age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
         email: v.pipe(v.string(), v.email(), v.description('User email')),
-        file: v.pipe(v.file(), v.description('User file')),
       }),
       v.description('User object')
     ),
