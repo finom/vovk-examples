@@ -2,15 +2,19 @@ import { prefix, post, operation, type VovkOutput, createStandardValidation, Kno
 import { type } from 'arktype';
 
 const withArk = createStandardValidation({
-  toJSONSchema: (model: type) => model.toJsonSchema({
-    fallback: { 
-      proto: (ctx) => ctx.proto === File ? {
-        type: "string",
-        format: "binary",
-      } : ctx.base,
-      default: (ctx) => ctx.base
-    }
-  })
+  toJSONSchema: (model: type) =>
+    model.toJsonSchema({
+      fallback: {
+        proto: (ctx) =>
+          ctx.proto === File
+            ? {
+                type: 'string',
+                format: 'binary',
+              }
+            : ctx.base,
+        default: (ctx) => ctx.base,
+      },
+    }),
 });
 
 @prefix('users-arktype')

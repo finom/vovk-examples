@@ -16,7 +16,7 @@
 
 Source code for random examples and proofs of concepts located at [vovk-examples.vercel.app](https://vovk-examples.vercel.app/).
 
-The [vovk-examples NPM package](https://www.npmjs.com/package/vovk-examples) is build and published with `npx vovk bundle && npm publish ./dist`. 
+The [vovk-examples NPM package](https://www.npmjs.com/package/vovk-examples) is build and published with `npx vovk bundle && npm publish ./dist`.
 
 ```sh
 npm install vovk-examples

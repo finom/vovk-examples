@@ -33,8 +33,7 @@ export default function ExampleOg({ title }: Props) {
         justifyContent: 'center',
         alignItems: 'center',
         background: 'black',
-        backgroundImage:
-          'url(https://vovk.dev/og-pattern.png)',
+        backgroundImage: 'url(https://vovk.dev/og-pattern.png)',
         backgroundSize: '48px 48px',
       }}
     >
@@ -61,7 +60,7 @@ export default function ExampleOg({ title }: Props) {
       </h1>
       <p
         style={{
-           opacity: 0.8,
+          opacity: 0.8,
           fontSize: '75px',
           textAlign: 'center',
           marginBottom: '0px',

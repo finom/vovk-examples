@@ -3,13 +3,14 @@ import { toJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
 const withValibot = createStandardValidation({
-  toJSONSchema: (model) => toJsonSchema(model, {
-    overrideSchema(context) {
-      if (context.valibotSchema.type === 'file') {
-        return { type: 'string', format: 'binary' };
-      }
-    },
-  }),
+  toJSONSchema: (model) =>
+    toJsonSchema(model, {
+      overrideSchema(context) {
+        if (context.valibotSchema.type === 'file') {
+          return { type: 'string', format: 'binary' };
+        }
+      },
+    }),
 });
 
 @prefix('users-valibot')
