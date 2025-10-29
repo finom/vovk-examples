@@ -17,7 +17,7 @@ export function Example() {
   const stream = useQuery({
     queryKey: JSONLinesRPC.streamTokens.queryKey(['todo']),
     queryFn: streamedQuery({
-      queryFn: () => JSONLinesRPC.streamTokens(),
+      streamFn: () => JSONLinesRPC.streamTokens(),
     }),
   });
   const mutation = useMutation({
