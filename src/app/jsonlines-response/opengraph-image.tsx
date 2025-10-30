@@ -6,7 +6,7 @@ export const { alt, size, contentType } = constants;
 export const runtime = 'edge';
 
 export default async function OgImage() {
-  return new ImageResponse(<ExampleOg title="JSON streaming with Response object" />, {
+  return new ImageResponse(<ExampleOg title="JSONLinesResponse Example" />, {
     ...size,
     ...(await getOgFonts()),
   });

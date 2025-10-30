@@ -1,6 +1,6 @@
 import { get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
 import { withZod } from 'vovk-zod';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import ProgressiveService from './ProgressiveService.ts';
 
 @prefix('progressive')

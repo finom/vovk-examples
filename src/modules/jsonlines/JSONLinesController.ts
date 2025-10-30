@@ -14,7 +14,8 @@ export default class JSONLinesController {
       { message: 'Hello,' },
       { message: ' World' },
       { message: ' from' },
-      { message: ' Stream' },
+      { message: ' JSONLines' },
+      { message: ' Endpoint' },
       { message: '!' },
     ];
 

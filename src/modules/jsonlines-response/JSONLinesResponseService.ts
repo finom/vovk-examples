@@ -2,13 +2,19 @@ import type { JSONLinesResponse } from 'vovk';
 
 export type Token = { message: string };
 
-export default class JSONLinesService {
+export default class JSONLinesResponseService {
   static async streamTokens(resp: JSONLinesResponse<Token>) {
     const tokens: Token[] = [
       { message: 'Hello,' },
       { message: ' World' },
       { message: ' from' },
-      { message: ' Stream' },
+      { message: ' JSONLines' },
+      { message: ' Endpoint' },
+      { message: ' that' },
+      { message: ' uses' },
+      { message: ' JSONLines' },
+      { message: 'Response' },
+      { message: ' instance' },
       { message: '!' },
     ];
 

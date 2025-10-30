@@ -24,9 +24,9 @@ export default function DtoFormExample() {
             id: '5a279068-35d6-4d67-94e0-c21ef4052eea',
           } satisfies UpdateUserParamsDto),
           disableClientValidation,
-          // vovk.config doesn't include preferred validation library,
-          // so we need to pass it manually for this example.
-          // This is not needed in a real project when config.imports.validateOnClient is set to 'vovk-dto/validateOnClient'.
+          // vovk.config explicitly uses vovk-ajv as a client-side validation library,
+          // so we need to pass "validateOnClient" manually for this particular example.
+          // This is not needed in a real project when config.imports.outputConfig.validateOnClient is set to 'vovk-dto/validateOnClient'.
           validateOnClient,
         })
       );

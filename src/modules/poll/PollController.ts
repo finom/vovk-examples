@@ -1,6 +1,6 @@
 import { get, prefix } from 'vovk';
 import { withZod } from 'vovk-zod';
-import { z } from 'zod/v4';
+import { z } from 'zod';
 
 @prefix('poll')
 export default class PollController {

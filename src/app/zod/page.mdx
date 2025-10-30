@@ -1,15 +1,15 @@
 ---
-title: Zod validation example
-description: Zod validation example
+title: Zod Validation Example
+description: Zod validation example with client and server-side validation
 ---
 
 import ZodFormExample from './ZodFormExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# Zod validation example
+# Zod Validation Example
 
-Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-zod). The request input is validated on the client-side before being sent to the server where it is validated again.
+Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-zod). The request input is validated on the client-side with [vovk-ajv](https://www.npmjs.com/package/vovk-ajv) before being sent to the server where it is validated again with Zod.
 
 ## Result
 

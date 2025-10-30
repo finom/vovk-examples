@@ -13,7 +13,7 @@ export default function BasicExample() {
           setServerResponse(await BasicRPC.getHello());
         }}
       >
-        Get a greeting from the server
+        Get a Greeting from the Server
       </button>
       <div>{serverResponse?.greeting}</div>
     </>

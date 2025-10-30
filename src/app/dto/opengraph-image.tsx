@@ -6,7 +6,7 @@ export const { alt, size, contentType } = constants;
 export const runtime = 'edge';
 
 export default async function OgImage() {
-  return new ImageResponse(<ExampleOg title="DTO validation example" />, {
+  return new ImageResponse(<ExampleOg title="DTO Validation Example" />, {
     ...size,
     ...(await getOgFonts()),
   });

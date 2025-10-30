@@ -16,10 +16,10 @@ const meta: MetaRecord = {
   '#common': separator('Common'),
   'basic': 'Basic Controller',
   'basic-with-service': 'Basic Controller with a Service',
-  proxy: 'Proxy',
+  proxy: 'Proxy Endpoint',
   'static-params': 'Static Params',
   'react-query': 'React Query',
-  form: 'Form with files',
+  form: 'Form with Files',
   '#validation': separator('Validation'),
   zod: 'Zod',
   dto: 'DTO',
@@ -28,13 +28,13 @@ const meta: MetaRecord = {
   yup: 'Yup',
   'zod-hook-form': { title: 'Zod with React Hook Form', display: 'hidden' }, // TODO https://github.com/react-hook-form/resolvers/issues/791
   '#streaming': separator('JSONLines and AI'),
-  jsonlines: 'JSONLines',
+  jsonlines: 'JSONLines with "yield" Syntax',
   'jsonlines-response': 'JSONLinesResponse Object',
-  openai: 'OpenAI chat',
-  'ai-sdk': 'AI SDK',
+  openai: 'OpenAI Chat',
+  'ai-sdk': 'AI SDK Chat',
   '#experimental': separator('Experimental'),
   poll: 'Polling',
-  progressive: 'Progressive response',
+  progressive: 'Progressive Response',
 };
 
 export default meta;

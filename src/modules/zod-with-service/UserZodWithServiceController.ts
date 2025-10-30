@@ -1,4 +1,4 @@
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { prefix, post, operation } from 'vovk';
 import { withZod } from 'vovk-zod';
 import UserZodService from './UserZodService.ts';

@@ -1,15 +1,15 @@
 ---
-title: OpenAI chat example
-description: Text streaming with OpenAI API showcasing async generators and streaming in Vovk.ts
+title: OpenAI Chat Example
+description: Usage of OpenAI TypeScript API showcasing async generators and JSONLines streaming in Vovk.ts
 ---
 
 import OpenAiExample from './OpenAiExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# OpenAI chat example
+# OpenAI Chat Example
 
-Text streaming with OpenAI API showcasing [async generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/AsyncGenerator) and [JSONLines](https://vovk.dev/controller/jsonlines) streaming.
+Text streaming with [OpenAI TypeScript API Library](https://npmjs.com/package/openai) showcasing [JSONLines](https://vovk.dev/controller/jsonlines) with `yield*{:ts}` syntax that delegates to the results of `await openai.chat.completions.create(){:ts}` call.
 
 ## Result
 

@@ -682,14 +682,6 @@
             "summary": "Vercel AI SDK",
             "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model"
           }
-        },
-        "functionCalling": {
-          "path": "function-calling",
-          "httpMethod": "POST",
-          "operationObject": {
-            "summary": "Vercel AI SDK with Function Calling",
-            "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to call a function"
-          }
         }
       }
     },
@@ -850,8 +842,7 @@
                   ],
                   "type": "string",
                   "format": "binary",
-                  "contentEncoding": "binary",
-                  "contentMediaType": "image/png"
+                  "contentEncoding": "binary"
                 },
                 "portfolioSamples": {
                   "description": "Portfolio samples",

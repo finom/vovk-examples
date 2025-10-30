@@ -33,7 +33,7 @@ export default function StaticParamsExample() {
           setServerResponse(await StaticParamsRPC.getStaticParams({ params: { section, page } }));
         }}
       >
-        Get static params response
+        Get Static Params Response
       </button>
       <div>{serverResponse ? JSON.stringify(serverResponse) : ''}</div>
     </>

@@ -1,4 +1,4 @@
-import { z } from 'zod/v4';
+import { z } from 'zod';
 import { prefix, post, operation, type VovkOutput } from 'vovk';
 import { withZod } from 'vovk-zod';
 
@@ -16,7 +16,6 @@ export default class FormZodController {
         email: z.email().meta({ description: 'User email' }),
         resume: z
           .file()
-          .mime('image/png')
           .meta({ description: 'Resume file', examples: ['application/pdf'] }),
         portfolioSamples: z.union([z.array(z.file()), z.file()]).meta({ description: 'Portfolio samples' }),
       })

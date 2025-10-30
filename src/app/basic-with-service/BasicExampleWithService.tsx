@@ -14,7 +14,7 @@ export default function BasicExampleWithService() {
           setServerResponse(response);
         }}
       >
-        Get a greeting from the server
+        Get a Greeting from the Server
       </button>
       <div>{serverResponse?.greeting}</div>
     </>

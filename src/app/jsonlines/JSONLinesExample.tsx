@@ -17,7 +17,7 @@ export default function StreamExample() {
           }
         }}
       >
-        Get JSON Lines response
+        Get JSONLines Response
       </button>
       <div>
         {tokens.map(({ message }, i) => (

@@ -1,15 +1,15 @@
 ---
-title: Form with files
-description: Form with files example
+title: Form with Files Example
+description: Form with Files Example using Zod validation
 ---
 
 import ZodFormExample from './ZodFormWithFilesExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# Form with files
+# Form with Files Example
 
-Example of form with files using Zod validation. Notice that "portfolio samples" can be uploaded as multiple files as well as a single file, and the validation model for this field is defined as a union of `z.file()` and `z.array(z.file())`.
+An example of a form with files using [Zod validation](https://vovk.dev/validation/zod). Notice that "portfolio samples" can be uploaded as multiple files as well as a single file, and the validation model for this field has to be defined as a union of `z.file()` and `z.array(z.file())`.
 
 ## Result
 

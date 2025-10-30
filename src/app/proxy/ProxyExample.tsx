@@ -13,7 +13,7 @@ export default function ProxyExample() {
           setServerResponse(await ProxyRPC.getHello());
         }}
       >
-        Get Greeting from Server
+        Get a Greeting from the Server
       </button>
       <div>{serverResponse?.greeting}</div>
     </>

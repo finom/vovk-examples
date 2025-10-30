@@ -8,7 +8,7 @@ export default class BasicController {
   })
   @get('greeting')
   static getHello() {
-    return { greeting: 'Hello world!' };
+    return { greeting: 'Hello world from a controller!' };
   }
 
   @operation({

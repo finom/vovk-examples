@@ -16,7 +16,7 @@ export default function PollExample() {
           setTick(i);
         }
 
-        i++; // update it to send on the next "while" loop iteration
+        i++; // incremented to be sent on the next "while" loop iteration
       }
     })();
   }, []);

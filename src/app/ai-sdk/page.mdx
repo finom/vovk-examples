@@ -1,15 +1,15 @@
 ---
-title: Vercel AI SDK example
-description: Vercel AI SDK example
+title: Vercel AI SDK Example
+description: LLM streaming with Vercel AI SDK
 ---
 
 import AiSdkExample from './AiSdkExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# Vercel AI SDK example
+# Vercel AI SDK Example
 
-The `result.toDataStreamResponse` method returns a `Response` object, which is forwarded directly to the Next.js route handler. On the client side, you can use the `useChat` hook to consume the stream and render chat messages seamlessly, as outlined in the [AI SDK](https://github.com/vercel/ai) documentation. The example also demonstrates [function calling framework](https://vovk.dev/function-calling) offered by Vovk.ts.
+The `result.toUIMessageStreamResponse` method returns a `Response` object, which is forwarded directly to the Next.js route handler. On the client side, you can use the `useChat` hook to consume the stream and render chat messages seamlessly, as it's outlined in the [AI SDK](https://github.com/vercel/ai) documentation.
 
 ## Result
 

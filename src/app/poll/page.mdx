@@ -1,15 +1,15 @@
 ---
-title: Polling example
-description: Polling example
+title: Polling Example
+description: Polling Ticker Example
 ---
 
 import PollExample from './PollExample';
 import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
-# Polling example
+# Polling Ticker Example
 
-Demonstrates infinite polling. The client sends `i` parameter to the server, the server increments it and streams the result back to the client. After 10 iterations, the server ends the response and the client starts polling again. Open devtools to see the network requests.
+Demonstrates infinite server polling ticker in a `while(true){:ts}` loop that's used to reconnect when the connection is safely closed by the server. The client-side sends `i` parameter to the server-side in a query, the server increments it and streams the result back to the client. After 10 iterations, the server ends the response and the client starts polling again. Open devtools to see network requests.
 
 ## Result
 
@@ -20,3 +20,7 @@ Demonstrates infinite polling. The client sends `i` parameter to the server, the
 ## Code
 
 <GithubFiles paths={['src/modules/poll/PollController.ts', 'src/app/poll/PollExample.tsx']} />
+
+## Related Documentation
+
+- [Real-time Polling](https://vovk.dev/polling)
