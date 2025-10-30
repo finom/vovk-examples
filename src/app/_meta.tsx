@@ -33,7 +33,7 @@ const meta: MetaRecord = {
   openai: 'OpenAI Chat',
   'ai-sdk': 'AI SDK Chat',
   '#experimental': separator('Experimental'),
-  poll: 'Polling',
+  polling: 'Polling',
   progressive: 'Progressive Response',
 };
 
