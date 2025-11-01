@@ -8,9 +8,10 @@ const config = {
     prettifyClient: true,
   },
   outputConfig: {
+    // makes it available at the re-exported components used at vovk.dev
     origin: process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
-      : `http://localhost:${process.env.PORT ?? 3000}`,
+      : undefined,
     imports: {
       validateOnClient: 'vovk-ajv',
     },
