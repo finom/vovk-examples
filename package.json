@@ -95,7 +95,7 @@
     "reflect-metadata": "^0.2.2",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
-    "vovk-cli": "^0.0.1-draft.387",
+    "vovk-cli": "^0.0.1-draft.390",
     "vovk-python": "^0.0.1-draft.81",
     "vovk-rust": "^0.0.1-draft.67"
   }
