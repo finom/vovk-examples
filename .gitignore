@@ -39,4 +39,4 @@ tmp
 dist
 .env
 
-tmp_prebundle
+src/clientxx
