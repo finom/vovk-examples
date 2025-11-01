@@ -8,6 +8,9 @@ const config = {
     prettifyClient: true,
   },
   outputConfig: {
+    origin: process.env.VERCEL_URL
+      ? `https://${process.env.VERCEL_URL}`
+      : `http://localhost:${process.env.PORT ?? 3000}`,
     imports: {
       validateOnClient: 'vovk-ajv',
     },
