@@ -1,5 +1,5 @@
 import { get, operation } from 'vovk';
-import { openapi } from '@/client/openapi';
+import { openapi } from '@/client/openapi.ts';
 
 export default class OpenApiController {
   @operation({
