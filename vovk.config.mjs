@@ -6,17 +6,29 @@ const config = {
       validateOnClient: 'vovk-ajv',
     },
   },
-  /* bundle: {
+  bundle: {
     keepPrebundleDir: true,
-    tsdownBuildOptions: {
-      tsconfig: './tsconfig.bundle.json',
+    build: async ({ entry, outDir }) => {
+      console.log(process.cwd())
+      const { build } = await import('tsdown');
+      await build({
+        entry,
+        dts: true,
+        format: ['cjs', 'esm'],
+        hash: false,
+        fixedExtension: true,
+        clean: true,
+        outDir,
+        tsconfig: './tsconfig.bundle.json',
+      });
     },
     outputConfig: {
       origin: 'https://examples.vovk.dev',
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.tsx',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.tsx',
-        // TODO: Add JSONLinesResponseExample, add Polling ticker example
+        'default as JSONLinesResponseExample': './src/app/jsonlines-response/JSONLinesResponseExample.tsx',
+        'default as PollExample': './src/app/polling/PollExample.tsx',
         'default as getGithubFiles': '@/lib/getGithubFiles.ts',
       },
       readme: {
@@ -38,7 +50,7 @@ const config = {
         },
       },
     },
-  }, */
+  },
   logLevel: 'debug',
 };
 

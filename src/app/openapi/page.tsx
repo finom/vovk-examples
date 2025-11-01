@@ -20,7 +20,7 @@ function App() {
               description: 'Localhost',
             },
             {
-              url: 'https://vovk-examples.vercel.app',
+              url: 'https://examples.vovk.dev',
               description: 'Production',
             },
           ],

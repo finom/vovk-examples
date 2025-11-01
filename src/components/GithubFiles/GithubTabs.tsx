@@ -1,8 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { GithubFile } from '@/types.ts';
+import { GithubFile } from '@/types';
 
-const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
+interface Props {
+  githubFiles: GithubFile[]
+  owner: string;
+  repo: string;
+  ghRef: string;
+  id: string;
+}
+
+const GithubTabs = ({ githubFiles, owner, repo, ghRef, id }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <div className="pb-2 px-4 text-sm mb-1">
@@ -16,8 +24,7 @@ const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
                 : 'text-slate-400 dark:text-[#525975] border-transparent'
             }`}
             onClick={() => {
-              document.querySelectorAll('.github-tab-content').forEach((el) => el.classList.add('hidden'));
-              document.getElementById(`tab${i}`)?.classList.remove('hidden');
+              document.querySelectorAll(`#${id} .github-tab-content`).forEach((el) => el.classList[el.id === `tab-${id}-${i}` ? 'remove' : 'add']('hidden'));
               setActiveIndex(i);
             }}
           >
@@ -25,8 +32,9 @@ const GithubTabs = ({ githubFiles }: { githubFiles: GithubFile[] }) => {
           </span>
           <a
             className="inline-block align-middle ml-1"
-            href={`https://github.com/finom/vovk-examples/tree/main/${path}`}
+            href={`https://github.com/${owner}/${repo}/tree/${ghRef}/${path}`}
             target="_blank"
+            title="View on GitHub"
           >
             <svg
               width="16"

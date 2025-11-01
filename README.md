@@ -14,7 +14,7 @@
 
 ## vovk-examples [![npm version](https://badge.fury.io/js/vovk-examples.svg)](https://www.npmjs.com/package/vovk-examples)
 
-Source code for random examples and proofs of concepts located at [vovk-examples.vercel.app](https://vovk-examples.vercel.app/).
+Source code for random examples and proofs of concepts located at [examples.vovk.dev](https://examples.vovk.dev/).
 
 The [vovk-examples NPM package](https://www.npmjs.com/package/vovk-examples) is build and published with `npx vovk bundle && npm publish ./dist`.
 
