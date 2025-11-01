@@ -71,7 +71,7 @@
     "react-to-string": "^0.1.1",
     "tsdown": "^0.15.12",
     "valibot": "^1.1.0",
-    "vovk": "^3.0.0-draft.466",
+    "vovk": "^3.0.0-draft.467",
     "vovk-ajv": "^0.0.0-draft.100",
     "vovk-apis": "^0.0.1-draft.0",
     "vovk-client": "^0.0.4-draft.128",
@@ -95,7 +95,7 @@
     "reflect-metadata": "^0.2.2",
     "tailwindcss": "^4.1.16",
     "typescript": "^5.9.3",
-    "vovk-cli": "^0.0.1-draft.384",
+    "vovk-cli": "^0.0.1-draft.387",
     "vovk-python": "^0.0.1-draft.70",
     "vovk-rust": "^0.0.1-draft.56"
   }

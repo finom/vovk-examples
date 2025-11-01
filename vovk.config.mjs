@@ -9,7 +9,6 @@ const config = {
   bundle: {
     keepPrebundleDir: true,
     build: async ({ entry, outDir }) => {
-      console.log(process.cwd())
       const { build } = await import('tsdown');
       await build({
         entry,
