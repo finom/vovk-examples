@@ -1,0 +1,1067 @@
+{
+  "openapi": "3.1.0",
+  "info": {},
+  "components": {
+    "schemas": {
+      "HttpStatus": {
+        "type": "integer",
+        "description": "HTTP status code",
+        "enum": [
+          100, 101, 102, 103, 200, 201, 202, 203, 204, 205, 206, 300, 301, 302, 303, 304, 307, 308, 400, 401, 402, 403,
+          404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 421, 422, 424, 428, 429, 500, 501,
+          502, 503, 504, 505
+        ]
+      },
+      "VovkErrorResponse": {
+        "type": "object",
+        "description": "Vovk error response",
+        "properties": {
+          "cause": {
+            "description": "Error cause of any shape"
+          },
+          "statusCode": {
+            "$ref": "#/components/schemas/HttpStatus"
+          },
+          "message": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "isError": {
+            "type": "boolean",
+            "const": true,
+            "description": "Indicates that this object represents an error"
+          }
+        },
+        "required": ["statusCode", "message", "isError"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "paths": {
+    "/api/users-zod/{id}": {
+      "post": {
+        "summary": "Update user (Zod)",
+        "description": "Update user by ID with Zod validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserZodRPC } from 'vovk-client';\n\nconst response = await UserZodRPC.updateUser({\n    body: {\n        // -----\n        // User object\n        // -----\n        // User full name\n        name: \"string\",\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\"\n    },\n    query: {\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // Success status\n    success: true\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserZodRPC\n\nresponse = UserZodRPC.update_user(\n    body={\n        # -----\n        # User object\n        # -----\n        # User full name\n        \"name\": \"string\",\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    query={\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # Success status\n    \"success\": true\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_zod_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_zod_rpc::update_user(\n    from_value(json!({\n        // -----\n        // User object\n        // -----\n        // User full name\n        \"name\": \"string\",\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // Success status\n        success: true\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "description": "Notification type",
+              "type": "string",
+              "enum": ["email", "push", "none"]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "User ID",
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "description": "Response object",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "description": "Success status",
+                      "type": "boolean"
+                    }
+                  },
+                  "required": ["success"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "User object",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "User full name",
+                    "type": "string"
+                  },
+                  "age": {
+                    "description": "User age",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 120
+                  },
+                  "email": {
+                    "description": "User email",
+                    "type": "string",
+                    "format": "email",
+                    "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  }
+                },
+                "required": ["name", "age", "email"],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users-zod-with-service/{id}": {
+      "post": {
+        "summary": "Update user (Zod with service)",
+        "description": "Update user by ID with Zod validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserZodWithServiceRPC } from 'vovk-client';\n\nconst response = await UserZodWithServiceRPC.updateUser({\n    body: {\n        // -----\n        // User object\n        // -----\n        // User full name\n        name: \"string\",\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\"\n    },\n    query: {\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // Success status\n    success: true,\n    // User ID\n    id: \"00000000-0000-0000-0000-000000000000\"\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserZodWithServiceRPC\n\nresponse = UserZodWithServiceRPC.update_user(\n    body={\n        # -----\n        # User object\n        # -----\n        # User full name\n        \"name\": \"string\",\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    query={\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # Success status\n    \"success\": true,\n    # User ID\n    \"id\": \"00000000-0000-0000-0000-000000000000\"\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_zod_with_service_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_zod_with_service_rpc::update_user(\n    from_value(json!({\n        // -----\n        // User object\n        // -----\n        // User full name\n        \"name\": \"string\",\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // Success status\n        success: true,\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "description": "Notification type",
+              "type": "string",
+              "enum": ["email", "push", "none"]
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "User ID",
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "description": "Response object",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "description": "Success status",
+                      "type": "boolean"
+                    },
+                    "id": {
+                      "description": "User ID",
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    }
+                  },
+                  "required": ["success", "id"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "User object",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "description": "User full name",
+                    "type": "string"
+                  },
+                  "age": {
+                    "description": "User age",
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 120
+                  },
+                  "email": {
+                    "description": "User email",
+                    "type": "string",
+                    "format": "email",
+                    "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  }
+                },
+                "required": ["name", "age", "email"],
+                "additionalProperties": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users-yup/{id}": {
+      "post": {
+        "summary": "Update user (Yup)",
+        "description": "Update user by ID with Yup validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserYupRPC } from 'vovk-client';\n\nconst response = await UserYupRPC.updateUser({\n    body: {\n        // -----\n        // User object\n        // -----\n        // User full name\n        name: \"string\",\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\"\n    },\n    query: {\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // User ID\n        id: \"string\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // Success status\n    success: true\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserYupRPC\n\nresponse = UserYupRPC.update_user(\n    body={\n        # -----\n        # User object\n        # -----\n        # User full name\n        \"name\": \"string\",\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    query={\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # User ID\n        \"id\": \"string\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # Success status\n    \"success\": true\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_yup_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_yup_rpc::update_user(\n    from_value(json!({\n        // -----\n        // User object\n        // -----\n        // User full name\n        \"name\": \"string\",\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"string\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // Success status\n        success: true\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["email", "push", "none"],
+              "description": "Notification type"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "User ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Success status"
+                    }
+                  },
+                  "required": ["success"],
+                  "description": "Response object"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User full name"
+                  },
+                  "age": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 120,
+                    "description": "User age"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["name", "age", "email"],
+                "description": "User object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users-dto/{id}": {
+      "post": {
+        "summary": "Update user (DTO)",
+        "description": "Update user by ID with DTO validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserDtoRPC } from 'vovk-client';\n\nconst response = await UserDtoRPC.updateUser({\n    body: {\n        // -----\n        // User object\n        // -----\n        // User full name\n        name: \"string\",\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\"\n    },\n    query: {\n        // -----\n        // Query parameters\n        // -----\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // -----\n        // Path parameters\n        // -----\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // Success status\n    success: true\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserDtoRPC\n\nresponse = UserDtoRPC.update_user(\n    body={\n        # -----\n        # User object\n        # -----\n        # User full name\n        \"name\": \"string\",\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    query={\n        # -----\n        # Query parameters\n        # -----\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # -----\n        # Path parameters\n        # -----\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # Success status\n    \"success\": true\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_dto_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_dto_rpc::update_user(\n    from_value(json!({\n        // -----\n        // User object\n        // -----\n        // User full name\n        \"name\": \"string\",\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // -----\n        // Query parameters\n        // -----\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // -----\n        // Path parameters\n        // -----\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // Success status\n        success: true\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["email", "push", "none"],
+              "description": "Notification type"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "format": "uuid",
+              "type": "string",
+              "description": "User ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "x-isDto": true,
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Success status"
+                    }
+                  },
+                  "type": "object",
+                  "required": ["success"],
+                  "description": "Response object"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "x-isDto": true,
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User full name"
+                  },
+                  "age": {
+                    "maximum": 120,
+                    "type": "number",
+                    "minimum": 0,
+                    "description": "User age"
+                  },
+                  "email": {
+                    "format": "email",
+                    "type": "string",
+                    "description": "User email"
+                  }
+                },
+                "type": "object",
+                "required": ["name", "age", "email"],
+                "description": "User object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users-arktype/{id}": {
+      "post": {
+        "summary": "Update user (Arktype)",
+        "description": "Update user by ID with Arktype validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserArktypeRPC } from 'vovk-client';\n\nconst response = await UserArktypeRPC.updateUser({\n    body: {\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\",\n        // User full name\n        name: \"string\"\n    },\n    query: {\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // Success status\n    success: true\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserArktypeRPC\n\nresponse = UserArktypeRPC.update_user(\n    body={\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\",\n        # User full name\n        \"name\": \"string\"\n    },\n    query={\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # Success status\n    \"success\": true\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_arktype_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_arktype_rpc::update_user(\n    from_value(json!({\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\",\n        // User full name\n        \"name\": \"string\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // Success status\n        success: true\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "const": "email",
+                  "description": "Notification type"
+                },
+                {
+                  "const": "none",
+                  "description": "Notification type"
+                },
+                {
+                  "const": "push",
+                  "description": "Notification type"
+                }
+              ],
+              "description": "Notification type"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "description": "User ID",
+                  "format": "uuid",
+                  "pattern": "[\\da-f]{8}-[\\da-f]{4}-[1-8][\\da-f]{3}-[89ab][\\da-f]{3}-[\\da-f]{12}"
+                },
+                {
+                  "const": "00000000-0000-0000-0000-000000000000",
+                  "description": "User ID",
+                  "format": "uuid"
+                },
+                {
+                  "const": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+                  "description": "User ID",
+                  "format": "uuid"
+                }
+              ],
+              "description": "User ID",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Success status"
+                    }
+                  },
+                  "required": ["success"]
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "Request body",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "type": "object",
+                "properties": {
+                  "age": {
+                    "type": "number",
+                    "description": "User age",
+                    "exclusiveMaximum": 120,
+                    "exclusiveMinimum": 0
+                  },
+                  "email": {
+                    "type": "string",
+                    "description": "User email",
+                    "pattern": "^[\\w%+.-]+@[\\d.A-Za-z-]+\\.[A-Za-z]{2,}$",
+                    "format": "email"
+                  },
+                  "name": {
+                    "type": "string",
+                    "description": "User full name"
+                  }
+                },
+                "required": ["age", "email", "name"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users-valibot/{id}": {
+      "post": {
+        "summary": "Update user (Valibot)",
+        "description": "Update user by ID with Valibot validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { UserValibotRPC } from 'vovk-client';\n\nconst response = await UserValibotRPC.updateUser({\n    body: {\n        // -----\n        // User object\n        // -----\n        // User full name\n        name: \"string\",\n        // User age\n        age: 0,\n        // User email\n        email: \"user@example.com\"\n    },\n    query: {\n        // Notification type\n        notify: \"email\"\n    },\n    params: {\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // Success status\n    success: true\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import UserValibotRPC\n\nresponse = UserValibotRPC.update_user(\n    body={\n        # -----\n        # User object\n        # -----\n        # User full name\n        \"name\": \"string\",\n        # User age\n        \"age\": 0,\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    query={\n        # Notification type\n        \"notify\": \"email\"\n    },\n    params={\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # Success status\n    \"success\": true\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::user_valibot_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = user_valibot_rpc::update_user(\n    from_value(json!({\n        // -----\n        // User object\n        // -----\n        // User full name\n        \"name\": \"string\",\n        // User age\n        \"age\": 0,\n        // User email\n        \"email\": \"user@example.com\"\n    })).unwrap(), /* body */ \n    from_value(json!({\n        // Notification type\n        \"notify\": \"email\"\n    })).unwrap(), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // Success status\n        success: true\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "notify",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "enum": ["email", "push", "none"],
+              "description": "Notification type"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "description": "User ID"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$schema": "http://json-schema.org/draft-07/schema#",
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean",
+                      "description": "Success status"
+                    }
+                  },
+                  "required": ["success"],
+                  "description": "Response object"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "http://json-schema.org/draft-07/schema#",
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "description": "User full name"
+                  },
+                  "age": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 120,
+                    "description": "User age"
+                  },
+                  "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "User email"
+                  }
+                },
+                "required": ["name", "age", "email"],
+                "description": "User object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/basic/greeting": {
+      "get": {
+        "summary": "Get a greeting",
+        "description": "Get a greeting from the server",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { BasicRPC } from 'vovk-client';\n\nconst response = await BasicRPC.getHello();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import BasicRPC\n\nresponse = BasicRPC.get_hello()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::basic_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = basic_rpc::get_hello(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      },
+      "post": {
+        "summary": "Post a greeting",
+        "description": "Post a greeting to the server",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { BasicRPC } from 'vovk-client';\n\nconst response = await BasicRPC.postHello();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import BasicRPC\n\nresponse = BasicRPC.post_hello()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::basic_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = basic_rpc::post_hello(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/basic-with-service/greeting": {
+      "get": {
+        "summary": "Get a greeting using a service",
+        "description": "Get a greeting from the server using a service",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { BasicRPCWithService } from 'vovk-client';\n\nconst response = await BasicRPCWithService.getHello();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import BasicRPCWithService\n\nresponse = BasicRPCWithService.get_hello()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::basic_rpc_with_service;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = basic_rpc_with_service::get_hello(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/jsonlines/tokens": {
+      "get": {
+        "summary": "Stream tokens",
+        "description": "Stream tokens to the client",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { JSONLinesRPC } from 'vovk-client';\n\nconst response = await JSONLinesRPC.streamTokens();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import JSONLinesRPC\n\nresponse = JSONLinesRPC.stream_tokens()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::json_lines_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = json_lines_rpc::stream_tokens(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/jsonlines-response-object/tokens": {
+      "get": {
+        "summary": "Stream tokens using Response object",
+        "description": "Stream tokens to the client using Response object",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { JSONLinesResponseRPC } from 'vovk-client';\n\nconst response = await JSONLinesResponseRPC.streamTokens();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import JSONLinesResponseRPC\n\nresponse = JSONLinesResponseRPC.stream_tokens()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::json_lines_response_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = json_lines_response_rpc::stream_tokens(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/openai/chat": {
+      "post": {
+        "summary": "Create a chat completion",
+        "description": "Create a chat completion using OpenAI and yield the response",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { OpenAiRPC } from 'vovk-client';\n\nconst response = await OpenAiRPC.createChatCompletion();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import OpenAiRPC\n\nresponse = OpenAiRPC.create_chat_completion()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::open_ai_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = open_ai_rpc::create_chat_completion(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/ai-sdk/chat": {
+      "post": {
+        "summary": "Vercel AI SDK",
+        "description": "Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { AiSdkRPC } from 'vovk-client';\n\nconst response = await AiSdkRPC.chat();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import AiSdkRPC\n\nresponse = AiSdkRPC.chat()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::ai_sdk_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = ai_sdk_rpc::chat(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/proxy/greeting": {
+      "get": {
+        "summary": "Proxy endpoint",
+        "description": "Get a greeting from vovk.dev",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { ProxyRPC } from 'vovk-client';\n\nconst response = await ProxyRPC.getHello();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import ProxyRPC\n\nresponse = ProxyRPC.get_hello()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::proxy_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = proxy_rpc::get_hello(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/form-zod/{id}": {
+      "post": {
+        "summary": "Submit form (Zod)",
+        "description": "Submit form with Zod validation",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { FormZodRPC } from 'vovk-client';\n\nconst formData = new FormData();\n// User email\nformData.append(\"email\", \"user@example.com\");\n// Resume file\nformData.append(\"resume\", new Blob([binary_data]));\n// Portfolio samples\nformData.append(\"portfolioSamples\", new Blob([binary_data]));\n// Portfolio samples\nformData.append(\"portfolioSamples\", new Blob([binary_data]));\n\nconst response = await FormZodRPC.submitForm({\n    body: formData,\n    params: {\n        // User ID\n        id: \"00000000-0000-0000-0000-000000000000\"\n    },\n});\n\nconsole.log(response); \n/* \n{\n    // -----\n    // Response object\n    // -----\n    // User email\n    email: \"user@example.com\",\n    resume: {\n        // Resume file name\n        name: \"resume.pdf\",\n        // Resume file size\n        size: 0,\n        // Resume file type\n        type: \"application/pdf\"\n    },\n    // Array of portfolio sample files\n    portfolioSamples: [\n        {\n            // Portfolio sample file name\n            name: \"portfolio.zip\",\n            // Portfolio sample file size\n            size: 0,\n            // Portfolio sample file type\n            type: \"application/zip\"\n        }\n    ]\n}\n*/"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import FormZodRPC\nfrom io import BytesIO\n\nresponse = FormZodRPC.submit_form(\n    body={\n        # -----\n        # User object\n        # -----\n        # User email\n        \"email\": \"user@example.com\"\n    },\n    files=[\n        # Resume file\n        ('resume', ('name.ext', BytesIO(binary_data))),\n        # Portfolio samples\n        ('portfolioSamples', ('name.ext', BytesIO(binary_data))),\n        # Portfolio samples\n        ('portfolioSamples', ('name.ext', BytesIO(binary_data)))\n    ],\n    params={\n        # User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    },\n)\n\nprint(response)\n{\n    # -----\n    # Response object\n    # -----\n    # User email\n    \"email\": \"user@example.com\",\n    \"resume\": {\n        # Resume file name\n        \"name\": \"resume.pdf\",\n        # Resume file size\n        \"size\": 0,\n        # Resume file type\n        \"type\": \"application/pdf\"\n    },\n    # Array of portfolio sample files\n    \"portfolioSamples\": [\n        {\n            # Portfolio sample file name\n            \"name\": \"portfolio.zip\",\n            # Portfolio sample file size\n            \"size\": 0,\n            # Portfolio sample file type\n            \"type\": \"application/zip\"\n        }\n    ]\n}"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::form_zod_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\nuse multipart;\n\npub fn main() {\n  let form = multipart::Form::new()\n    // User email\n    .part(\"email\", \"user@example.com\");\n    // Resume file\n    .part(\"resume\", multipart::Part::bytes(binary_data));\n    // Portfolio samples\n    .part(\"portfolioSamples\", multipart::Part::bytes(binary_data));\n    // Portfolio samples\n    .part(\"portfolioSamples\", multipart::Part::bytes(binary_data));\n\n  let response = form_zod_rpc::submit_form(\n    form, /* body */ \n    (), /* query */ \n    from_value(json!({\n        // User ID\n        \"id\": \"00000000-0000-0000-0000-000000000000\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n\nmatch response {\n    Ok(output) => println!(\"{:?}\", output),\n    /* \n    output {\n        // -----\n        // Response object\n        // -----\n        // User email\n        email: \"user@example.com\",\n        resume: {\n            // Resume file name\n            name: \"resume.pdf\",\n            // Resume file size\n            size: 0,\n            // Resume file type\n            type: \"application/pdf\"\n        },\n        // Array of portfolio sample files\n        portfolioSamples: [\n            {\n                // Portfolio sample file name\n                name: \"portfolio.zip\",\n                // Portfolio sample file size\n                size: 0,\n                // Portfolio sample file type\n                type: \"application/zip\"\n            }\n        ]\n    } \n    */\n    Err(e) => println!(\"error: {:?}\", e),\n  }\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "description": "User ID",
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response object",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$schema": "https://json-schema.org/draft/2020-12/schema",
+                  "description": "Response object",
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "description": "User email",
+                      "type": "string",
+                      "format": "email",
+                      "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                    },
+                    "resume": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "description": "Resume file name",
+                          "examples": ["resume.pdf"],
+                          "type": "string"
+                        },
+                        "size": {
+                          "description": "Resume file size",
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "type": {
+                          "description": "Resume file type",
+                          "examples": ["application/pdf"],
+                          "type": "string"
+                        }
+                      },
+                      "required": ["name", "size", "type"],
+                      "additionalProperties": false
+                    },
+                    "portfolioSamples": {
+                      "description": "Array of portfolio sample files",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "description": "Portfolio sample file name",
+                            "examples": ["portfolio.zip"],
+                            "type": "string"
+                          },
+                          "size": {
+                            "description": "Portfolio sample file size",
+                            "type": "number",
+                            "minimum": 0
+                          },
+                          "type": {
+                            "description": "Portfolio sample file type",
+                            "examples": ["application/zip"],
+                            "type": "string"
+                          }
+                        },
+                        "required": ["name", "size", "type"],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": ["email", "resume", "portfolioSamples"],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$schema": "https://json-schema.org/draft/2020-12/schema",
+                "description": "User object",
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "User email",
+                    "type": "string",
+                    "format": "email",
+                    "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  },
+                  "resume": {
+                    "description": "Resume file",
+                    "examples": ["application/pdf"],
+                    "type": "string",
+                    "format": "binary",
+                    "contentEncoding": "binary"
+                  },
+                  "portfolioSamples": {
+                    "description": "Portfolio samples",
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "format": "binary",
+                          "contentEncoding": "binary"
+                        }
+                      },
+                      {
+                        "type": "string",
+                        "format": "binary",
+                        "contentEncoding": "binary"
+                      }
+                    ]
+                  }
+                },
+                "required": ["email", "resume", "portfolioSamples"],
+                "additionalProperties": false,
+                "x-isForm": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/static/openapi.json": {
+      "get": {
+        "summary": "OpenAPI spec",
+        "description": "Get the OpenAPI spec for the examples API",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { OpenApiRPC } from 'vovk-client';\n\nconst response = await OpenApiRPC.getSpec();"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import OpenApiRPC\n\nresponse = OpenApiRPC.get_spec()"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::open_api_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = open_api_rpc::get_spec(\n    (), /* body */ \n    (), /* query */ \n    (), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ]
+      }
+    },
+    "/api/static/static-params/{section}/page{page}.json": {
+      "get": {
+        "summary": "Static Params",
+        "description": "Get the static params: section and page",
+        "x-codeSamples": [
+          {
+            "label": "TypeScript RPC",
+            "lang": "typescript",
+            "source": "import { StaticParamsRPC } from 'vovk-client';\n\nconst response = await StaticParamsRPC.getStaticParams({\n    params: {\n        section: \"a\",\n        page: \"1\"\n    },\n});"
+          },
+          {
+            "label": "Python RPC",
+            "lang": "python",
+            "source": "from vovk_client import StaticParamsRPC\n\nresponse = StaticParamsRPC.get_static_params(\n    params={\n        \"section\": \"a\",\n        \"page\": \"1\"\n    },\n)"
+          },
+          {
+            "label": "Rust RPC",
+            "lang": "rust",
+            "source": "use vovk_client::static_params_rpc;\nuse serde_json::{ \n  from_value, \n  json \n};\n\npub fn main() {\n  let response = static_params_rpc::get_static_params(\n    (), /* body */ \n    (), /* query */ \n    from_value(json!({\n        \"section\": \"a\",\n        \"page\": \"1\"\n    })).unwrap(), /* params */ \n    None, /* headers (HashMap) */ \n    None, /* api_root */\n    false, /* disable_client_validation */\n  );\n}"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "section",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["a", "b"]
+            }
+          },
+          {
+            "name": "page",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": ["1", "2", "3"]
+            }
+          }
+        ]
+      }
+    }
+  }
+}

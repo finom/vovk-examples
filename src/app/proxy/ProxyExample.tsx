@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { ProxyRPC } from 'vovk-client';
+import { ProxyRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function ProxyExample() {

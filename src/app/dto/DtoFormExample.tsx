@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserDtoRPC } from 'vovk-client';
+import { UserDtoRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 import { validateOnClient } from 'vovk-dto/validateOnClient.js';
 import { plainToInstance } from 'class-transformer';

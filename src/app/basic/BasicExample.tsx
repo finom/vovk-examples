@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { BasicRPC } from 'vovk-client';
+import { BasicRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function BasicExample() {

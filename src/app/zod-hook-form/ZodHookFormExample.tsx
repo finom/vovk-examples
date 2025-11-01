@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { UserZodRPC } from 'vovk-client';
+import { UserZodRPC } from '@/client';
 import { useForm } from 'react-hook-form';
 import type { VovkBody, VovkReturnType } from 'vovk';
 import { ajvResolver } from '@hookform/resolvers/ajv';

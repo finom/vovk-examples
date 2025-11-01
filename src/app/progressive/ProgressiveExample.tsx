@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { progressive, type VovkIteration } from 'vovk';
-import { ProgressiveRPC } from 'vovk-client';
+import { ProgressiveRPC } from '@/client';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 

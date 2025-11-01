@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserArktypeRPC } from 'vovk-client';
+import { UserArktypeRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function ArktypeFormExample() {

@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserZodRPC } from 'vovk-client';
+import { UserZodRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function ZodFormExample() {

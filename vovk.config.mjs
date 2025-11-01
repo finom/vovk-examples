@@ -1,6 +1,12 @@
 // @ts-check
 /** @type {import('vovk').VovkConfig} */
 const config = {
+  composedClient: {
+    // makes the client available for the bundle re-exports, so the bundle package doesn't import "vovk-client"
+    fromTemplates: ['ts'],
+    outDir: './src/client',
+    prettifyClient: true,
+  },
   outputConfig: {
     imports: {
       validateOnClient: 'vovk-ajv',

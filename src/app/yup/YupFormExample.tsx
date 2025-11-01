@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserYupRPC } from 'vovk-client';
+import { UserYupRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function YupFormExample() {

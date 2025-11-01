@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { StaticParamsRPC } from 'vovk-client';
+import { StaticParamsRPC } from '@/client';
 import { VovkParams, type VovkReturnType } from 'vovk';
 
 export default function StaticParamsExample() {

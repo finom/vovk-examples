@@ -1,6 +1,6 @@
 'use client';
 import { useState, type FormEvent } from 'react';
-import { UserValibotRPC } from 'vovk-client';
+import { UserValibotRPC } from '@/client';
 import type { VovkReturnType } from 'vovk';
 
 export default function ValibotFormExample() {

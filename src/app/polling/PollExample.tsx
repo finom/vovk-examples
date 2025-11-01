@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { PollRPC } from 'vovk-client';
+import { PollRPC } from '@/client';
 
 export default function PollExample() {
   const [tick, setTick] = useState(0);

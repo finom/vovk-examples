@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { JSONLinesRPC } from 'vovk-client';
+import { JSONLinesRPC } from '@/client';
 import type { VovkYieldType } from 'vovk';
 
 export default function StreamExample() {

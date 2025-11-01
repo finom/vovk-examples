@@ -1,5 +1,5 @@
 'use client';
-import { BasicRPC, JSONLinesRPC } from 'vovk-client';
+import { BasicRPC, JSONLinesRPC } from '@/client';
 import {
   QueryClient,
   QueryClientProvider,
