@@ -39,4 +39,4 @@ tmp
 dist
 .env
 
-src/clientxx
+src/client
