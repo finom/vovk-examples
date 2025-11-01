@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 @prefix('poll')
 export default class PollController {
-  @get()
+  @get('', { cors: true })
   static streamPollResponse = withZod({
     query: z.object({
       i: z.string(),

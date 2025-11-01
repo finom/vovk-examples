@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { GithubFile } from '@/types';
+import { GithubFile } from '@/types.ts';
 
 interface Props {
   githubFiles: GithubFile[]
