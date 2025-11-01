@@ -9,15 +9,17 @@ const config = {
   },
   outputConfig: {
     // makes it available at the re-exported components used at vovk.dev
-    origin: process.env.NODE_ENV === 'production'
+    /* origin: process.env.NODE_ENV === 'production'
       ? `https://examples.vovk.dev`
-      : undefined,
+      : undefined, */
     imports: {
       validateOnClient: 'vovk-ajv',
     },
   },
   bundle: {
     keepPrebundleDir: true,
+    // make re-exported components use modules with proper origin
+    prebundleOutDir: './src/client',
     build: async ({ entry, outDir }) => {
       const { build } = await import('tsdown');
       await build({
@@ -32,7 +34,7 @@ const config = {
       });
     },
     outputConfig: {
-      // origin: 'https://examples.vovk.dev',
+      origin: 'https://examples.vovk.dev',
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.tsx',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.tsx',
