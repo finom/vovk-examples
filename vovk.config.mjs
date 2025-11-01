@@ -9,8 +9,8 @@ const config = {
   },
   outputConfig: {
     // makes it available at the re-exported components used at vovk.dev
-    origin: process.env.VERCEL_URL
-      ? `https://${process.env.VERCEL_URL}`
+    origin: process.env.NODE_ENV === 'production'
+      ? `https://examples.vovk.dev`
       : undefined,
     imports: {
       validateOnClient: 'vovk-ajv',
