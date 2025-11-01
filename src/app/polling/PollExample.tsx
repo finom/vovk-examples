@@ -23,7 +23,7 @@ export default function PollExample() {
 
   return (
     <div>
-      <p>Poll ticker</p>
+      <p>Poll Ticker</p>
       <h2>{tick}</h2>
     </div>
   );

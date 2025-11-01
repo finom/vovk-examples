@@ -7,7 +7,7 @@ export default class OpenAiController {
     summary: 'Create a chat completion',
     description: 'Create a chat completion using OpenAI and yield the response',
   })
-  @post('chat', { cors: true, headers: { 'Access-Control-Allow-Origin': 'https://vovk.dev' } })
+  @post('chat')
   static async *createChatCompletion(
     req: VovkRequest<{ messages: OpenAI.Chat.Completions.ChatCompletionMessageParam[] }>
   ) {
