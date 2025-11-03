@@ -13,7 +13,7 @@ export default class PollController {
       i: z.number(),
     }),
     async *handle(req) {
-      let i = parseInt(req.vovk.query().i);
+      let i = parseInt(req.vovk.query().i) + 1;
       let k = 0;
       while (true) {
         yield { i: i++ };
