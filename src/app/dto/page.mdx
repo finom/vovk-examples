@@ -31,7 +31,53 @@ Form input handling and [class validation](https://www.npmjs.com/package/class-v
 - [Controller](https://vovk.dev/controller)
 - [`@operation` Decorator](https://vovk.dev/openapi)
 
-```ts filename="src/modules/dto/UserDto.ts" repository="finom/vovk-examples"
-// TEST
+```ts filename="src/modules/dto/UserDto.ts" repository="finom/vovk-examples" line
+import { IsString, IsNumber, Min, IsEmail, IsUUID, IsIn, IsBoolean, Max } from 'class-validator';
+import { JSONSchema } from 'class-validator-jsonschema';
+
+@JSONSchema({ description: 'User object' })
+export class UpdateUserBodyDto {
+  @IsString()
+  @JSONSchema({ description: 'User full name' })
+  name!: string;
+
+  @IsNumber()
+  @Min(0)
+  @Max(120)
+  @JSONSchema({ description: 'User age' })
+  age!: number;
+
+  @IsEmail()
+  @JSONSchema({ description: 'User email' })
+  email!: string;
+
+  /* 
+  @IsDefined({ message: 'File is required' })
+  @JSONSchema({ description: 'User file', type: 'string', format: 'binary' })
+  file!: File; 
+  */
+}
+
+@JSONSchema({ description: 'Path parameters' })
+export class UpdateUserParamsDto {
+  @IsUUID()
+  @JSONSchema({ description: 'User ID' })
+  id!: string;
+}
+
+@JSONSchema({ description: 'Query parameters' })
+export class UpdateUserQueryDto {
+  @IsIn(['email', 'push', 'none'])
+  @JSONSchema({ description: 'Notification type' })
+  notify!: string;
+}
+
+@JSONSchema({ description: 'Response object' })
+export class UpdateUserResponseDto {
+  @IsBoolean()
+  @JSONSchema({ description: 'Success status' })
+  success!: boolean;
+}
+
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDto.ts)*

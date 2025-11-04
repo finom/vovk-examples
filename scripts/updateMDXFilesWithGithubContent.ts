@@ -155,4 +155,6 @@ export async function updateMDXFilesWithGithubContent(directoryPath: string) {
 	}
 }
 
-void updateMDXFilesWithGithubContent(path.join(process.cwd(), 'src/app'));
+void updateMDXFilesWithGithubContent(path.join(process.cwd(), 'src/app')).then(() => {
+	console.info("MDX files updated with GitHub content.");
+});
