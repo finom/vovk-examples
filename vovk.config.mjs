@@ -40,7 +40,7 @@ const config = {
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.tsx',
         'default as JSONLinesResponseExample': './src/app/jsonlines-response/JSONLinesResponseExample.tsx',
         'default as PollExample': './src/app/polling/PollExample.tsx',
-        'default as getGithubFiles': '@/lib/getGithubFiles.ts',
+        'getGithubFile, default as getGithubFiles': '@/lib/getGithubFiles.ts',
       },
       readme: {
         banner: `<p align="center">
