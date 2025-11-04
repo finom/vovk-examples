@@ -3,8 +3,8 @@ title: A Proxy Endpoint Example
 description: A Proxy Endpoint Example
 ---
 
+import { Tabs } from 'nextra/components';
 import ProxyExample from './ProxyExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Proxy Endpoint Example
@@ -19,7 +19,54 @@ A proxy endpoint for [vovk.dev/api/hello/greeting.json](https://vovk.dev/api/hel
 
 ## Code
 
-<GithubFiles paths={['src/modules/proxy/ProxyController.ts', 'src/app/proxy/ProxyExample.tsx']} />
+<Tabs items={['ProxyController.ts', 'ProxyExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/proxy/ProxyController.ts" repository="finom/vovk-examples"
+import { get, prefix, operation } from 'vovk';
+
+@prefix('proxy')
+export default class ProxyController {
+  @operation({
+    summary: 'Proxy endpoint',
+    description: 'Get a greeting from vovk.dev',
+  })
+  @get('greeting', { cors: true })
+  static getHello() {
+    return fetch('https://vovk.dev/api/hello/greeting.json') as unknown as { greeting: 'Hello world!' };
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/proxy/ProxyController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/proxy/ProxyExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { ProxyRPC } from '@/client';
+import type { VovkReturnType } from 'vovk';
+
+export default function ProxyExample() {
+  const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof ProxyRPC.getHello>>();
+
+  return (
+    <>
+      <button
+        onClick={async () => {
+          setServerResponse(await ProxyRPC.getHello());
+        }}
+      >
+        Get a Greeting from the Server
+      </button>
+      <div>{serverResponse?.greeting}</div>
+    </>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/ProxyExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

@@ -3,8 +3,8 @@ title: Valibot Validation Example
 description: Valibot validation example with client and server-side validation
 ---
 
+import { Tabs } from 'nextra/components';
 import ValibotFormExample from './ValibotFormExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Valibot Validation Example
@@ -19,7 +19,133 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 
 ## Code
 
-<GithubFiles paths={['src/modules/valibot/UserValibotController.ts', 'src/app/valibot/ValibotFormExample.tsx']} />
+<Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
+import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
+import { toJsonSchema } from '@valibot/to-json-schema';
+import * as v from 'valibot';
+
+const withValibot = createStandardValidation({
+  toJSONSchema: (model) =>
+    toJsonSchema(model, {
+      overrideSchema(context) {
+        if (context.valibotSchema.type === 'file') {
+          return { type: 'string', format: 'binary' };
+        }
+      },
+    }),
+});
+
+@prefix('users-valibot')
+export default class UserValibotController {
+  @operation({
+    summary: 'Update user (Valibot)',
+    description: 'Update user by ID with Valibot validation',
+  })
+  @post('{id}')
+  static updateUser = withValibot({
+    body: v.pipe(
+      v.object({
+        name: v.pipe(v.string(), v.description('User full name')),
+        age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
+        email: v.pipe(v.string(), v.email(), v.description('User email')),
+      }),
+      v.description('User object')
+    ),
+    params: v.object({
+      id: v.pipe(v.string(), v.uuid(), v.description('User ID')),
+    }),
+    query: v.object({
+      notify: v.pipe(v.picklist(['email', 'push', 'none']), v.description('Notification type')),
+    }),
+    output: v.pipe(
+      v.object({
+        success: v.pipe(v.boolean(), v.description('Success status')),
+      }),
+      v.description('Response object')
+    ),
+    async handle(req, { id }) {
+      const { name, age } = await req.json();
+      const notify = req.nextUrl.searchParams.get('notify');
+
+      // do something with the data
+      console.log(`Updating user ${id}:`, { name, age, notify });
+      return {
+        success: true,
+      } satisfies VovkOutput<typeof UserValibotController.updateUser>;
+    },
+  });
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/valibot/ValibotFormExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState, type FormEvent } from 'react';
+import { UserValibotRPC } from '@/client';
+import type { VovkReturnType } from 'vovk';
+
+export default function ValibotFormExample() {
+  const [response, setResponse] = useState<VovkReturnType<typeof UserValibotRPC.updateUser> | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState(30);
+  const [disableClientValidation, setDisableClientValidation] = useState(false);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setResponse(
+        await UserValibotRPC.updateUser({
+          body: { name, email, age },
+          query: { notify: 'push' },
+          params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
+          disableClientValidation,
+        })
+      );
+      setError(null);
+    } catch (e) {
+      setError(e as Error);
+      setResponse(null);
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Age:</label>
+      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label className="block mb-4">
+        <input
+          type="checkbox"
+          className="mr-2"
+          checked={disableClientValidation}
+          onChange={(e) => setDisableClientValidation(e.target.checked)}
+        />
+        Disable client-side validation
+      </label>
+      <button>Submit</button>
+
+      {response && (
+        <div className="text-left">
+          <h3>Response:</h3>
+          <pre>{JSON.stringify(response, null, 2)}</pre>
+        </div>
+      )}
+
+      {error && <div className="overflow-auto">❌ {String(error)}</div>}
+    </form>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

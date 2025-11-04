@@ -3,8 +3,8 @@ title: JSONLines Streaming with Response Object
 description: JSONLines streaming with JSONLinesResponse instance for more control over the stream
 ---
 
+import { Tabs } from 'nextra/components';
 import JSONLinesResponseExample from './JSONLinesResponseExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # JSONLines Streaming with Response Object
@@ -19,13 +19,108 @@ This example uses [JSONLinesResponse](https://vovk.dev/controller/jsonlines#json
 
 ## Code
 
-<GithubFiles
-  paths={[
-    'src/modules/jsonlines-response/JSONLinesResponseService.ts',
-    'src/modules/jsonlines-response/JSONLinesResponseController.ts',
-    'src/app/jsonlines-response/JSONLinesResponseExample.tsx',
-  ]}
-/>
+<Tabs items={['JSONLinesResponseService.ts', 'JSONLinesResponseController.ts', 'JSONLinesResponseExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines-response/JSONLinesResponseService.ts" repository="finom/vovk-examples"
+import type { JSONLinesResponse } from 'vovk';
+
+export type Token = { message: string };
+
+export default class JSONLinesResponseService {
+  static async streamTokens(resp: JSONLinesResponse<Token>) {
+    const tokens: Token[] = [
+      { message: 'Hello,' },
+      { message: ' World' },
+      { message: ' from' },
+      { message: ' JSONLines' },
+      { message: ' Endpoint' },
+      { message: ' that' },
+      { message: ' uses' },
+      { message: ' JSONLines' },
+      { message: 'Response' },
+      { message: ' instance' },
+      { message: '!' },
+    ];
+
+    for (const token of tokens) {
+      resp.send(token);
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+
+    await resp.close();
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseService.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines-response/JSONLinesResponseController.ts" repository="finom/vovk-examples"
+import { prefix, get, operation, JSONLinesResponse } from 'vovk';
+import StreamService, { type Token } from './JSONLinesResponseService.ts';
+
+@prefix('jsonlines-response-object')
+export default class JSONLinesResponseController {
+  @operation({
+    summary: 'Stream tokens using Response object',
+    description: 'Stream tokens to the client using Response object',
+  })
+  @get('tokens', { cors: true }) // CORS for OPTIONS Next.js route handler
+  static async streamTokens(req: Request) {
+    const response = new JSONLinesResponse<Token>(req, {
+      headers: {
+        // CORS for GET
+        'Access-Control-Allow-Origin': 'https://vovk.dev',
+        'Access-Control-Allow-Methods': 'GET',
+        'Access-Control-Allow-Headers': 'Authorization',
+      },
+    });
+
+    void StreamService.streamTokens(response);
+
+    return response;
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/jsonlines-response/JSONLinesResponseExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { JSONLinesResponseRPC } from '@/client';
+import type { VovkYieldType } from 'vovk';
+
+export default function StreamExample() {
+  const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesResponseRPC.streamTokens>[]>([]);
+
+  return (
+    <>
+      <button
+        onClick={async () => {
+          setTokens([]);
+          using stream = await JSONLinesResponseRPC.streamTokens();
+          for await (const token of stream) {
+            setTokens((tokens) => [...tokens, token]);
+          }
+        }}
+      >
+        Get JSON Lines response
+      </button>
+      <div>
+        {tokens.map(({ message }, i) => (
+          <span key={i}>{message}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines-response/JSONLinesResponseExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 
 ## Related Documentation

@@ -3,8 +3,8 @@ title: Arktype Validation Example
 description: Arktype validation example with client and server-side validation
 ---
 
+import { Tabs } from 'nextra/components';
 import ArktypeFormExample from './ArktypeFormExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Arktype Validation Example
@@ -19,7 +19,132 @@ Form input handling and [Arktype](https://https://arktype.io/) validation. The r
 
 ## Code
 
-<GithubFiles paths={['src/modules/arktype/UserArktypeController.ts', 'src/app/arktype/ArktypeFormExample.tsx']} />
+<Tabs items={['UserArktypeController.ts', 'ArktypeFormExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/arktype/UserArktypeController.ts" repository="finom/vovk-examples"
+import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { type } from 'arktype';
+
+const withArk = createStandardValidation({
+  toJSONSchema: (model: type) =>
+    model.toJsonSchema({
+      fallback: {
+        proto: (ctx) =>
+          ctx.proto === File
+            ? {
+                type: 'string',
+                format: 'binary',
+              }
+            : ctx.base,
+        default: (ctx) => ctx.base,
+      },
+    }),
+});
+
+@prefix('users-arktype')
+export default class UserArktypeController {
+  @operation({
+    summary: 'Update user (Arktype)',
+    description: 'Update user by ID with Arktype validation',
+  })
+  @post('{id}')
+  static updateUser = withArk({
+    body: type({
+      name: type('string').describe('User full name'),
+      age: type('0 < number < 120').describe('User age'),
+      email: type('string.email').describe('User email'),
+      // file: type('File').describe('User file'),
+    }),
+    params: type({
+      id: type('string.uuid').describe('User ID'),
+    }),
+    query: type({
+      notify: type('"email" | "push" | "none"').describe('Notification type'),
+    }),
+    output: type({
+      success: type('boolean').describe('Success status'),
+    }),
+    async handle(req, { id }) {
+      const { name, age } = await req.json();
+      const notify = req.nextUrl.searchParams.get('notify');
+
+      // do something with the data
+      console.log(`Updating user ${id}:`, { name, age, notify });
+      return {
+        success: true,
+      } satisfies VovkOutput<typeof UserArktypeController.updateUser>;
+    },
+  });
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/arktype/UserArktypeController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/arktype/ArktypeFormExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState, type FormEvent } from 'react';
+import { UserArktypeRPC } from '@/client';
+import type { VovkReturnType } from 'vovk';
+
+export default function ArktypeFormExample() {
+  const [response, setResponse] = useState<VovkReturnType<typeof UserArktypeRPC.updateUser> | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState(30);
+  const [disableClientValidation, setDisableClientValidation] = useState(false);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setResponse(
+        await UserArktypeRPC.updateUser({
+          body: { name, email, age },
+          query: { notify: 'push' },
+          params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
+          disableClientValidation,
+        })
+      );
+      setError(null);
+    } catch (e) {
+      setError(e as Error);
+      setResponse(null);
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Age:</label>
+      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label className="block mb-4">
+        <input
+          type="checkbox"
+          className="mr-2"
+          checked={disableClientValidation}
+          onChange={(e) => setDisableClientValidation(e.target.checked)}
+        />
+        Disable client-side validation
+      </label>
+      <button>Submit</button>
+
+      {response && (
+        <div className="text-left">
+          <h3>Response:</h3>
+          <pre>{JSON.stringify(response, null, 2)}</pre>
+        </div>
+      )}
+
+      {error && <div className="overflow-auto">❌ {String(error)}</div>}
+    </form>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/arktype/ArktypeFormExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

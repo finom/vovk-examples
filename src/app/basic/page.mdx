@@ -3,8 +3,8 @@ title: Example of a Controller
 description: Basic Example of Vovk.ts Controller
 ---
 
+import { Tabs } from 'nextra/components';
 import BasicExample from './BasicExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Basic Controller Example
@@ -19,7 +19,64 @@ A basic example of the Vovk.ts [controller](https://vovk.dev/controller) with no
 
 ## Code
 
-<GithubFiles paths={['src/modules/basic/BasicController.ts', 'src/app/basic/BasicExample.tsx']} />
+<Tabs items={['BasicController.ts', 'BasicExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/basic/BasicController.ts" repository="finom/vovk-examples"
+import { get, post, prefix, operation, type VovkRequest } from 'vovk';
+
+@prefix('basic')
+export default class BasicController {
+  @operation({
+    summary: 'Get a greeting',
+    description: 'Get a greeting from the server',
+  })
+  @get('greeting')
+  static getHello() {
+    return { greeting: 'Hello world from a controller!' };
+  }
+
+  @operation({
+    summary: 'Post a greeting',
+    description: 'Post a greeting to the server',
+  })
+  @post('greeting')
+  static async postHello(req: VovkRequest<{ greeting: string }>) {
+    const { greeting } = await req.json();
+    return { greeting };
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/BasicController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/basic/BasicExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { BasicRPC } from '@/client';
+import type { VovkReturnType } from 'vovk';
+
+export default function BasicExample() {
+  const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof BasicRPC.getHello>>();
+
+  return (
+    <>
+      <button
+        onClick={async () => {
+          setServerResponse(await BasicRPC.getHello());
+        }}
+      >
+        Get a Greeting from the Server
+      </button>
+      <div>{serverResponse?.greeting}</div>
+    </>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic/BasicExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

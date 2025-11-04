@@ -10,6 +10,7 @@
   "scripts": {
     "test": "npm run lint",
     "upgrade": "npx npm-check-updates -u && npm i",
+    "predev": "npm run update-mdx-github-codeblocks",
     "dev": "vovk dev --next-dev",
     "build": "next build",
     "start": "next start",

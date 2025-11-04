@@ -145,16 +145,54 @@ export async function updateMDXFilesWithGithubContent(directoryPath: string) {
 		return acc;
 	}
 
+	let count = 0;
+
 	const files = await getAllMdxFiles(directoryPath);
 	for (const file of files) {
 		const original = await readFile(file, "utf8");
 		const updated = await updateGithubMDXCodeBlocks(original);
+		console.log(`Processed file: ${file}`);
 		if (updated !== original) {
 			await writeFile(file, updated, "utf8");
+			console.info(`Updated MDX file: ${file}`);
+			count++;
 		}
 	}
+
+	return { updatedFilesCount: count, totalFilesProcessed: files.length };
 }
 
-void updateMDXFilesWithGithubContent(path.join(process.cwd(), 'src/app')).then(() => {
-	console.info("MDX files updated with GitHub content.");
+void updateMDXFilesWithGithubContent(path.join(process.cwd(), 'src/app')).then(({ updatedFilesCount, totalFilesProcessed }) => {
+	console.info(`MDX files updated with GitHub content. ${updatedFilesCount} out of ${totalFilesProcessed} files were modified.`);
 });
+
+/*
+I need you to walk thru all the files and do the following:
+Once you see a component like 
+
+<GithubFiles
+  paths={['src/modules/dto/UserDtoController.ts', 'src/modules/dto/UserDto.ts', 'src/app/dto/DtoFormExample.tsx']}
+/>
+
+You need to add a Tabs component below it with corresponding tabs, one for each file listed in the paths array. Keep the contents of the code as // TODO
+
+<Tabs items={['UserDtoController.ts', 'UserDto.ts', 'DtoFormExample.tsx']}>
+<Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/dto/UserDtoController.ts" repository="finom/vovk-examples"
+// TODO
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/dto/UserDto.ts" repository="finom/vovk-examples"
+// TODO
+```
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/dto/DtoFormExample.tsx" repository="finom/vovk-examples"
+// TODO
+```
+</Tabs.Tab>
+</Tabs>
+
+Don't forget to import the Tabs component from nextra/components above all other imports: import { Tabs } from 'nextra/components';
+*/

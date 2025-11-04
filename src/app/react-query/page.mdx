@@ -3,8 +3,8 @@ title: React Query Example
 description: Mutation, query, and streamed query using React Query
 ---
 
+import { Tabs } from 'nextra/components';
 import ReactQueryExample from './ReactQueryExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # React Query Example
@@ -19,13 +19,135 @@ Demonstrates mutation, query, and [streamed query](https://vovk.dev/controller/j
 
 ## Code
 
-<GithubFiles
-  paths={[
-    'src/modules/basic/BasicController.ts',
-    'src/modules/jsonlines/JSONLinesController.ts',
-    'src/app/react-query/ReactQueryExample.tsx',
-  ]}
-/>
+<Tabs items={['BasicController.ts', 'JSONLinesController.ts', 'ReactQueryExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/basic/BasicController.ts" repository="finom/vovk-examples"
+import { get, post, prefix, operation, type VovkRequest } from 'vovk';
+
+@prefix('basic')
+export default class BasicController {
+  @operation({
+    summary: 'Get a greeting',
+    description: 'Get a greeting from the server',
+  })
+  @get('greeting')
+  static getHello() {
+    return { greeting: 'Hello world from a controller!' };
+  }
+
+  @operation({
+    summary: 'Post a greeting',
+    description: 'Post a greeting to the server',
+  })
+  @post('greeting')
+  static async postHello(req: VovkRequest<{ greeting: string }>) {
+    const { greeting } = await req.json();
+    return { greeting };
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/BasicController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
+import { get, prefix, operation } from 'vovk';
+
+type Token = { message: string };
+
+@prefix('jsonlines')
+export default class JSONLinesController {
+  @operation({
+    summary: 'Stream tokens',
+    description: 'Stream tokens to the client',
+  })
+  @get('tokens', { cors: true })
+  static async *streamTokens() {
+    const tokens: Token[] = [
+      { message: 'Hello,' },
+      { message: ' World' },
+      { message: ' from' },
+      { message: ' JSONLines' },
+      { message: ' Endpoint' },
+      { message: '!' },
+    ];
+
+    for (const token of tokens) {
+      yield token;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/react-query/ReactQueryExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { BasicRPC, JSONLinesRPC } from '@/client';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+  useMutation,
+  experimental_streamedQuery as streamedQuery,
+} from '@tanstack/react-query';
+import { useState } from 'react';
+
+export function Example() {
+  const query = useQuery({
+    queryKey: BasicRPC.getHello.queryKey(),
+    queryFn: () => BasicRPC.getHello(),
+  });
+  const stream = useQuery({
+    queryKey: JSONLinesRPC.streamTokens.queryKey(['todo']),
+    queryFn: streamedQuery({
+      streamFn: () => JSONLinesRPC.streamTokens(),
+    }),
+  });
+  const mutation = useMutation({
+    mutationFn: BasicRPC.postHello,
+  });
+
+  const [userInput, setUserInput] = useState('');
+
+  return (
+    <div>
+      <div>Query result: {query.data?.greeting ?? <em>Loading...</em>}</div>
+      <div>
+        Stream result: {stream.data?.map(({ message }, i) => <span key={i}>{message}</span>) ?? <em>Loading...</em>}
+      </div>
+      <div>
+        Mutation result: {mutation.data?.greeting ?? (mutation.isPending ? <em>Loading...</em> : <em>None</em>)}
+      </div>
+      <div className="input-group">
+        <input
+          type="text"
+          placeholder="Type a greeting..."
+          value={userInput}
+          onChange={(e) => setUserInput(e.currentTarget.value)}
+        />
+        <button onClick={() => mutation.mutate({ body: { greeting: userInput } })}>Mutate</button>
+      </div>
+    </div>
+  );
+}
+
+const queryClient = new QueryClient();
+
+export default function ReactQueryExample() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Example />
+    </QueryClientProvider>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/react-query/ReactQueryExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

@@ -3,8 +3,8 @@ title: JSONLines Example
 description: JSONLines streaming example with async generators
 ---
 
+import { Tabs } from 'nextra/components';
 import JSONLinesExample from './JSONLinesExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # JSONLines Example
@@ -19,7 +19,76 @@ JSONLines streaming with [async generators](https://developer.mozilla.org/en-US/
 
 ## Code
 
-<GithubFiles paths={['src/modules/jsonlines/JSONLinesController.ts', 'src/app/jsonlines/JSONLinesExample.tsx']} />
+<Tabs items={['JSONLinesController.ts', 'JSONLinesExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
+import { get, prefix, operation } from 'vovk';
+
+type Token = { message: string };
+
+@prefix('jsonlines')
+export default class JSONLinesController {
+  @operation({
+    summary: 'Stream tokens',
+    description: 'Stream tokens to the client',
+  })
+  @get('tokens', { cors: true })
+  static async *streamTokens() {
+    const tokens: Token[] = [
+      { message: 'Hello,' },
+      { message: ' World' },
+      { message: ' from' },
+      { message: ' JSONLines' },
+      { message: ' Endpoint' },
+      { message: '!' },
+    ];
+
+    for (const token of tokens) {
+      yield token;
+      await new Promise((resolve) => setTimeout(resolve, 300));
+    }
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/jsonlines/JSONLinesExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { JSONLinesRPC } from '@/client';
+import type { VovkYieldType } from 'vovk';
+
+export default function StreamExample() {
+  const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesRPC.streamTokens>[]>([]);
+
+  return (
+    <>
+      <button
+        onClick={async () => {
+          setTokens([]);
+          using stream = await JSONLinesRPC.streamTokens();
+          for await (const token of stream) {
+            setTokens((tokens) => [...tokens, token]);
+          }
+        }}
+      >
+        Get JSONLines Response
+      </button>
+      <div>
+        {tokens.map(({ message }, i) => (
+          <span key={i}>{message}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/JSONLinesExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 
 ## Related Documentation

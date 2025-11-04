@@ -3,8 +3,8 @@ title: Progressive Response example
 description: Progressive Response example
 ---
 
+import { Tabs } from 'nextra/components';
 import ProgressiveExample from './ProgressiveExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Progressive Response example
@@ -19,13 +19,163 @@ Demonstrates an experimental feature called "Progressive Response" that implemen
 
 ## Code
 
-<GithubFiles
-  paths={[
-    'src/modules/progressive/ProgressiveService.ts',
-    'src/modules/progressive/ProgressiveController.ts',
-    'src/app/progressive/ProgressiveExample.tsx',
-  ]}
-/>
+<Tabs items={['ProgressiveService.ts', 'ProgressiveController.ts', 'ProgressiveExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveService.ts" repository="finom/vovk-examples"
+import { JSONLinesResponse, type VovkIteration } from 'vovk';
+import type ProgressiveController from './ProgressiveController.ts';
+
+export default class ProgressiveService {
+  static async getUsers() {
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 10_000));
+    return [
+      { id: 1, name: 'John Doe' },
+      { id: 2, name: 'Jane Smith' },
+      { id: 3, name: 'Alice Johnson' },
+      { id: 4, name: 'Bob Brown' },
+      { id: 5, name: 'Charlie White' },
+    ];
+  }
+
+  static async getTasks() {
+    await new Promise((resolve) => setTimeout(resolve, Math.random() * 10_000));
+    return [
+      { id: 1, title: 'Task One', completed: false },
+      { id: 2, title: 'Task Two', completed: true },
+      { id: 3, title: 'Task Three', completed: false },
+      { id: 4, title: 'Task Four', completed: true },
+      { id: 5, title: 'Task Five', completed: false },
+    ];
+  }
+
+  static streamProgressiveResponse(
+    resp: JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
+  ) {
+    Promise.all([
+      this.getUsers().then((users) => resp.send({ users })),
+      this.getTasks().then((tasks) => resp.send({ tasks })),
+    ])
+      .then(resp.close)
+      .catch(resp.throw);
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveService.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveController.ts" repository="finom/vovk-examples"
+import { get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
+import { withZod } from 'vovk-zod';
+import { z } from 'zod';
+import ProgressiveService from './ProgressiveService.ts';
+
+@prefix('progressive')
+export default class ProgressiveController {
+  @get('', { cors: true })
+  static streamProgressiveResponse = withZod({
+    validateEachIteration: true,
+    iteration: z.union([
+      z.strictObject({
+        users: z.array(
+          z.strictObject({
+            id: z.number(),
+            name: z.string(),
+          })
+        ),
+      }),
+      z.strictObject({
+        tasks: z.array(
+          z.strictObject({
+            id: z.number(),
+            title: z.string(),
+            completed: z.boolean(),
+          })
+        ),
+      }),
+    ]),
+    async handle(req) {
+      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
+        req
+      );
+
+      void ProgressiveService.streamProgressiveResponse(response);
+
+      return response;
+    },
+  });
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/progressive/ProgressiveExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { progressive, type VovkIteration } from 'vovk';
+import { ProgressiveRPC } from '@/client';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+
+export default function ProgressiveExample() {
+  type Iteration = VovkIteration<typeof ProgressiveRPC.streamProgressiveResponse>;
+  const [users, setUsers] = useState<Extract<Iteration, { users: unknown }>['users'] | null>(null);
+  const [tasks, setTasks] = useState<Extract<Iteration, { tasks: unknown }>['tasks'] | null>(null);
+  const [isLoaded, setIsLoaded] = useState<boolean | null>(null);
+
+  const load = () => {
+    setUsers(null);
+    setTasks(null);
+    const { users: usersPromise, tasks: tasksPromise } = progressive(ProgressiveRPC.streamProgressiveResponse);
+    setIsLoaded(false);
+    Promise.all([usersPromise.then(setUsers), tasksPromise.then(setTasks)]).finally(() => setIsLoaded(true));
+  };
+
+  return (
+    <>
+      <button onClick={load} disabled={isLoaded === false}>
+        Load Users and Tasks Progressively {isLoaded ? 'Again' : ''}
+      </button>
+      {isLoaded !== null && <h2>Users</h2>}
+      {isLoaded !== null && !users && <ListSkeleton />}
+      {!!users?.length &&
+        users?.map((user) => (
+          <ul key={user.id}>
+            <li>{user.name}</li>
+          </ul>
+        ))}
+
+      {isLoaded !== null && <h2>Tasks</h2>}
+      {isLoaded !== null && !tasks && <ListSkeleton />}
+      {!!tasks?.length &&
+        tasks?.map((task) => (
+          <ul key={task.id}>
+            <li>
+              {task.title} {task.completed ? '✅' : ''}
+            </li>
+          </ul>
+        ))}
+    </>
+  );
+}
+
+const ListSkeleton = () => (
+  <ul>
+    {Array(5)
+      .fill(0)
+      .map((_, index) => (
+        <li key={index}>
+          <Skeleton width={150} />
+        </li>
+      ))}
+  </ul>
+);
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/progressive/ProgressiveExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

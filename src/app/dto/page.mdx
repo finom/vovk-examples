@@ -3,8 +3,8 @@ title: DTO Validation Example
 description: DTO Validation Example with class-validator and class-transformer
 ---
 
+import { Tabs } from 'nextra/components';
 import DtoFormExample from './DtoFormExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # DTO (class-validator) Validation Example
@@ -19,19 +19,42 @@ Form input handling and [class validation](https://www.npmjs.com/package/class-v
 
 ## Code
 
-<GithubFiles
-  paths={['src/modules/dto/UserDto.ts', 'src/modules/dto/UserDtoController.ts', 'src/app/dto/DtoFormExample.tsx']}
-/>
+<Tabs items={['UserDtoController.ts', 'UserDto.ts', 'DtoFormExample.tsx']}>
+<Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/dto/UserDtoController.ts" repository="finom/vovk-examples"
+import { prefix, post, operation } from 'vovk';
+import { withDto } from 'vovk-dto';
+import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto, UpdateUserResponseDto } from './UserDto.ts';
 
-## Related Documentation
+@prefix('users-dto')
+export default class UserDtoController {
+  @operation({
+    summary: 'Update user (DTO)',
+    description: 'Update user by ID with DTO validation',
+  })
+  @post('{id}')
+  static updateUser = withDto({
+    body: UpdateUserBodyDto,
+    params: UpdateUserParamsDto,
+    query: UpdateUserQueryDto,
+    output: UpdateUserResponseDto,
+    async handle(req, { id }) {
+      const { name, age, email } = await req.json();
+      const notify = req.nextUrl.searchParams.get('notify');
+      // do something with the data
+      console.log(`Updating user ${id}:`, { name, age, email, notify });
+      return {
+        success: true,
+      } satisfies UpdateUserResponseDto;
+    },
+  });
+}
 
-- [Validation](https://vovk.dev/validation/introduction)
-- [Validation with class-validator](https://vovk.dev/validation/dto)
-- [TypeScript RPC](https://vovk.dev/typescript)
-- [Controller](https://vovk.dev/controller)
-- [`@operation` Decorator](https://vovk.dev/openapi)
-
-```ts filename="src/modules/dto/UserDto.ts" repository="finom/vovk-examples" line
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDtoController.ts)*
+</Tabs.Tab>
+<Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/dto/UserDto.ts" repository="finom/vovk-examples"
 import { IsString, IsNumber, Min, IsEmail, IsUUID, IsIn, IsBoolean, Max } from 'class-validator';
 import { JSONSchema } from 'class-validator-jsonschema';
 
@@ -81,3 +104,86 @@ export class UpdateUserResponseDto {
 
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDto.ts)*
+</Tabs.Tab>
+<Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/dto/DtoFormExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState, type FormEvent } from 'react';
+import { UserDtoRPC } from '@/client';
+import type { VovkReturnType } from 'vovk';
+import { validateOnClient } from 'vovk-dto/validateOnClient.js';
+import { plainToInstance } from 'class-transformer';
+import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto } from '@/modules/dto/UserDto.ts';
+
+export default function DtoFormExample() {
+  const [response, setResponse] = useState<VovkReturnType<typeof UserDtoRPC.updateUser> | null>(null);
+  const [error, setError] = useState<Error | null>(null);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState(30);
+  const [disableClientValidation, setDisableClientValidation] = useState(false);
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      setResponse(
+        await UserDtoRPC.updateUser({
+          body: plainToInstance(UpdateUserBodyDto, { name, email, age } satisfies UpdateUserBodyDto),
+          query: plainToInstance(UpdateUserQueryDto, { notify: 'push' } satisfies UpdateUserQueryDto),
+          params: plainToInstance(UpdateUserParamsDto, {
+            id: '5a279068-35d6-4d67-94e0-c21ef4052eea',
+          } satisfies UpdateUserParamsDto),
+          disableClientValidation,
+          // vovk.config explicitly uses vovk-ajv as a client-side validation library,
+          // so we need to pass "validateOnClient" manually for this particular example.
+          // This is not needed in a real project when config.imports.outputConfig.validateOnClient is set to 'vovk-dto/validateOnClient'.
+          validateOnClient,
+        })
+      );
+      setError(null);
+    } catch (e) {
+      setError(e as Error);
+      setResponse(null);
+    }
+  };
+
+  return (
+    <form onSubmit={onSubmit}>
+      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+      <label>Age:</label>
+      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label className="block mb-4">
+        <input
+          type="checkbox"
+          className="mr-2"
+          checked={disableClientValidation}
+          onChange={(e) => setDisableClientValidation(e.target.checked)}
+        />
+        Disable client-side validation
+      </label>
+      <button>Submit</button>
+
+      {response && (
+        <div className="text-left">
+          <h3>Response:</h3>
+          <pre>{JSON.stringify(response, null, 2)}</pre>
+        </div>
+      )}
+
+      {error && <div className="overflow-auto">❌ {String(error)}</div>}
+    </form>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/dto/DtoFormExample.tsx)*
+</Tabs.Tab>
+</Tabs>
+
+## Related Documentation
+
+- [Validation](https://vovk.dev/validation/introduction)
+- [Validation with class-validator](https://vovk.dev/validation/dto)
+- [TypeScript RPC](https://vovk.dev/typescript)
+- [Controller](https://vovk.dev/controller)
+- [`@operation` Decorator](https://vovk.dev/openapi)

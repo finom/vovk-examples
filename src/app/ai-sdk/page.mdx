@@ -3,8 +3,8 @@ title: Vercel AI SDK Example
 description: LLM streaming with Vercel AI SDK
 ---
 
+import { Tabs } from 'nextra/components';
 import AiSdkExample from './AiSdkExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Vercel AI SDK Example
@@ -19,7 +19,87 @@ The `result.toUIMessageStreamResponse` method returns a `Response` object, which
 
 ## Code
 
-<GithubFiles paths={['src/modules/ai-sdk/AiSdkController.ts', 'src/app/ai-sdk/AiSdkExample.tsx']} />
+<Tabs items={['AiSdkController.ts', 'AiSdkExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/ai-sdk/AiSdkController.ts" repository="finom/vovk-examples"
+import { HttpException, HttpStatus, post, prefix, operation, type VovkRequest } from 'vovk';
+import { streamText, convertToModelMessages, UIMessage } from 'ai';
+import { openai } from '@ai-sdk/openai';
+
+@prefix('ai-sdk')
+export default class AiSdkController {
+  @operation({
+    summary: 'Vercel AI SDK',
+    description:
+      'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
+  })
+  @post('chat')
+  static async chat(req: VovkRequest<{ messages: UIMessage[] }>) {
+    const { messages } = await req.json();
+    const LIMIT = 5;
+
+    if (messages.filter(({ role }) => role === 'user').length > LIMIT) {
+      throw new HttpException(HttpStatus.BAD_REQUEST, `You can only send ${LIMIT} messages at a time`);
+    }
+
+    return streamText({
+      model: openai('gpt-5-nano'),
+      system: 'You are a helpful assistant.',
+      messages: convertToModelMessages(messages),
+    }).toUIMessageStreamResponse();
+  }
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/ai-sdk/AiSdkController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/ai-sdk/AiSdkExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useChat } from '@ai-sdk/react';
+import { DefaultChatTransport } from 'ai';
+import { useState } from 'react';
+
+export default function Page() {
+  const [input, setInput] = useState('');
+
+  const { messages, sendMessage, error, status } = useChat({
+    transport: new DefaultChatTransport({
+      api: '/api/ai-sdk/chat',
+    }),
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (input.trim()) {
+      sendMessage({ text: input });
+      setInput('');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      {messages.map((message) => (
+        <div key={message.id}>
+          {message.role === 'assistant' ? '🤖' : '👤'}{' '}
+          {message.parts.map((part, partIndex) => (
+            <span key={partIndex}>{part.type === 'text' ? part.text : ''}</span>
+          ))}
+        </div>
+      ))}
+      {error && <div>❌ {error.message}</div>}
+      <div className="input-group">
+        <input type="text" placeholder="Send a message..." value={input} onChange={(e) => setInput(e.target.value)} />
+        <button>Send</button>
+      </div>
+    </form>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/ai-sdk/AiSdkExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
 
 ## Related Documentation
 

@@ -3,8 +3,8 @@ title: Zod + React Hook Form example
 description: Zod + React Hook Form example
 ---
 
+import { Tabs } from 'nextra/components';
 import ZodHookFormExample from './ZodHookFormExample';
-import GithubFiles from '@/components/GithubFiles';
 import Example from '@/components/Example';
 
 # Zod + React Hook Form example
@@ -19,4 +19,111 @@ Form input handling with [react-hook-form](https://react-hook-form.com/) and [Zo
 
 ## Code
 
-<GithubFiles paths={['src/modules/zod/UserZodController.ts', 'src/app/zod-hook-form/ZodHookFormExample.tsx']} />
+<Tabs items={['UserZodController.ts', 'ZodHookFormExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/zod/UserZodController.ts" repository="finom/vovk-examples"
+import { z } from 'zod';
+import { prefix, post, operation, type VovkOutput } from 'vovk';
+import { withZod } from 'vovk-zod';
+
+@prefix('users-zod')
+export default class UserZodController {
+  @operation({
+    summary: 'Update user (Zod)',
+    description: 'Update user by ID with Zod validation',
+  })
+  @post('{id}')
+  static updateUser = withZod({
+    body: z
+      .object({
+        name: z.string().meta({ description: 'User full name' }),
+        age: z.number().min(0).max(120).meta({ description: 'User age' }),
+        email: z.email().meta({ description: 'User email' }),
+      })
+      .meta({ description: 'User object' }),
+    params: z.object({
+      id: z.uuid().meta({ description: 'User ID' }),
+    }),
+    query: z.object({
+      notify: z.enum(['email', 'push', 'none']).meta({ description: 'Notification type' }),
+    }),
+    output: z
+      .object({
+        success: z.boolean().meta({ description: 'Success status' }),
+      })
+      .meta({ description: 'Response object' }),
+    async handle(req, { id }) {
+      const { name, age } = await req.json();
+      const notify = req.nextUrl.searchParams.get('notify');
+
+      // do something with the data
+      console.log(`Updating user ${id}:`, { name, age, notify });
+      return {
+        success: true,
+      } satisfies VovkOutput<typeof UserZodController.updateUser>;
+    },
+  });
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/zod-hook-form/ZodHookFormExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useState } from 'react';
+import { UserZodRPC } from '@/client';
+import { useForm } from 'react-hook-form';
+import type { VovkBody, VovkReturnType } from 'vovk';
+import { ajvResolver } from '@hookform/resolvers/ajv';
+import { fastFormats } from 'ajv-formats/dist/formats.js';
+
+export default function ZodHookFormExample() {
+  const [response, setResponse] = useState<VovkReturnType<typeof UserZodRPC.updateUser> | null>(null);
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm<VovkBody<typeof UserZodRPC.updateUser>>({
+    // @ts-expect-error This example isn't working as vovk-examples uses newer version of JSON Schema
+    resolver: ajvResolver(UserZodRPC.updateUser.schema.validation!.body, {
+      formats: fastFormats,
+    }),
+  });
+
+  const onSubmit = async () => {
+    setResponse(
+      await UserZodRPC.updateUser({
+        body: getValues(),
+        query: { notify: 'push' },
+        params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
+      })
+    );
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input type="text" placeholder="Name" {...register('name')} />
+      {errors.name && <p>❌ {errors.name.message}</p>}
+      <input type="text" placeholder="Email" {...register('email')} />
+      {errors.email && <p>❌ {errors.email.message}</p>}
+      <label>Age:</label>
+      <input type="number" placeholder="Age" {...register('age', { valueAsNumber: true })} />
+      {errors.age && <p>❌ {errors.age.message}</p>}
+      <button>Submit</button>
+
+      {response && (
+        <div>
+          <h3>Response</h3>
+          <pre className="text-left">{JSON.stringify(response, null, 2)}</pre>
+        </div>
+      )}
+    </form>
+  );
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod-hook-form/ZodHookFormExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
