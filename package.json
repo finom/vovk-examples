@@ -22,7 +22,8 @@
     "bundle": "NODE_ENV=production vovk bundle",
     "prebuild": "vovk generate",
     "postbuild": "pagefind --site .next/server/app --output-path public/_pagefind",
-    "vercel-build": "npm run build"
+    "vercel-build": "npm run build",
+    "update-mdx-github-codeblocks": "node --experimental-strip-types ./scripts/updateMDXFilesWithGithubContent.ts"
   },
   "prettier": {
     "trailingComma": "es5",

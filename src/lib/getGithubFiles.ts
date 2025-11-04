@@ -8,7 +8,7 @@ async function performDirectGithubRequest(
   return resp.text();
 }
 
-async function getGithubFile(path: string, { owner, repo, ref }: { owner: string; repo: string; ref: string }) {
+export async function getGithubFile(path: string, { owner, repo, ref }: { owner: string; repo: string; ref: string }) {
   let resp;
 
   try {

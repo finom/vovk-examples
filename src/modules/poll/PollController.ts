@@ -13,12 +13,11 @@ export default class PollController {
       i: z.number(),
     }),
     async *handle(req) {
-      let i = parseInt(req.vovk.query().i) + 1;
-      let k = 0;
+      let i = parseInt(req.vovk.query().i);
       while (true) {
-        yield { i: i++ };
+        yield { i: ++i };
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        if (++k >= 10) {
+        if (!(i % 10)) {
           break;
         }
       }
