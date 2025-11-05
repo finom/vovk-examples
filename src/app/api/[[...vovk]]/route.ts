@@ -10,7 +10,7 @@ import ProxyController from '../../../modules/proxy/ProxyController.ts';
 import UserZodController from '../../../modules/zod/UserZodController.ts';
 import UserYupController from '../../../modules/yup/UserYupController.ts';
 import UserDtoController from '../../../modules/dto/UserDtoController.ts';
-import PollController from '../../../modules/poll/PollController.ts';
+import PollController from '../../../modules/polling/PollController.ts';
 import UserArktypeController from '../../../modules/arktype/UserArktypeController.ts';
 import UserValibotController from '../../../modules/valibot/UserValibotController.ts';
 import ProgressiveController from '../../../modules/progressive/ProgressiveController.ts';

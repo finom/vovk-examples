@@ -2,7 +2,7 @@ import { get, prefix } from 'vovk';
 import { withZod } from 'vovk-zod';
 import { z } from 'zod';
 
-@prefix('poll')
+@prefix('polling')
 export default class PollController {
   @get('', { cors: true })
   static streamPollResponse = withZod({

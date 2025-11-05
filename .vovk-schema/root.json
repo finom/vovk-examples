@@ -703,7 +703,7 @@
     "PollRPC": {
       "rpcModuleName": "PollRPC",
       "originalControllerName": "PollController",
-      "prefix": "poll",
+      "prefix": "polling",
       "handlers": {
         "streamPollResponse": {
           "validation": {

@@ -94,7 +94,7 @@ async function updateGithubMDXCodeBlocks(mdxContent: string) {
 		try {
 			const remote = await getGithubFile(filename, { owner, repo, ref: 'main' });
 			if (typeof remote === "string" && remote !== code) {
-				fetched = remote;
+				fetched = remote.trim();
 				replaced = true;
 			}
 		} catch {
