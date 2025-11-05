@@ -22,7 +22,32 @@ Demonstrates infinite server polling ticker in a `while(true){:ts}` loop that's 
 <Tabs items={['PollController.ts', 'PollExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/polling/PollController.ts" repository="finom/vovk-examples"
-404: Not Found
+import { get, prefix } from 'vovk';
+import { withZod } from 'vovk-zod';
+import { z } from 'zod';
+
+@prefix('polling')
+export default class PollController {
+  @get('', { cors: true })
+  static streamPollResponse = withZod({
+    query: z.object({
+      i: z.string(),
+    }),
+    iteration: z.object({
+      i: z.number(),
+    }),
+    async *handle(req) {
+      let i = parseInt(req.vovk.query().i);
+      while (true) {
+        yield { i: ++i };
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        if (!(i % 10)) {
+          break;
+        }
+      }
+    },
+  });
+}
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/polling/PollController.ts)*
   </Tabs.Tab>
