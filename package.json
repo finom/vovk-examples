@@ -37,10 +37,6 @@
     "type": "git",
     "url": "git+https://github.com/finom/vovk-examples.git"
   },
-  "#TODO": "Remove overrides when tsdown is renewed to support rolldown-plugin-dts v0.17.3+",
-  "overrides": {
-    "rolldown-plugin-dts": "0.17.3"
-  },
   "dependencies": {
     "@ai-sdk/openai": "^2.0.59",
     "@ai-sdk/react": "^2.0.86",
@@ -75,7 +71,7 @@
     "react-loading-skeleton": "^3.5.0",
     "react-to-string": "^0.1.1",
     "tailwind-merge": "^3.3.1",
-    "tsdown": "^0.15.12",
+    "tsdown": "^0.16.0",
     "valibot": "^1.1.0",
     "vovk": "^3.0.0-draft.467",
     "vovk-ajv": "^0.0.0-draft.112",
