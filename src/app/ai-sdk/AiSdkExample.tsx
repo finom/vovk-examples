@@ -1,4 +1,5 @@
 'use client';
+import { AiSdkRPC } from '@/client/index.ts';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { useState } from 'react';
@@ -8,7 +9,7 @@ export default function Page() {
 
   const { messages, sendMessage, error, status } = useChat({
     transport: new DefaultChatTransport({
-      api: '/api/ai-sdk/chat',
+      api: AiSdkRPC.chat.getURL(), // '/api/ai-sdk/chat',
     }),
   });
 
