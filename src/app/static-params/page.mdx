@@ -28,32 +28,32 @@ import { withZod } from 'vovk-zod';
 
 @prefix('static-params')
 export default class StaticParamsController {
-  @operation({
-    summary: 'Static Params',
-    description: 'Get the static params: section and page',
-  })
-  @get('{section}/page{page}.json', {
-    staticParams: [
-      { section: 'a', page: '1' },
-      { section: 'a', page: '2' },
-      { section: 'a', page: '3' },
-      { section: 'b', page: '1' },
-      { section: 'b', page: '2' },
-      { section: 'b', page: '3' },
-    ],
-  })
-  static getStaticParams = withZod({
-    params: z.object({
-      section: z.enum(['a', 'b']),
-      page: z.enum(['1', '2', '3']),
-    }),
-    handle: async (_req, { section, page }) => {
-      return { section, page };
-    },
-  });
+@operation({
+summary: 'Static Params',
+description: 'Get the static params: section and page',
+})
+@get('{section}/page{page}.json', {
+staticParams: [
+{ section: 'a', page: '1' },
+{ section: 'a', page: '2' },
+{ section: 'a', page: '3' },
+{ section: 'b', page: '1' },
+{ section: 'b', page: '2' },
+{ section: 'b', page: '3' },
+],
+})
+static getStaticParams = withZod({
+params: z.object({
+section: z.enum(['a', 'b']),
+page: z.enum(['1', '2', '3']),
+}),
+handle: async (\_req, { section, page }) => {
+return { section, page };
+},
+});
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/static/staticParams/StaticParamsController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -100,8 +100,10 @@ export default function StaticParamsExample() {
   );
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/static-params/StaticParamsExample.tsx)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/static-params/StaticParamsExample.tsx)_
+
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/app/api/static/[[...vovk]]/route.ts" repository="finom/vovk-examples"
@@ -110,8 +112,8 @@ import OpenApiController from '../../../../modules/static/openapi/OpenApiControl
 import StaticParamsController from '../../../../modules/static/staticParams/StaticParamsController.ts';
 
 const controllers = {
-  OpenApiRPC: OpenApiController,
-  StaticParamsRPC: StaticParamsController,
+OpenApiRPC: OpenApiController,
+StaticParamsRPC: StaticParamsController,
 };
 
 export type Controllers = typeof controllers;
@@ -141,3 +143,4 @@ export const { GET } = initSegment({
 - [`@operation` Decorator](https://vovk.dev/openapi)
 - [Validation](https://vovk.dev/validation/introduction)
 - [TypeScript RPC](https://vovk.dev/typescript)
+```

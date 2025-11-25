@@ -1,0 +1,71 @@
+---
+title: Polling Example
+description: Polling Ticker Example
+---
+
+import { Tabs } from 'nextra/components';
+import EventsExample from './EventsExample';
+import Example from '@/components/Example';
+
+# Server Events Example
+
+Type-safe alternative to Server-Sent Events (SSE) using Vovk.ts JSONLines for streaming event data from the server to the client.
+
+## Result
+
+<Example>
+  <EventsExample />
+</Example>
+
+## Code
+
+<Tabs items={['EventsController.ts', 'EventsExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/events/EventsController.ts" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/events/EventsController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/events/EventsExample.tsx" repository="finom/vovk-examples"
+'use client';
+import { useEffect, useState } from 'react';
+import { PollRPC } from '@/client';
+
+export default function PollExample() {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    void (async () => {
+      let i = 0;
+      while (true) {
+        using iterable = await PollRPC.streamPollResponse({
+          query: { i: i.toString() },
+        });
+
+        for await ({ i } of iterable) {
+          setTick(i);
+        }
+      }
+    })();
+
+}, []);
+
+return (
+<div>
+<p>Poll Ticker</p>
+<h2>{tick}</h2>
+</div>
+);
+}
+
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/polling/PollExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
+
+## Related Documentation
+
+- [Real-time Polling](https://vovk.dev/polling)
+- [Validation](https://vovk.dev/validation/introduction)
+- [TypeScript RPC](https://vovk.dev/typescript)
+- [Controller](https://vovk.dev/controller)

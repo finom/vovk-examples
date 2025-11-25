@@ -16,6 +16,7 @@ import UserValibotController from '../../../modules/valibot/UserValibotControlle
 import ProgressiveController from '../../../modules/progressive/ProgressiveController.ts';
 import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController.ts';
 import FormZodController from '../../../modules/form/FormZodController.ts';
+import EventsController from '@/modules/events/EventsController.ts';
 // import UserZod3Controller from '../../../modules/zod3/UserZod3Controller.ts';
 
 // export const runtime = 'edge.ts';
@@ -38,6 +39,7 @@ const controllers = {
   AiSdkRPC: AiSdkController,
   ProxyRPC: ProxyController,
   PollRPC: PollController,
+  EventsRPC: EventsController,
   ProgressiveRPC: ProgressiveController,
   FormZodRPC: FormZodController,
 };

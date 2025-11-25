@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { GithubFile } from '@/types.ts';
 
 interface Props {
-  githubFiles: GithubFile[]
+  githubFiles: GithubFile[];
   owner: string;
   repo: string;
   ghRef: string;
@@ -24,7 +24,9 @@ const GithubTabs = ({ githubFiles, owner, repo, ghRef, id }: Props) => {
                 : 'text-slate-400 dark:text-[#525975] border-transparent'
             }`}
             onClick={() => {
-              document.querySelectorAll(`#${id} .github-tab-content`).forEach((el) => el.classList[el.id === `tab-${id}-${i}` ? 'remove' : 'add']('hidden'));
+              document
+                .querySelectorAll(`#${id} .github-tab-content`)
+                .forEach((el) => el.classList[el.id === `tab-${id}-${i}` ? 'remove' : 'add']('hidden'));
               setActiveIndex(i);
             }}
           >

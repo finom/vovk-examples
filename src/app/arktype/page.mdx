@@ -26,47 +26,47 @@ import { prefix, post, operation, type VovkOutput, createStandardValidation, Kno
 import { type } from 'arktype';
 
 const withArk = createStandardValidation({
-  toJSONSchema: (model: type) =>
-    model.toJsonSchema({
-      fallback: {
-        proto: (ctx) =>
-          ctx.proto === File
-            ? {
-                type: 'string',
-                format: 'binary',
-              }
-            : ctx.base,
-        default: (ctx) => ctx.base,
-      },
-    }),
+toJSONSchema: (model: type) =>
+model.toJsonSchema({
+fallback: {
+proto: (ctx) =>
+ctx.proto === File
+? {
+type: 'string',
+format: 'binary',
+}
+: ctx.base,
+default: (ctx) => ctx.base,
+},
+}),
 });
 
 @prefix('users-arktype')
 export default class UserArktypeController {
-  @operation({
-    summary: 'Update user (Arktype)',
-    description: 'Update user by ID with Arktype validation',
-  })
-  @post('{id}')
-  static updateUser = withArk({
-    body: type({
-      name: type('string').describe('User full name'),
-      age: type('0 < number < 120').describe('User age'),
-      email: type('string.email').describe('User email'),
-      // file: type('File').describe('User file'),
-    }),
-    params: type({
-      id: type('string.uuid').describe('User ID'),
-    }),
-    query: type({
-      notify: type('"email" | "push" | "none"').describe('Notification type'),
-    }),
-    output: type({
-      success: type('boolean').describe('Success status'),
-    }),
-    async handle(req, { id }) {
-      const { name, age } = await req.json();
-      const notify = req.nextUrl.searchParams.get('notify');
+@operation({
+summary: 'Update user (Arktype)',
+description: 'Update user by ID with Arktype validation',
+})
+@post('{id}')
+static updateUser = withArk({
+body: type({
+name: type('string').describe('User full name'),
+age: type('0 < number < 120').describe('User age'),
+email: type('string.email').describe('User email'),
+// file: type('File').describe('User file'),
+}),
+params: type({
+id: type('string.uuid').describe('User ID'),
+}),
+query: type({
+notify: type('"email" | "push" | "none"').describe('Notification type'),
+}),
+output: type({
+success: type('boolean').describe('Success status'),
+}),
+async handle(req, { id }) {
+const { name, age } = await req.json();
+const notify = req.nextUrl.searchParams.get('notify');
 
       // do something with the data
       console.log(`Updating user ${id}:`, { name, age, notify });
@@ -74,10 +74,11 @@ export default class UserArktypeController {
         success: true,
       } satisfies VovkOutput<typeof UserArktypeController.updateUser>;
     },
-  });
+
+});
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/arktype/UserArktypeController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -141,8 +142,10 @@ export default function ArktypeFormExample() {
   );
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/arktype/ArktypeFormExample.tsx)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/arktype/ArktypeFormExample.tsx)_
+
   </Tabs.Tab>
 </Tabs>
 

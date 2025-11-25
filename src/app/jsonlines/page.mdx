@@ -28,29 +28,30 @@ type Token = { message: string };
 
 @prefix('jsonlines')
 export default class JSONLinesController {
-  @operation({
-    summary: 'Stream tokens',
-    description: 'Stream tokens to the client',
-  })
-  @get('tokens', { cors: true })
-  static async *streamTokens() {
-    const tokens: Token[] = [
-      { message: 'Hello,' },
-      { message: ' World' },
-      { message: ' from' },
-      { message: ' JSONLines' },
-      { message: ' Endpoint' },
-      { message: '!' },
-    ];
+@operation({
+summary: 'Stream tokens',
+description: 'Stream tokens to the client',
+})
+@get('tokens', { cors: true })
+static async \*streamTokens() {
+const tokens: Token[] = [
+{ message: 'Hello,' },
+{ message: ' World' },
+{ message: ' from' },
+{ message: ' JSONLines' },
+{ message: ' Endpoint' },
+{ message: '!' },
+];
 
     for (const token of tokens) {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  }
+
+}
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -85,11 +86,12 @@ export default function StreamExample() {
   );
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/JSONLinesExample.tsx)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/JSONLinesExample.tsx)_
+
   </Tabs.Tab>
 </Tabs>
-
 
 ## Related Documentation
 

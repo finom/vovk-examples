@@ -14,9 +14,7 @@ export default class FormZodController {
     body: z
       .object({
         email: z.email().meta({ description: 'User email' }),
-        resume: z
-          .file()
-          .meta({ description: 'Resume file', examples: ['application/pdf'] }),
+        resume: z.file().meta({ description: 'Resume file', examples: ['application/pdf'] }),
         portfolioSamples: z.union([z.array(z.file()), z.file()]).meta({ description: 'Portfolio samples' }),
       })
       .meta({ description: 'User object' }),

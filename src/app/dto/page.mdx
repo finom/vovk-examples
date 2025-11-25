@@ -28,29 +28,29 @@ import { UpdateUserBodyDto, UpdateUserParamsDto, UpdateUserQueryDto, UpdateUserR
 
 @prefix('users-dto')
 export default class UserDtoController {
-  @operation({
-    summary: 'Update user (DTO)',
-    description: 'Update user by ID with DTO validation',
-  })
-  @post('{id}')
-  static updateUser = withDto({
-    body: UpdateUserBodyDto,
-    params: UpdateUserParamsDto,
-    query: UpdateUserQueryDto,
-    output: UpdateUserResponseDto,
-    async handle(req, { id }) {
-      const { name, age, email } = await req.json();
-      const notify = req.nextUrl.searchParams.get('notify');
-      // do something with the data
-      console.log(`Updating user ${id}:`, { name, age, email, notify });
-      return {
-        success: true,
-      } satisfies UpdateUserResponseDto;
-    },
-  });
+@operation({
+summary: 'Update user (DTO)',
+description: 'Update user by ID with DTO validation',
+})
+@post('{id}')
+static updateUser = withDto({
+body: UpdateUserBodyDto,
+params: UpdateUserParamsDto,
+query: UpdateUserQueryDto,
+output: UpdateUserResponseDto,
+async handle(req, { id }) {
+const { name, age, email } = await req.json();
+const notify = req.nextUrl.searchParams.get('notify');
+// do something with the data
+console.log(`Updating user ${id}:`, { name, age, email, notify });
+return {
+success: true,
+} satisfies UpdateUserResponseDto;
+},
+});
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDtoController.ts)*
 </Tabs.Tab>
 <Tabs.Tab>
@@ -74,10 +74,10 @@ export class UpdateUserBodyDto {
   @JSONSchema({ description: 'User email' })
   email!: string;
 
-  /* 
+  /*
   @IsDefined({ message: 'File is required' })
   @JSONSchema({ description: 'User file', type: 'string', format: 'binary' })
-  file!: File; 
+  file!: File;
   */
 }
 
@@ -102,8 +102,10 @@ export class UpdateUserResponseDto {
   success!: boolean;
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDto.ts)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/dto/UserDto.ts)_
+
 </Tabs.Tab>
 <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/dto/DtoFormExample.tsx" repository="finom/vovk-examples"
@@ -146,22 +148,22 @@ export default function DtoFormExample() {
     }
   };
 
-  return (
-    <form onSubmit={onSubmit}>
-      <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
-      <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Age:</label>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
-      <label className="block mb-4">
-        <input
-          type="checkbox"
-          className="mr-2"
-          checked={disableClientValidation}
-          onChange={(e) => setDisableClientValidation(e.target.checked)}
-        />
-        Disable client-side validation
-      </label>
-      <button>Submit</button>
+return (
+<form onSubmit={onSubmit}>
+<input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
+<input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+<label>Age:</label>
+<input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+<label className="block mb-4">
+<input
+type="checkbox"
+className="mr-2"
+checked={disableClientValidation}
+onChange={(e) => setDisableClientValidation(e.target.checked)}
+/>
+Disable client-side validation
+</label>
+<button>Submit</button>
 
       {response && (
         <div className="text-left">
@@ -172,7 +174,8 @@ export default function DtoFormExample() {
 
       {error && <div className="overflow-auto">❌ {String(error)}</div>}
     </form>
-  );
+
+);
 }
 
 ```
@@ -187,3 +190,4 @@ export default function DtoFormExample() {
 - [TypeScript RPC](https://vovk.dev/typescript)
 - [Controller](https://vovk.dev/controller)
 - [`@operation` Decorator](https://vovk.dev/openapi)
+```

@@ -84,7 +84,7 @@ export const getOgFonts = async () => ({
       style: 'normal',
       weight: 400,
     },
-   /* {
+    /* {
       name: 'Inter',
       data: await (
         await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-Light.ttf`, import.meta.url))

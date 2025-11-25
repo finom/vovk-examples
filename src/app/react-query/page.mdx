@@ -26,27 +26,27 @@ import { get, post, prefix, operation, type VovkRequest } from 'vovk';
 
 @prefix('basic')
 export default class BasicController {
-  @operation({
-    summary: 'Get a greeting',
-    description: 'Get a greeting from the server',
-  })
-  @get('greeting')
-  static getHello() {
-    return { greeting: 'Hello world from a controller!' };
-  }
-
-  @operation({
-    summary: 'Post a greeting',
-    description: 'Post a greeting to the server',
-  })
-  @post('greeting')
-  static async postHello(req: VovkRequest<{ greeting: string }>) {
-    const { greeting } = await req.json();
-    return { greeting };
-  }
+@operation({
+summary: 'Get a greeting',
+description: 'Get a greeting from the server',
+})
+@get('greeting')
+static getHello() {
+return { greeting: 'Hello world from a controller!' };
 }
 
-```
+@operation({
+summary: 'Post a greeting',
+description: 'Post a greeting to the server',
+})
+@post('greeting')
+static async postHello(req: VovkRequest<{ greeting: string }>) {
+const { greeting } = await req.json();
+return { greeting };
+}
+}
+
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/BasicController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -79,8 +79,10 @@ export default class JSONLinesController {
   }
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)_
+
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/react-query/ReactQueryExample.tsx" repository="finom/vovk-examples"
@@ -110,28 +112,28 @@ export function Example() {
     mutationFn: BasicRPC.postHello,
   });
 
-  const [userInput, setUserInput] = useState('');
+const [userInput, setUserInput] = useState('');
 
-  return (
-    <div>
-      <div>Query result: {query.data?.greeting ?? <em>Loading...</em>}</div>
-      <div>
-        Stream result: {stream.data?.map(({ message }, i) => <span key={i}>{message}</span>) ?? <em>Loading...</em>}
-      </div>
-      <div>
-        Mutation result: {mutation.data?.greeting ?? (mutation.isPending ? <em>Loading...</em> : <em>None</em>)}
-      </div>
-      <div className="input-group">
-        <input
-          type="text"
-          placeholder="Type a greeting..."
-          value={userInput}
-          onChange={(e) => setUserInput(e.currentTarget.value)}
-        />
-        <button onClick={() => mutation.mutate({ body: { greeting: userInput } })}>Mutate</button>
-      </div>
-    </div>
-  );
+return (
+<div>
+<div>Query result: {query.data?.greeting ?? <em>Loading...</em>}</div>
+<div>
+Stream result: {stream.data?.map(({ message }, i) => <span key={i}>{message}</span>) ?? <em>Loading...</em>}
+</div>
+<div>
+Mutation result: {mutation.data?.greeting ?? (mutation.isPending ? <em>Loading...</em> : <em>None</em>)}
+</div>
+<div className="input-group">
+<input
+type="text"
+placeholder="Type a greeting..."
+value={userInput}
+onChange={(e) => setUserInput(e.currentTarget.value)}
+/>
+<button onClick={() => mutation.mutate({ body: { greeting: userInput } })}>Mutate</button>
+</div>
+</div>
+);
 }
 
 const queryClient = new QueryClient();
@@ -155,3 +157,4 @@ export default function ReactQueryExample() {
 - [Controller](https://vovk.dev/controller)
 - [JSONLines](https://vovk.dev/controller/jsonlines)
 - [`@operation` Decorator](https://vovk.dev/openapi)
+```

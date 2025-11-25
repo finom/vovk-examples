@@ -14,7 +14,7 @@ const meta: MetaRecord = {
   },
   index: 'Home',
   '#common': separator('Common'),
-  'basic': 'Basic Controller',
+  basic: 'Basic Controller',
   'basic-with-service': 'Basic Controller with a Service',
   proxy: 'Proxy Endpoint',
   'static-params': 'Static Params',
@@ -30,11 +30,11 @@ const meta: MetaRecord = {
   '#streaming': separator('JSONLines and AI'),
   jsonlines: 'JSONLines with "yield" Syntax',
   'jsonlines-response': 'JSONLinesResponse Object',
+  polling: 'Polling',
+  events: 'Events',
+  progressive: 'Progressive Response',
   openai: 'OpenAI Chat',
   'ai-sdk': 'AI SDK Chat',
-  '#experimental': separator('Experimental'),
-  polling: 'Polling',
-  progressive: 'Progressive Response',
 };
 
 export default meta;

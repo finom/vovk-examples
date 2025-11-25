@@ -26,17 +26,17 @@ import { get, prefix, operation } from 'vovk';
 
 @prefix('proxy')
 export default class ProxyController {
-  @operation({
-    summary: 'Proxy endpoint',
-    description: 'Get a greeting from vovk.dev',
-  })
-  @get('greeting', { cors: true })
-  static getHello() {
-    return fetch('https://vovk.dev/api/hello/greeting.json') as unknown as { greeting: 'Hello world!' };
-  }
+@operation({
+summary: 'Proxy endpoint',
+description: 'Get a greeting from vovk.dev',
+})
+@get('greeting', { cors: true })
+static getHello() {
+return fetch('https://vovk.dev/api/hello/greeting.json') as unknown as { greeting: 'Hello world!' };
+}
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/proxy/ProxyController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -63,8 +63,10 @@ export default function ProxyExample() {
   );
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/ProxyExample.tsx)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/ProxyExample.tsx)_
+
   </Tabs.Tab>
 </Tabs>
 

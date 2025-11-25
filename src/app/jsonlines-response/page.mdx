@@ -48,10 +48,11 @@ export default class JSONLinesResponseService {
     }
 
     await resp.close();
-  }
+
+}
 }
 
-```
+````
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseService.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -82,8 +83,10 @@ export default class JSONLinesResponseController {
   }
 }
 
-```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseController.ts)*
+````
+
+_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseController.ts)_
+
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/jsonlines-response/JSONLinesResponseExample.tsx" repository="finom/vovk-examples"
@@ -95,26 +98,25 @@ import type { VovkYieldType } from 'vovk';
 export default function StreamExample() {
   const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesResponseRPC.streamTokens>[]>([]);
 
-  return (
-    <>
-      <button
-        onClick={async () => {
-          setTokens([]);
-          using stream = await JSONLinesResponseRPC.streamTokens();
-          for await (const token of stream) {
-            setTokens((tokens) => [...tokens, token]);
-          }
-        }}
-      >
-        Get JSON Lines response
-      </button>
-      <div>
-        {tokens.map(({ message }, i) => (
-          <span key={i}>{message}</span>
-        ))}
-      </div>
-    </>
-  );
+return (
+<>
+<button
+onClick={async () => {
+setTokens([]);
+using stream = await JSONLinesResponseRPC.streamTokens();
+for await (const token of stream) {
+setTokens((tokens) => [...tokens, token]);
+}
+}} >
+Get JSON Lines response
+</button>
+<div>
+{tokens.map(({ message }, i) => (
+<span key={i}>{message}</span>
+))}
+</div>
+</>
+);
 }
 
 ```
@@ -129,3 +131,4 @@ export default function StreamExample() {
 - [TypeScript RPC](https://vovk.dev/typescript)
 - [Controller](https://vovk.dev/controller)
 - [`@operation` Decorator](https://vovk.dev/openapi)
+```
