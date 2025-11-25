@@ -48,11 +48,10 @@ export default class JSONLinesResponseService {
     }
 
     await resp.close();
-
+  }
 }
-}
-
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseService.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseService.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -83,7 +82,8 @@ export default class JSONLinesResponseController {
   }
 }
 
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseController.ts)*`
 
 _[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-response/JSONLinesResponseController.ts)_
 
@@ -98,27 +98,27 @@ import type { VovkYieldType } from 'vovk';
 export default function StreamExample() {
   const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesResponseRPC.streamTokens>[]>([]);
 
-return (
-<>
-<button
-onClick={async () => {
-setTokens([]);
-using stream = await JSONLinesResponseRPC.streamTokens();
-for await (const token of stream) {
-setTokens((tokens) => [...tokens, token]);
+  return (
+    <>
+      <button
+        onClick={async () => {
+          setTokens([]);
+          using stream = await JSONLinesResponseRPC.streamTokens();
+          for await (const token of stream) {
+            setTokens((tokens) => [...tokens, token]);
+          }
+        }}
+      >
+        Get JSON Lines response
+      </button>
+      <div>
+        {tokens.map(({ message }, i) => (
+          <span key={i}>{message}</span>
+        ))}
+      </div>
+    </>
+  );
 }
-}} >
-Get JSON Lines response
-</button>
-<div>
-{tokens.map(({ message }, i) => (
-<span key={i}>{message}</span>
-))}
-</div>
-</>
-);
-}
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines-response/JSONLinesResponseExample.tsx)*
   </Tabs.Tab>

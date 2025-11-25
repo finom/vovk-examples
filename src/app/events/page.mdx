@@ -22,44 +22,102 @@ Type-safe alternative to Server-Sent Events (SSE) using Vovk.ts JSONLines for st
 <Tabs items={['EventsController.ts', 'EventsExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/events/EventsController.ts" repository="finom/vovk-examples"
-404: Not Found
+import { get, prefix, VovkIteration } from 'vovk';
+import { withZod } from 'vovk-zod';
+import { z } from 'zod';
+
+const eventNames = [
+  'foo',
+  'bar',
+  'baz',
+  'qux',
+  'quux',
+  'corge',
+  'grault',
+  'garply',
+  'waldo',
+  'fred',
+  'plugh',
+  'xyzzy',
+  'thud',
+] as const;
+
+@prefix('events')
+export default class EventsController {
+  @get()
+  static streamEvents = withZod({
+    validateEachIteration: true,
+    iteration: z.object({
+      event: z.enum(eventNames).meta({ description: 'Event name' }),
+      payload: z.object({
+        timestamp: z.iso.datetime().meta({ description: 'Event timestamp' }),
+        message: z.string().meta({ description: 'Event message' }),
+      }),
+    }),
+    async *handle() {
+      for (const event of eventNames) {
+        yield {
+          event,
+          payload: {
+            timestamp: new Date().toISOString(),
+            message: `This is a message for event "${event}"`,
+          },
+        } satisfies VovkIteration<typeof EventsController.streamEvents>;
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+      }
+    },
+  });
+}
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/events/EventsController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/events/EventsExample.tsx" repository="finom/vovk-examples"
 'use client';
-import { useEffect, useState } from 'react';
-import { PollRPC } from '@/client';
+import { useCallback, useRef, useState } from 'react';
+import { EventsRPC } from '@/client';
+import type { VovkIteration, VovkOutput } from 'vovk';
 
-export default function PollExample() {
-  const [tick, setTick] = useState(0);
-  useEffect(() => {
-    void (async () => {
-      let i = 0;
+export default function EventsExample() {
+  const [eventPayload, setEventPayload] = useState<VovkIteration<typeof EventsRPC.streamEvents>['payload'] | null>(null);
+  const [eventName, setEventName] = useState<VovkIteration<typeof EventsRPC.streamEvents>['event'] | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  const streamEvents = useCallback(async () => {
+    abortControllerRef.current?.abort();
+    try {
       while (true) {
-        using iterable = await PollRPC.streamPollResponse({
-          query: { i: i.toString() },
-        });
+        using events = await EventsRPC.streamEvents();
+        abortControllerRef.current = events.abortController;
 
-        for await ({ i } of iterable) {
-          setTick(i);
+        for await (const { event, payload } of events) {
+          setEventName(event);
+          setEventPayload(payload);
         }
       }
-    })();
+    } catch (error) {
+      if ((error as { cause?: Error }).cause?.name === 'AbortError') {
+        console.log('Streaming aborted');
+      } else {
+        console.error('Error while streaming events:', error);
+      }
+    }
+  }, []);
 
-}, []);
-
-return (
-<div>
-<p>Poll Ticker</p>
-<h2>{tick}</h2>
-</div>
-);
+  return (
+    <div>
+      <button onClick={streamEvents}>Stream Events</button>
+      <br /><br />
+      <h2>Latest Event:</h2>
+      <pre>{eventName || 'No event yet'}</pre>
+      <br />
+      <h2>Event Payload:</h2>
+      <pre>{eventPayload ? JSON.stringify(eventPayload, null, 2) : 'No payload yet'}</pre>
+    </div>
+  );
 }
-
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/polling/PollExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/events/EventsExample.tsx)*
   </Tabs.Tab>
 </Tabs>
 

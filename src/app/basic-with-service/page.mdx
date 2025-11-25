@@ -28,7 +28,8 @@ export default class BasicService {
   }
 }
 
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicService.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicService.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -48,7 +49,8 @@ export default class BasicControllerWithService {
   }
 }
 
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicControllerWithService.ts)*`
 
 _[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicControllerWithService.ts)_
 
@@ -63,20 +65,20 @@ import type { VovkReturnType } from 'vovk';
 export default function BasicExampleWithService() {
   const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof BasicRPCWithService.getHello>>();
 
-return (
-<>
-<button
-onClick={async () => {
-const response = await BasicRPCWithService.getHello();
-setServerResponse(response);
-}} >
-Get a Greeting from the Server
-</button>
-<div>{serverResponse?.greeting}</div>
-</>
-);
+  return (
+    <>
+      <button
+        onClick={async () => {
+          const response = await BasicRPCWithService.getHello();
+          setServerResponse(response);
+        }}
+      >
+        Get a Greeting from the Server
+      </button>
+      <div>{serverResponse?.greeting}</div>
+    </>
+  );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic-with-service/BasicExampleWithService.tsx)*
   </Tabs.Tab>

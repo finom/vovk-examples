@@ -28,15 +28,15 @@ import { openai } from '@ai-sdk/openai';
 
 @prefix('ai-sdk')
 export default class AiSdkController {
-@operation({
-summary: 'Vercel AI SDK',
-description:
-'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
-})
-@post('chat')
-static async chat(req: VovkRequest<{ messages: UIMessage[] }>) {
-const { messages } = await req.json();
-const LIMIT = 5;
+  @operation({
+    summary: 'Vercel AI SDK',
+    description:
+      'Uses [@ai-sdk/openai](https://www.npmjs.com/package/@ai-sdk/openai) and ai packages to chat with an AI model',
+  })
+  @post('chat')
+  static async chat(req: VovkRequest<{ messages: UIMessage[] }>) {
+    const { messages } = await req.json();
+    const LIMIT = 5;
 
     if (messages.filter(({ role }) => role === 'user').length > LIMIT) {
       throw new HttpException(HttpStatus.BAD_REQUEST, `You can only send ${LIMIT} messages at a time`);
@@ -47,11 +47,10 @@ const LIMIT = 5;
       system: 'You are a helpful assistant.',
       messages: convertToModelMessages(messages),
     }).toUIMessageStreamResponse();
-
+  }
 }
-}
-
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/ai-sdk/AiSdkController.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/ai-sdk/AiSdkController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -97,7 +96,8 @@ export default function Page() {
     </form>
   );
 }
-````
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/ai-sdk/AiSdkExample.tsx)*`
 
 _[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/ai-sdk/AiSdkExample.tsx)_
 
