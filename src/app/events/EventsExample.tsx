@@ -6,27 +6,18 @@ import type { VovkIteration, VovkOutput } from 'vovk';
 export default function EventsExample() {
   const [eventPayload, setEventPayload] = useState<VovkIteration<typeof EventsRPC.streamEvents>['payload'] | null>(null);
   const [eventName, setEventName] = useState<VovkIteration<typeof EventsRPC.streamEvents>['event'] | null>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
+  const abortRef = useRef<() => void | null>(null);
 
   const streamEvents = useCallback(async () => {
-    abortControllerRef.current?.abort();
-    try {
+    abortRef.current?.();
       while (true) {
         using events = await EventsRPC.streamEvents();
-        abortControllerRef.current = events.abortController;
-
+        abortRef.current = events.abortWithoutError;
         for await (const { event, payload } of events) {
           setEventName(event);
           setEventPayload(payload);
         }
       }
-    } catch (error) {
-      if ((error as { cause?: Error }).cause?.name === 'AbortError') {
-        console.log('Streaming aborted');
-      } else {
-        console.error('Error while streaming events:', error);
-      }
-    }
   }, []);
 
   return (
