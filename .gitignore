@@ -40,3 +40,4 @@ dist
 .env
 
 src/client
+config.bat
