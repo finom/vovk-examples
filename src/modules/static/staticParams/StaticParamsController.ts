@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import { prefix, get, operation } from 'vovk';
-import { withZod } from '../../../lib/withZod.ts';
+import { endpoint, prefix, get, operation } from 'vovk';
 
 @prefix('static-params')
 export default class StaticParamsController {
@@ -18,7 +17,7 @@ export default class StaticParamsController {
       { section: 'b', page: '3' },
     ],
   })
-  static getStaticParams = withZod({
+  static getStaticParams = endpoint({
     params: z.object({
       section: z.enum(['a', 'b']),
       page: z.enum(['1', '2', '3']),

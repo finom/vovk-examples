@@ -65,8 +65,8 @@ export default class ProgressiveService {
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveController.ts" repository="finom/vovk-examples"
 import { get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
-import { withZod } from 'vovk-zod';
 import { z } from 'zod';
+import { withZod } from '../../lib/withZod.ts';
 import ProgressiveService from './ProgressiveService.ts';
 
 @prefix('progressive')
@@ -104,7 +104,6 @@ export default class ProgressiveController {
     },
   });
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveController.ts)*
 

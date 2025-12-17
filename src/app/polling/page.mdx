@@ -23,7 +23,7 @@ Demonstrates infinite server polling ticker in a `while(true){:ts}` loop that's 
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/polling/PollController.ts" repository="finom/vovk-examples"
 import { get, prefix } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 import { z } from 'zod';
 
 @prefix('polling')

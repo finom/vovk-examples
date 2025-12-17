@@ -1,12 +1,11 @@
-import { get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
+import { endpoint, get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
 import { z } from 'zod';
-import { withZod } from '../../lib/withZod.ts';
 import ProgressiveService from './ProgressiveService.ts';
 
 @prefix('progressive')
 export default class ProgressiveController {
   @get('', { cors: true })
-  static streamProgressiveResponse = withZod({
+  static streamProgressiveResponse = endpoint({
     validateEachIteration: true,
     iteration: z.union([
       z.strictObject({

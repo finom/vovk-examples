@@ -1,11 +1,10 @@
-import { get, prefix } from 'vovk';
-import { withZod } from '../../lib/withZod.ts';
+import { endpoint, get, prefix } from 'vovk';
 import { z } from 'zod';
 
 @prefix('polling')
 export default class PollController {
   @get('', { cors: true })
-  static streamPollResponse = withZod({
+  static streamPollResponse = endpoint({
     query: z.object({
       i: z.string(),
     }),

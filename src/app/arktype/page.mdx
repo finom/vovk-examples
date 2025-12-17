@@ -19,27 +19,12 @@ Form input handling and [Arktype](https://https://arktype.io/) validation. The r
 
 ## Code
 
-<Tabs items={['UserArktypeController.ts', 'withArk.ts', 'ArktypeFormExample.tsx']}>
+<Tabs items={['UserArktypeController.ts',  'ArktypeFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/arktype/UserArktypeController.ts" repository="finom/vovk-examples"
-import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { withArk } from '@/lib/withArk.ts';
 import { type } from 'arktype';
-
-const withArk = createStandardValidation({
-  toJSONSchema: (model: type) =>
-    model.toJsonSchema({
-      fallback: {
-        proto: (ctx) =>
-          ctx.proto === File
-            ? {
-                type: 'string',
-                format: 'binary',
-              }
-            : ctx.base,
-        default: (ctx) => ctx.base,
-      },
-    }),
-});
+import { prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('users-arktype')
 export default class UserArktypeController {
@@ -78,11 +63,6 @@ export default class UserArktypeController {
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/arktype/UserArktypeController.ts)*
-  </Tabs.Tab>
-     <Tabs.Tab>
-```ts showLineNumbers copy filename="src/lib/withArk.ts" repository="finom/vovk-examples"
-// TODO
-```
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/arktype/ArktypeFormExample.tsx" repository="finom/vovk-examples"

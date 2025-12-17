@@ -19,23 +19,12 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 
 ## Code
 
-<Tabs items={['UserValibotController.ts', 'withValibot.ts', 'ValibotFormExample.tsx']}>
+<Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
 import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
-import { toJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
-
-const withValibot = createStandardValidation({
-  toJSONSchema: (model) =>
-    toJsonSchema(model, {
-      overrideSchema(context) {
-        if (context.valibotSchema.type === 'file') {
-          return { type: 'string', format: 'binary' };
-        }
-      },
-    }),
-});
+import { withValibot } from '@/lib/withValibot.ts';
 
 @prefix('users-valibot')
 export default class UserValibotController {
@@ -79,11 +68,6 @@ export default class UserValibotController {
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*
-  </Tabs.Tab>
-   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/lib/withValibot.ts" repository="finom/vovk-examples"
-// TODO
-```
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/valibot/ValibotFormExample.tsx" repository="finom/vovk-examples"

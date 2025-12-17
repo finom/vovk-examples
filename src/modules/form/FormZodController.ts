@@ -1,6 +1,5 @@
 import { z } from 'zod';
-import { prefix, post, operation, type VovkOutput } from 'vovk';
-import { withZod } from '../../lib/withZod.ts';
+import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('form-zod')
 export default class FormZodController {
@@ -9,7 +8,7 @@ export default class FormZodController {
     description: 'Submit form with Zod validation',
   })
   @post('{id}')
-  static submitForm = withZod({
+  static submitForm = endpoint({
     isForm: true,
     body: z
       .object({

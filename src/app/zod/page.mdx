@@ -19,12 +19,12 @@ Form input handling and [Zod](https://zod.dev/) validation. The request input is
 
 ## Code
 
-<Tabs items={['UserZodController.ts', 'withZod.ts', 'ZodFormExample.tsx']}>
+<Tabs items={['UserZodController.ts', 'ZodFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/zod/UserZodController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { prefix, post, operation, type VovkOutput } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 
 @prefix('users-zod')
 export default class UserZodController {
@@ -66,11 +66,6 @@ export default class UserZodController {
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*
-  </Tabs.Tab>
-  <Tabs.Tab>
-```ts showLineNumbers copy filename="src/lib/withZod.ts" repository="finom/vovk-examples"
-// TODO
-```
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/zod/ZodFormExample.tsx" repository="finom/vovk-examples"

@@ -24,7 +24,7 @@ An example of a form with files using [Zod validation](https://vovk.dev/validati
 ```ts showLineNumbers copy filename="src/modules/form/FormZodController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { prefix, post, operation, type VovkOutput } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 
 @prefix('form-zod')
 export default class FormZodController {

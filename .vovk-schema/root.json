@@ -37,8 +37,7 @@
                 "name",
                 "age",
                 "email"
-              ],
-              "additionalProperties": false
+              ]
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -56,8 +55,7 @@
               },
               "required": [
                 "notify"
-              ],
-              "additionalProperties": false
+              ]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -72,8 +70,7 @@
               },
               "required": [
                 "id"
-              ],
-              "additionalProperties": false
+              ]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -87,8 +84,7 @@
               },
               "required": [
                 "success"
-              ],
-              "additionalProperties": false
+              ]
             }
           },
           "operationObject": {
@@ -133,8 +129,7 @@
                 "name",
                 "age",
                 "email"
-              ],
-              "additionalProperties": false
+              ]
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -152,8 +147,7 @@
               },
               "required": [
                 "notify"
-              ],
-              "additionalProperties": false
+              ]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -168,8 +162,7 @@
               },
               "required": [
                 "id"
-              ],
-              "additionalProperties": false
+              ]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -190,8 +183,7 @@
               "required": [
                 "success",
                 "id"
-              ],
-              "additionalProperties": false
+              ]
             }
           },
           "operationObject": {
@@ -325,7 +317,6 @@
         "updateUser": {
           "validation": {
             "body": {
-              "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
                 "name": {
@@ -349,10 +340,10 @@
                 "age",
                 "email"
               ],
-              "description": "User object"
+              "description": "User object",
+              "$schema": "https://json-schema.org/draft/2020-12/schema"
             },
             "query": {
-              "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
                 "notify": {
@@ -366,10 +357,10 @@
               },
               "required": [
                 "notify"
-              ]
+              ],
+              "$schema": "https://json-schema.org/draft/2020-12/schema"
             },
             "params": {
-              "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
                 "id": {
@@ -380,10 +371,10 @@
               },
               "required": [
                 "id"
-              ]
+              ],
+              "$schema": "https://json-schema.org/draft/2020-12/schema"
             },
             "output": {
-              "$schema": "http://json-schema.org/draft-07/schema#",
               "type": "object",
               "properties": {
                 "success": {
@@ -394,7 +385,8 @@
               "required": [
                 "success"
               ],
-              "description": "Response object"
+              "description": "Response object",
+              "$schema": "https://json-schema.org/draft/2020-12/schema"
             }
           },
           "operationObject": {
@@ -536,8 +528,7 @@
               },
               "required": [
                 "i"
-              ],
-              "additionalProperties": false
+              ]
             },
             "iteration": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -549,8 +540,7 @@
               },
               "required": [
                 "i"
-              ],
-              "additionalProperties": false
+              ]
             }
           },
           "path": "",
@@ -605,15 +595,13 @@
                   "required": [
                     "timestamp",
                     "message"
-                  ],
-                  "additionalProperties": false
+                  ]
                 }
               },
               "required": [
                 "event",
                 "payload"
-              ],
-              "additionalProperties": false
+              ]
             }
           },
           "path": "",
@@ -750,7 +738,6 @@
                 "resume",
                 "portfolioSamples"
               ],
-              "additionalProperties": false,
               "x-isForm": true
             },
             "params": {
@@ -766,8 +753,7 @@
               },
               "required": [
                 "id"
-              ],
-              "additionalProperties": false
+              ]
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -807,8 +793,7 @@
                     "name",
                     "size",
                     "type"
-                  ],
-                  "additionalProperties": false
+                  ]
                 },
                 "portfolioSamples": {
                   "description": "Array of portfolio sample files",
@@ -840,8 +825,7 @@
                       "name",
                       "size",
                       "type"
-                    ],
-                    "additionalProperties": false
+                    ]
                   }
                 }
               },
@@ -849,8 +833,7 @@
                 "email",
                 "resume",
                 "portfolioSamples"
-              ],
-              "additionalProperties": false
+              ]
             }
           },
           "operationObject": {
