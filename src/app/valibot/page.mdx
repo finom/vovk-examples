@@ -22,9 +22,9 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 <Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
-import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
+import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
+import { toStandardJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
-import { withValibot } from '@/lib/withValibot.ts';
 
 @prefix('users-valibot')
 export default class UserValibotController {
@@ -33,27 +33,27 @@ export default class UserValibotController {
     description: 'Update user by ID with Valibot validation',
   })
   @post('{id}')
-  static updateUser = withValibot({
-    body: v.pipe(
+  static updateUser = endpoint({
+    body: toStandardJsonSchema(v.pipe(
       v.object({
         name: v.pipe(v.string(), v.description('User full name')),
         age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
         email: v.pipe(v.string(), v.email(), v.description('User email')),
       }),
       v.description('User object')
-    ),
-    params: v.object({
+    )),
+    params: toStandardJsonSchema(v.object({
       id: v.pipe(v.string(), v.uuid(), v.description('User ID')),
-    }),
-    query: v.object({
+    })),
+    query: toStandardJsonSchema(v.object({
       notify: v.pipe(v.picklist(['email', 'push', 'none']), v.description('Notification type')),
-    }),
-    output: v.pipe(
+    })),
+    output: toStandardJsonSchema(v.pipe(
       v.object({
         success: v.pipe(v.boolean(), v.description('Success status')),
       }),
       v.description('Response object')
-    ),
+    )),
     async handle(req, { id }) {
       const { name, age } = await req.json();
       const notify = req.nextUrl.searchParams.get('notify');

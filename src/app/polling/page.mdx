@@ -22,14 +22,13 @@ Demonstrates infinite server polling ticker in a `while(true){:ts}` loop that's 
 <Tabs items={['PollController.ts', 'PollExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/polling/PollController.ts" repository="finom/vovk-examples"
-import { get, prefix } from 'vovk';
-import { withZod } from '../../lib/withZod.ts';
+import { endpoint, get, prefix } from 'vovk';
 import { z } from 'zod';
 
 @prefix('polling')
 export default class PollController {
   @get('', { cors: true })
-  static streamPollResponse = withZod({
+  static streamPollResponse = endpoint({
     query: z.object({
       i: z.string(),
     }),

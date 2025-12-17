@@ -22,9 +22,8 @@ Form input handling and [Arktype](https://https://arktype.io/) validation. The r
 <Tabs items={['UserArktypeController.ts',  'ArktypeFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/arktype/UserArktypeController.ts" repository="finom/vovk-examples"
-import { withArk } from '@/lib/withArk.ts';
 import { type } from 'arktype';
-import { prefix, post, operation, type VovkOutput } from 'vovk';
+import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('users-arktype')
 export default class UserArktypeController {
@@ -33,7 +32,7 @@ export default class UserArktypeController {
     description: 'Update user by ID with Arktype validation',
   })
   @post('{id}')
-  static updateUser = withArk({
+  static updateUser = endpoint({
     body: type({
       name: type('string').describe('User full name'),
       age: type('0 < number < 120').describe('User age'),
