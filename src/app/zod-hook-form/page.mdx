@@ -9,7 +9,7 @@ import Example from '@/components/Example';
 
 # Zod + React Hook Form example
 
-Form input handling with [react-hook-form](https://react-hook-form.com/) and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-zod). The form is validated using RPC method schema emitted by **vovk-zod** with [Ajv](https://ajv.js.org/), [Ajv formats](https://www.npmjs.com/package/ajv-formats) and [Ajv resolver](https://www.npmjs.com/package/@hookform/resolvers#ajv). When the form is submitted, the request input is validated with the generic `validateOnClient` and, when the request is sent to the server, it is validated again with the original Zod schema.
+Form input handling with [react-hook-form](https://react-hook-form.com/) and [Zod](https://zod.dev/) validation. The form is validated using RPC method schema with [Ajv](https://ajv.js.org/), [Ajv formats](https://www.npmjs.com/package/ajv-formats) and [Ajv resolver](https://www.npmjs.com/package/@hookform/resolvers#ajv). When the form is submitted, the request input is validated with the generic `validateOnClient` and, when the request is sent to the server, it is validated again with the original Zod schema.
 
 ## Result
 
@@ -65,7 +65,6 @@ export default class UserZodController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
@@ -124,9 +123,6 @@ export default function ZodHookFormExample() {
 }
 
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod-hook-form/ZodHookFormExample.tsx)*`
-
-_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod-hook-form/ZodHookFormExample.tsx)_
-
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod-hook-form/ZodHookFormExample.tsx)*
   </Tabs.Tab>
 </Tabs>

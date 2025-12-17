@@ -1,21 +1,6 @@
-import { prefix, post, operation, type VovkOutput, createStandardValidation, KnownAny } from 'vovk';
+import { withArk } from '@/lib/withArk.ts';
 import { type } from 'arktype';
-
-const withArk = createStandardValidation({
-  toJSONSchema: (model: type) =>
-    model.toJsonSchema({
-      fallback: {
-        proto: (ctx) =>
-          ctx.proto === File
-            ? {
-                type: 'string',
-                format: 'binary',
-              }
-            : ctx.base,
-        default: (ctx) => ctx.base,
-      },
-    }),
-});
+import { prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('users-arktype')
 export default class UserArktypeController {

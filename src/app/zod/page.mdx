@@ -9,7 +9,7 @@ import Example from '@/components/Example';
 
 # Zod Validation Example
 
-Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https://www.npmjs.com/package/vovk-zod). The request input is validated on the client-side with [vovk-ajv](https://www.npmjs.com/package/vovk-ajv) before being sent to the server where it is validated again with Zod.
+Form input handling and [Zod](https://zod.dev/) validation. The request input is validated on the client-side with [vovk-ajv](https://www.npmjs.com/package/vovk-ajv) before being sent to the server where it is validated again with Zod.
 
 ## Result
 
@@ -19,7 +19,7 @@ Form input handling and [Zod](https://zod.dev/) validation with [vovk-zod](https
 
 ## Code
 
-<Tabs items={['UserZodController.ts', 'ZodFormExample.tsx']}>
+<Tabs items={['UserZodController.ts', 'withZod.ts', 'ZodFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/zod/UserZodController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
@@ -65,8 +65,12 @@ export default class UserZodController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/lib/withZod.ts" repository="finom/vovk-examples"
+// TODO
+```
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/zod/ZodFormExample.tsx" repository="finom/vovk-examples"
@@ -130,17 +134,13 @@ export default function ZodFormExample() {
 }
 
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/ZodFormExample.tsx)*`
-
-_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/ZodFormExample.tsx)_
-
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/ZodFormExample.tsx)*
   </Tabs.Tab>
 </Tabs>
 
 ## Related Documentation
 
 - [Validation](https://vovk.dev/validation/introduction)
-- [Validation with Zod](https://vovk.dev/validation/zod)
 - [Client-side Validation](https://vovk.dev/validation/client)
 - [TypeScript RPC](https://vovk.dev/typescript)
 - [Controller](https://vovk.dev/controller)

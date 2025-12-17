@@ -22,10 +22,8 @@ const meta: MetaRecord = {
   form: 'Form with Files',
   '#validation': separator('Validation'),
   zod: 'Zod',
-  dto: 'DTO',
   valibot: 'Valibot',
   arktype: 'Arktype',
-  yup: 'Yup',
   'zod-hook-form': { title: 'Zod with React Hook Form', display: 'hidden' }, // TODO https://github.com/react-hook-form/resolvers/issues/791
   '#streaming': separator('JSONLines and AI'),
   jsonlines: 'JSONLines with "yield" Syntax',

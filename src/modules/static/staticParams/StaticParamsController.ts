@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prefix, get, operation } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../../lib/withZod.ts';
 
 @prefix('static-params')
 export default class StaticParamsController {

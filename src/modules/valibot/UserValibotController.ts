@@ -1,17 +1,6 @@
 import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
-import { toJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
-
-const withValibot = createStandardValidation({
-  toJSONSchema: (model) =>
-    toJsonSchema(model, {
-      overrideSchema(context) {
-        if (context.valibotSchema.type === 'file') {
-          return { type: 'string', format: 'binary' };
-        }
-      },
-    }),
-});
+import { withValibot } from '@/lib/withValibot.ts';
 
 @prefix('users-valibot')
 export default class UserValibotController {

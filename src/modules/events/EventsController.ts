@@ -1,5 +1,5 @@
 import { get, prefix, VovkIteration } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 import { z } from 'zod';
 
 const eventNames = [

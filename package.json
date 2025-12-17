@@ -75,11 +75,7 @@
     "valibot": "^1.2.0",
     "vovk": "^3.0.0-beta.51",
     "vovk-ajv": "^0.0.0-beta.4",
-    "vovk-apis": "^0.0.1-draft.0",
     "vovk-client": "^0.0.4-beta.4",
-    "vovk-dto": "^0.0.1-beta.13",
-    "vovk-yup": "^0.0.1-beta.13",
-    "vovk-zod": "^1.0.0-beta.14",
     "yup": "^1.7.1",
     "zod": "^4.1.13"
   },

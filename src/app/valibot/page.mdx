@@ -19,7 +19,7 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 
 ## Code
 
-<Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
+<Tabs items={['UserValibotController.ts', 'withValibot.ts', 'ValibotFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
 import { prefix, post, operation, type VovkOutput, createStandardValidation } from 'vovk';
@@ -78,8 +78,12 @@ export default class UserValibotController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*`
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*
+  </Tabs.Tab>
+   <Tabs.Tab>
+```ts showLineNumbers copy filename="src/lib/withValibot.ts" repository="finom/vovk-examples"
+// TODO
+```
   </Tabs.Tab>
   <Tabs.Tab>
 ```tsx showLineNumbers copy filename="src/app/valibot/ValibotFormExample.tsx" repository="finom/vovk-examples"
@@ -143,9 +147,7 @@ export default function ValibotFormExample() {
 }
 
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)*`
-
-_[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)_
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)*
 
   </Tabs.Tab>
 </Tabs>

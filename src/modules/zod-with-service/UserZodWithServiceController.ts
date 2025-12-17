@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { prefix, post, operation } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 import UserZodService from './UserZodService.ts';
 
 @prefix('users-zod-with-service')

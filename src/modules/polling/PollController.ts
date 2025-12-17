@@ -1,5 +1,5 @@
 import { get, prefix } from 'vovk';
-import { withZod } from 'vovk-zod';
+import { withZod } from '../../lib/withZod.ts';
 import { z } from 'zod';
 
 @prefix('polling')
