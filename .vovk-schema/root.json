@@ -505,7 +505,7 @@
           "path": "greeting",
           "httpMethod": "GET",
           "operationObject": {
-            "summary": "Proxy endpoint",
+            "summary": "Proxy procedure",
             "description": "Get a greeting from vovk.dev"
           }
         }

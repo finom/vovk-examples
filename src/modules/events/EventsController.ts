@@ -1,4 +1,4 @@
-import { endpoint, get, prefix, VovkIteration } from 'vovk';
+import { procedure, get, prefix, VovkIteration } from 'vovk';
 import { z } from 'zod';
 
 const eventNames = [
@@ -20,7 +20,7 @@ const eventNames = [
 @prefix('events')
 export default class EventsController {
   @get()
-  static streamEvents = endpoint({
+  static streamEvents = procedure({
     validateEachIteration: true,
     iteration: z.object({
       event: z.enum(eventNames).meta({ description: 'Event name' }),

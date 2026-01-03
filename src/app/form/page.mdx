@@ -9,7 +9,7 @@ import Example from '@/components/Example';
 
 # Form with Files Example
 
-An example of a form with files using [Zod validation](https://vovk.dev/validation/zod). Notice that "portfolio samples" can be uploaded as multiple files as well as a single file, and the validation model for this field has to be defined as a union of `z.file()` and `z.array(z.file())`.
+An example of a form with files using Zod validation. Notice that "portfolio samples" can be uploaded as multiple files as well as a single file, and the validation model for this field has to be defined as a union of `z.file()` and `z.array(z.file())`.
 
 ## Result
 
@@ -155,8 +155,6 @@ export default function ZodFormExample() {
 
 ## Related Documentation
 
-- [FormData](https://vovk.dev/controller/formdata)
+- [Controller & Procedure](https://vovk.dev/procedure)
 - [TypeScript RPC](https://vovk.dev/typescript)
-- [Controller](https://vovk.dev/controller)
 - [`@operation` Decorator](https://vovk.dev/openapi)
-- [Validation](https://vovk.dev/validation/introduction)

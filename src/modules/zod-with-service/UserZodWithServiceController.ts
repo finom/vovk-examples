@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { endpoint, prefix, post, operation } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 import UserZodService from './UserZodService.ts';
 
 @prefix('users-zod-with-service')
@@ -9,7 +9,7 @@ export default class UserZodWithServiceController {
     description: 'Update user by ID with Zod validation',
   })
   @post('{id}')
-  static updateUser = endpoint({
+  static updateUser = procedure({
     body: z
       .object({
         name: z.string().describe('User full name'),

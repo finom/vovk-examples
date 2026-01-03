@@ -1,5 +1,5 @@
 import { type } from 'arktype';
-import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('users-arktype')
 export default class UserArktypeController {
@@ -8,7 +8,7 @@ export default class UserArktypeController {
     description: 'Update user by ID with Arktype validation',
   })
   @post('{id}')
-  static updateUser = endpoint({
+  static updateUser = procedure({
     body: type({
       name: type('string').describe('User full name'),
       age: type('0 < number < 120').describe('User age'),

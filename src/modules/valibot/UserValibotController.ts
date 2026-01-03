@@ -1,4 +1,4 @@
-import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
 import { toStandardJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
@@ -9,7 +9,7 @@ export default class UserValibotController {
     description: 'Update user by ID with Valibot validation',
   })
   @post('{id}')
-  static updateUser = endpoint({
+  static updateUser = procedure({
     body: toStandardJsonSchema(v.pipe(
       v.object({
         name: v.pipe(v.string(), v.description('User full name')),

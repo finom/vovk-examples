@@ -1,10 +1,10 @@
-import { endpoint, get, prefix } from 'vovk';
+import { procedure, get, prefix } from 'vovk';
 import { z } from 'zod';
 
 @prefix('polling')
 export default class PollController {
   @get('', { cors: true })
-  static streamPollResponse = endpoint({
+  static streamPollResponse = procedure({
     query: z.object({
       i: z.string(),
     }),

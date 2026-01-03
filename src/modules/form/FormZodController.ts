@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { endpoint, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
 
 @prefix('form-zod')
 export default class FormZodController {
@@ -8,7 +8,7 @@ export default class FormZodController {
     description: 'Submit form with Zod validation',
   })
   @post('{id}')
-  static submitForm = endpoint({
+  static submitForm = procedure({
     isForm: true,
     body: z
       .object({
