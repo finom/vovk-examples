@@ -13,44 +13,44 @@
           "validation": {
             "body": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "User object",
               "type": "object",
               "properties": {
                 "name": {
-                  "description": "User full name",
-                  "type": "string"
+                  "type": "string",
+                  "description": "User full name"
                 },
                 "age": {
-                  "description": "User age",
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 120
+                  "maximum": 120,
+                  "description": "User age"
                 },
                 "email": {
-                  "description": "User email",
                   "type": "string",
                   "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                  "description": "User email"
                 }
               },
               "required": [
                 "name",
                 "age",
                 "email"
-              ]
+              ],
+              "description": "User object"
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "notify": {
-                  "description": "Notification type",
                   "type": "string",
                   "enum": [
                     "email",
                     "push",
                     "none"
-                  ]
+                  ],
+                  "description": "Notification type"
                 }
               },
               "required": [
@@ -62,10 +62,10 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                  "description": "User ID"
                 }
               },
               "required": [
@@ -74,17 +74,17 @@
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "Response object",
               "type": "object",
               "properties": {
                 "success": {
-                  "description": "Success status",
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Success status"
                 }
               },
               "required": [
                 "success"
-              ]
+              ],
+              "description": "Response object"
             }
           },
           "operationObject": {
@@ -105,44 +105,44 @@
           "validation": {
             "body": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "User object",
               "type": "object",
               "properties": {
                 "name": {
-                  "description": "User full name",
-                  "type": "string"
+                  "type": "string",
+                  "description": "User full name"
                 },
                 "age": {
-                  "description": "User age",
                   "type": "number",
                   "minimum": 0,
-                  "maximum": 120
+                  "maximum": 120,
+                  "description": "User age"
                 },
                 "email": {
-                  "description": "User email",
                   "type": "string",
                   "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                  "description": "User email"
                 }
               },
               "required": [
                 "name",
                 "age",
                 "email"
-              ]
+              ],
+              "description": "User object"
             },
             "query": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
               "properties": {
                 "notify": {
-                  "description": "Notification type",
                   "type": "string",
                   "enum": [
                     "email",
                     "push",
                     "none"
-                  ]
+                  ],
+                  "description": "Notification type"
                 }
               },
               "required": [
@@ -154,10 +154,10 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                  "description": "User ID"
                 }
               },
               "required": [
@@ -166,24 +166,24 @@
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "Response object",
               "type": "object",
               "properties": {
                 "success": {
-                  "description": "Success status",
-                  "type": "boolean"
+                  "type": "boolean",
+                  "description": "Success status"
                 },
                 "id": {
-                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                  "description": "User ID"
                 }
               },
               "required": [
                 "success",
                 "id"
-              ]
+              ],
+              "description": "Response object"
             }
           },
           "operationObject": {
@@ -560,7 +560,6 @@
               "type": "object",
               "properties": {
                 "event": {
-                  "description": "Event name",
                   "type": "string",
                   "enum": [
                     "foo",
@@ -576,20 +575,21 @@
                     "plugh",
                     "xyzzy",
                     "thud"
-                  ]
+                  ],
+                  "description": "Event name"
                 },
                 "payload": {
                   "type": "object",
                   "properties": {
                     "timestamp": {
-                      "description": "Event timestamp",
                       "type": "string",
                       "format": "date-time",
-                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$",
+                      "description": "Event timestamp"
                     },
                     "message": {
-                      "description": "Event message",
-                      "type": "string"
+                      "type": "string",
+                      "description": "Event message"
                     }
                   },
                   "required": [
@@ -696,26 +696,24 @@
           "validation": {
             "body": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "User object",
               "type": "object",
               "properties": {
                 "email": {
-                  "description": "User email",
                   "type": "string",
                   "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                  "description": "User email"
                 },
                 "resume": {
+                  "type": "string",
+                  "format": "binary",
+                  "contentEncoding": "binary",
                   "description": "Resume file",
                   "examples": [
                     "application/pdf"
-                  ],
-                  "type": "string",
-                  "format": "binary",
-                  "contentEncoding": "binary"
+                  ]
                 },
                 "portfolioSamples": {
-                  "description": "Portfolio samples",
                   "anyOf": [
                     {
                       "type": "array",
@@ -730,7 +728,8 @@
                       "format": "binary",
                       "contentEncoding": "binary"
                     }
-                  ]
+                  ],
+                  "description": "Portfolio samples"
                 }
               },
               "required": [
@@ -738,6 +737,7 @@
                 "resume",
                 "portfolioSamples"
               ],
+              "description": "User object",
               "x-isForm": true
             },
             "params": {
@@ -745,10 +745,10 @@
               "type": "object",
               "properties": {
                 "id": {
-                  "description": "User ID",
                   "type": "string",
                   "format": "uuid",
-                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
+                  "description": "User ID"
                 }
               },
               "required": [
@@ -757,36 +757,35 @@
             },
             "output": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
-              "description": "Response object",
               "type": "object",
               "properties": {
                 "email": {
-                  "description": "User email",
                   "type": "string",
                   "format": "email",
-                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                  "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+                  "description": "User email"
                 },
                 "resume": {
                   "type": "object",
                   "properties": {
                     "name": {
+                      "type": "string",
                       "description": "Resume file name",
                       "examples": [
                         "resume.pdf"
-                      ],
-                      "type": "string"
+                      ]
                     },
                     "size": {
-                      "description": "Resume file size",
                       "type": "number",
-                      "minimum": 0
+                      "minimum": 0,
+                      "description": "Resume file size"
                     },
                     "type": {
+                      "type": "string",
                       "description": "Resume file type",
                       "examples": [
                         "application/pdf"
-                      ],
-                      "type": "string"
+                      ]
                     }
                   },
                   "required": [
@@ -796,29 +795,28 @@
                   ]
                 },
                 "portfolioSamples": {
-                  "description": "Array of portfolio sample files",
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
                       "name": {
+                        "type": "string",
                         "description": "Portfolio sample file name",
                         "examples": [
                           "portfolio.zip"
-                        ],
-                        "type": "string"
+                        ]
                       },
                       "size": {
-                        "description": "Portfolio sample file size",
                         "type": "number",
-                        "minimum": 0
+                        "minimum": 0,
+                        "description": "Portfolio sample file size"
                       },
                       "type": {
+                        "type": "string",
                         "description": "Portfolio sample file type",
                         "examples": [
                           "application/zip"
-                        ],
-                        "type": "string"
+                        ]
                       }
                     },
                     "required": [
@@ -826,14 +824,16 @@
                       "size",
                       "type"
                     ]
-                  }
+                  },
+                  "description": "Array of portfolio sample files"
                 }
               },
               "required": [
                 "email",
                 "resume",
                 "portfolioSamples"
-              ]
+              ],
+              "description": "Response object"
             }
           },
           "operationObject": {
