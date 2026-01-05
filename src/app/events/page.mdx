@@ -22,7 +22,7 @@ Type-safe alternative to Server-Sent Events (SSE) using Vovk.ts JSONLines for st
 <Tabs items={['EventsController.ts', 'EventsExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/events/EventsController.ts" repository="finom/vovk-examples"
-import { endpoint, get, prefix, VovkIteration } from 'vovk';
+import { procedure, get, prefix, VovkIteration } from 'vovk';
 import { z } from 'zod';
 
 const eventNames = [
@@ -44,7 +44,7 @@ const eventNames = [
 @prefix('events')
 export default class EventsController {
   @get()
-  static streamEvents = endpoint({
+  static streamEvents = procedure({
     validateEachIteration: true,
     iteration: z.object({
       event: z.enum(eventNames).meta({ description: 'Event name' }),

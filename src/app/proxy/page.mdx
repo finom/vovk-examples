@@ -27,7 +27,7 @@ import { get, prefix, operation } from 'vovk';
 @prefix('proxy')
 export default class ProxyController {
   @operation({
-    summary: 'Proxy endpoint',
+    summary: 'Proxy procedure',
     description: 'Get a greeting from vovk.dev',
   })
   @get('greeting', { cors: true })

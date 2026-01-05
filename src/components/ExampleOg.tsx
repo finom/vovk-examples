@@ -56,7 +56,7 @@ export default function ExampleOg({ title }: Props) {
         }}
       >
         {' '}
-        Back-end for Next.js
+        Structured API Layer for Next.js
       </h1>
       <p
         style={{

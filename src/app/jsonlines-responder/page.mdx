@@ -1,0 +1,51 @@
+---
+title: JSONLines Streaming with Response Object
+description: JSONLines streaming with JSONLinesResponse instance for more control over the stream
+---
+
+import { Tabs } from 'nextra/components';
+import JSONLinesResponderExample from './JSONLinesResponderExample';
+import Example from '@/components/Example';
+
+# JSONLines Streaming with Response Object
+
+This example uses [JSONLinesResponse](https://vovk.dev/jsonlines#jsonlinesresponse) object in order to get more control over the stream logic.
+
+## Result
+
+<Example>
+  <JSONLinesResponseExample />
+</Example>
+
+## Code
+
+<Tabs items={['JSONLinesResponderService.ts', 'JSONLinesResponderController.ts', 'JSONLinesResponderExample.tsx']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderService.ts" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderService.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderController.ts" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderController.ts)*
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/jsonlines-responder/JSONLinesResponderExample.tsx" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines-responder/JSONLinesResponderExample.tsx)*
+  </Tabs.Tab>
+</Tabs>
+
+
+## Related Documentation
+
+- [JSONLines](https://vovk.dev/jsonlines)
+- [TypeScript RPC](https://vovk.dev/typescript)
+- [Controller & Procedure](https://vovk.dev/procedure)
+- [`@operation` Decorator](https://vovk.dev/openapi)
+

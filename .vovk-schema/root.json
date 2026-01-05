@@ -451,10 +451,10 @@
         }
       }
     },
-    "JSONLinesResponseRPC": {
-      "rpcModuleName": "JSONLinesResponseRPC",
+    "JSONLinesResponderRPC": {
+      "rpcModuleName": "JSONLinesResponderRPC",
       "originalControllerName": "JSONLinesResponseController",
-      "prefix": "jsonlines-response-object",
+      "prefix": "jsonlines-responder",
       "handlers": {
         "streamTokens": {
           "path": "tokens",

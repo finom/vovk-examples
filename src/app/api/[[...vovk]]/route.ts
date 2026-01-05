@@ -4,7 +4,7 @@ import OpenAiController from '../../../modules/openai/OpenAiController.ts';
 import BasicController from '../../../modules/basic/BasicController.ts';
 import BasicControllerWithService from '../../../modules/basic-with-service/BasicControllerWithService.ts';
 import JSONLinesController from '../../../modules/jsonlines/JSONLinesController.ts';
-import JSONLinesResponseController from '../../../modules/jsonlines-response/JSONLinesResponseController.ts';
+import JSONLinesResponderController from '../../../modules/jsonlines-responder/JSONLinesResponderController.ts';
 import AiSdkController from '../../../modules/ai-sdk/AiSdkController.ts';
 import ProxyController from '../../../modules/proxy/ProxyController.ts';
 import UserZodController from '../../../modules/zod/UserZodController.ts';
@@ -26,7 +26,7 @@ const controllers = {
   BasicRPC: BasicController,
   BasicRPCWithService: BasicControllerWithService,
   JSONLinesRPC: JSONLinesController,
-  JSONLinesResponseRPC: JSONLinesResponseController,
+  JSONLinesResponderRPC: JSONLinesResponderController,
   OpenAiRPC: OpenAiController,
   AiSdkRPC: AiSdkController,
   ProxyRPC: ProxyController,

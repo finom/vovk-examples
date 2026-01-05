@@ -23,7 +23,7 @@ This example demonstrates a [static API](https://vovk.dev/segment#static) repres
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/static/staticParams/StaticParamsController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
-import { endpoint, prefix, get, operation } from 'vovk';
+import { procedure, prefix, get, operation } from 'vovk';
 
 @prefix('static-params')
 export default class StaticParamsController {
@@ -41,7 +41,7 @@ export default class StaticParamsController {
       { section: 'b', page: '3' },
     ],
   })
-  static getStaticParams = endpoint({
+  static getStaticParams = procedure({
     params: z.object({
       section: z.enum(['a', 'b']),
       page: z.enum(['1', '2', '3']),
@@ -103,7 +103,7 @@ export default function StaticParamsExample() {
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/app/api/static/[[...vovk]]/route.ts" repository="finom/vovk-examples"
-import { generateStaticAPI, initSegment } from 'vovk';
+import { controllersToStaticParams, initSegment } from 'vovk';
 import OpenApiController from '../../../../modules/static/openapi/OpenApiController.ts';
 import StaticParamsController from '../../../../modules/static/staticParams/StaticParamsController.ts';
 
@@ -115,7 +115,7 @@ const controllers = {
 export type Controllers = typeof controllers;
 
 export function generateStaticParams() {
-  return generateStaticAPI(controllers);
+  return controllersToStaticParams(controllers);
 }
 
 export const { GET } = initSegment({

@@ -1,17 +1,16 @@
 'use client';
 import { useState } from 'react';
-import { JSONLinesResponseRPC } from '@/client';
+import { JSONLinesResponderRPC } from '@/client';
 import type { VovkYieldType } from 'vovk';
 
 export default function StreamExample() {
-  const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesResponseRPC.streamTokens>[]>([]);
-
+  const [tokens, setTokens] = useState<VovkYieldType<typeof JSONLinesResponderRPC.streamTokens>[]>([]);
   return (
     <>
       <button
         onClick={async () => {
           setTokens([]);
-          using stream = await JSONLinesResponseRPC.streamTokens();
+          using stream = await JSONLinesResponderRPC.streamTokens();
           for await (const token of stream) {
             setTokens((tokens) => [...tokens, token]);
           }
