@@ -1,4 +1,4 @@
-import { JSONLinesResponder, type VovkIteration } from 'vovk';
+import type { JSONLinesResponder, VovkIteration } from 'vovk';
 import type ProgressiveController from './ProgressiveController.ts';
 
 export default class ProgressiveService {
