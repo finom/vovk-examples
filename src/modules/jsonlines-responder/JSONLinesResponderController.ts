@@ -7,17 +7,9 @@ export default class JSONLinesResponderController {
     summary: 'Stream tokens using Response object',
     description: 'Stream tokens to the client using Response object',
   })
-  @get('tokens', { cors: true }) // CORS for OPTIONS Next.js route handler
+  @get('tokens', { cors: true })
   static async streamTokens(req: Request) {
-    const responder = new JSONLinesResponder<Token>(req, ({ headers, readableStream }) => new Response(readableStream, {
-      headers: {
-        // CORS for GET
-        'Access-Control-Allow-Origin': 'https://vovk.dev',
-        'Access-Control-Allow-Methods': 'GET',
-        'Access-Control-Allow-Headers': 'Authorization',
-        ...headers,
-      },
-    }));
+    const responder = new JSONLinesResponder<Token>(req);
 
     void JSONLinesResponderService.streamTokens(responder);
 

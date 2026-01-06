@@ -27,17 +27,7 @@ export default class ProgressiveController {
       }),
     ]),
     async handle(req) {
-      const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
-        req, ({ headers, readableStream }) => new Response(readableStream, {
-          headers: {
-            // CORS for GET
-            'Access-Control-Allow-Origin': 'https://vovk.dev',
-            'Access-Control-Allow-Methods': 'GET',
-            'Access-Control-Allow-Headers': 'Authorization',
-            ...headers,
-          },
-        })
-      );
+      const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
 
       void ProgressiveService.streamProgressiveResponse(responder);
 
