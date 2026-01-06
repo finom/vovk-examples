@@ -9,7 +9,7 @@ export default class JSONLinesResponderController {
   })
   @get('tokens', { cors: true }) // CORS for OPTIONS Next.js route handler
   static async streamTokens(req: Request) {
-    const response = new JSONLinesResponder<Token>(req, ({ headers, readableStream }) => new Response(readableStream, {
+    const responder = new JSONLinesResponder<Token>(req, ({ headers, readableStream }) => new Response(readableStream, {
       headers: {
         // CORS for GET
         'Access-Control-Allow-Origin': 'https://vovk.dev',
@@ -19,8 +19,8 @@ export default class JSONLinesResponderController {
       },
     }));
 
-    void JSONLinesResponderService.streamTokens(response);
+    void JSONLinesResponderService.streamTokens(responder);
 
-    return response;
+    return responder;
   }
 }

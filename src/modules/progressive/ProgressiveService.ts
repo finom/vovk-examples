@@ -25,13 +25,13 @@ export default class ProgressiveService {
   }
 
   static streamProgressiveResponse(
-    resp: JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
+    responder: JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
   ) {
     return Promise.all([
-      this.getUsers().then((users) => resp.send({ users })),
-      this.getTasks().then((tasks) => resp.send({ tasks })),
+      this.getUsers().then((users) => responder.send({ users })),
+      this.getTasks().then((tasks) => responder.send({ tasks })),
     ])
-      .then(resp.close)
-      .catch(resp.throw);
+      .then(responder.close)
+      .catch(responder.throw);
   }
 }

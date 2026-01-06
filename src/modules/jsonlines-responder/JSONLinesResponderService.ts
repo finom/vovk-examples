@@ -3,7 +3,7 @@ import type { JSONLinesResponder } from 'vovk';
 export type Token = { message: string };
 
 export default class JSONLinesResponderService {
-  static async streamTokens(resp: JSONLinesResponder<Token>) {
+  static async streamTokens(responder: JSONLinesResponder<Token>) {
     const tokens: Token[] = [
       { message: 'Hello,' },
       { message: ' World' },
@@ -19,10 +19,10 @@ export default class JSONLinesResponderService {
     ];
 
     for (const token of tokens) {
-      resp.send(token);
+      await responder.send(token);
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
 
-    await resp.close();
+    responder.close();
   }
 }
