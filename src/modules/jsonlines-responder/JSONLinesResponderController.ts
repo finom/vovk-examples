@@ -2,7 +2,7 @@ import { prefix, get, operation, JSONLinesResponder } from 'vovk';
 import JSONLinesResponderService, { type Token } from './JSONLinesResponderService.ts';
 
 @prefix('jsonlines-responder')
-export default class JSONLinesResponseController {
+export default class JSONLinesResponderController {
   @operation({
     summary: 'Stream tokens using Response object',
     description: 'Stream tokens to the client using Response object',

@@ -1,4 +1,4 @@
-import { procedure, get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
+import { procedure, get, JSONLinesResponder, prefix, type VovkIteration } from 'vovk';
 import { z } from 'zod';
 import ProgressiveService from './ProgressiveService.ts';
 
@@ -27,7 +27,7 @@ export default class ProgressiveController {
       }),
     ]),
     async handle(req) {
-      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
+      const response = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
         req
       );
 

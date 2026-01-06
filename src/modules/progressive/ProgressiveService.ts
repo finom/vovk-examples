@@ -1,4 +1,4 @@
-import { JSONLinesResponse, type VovkIteration } from 'vovk';
+import { JSONLinesResponder, type VovkIteration } from 'vovk';
 import type ProgressiveController from './ProgressiveController.ts';
 
 export default class ProgressiveService {
@@ -25,7 +25,7 @@ export default class ProgressiveService {
   }
 
   static streamProgressiveResponse(
-    resp: JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
+    resp: JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
   ) {
     return Promise.all([
       this.getUsers().then((users) => resp.send({ users })),
