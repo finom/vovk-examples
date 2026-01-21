@@ -86,7 +86,7 @@ export default function EventsExample() {
     abortRef.current?.();
       while (true) {
         using events = await EventsRPC.streamEvents();
-        abortRef.current = events.abortWithoutError;
+        abortRef.current = events.abortSilently;
         for await (const { event, payload } of events) {
           setEventName(event);
           setEventPayload(payload);

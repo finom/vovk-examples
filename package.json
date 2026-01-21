@@ -7,6 +7,7 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "keywords": ["vovk"],
   "scripts": {
     "test": "npm run lint",
     "ncu": "npx npm-check-updates -u && npm i",
