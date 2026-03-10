@@ -20,6 +20,8 @@ export default function ZodHookFormExample() {
     }),
   });
 
+  type r = VovkBody<typeof UserZodRPC.updateUser>;
+
   const onSubmit = async () => {
     setResponse(
       await UserZodRPC.updateUser({
