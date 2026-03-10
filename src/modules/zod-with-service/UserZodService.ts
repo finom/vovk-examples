@@ -9,6 +9,6 @@ export default class UserZodService {
   ) {
     // perform DB operations or other business logic here
     console.log(body, query, params);
-    return { success: true, id: params.id } satisfies VovkOutput<typeof UserZodWithServiceController.updateUser>;
+    return { success: true, id: params.id };
   }
 }

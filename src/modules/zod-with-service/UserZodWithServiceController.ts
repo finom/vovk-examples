@@ -29,12 +29,11 @@ export default class UserZodWithServiceController {
         id: z.uuid().describe('User ID'),
       })
       .describe('Response object'),
-    async handle(req) {
-      const body = await req.vovk.body();
-      const query = req.vovk.query();
-      const params = req.vovk.params();
+  }).handle(async (req) => {
+    const body = await req.vovk.body();
+    const query = req.vovk.query();
+    const params = req.vovk.params();
 
-      return UserZodService.updateUser(body, query, params);
-    },
+    return UserZodService.updateUser(body, query, params);
   });
 }

@@ -22,7 +22,7 @@ Demonstrates an experimental feature called "Progressive Response" that implemen
 <Tabs items={['ProgressiveService.ts', 'ProgressiveController.ts', 'ProgressiveExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveService.ts" repository="finom/vovk-examples"
-import { JSONLinesResponse, type VovkIteration } from 'vovk';
+import type { JSONLinesResponder, VovkIteration } from 'vovk';
 import type ProgressiveController from './ProgressiveController.ts';
 
 export default class ProgressiveService {
@@ -49,14 +49,14 @@ export default class ProgressiveService {
   }
 
   static streamProgressiveResponse(
-    resp: JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
+    responder: JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
   ) {
     return Promise.all([
-      this.getUsers().then((users) => resp.send({ users })),
-      this.getTasks().then((tasks) => resp.send({ tasks })),
+      this.getUsers().then((users) => responder.send({ users })),
+      this.getTasks().then((tasks) => responder.send({ tasks })),
     ])
-      .then(resp.close)
-      .catch(resp.throw);
+      .then(responder.close)
+      .catch(responder.throw);
   }
 }
 ```
@@ -64,7 +64,7 @@ export default class ProgressiveService {
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveController.ts" repository="finom/vovk-examples"
-import { procedure, get, JSONLinesResponse, prefix, type VovkIteration } from 'vovk';
+import { procedure, get, JSONLinesResponder, prefix, type VovkIteration } from 'vovk';
 import { z } from 'zod';
 import ProgressiveService from './ProgressiveService.ts';
 
@@ -93,13 +93,11 @@ export default class ProgressiveController {
       }),
     ]),
     async handle(req) {
-      const response = new JSONLinesResponse<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
-        req
-      );
+      const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
 
-      void ProgressiveService.streamProgressiveResponse(response);
+      void ProgressiveService.streamProgressiveResponse(responder);
 
-      return response;
+      return responder;
     },
   });
 }

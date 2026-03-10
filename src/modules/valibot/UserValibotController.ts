@@ -30,15 +30,14 @@ export default class UserValibotController {
       }),
       v.description('Response object')
     )),
-    async handle(req, { id }) {
-      const { name, age } = await req.json();
-      const notify = req.nextUrl.searchParams.get('notify');
+  }).handle(async (req, { id }) => {
+    const { name, age } = await req.json();
+    const notify = req.nextUrl.searchParams.get('notify');
 
-      // do something with the data
-      console.log(`Updating user ${id}:`, { name, age, notify });
-      return {
-        success: true,
-      } satisfies VovkOutput<typeof UserValibotController.updateUser>;
-    },
-  });
+    // do something with the data
+    console.log(`Updating user ${id}:`, { name, age, notify });
+    return {
+      success: true,
+    }
+   });
 }

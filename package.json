@@ -7,7 +7,9 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "keywords": ["vovk"],
+  "keywords": [
+    "vovk"
+  ],
   "scripts": {
     "test": "npm run lint",
     "ncu": "npx npm-check-updates -u && npm i",
@@ -74,8 +76,8 @@
     "tailwind-merge": "^3.4.0",
     "tsdown": "^0.18.4",
     "valibot": "^1.2.0",
-    "vovk": "^3.0.0-beta.96",
-    "vovk-ajv": "^0.0.0-beta.4",
+    "vovk": "^3.0.0-beta.143",
+    "vovk-ajv": "^0.0.0-beta.24",
     "vovk-client": "^0.0.4-beta.4",
     "yup": "^1.7.1",
     "zod": "^4.3.4"

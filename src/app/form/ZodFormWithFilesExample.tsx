@@ -10,10 +10,9 @@ export default function ZodFormExample() {
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const formData = new FormData(ref.current!);
       setResponse(
         await FormZodRPC.submitForm({
-          body: formData,
+          body: new FormData(ref.current!),
           params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
         })
       );

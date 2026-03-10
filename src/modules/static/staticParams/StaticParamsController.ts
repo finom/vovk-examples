@@ -22,8 +22,7 @@ export default class StaticParamsController {
       section: z.enum(['a', 'b']),
       page: z.enum(['1', '2', '3']),
     }),
-    handle: async (_req, { section, page }) => {
-      return { section, page };
-    },
+  }).handle(async (_req, { section, page }) => {
+    return { section, page };
   });
 }

@@ -24,15 +24,15 @@ export default class UserArktypeController {
     output: type({
       success: type('boolean').describe('Success status'),
     }),
-    async handle(req, { id }) {
-      const { name, age } = await req.json();
-      const notify = req.nextUrl.searchParams.get('notify');
+    
+  }).handle(async (req, { id }) => {
+    const { name, age } = await req.json();
+    const notify = req.nextUrl.searchParams.get('notify');
 
-      // do something with the data
-      console.log(`Updating user ${id}:`, { name, age, notify });
-      return {
-        success: true,
-      } satisfies VovkOutput<typeof UserArktypeController.updateUser>;
-    },
-  });
+    // do something with the data
+    console.log(`Updating user ${id}:`, { name, age, notify });
+    return {
+      success: true,
+    }
+  })
 }

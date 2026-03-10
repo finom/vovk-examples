@@ -29,17 +29,16 @@ export default class EventsController {
         message: z.string().meta({ description: 'Event message' }),
       }),
     }),
-    async *handle() {
-      for (const event of eventNames) {
-        yield {
-          event,
-          payload: {
-            timestamp: new Date().toISOString(),
-            message: `This is a message for event "${event}"`,
-          },
-        } satisfies VovkIteration<typeof EventsController.streamEvents>;
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+  }).handle(async function* () {
+    for (const event of eventNames) {
+      yield {
+        event,
+        payload: {
+          timestamp: new Date().toISOString(),
+          message: `This is a message for event "${event}"`,
+        },
       }
-    },
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    }
   });
 }

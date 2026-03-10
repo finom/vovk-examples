@@ -9,12 +9,12 @@ export default class FormZodController {
   })
   @post('{id}')
   static submitForm = procedure({
-    isForm: true,
+    contentType: ['multipart/form-data'],
     body: z
       .object({
         email: z.email().meta({ description: 'User email' }),
-        resume: z.file().meta({ description: 'Resume file', examples: ['application/pdf'] }),
-        portfolioSamples: z.union([z.array(z.file()), z.file()]).meta({ description: 'Portfolio samples' }),
+        resume: z.file().min(1).meta({ description: 'Resume file', examples: ['application/pdf'] }),
+        portfolioSamples: z.union([z.array(z.file().min(1)), z.file().min(1)]).meta({ description: 'Portfolio samples' }),
       })
       .meta({ description: 'User object' }),
     params: z.object({
@@ -38,22 +38,23 @@ export default class FormZodController {
           .meta({ description: 'Array of portfolio sample files' }),
       })
       .meta({ description: 'Response object' }),
-    async handle(req, { id }) {
-      const { resume, portfolioSamples, email } = await req.vovk.form();
+  }).handle(async (req) => {
+    const { resume, portfolioSamples, email } = await req.vovk.body();
 
-      return {
-        email,
-        resume: {
-          name: resume.name,
-          size: resume.size,
-          type: resume.type,
-        },
-        portfolioSamples: (Array.isArray(portfolioSamples) ? portfolioSamples : [portfolioSamples]).map((file) => ({
-          name: file.name,
-          size: file.size,
-          type: file.type,
-        })),
-      } satisfies VovkOutput<typeof FormZodController.submitForm>;
-    },
-  });
+    console.log('portfolioSamples:', portfolioSamples);
+
+    return {
+      email,
+      resume: {
+        name: resume.name,
+        size: resume.size,
+        type: resume.type,
+      },
+      portfolioSamples: (Array.isArray(portfolioSamples) ? portfolioSamples : [portfolioSamples]).map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      })),
+    }
+  })
 }

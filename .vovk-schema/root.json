@@ -453,7 +453,7 @@
     },
     "JSONLinesResponderRPC": {
       "rpcModuleName": "JSONLinesResponderRPC",
-      "originalControllerName": "JSONLinesResponseController",
+      "originalControllerName": "JSONLinesResponderController",
       "prefix": "jsonlines-responder",
       "handlers": {
         "streamTokens": {
@@ -708,6 +708,7 @@
                   "type": "string",
                   "format": "binary",
                   "contentEncoding": "binary",
+                  "minLength": 1,
                   "description": "Resume file",
                   "examples": [
                     "application/pdf"
@@ -720,13 +721,15 @@
                       "items": {
                         "type": "string",
                         "format": "binary",
-                        "contentEncoding": "binary"
+                        "contentEncoding": "binary",
+                        "minLength": 1
                       }
                     },
                     {
                       "type": "string",
                       "format": "binary",
-                      "contentEncoding": "binary"
+                      "contentEncoding": "binary",
+                      "minLength": 1
                     }
                   ],
                   "description": "Portfolio samples"
@@ -738,7 +741,9 @@
                 "portfolioSamples"
               ],
               "description": "User object",
-              "x-isForm": true
+              "x-contentType": [
+                "multipart/form-data"
+              ]
             },
             "params": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
