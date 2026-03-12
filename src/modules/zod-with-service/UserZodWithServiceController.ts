@@ -12,23 +12,23 @@ export default class UserZodWithServiceController {
   static updateUser = procedure({
     body: z
       .object({
-        name: z.string().describe('User full name'),
-        age: z.number().min(0).max(120).describe('User age'),
-        email: z.email().describe('User email'),
+        name: z.string().meta({ description: 'User full name', example: 'John Doe' }),
+        age: z.number().min(0).max(120).meta({ description: 'User age', example: 30 }),
+        email: z.email().meta({ description: 'User email', example: 'john.doe@example.com' }),
       })
-      .describe('User object'),
+      .meta({ description: 'User object' }),
     params: z.object({
-      id: z.uuid().describe('User ID'),
+      id: z.uuid().meta({ description: 'User ID' }),
     }),
     query: z.object({
-      notify: z.enum(['email', 'push', 'none']).describe('Notification type'),
+      notify: z.enum(['email', 'push', 'none']).meta({ description: 'Notification type' }),
     }),
     output: z
       .object({
-        success: z.boolean().describe('Success status'),
-        id: z.uuid().describe('User ID'),
+        success: z.boolean().meta({ description: 'Success status' }),
+        id: z.uuid().meta({ description: 'User ID' }),
       })
-      .describe('Response object'),
+      .meta({ description: 'Response object' }),
   }).handle(async (req) => {
     const body = await req.vovk.body();
     const query = req.vovk.query();
