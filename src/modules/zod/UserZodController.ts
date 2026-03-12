@@ -11,9 +11,9 @@ export default class UserZodController {
   static updateUser = procedure({
     body: z
       .object({
-        name: z.string().meta({ description: 'User full name' }),
-        age: z.number().min(0).max(120).meta({ description: 'User age' }),
-        email: z.email().meta({ description: 'User email' }),
+        name: z.string().meta({ description: 'User full name', example: 'John Doe' }),
+        age: z.number().min(0).max(120).meta({ description: 'User age', example: 30 }),
+        email: z.email().meta({ description: 'User email', example: 'john.doe@example.com' }),
       })
       .meta({ description: 'User object' }),
     params: z.object({
@@ -28,11 +28,11 @@ export default class UserZodController {
       })
       .meta({ description: 'Response object' }),
   }).handle(async (req, { id }) => {
-    const { name, age } = await req.json();
+    const { name, age, email } = await req.json();
     const notify = req.nextUrl.searchParams.get('notify');
 
     // do something with the data
-    console.log(`Updating user ${id}:`, { name, age, notify });
+    console.log(`Updating user ${id}:`, { name, age, email, notify });
     return {
       success: true,
     };
