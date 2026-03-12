@@ -13,8 +13,7 @@ export default class UserArktypeController {
       name: type('string').describe('User full name'),
       age: type('0 < number < 120').describe('User age'),
       email: type('string.email').describe('User email'),
-      // file: type('File').describe('User file'),
-    }),
+    }).describe('User object'),
     params: type({
       id: type('string.uuid').describe('User ID'),
     }),
@@ -24,7 +23,6 @@ export default class UserArktypeController {
     output: type({
       success: type('boolean').describe('Success status'),
     }),
-    
   }).handle(async (req, { id }) => {
     const { name, age } = await req.json();
     const notify = req.nextUrl.searchParams.get('notify');
