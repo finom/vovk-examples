@@ -2,16 +2,11 @@
 /** @type {import('vovk').VovkConfig} */
 const config = {
   composedClient: {
-    // makes the client available for the bundle re-exports, so the bundle package doesn't import "vovk-client"
     fromTemplates: ['ts'],
-    outDir: './src/client',
+    outDir: './src/client', // makes the client available for the bundle re-exports, so the bundle package doesn't import "vovk-client"
     prettifyClient: true,
   },
   outputConfig: {
-    // makes it available at the re-exported components used at vovk.dev
-    /* origin: process.env.NODE_ENV === 'production'
-      ? `https://examples.vovk.dev`
-      : undefined, */
     imports: {
       validateOnClient: 'vovk-ajv',
     },

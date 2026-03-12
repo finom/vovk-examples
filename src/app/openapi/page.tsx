@@ -16,12 +16,12 @@ function App() {
           hideModels: true,
           servers: [
             {
-              url: 'http://localhost:3000',
-              description: 'Localhost',
-            },
-            {
               url: 'https://examples.vovk.dev',
               description: 'Production',
+            },
+            {
+              url: 'http://localhost:3000',
+              description: 'Localhost',
             },
           ],
         }}
