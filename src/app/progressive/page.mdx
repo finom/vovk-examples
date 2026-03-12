@@ -92,14 +92,13 @@ export default class ProgressiveController {
         ),
       }),
     ]),
-    async handle(req) {
-      const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
+  }).handle(async (req) => {
+    const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
 
-      void ProgressiveService.streamProgressiveResponse(responder);
+    void ProgressiveService.streamProgressiveResponse(responder);
 
-      return responder;
-    },
-  });
+    return responder;
+  })
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveController.ts)*
