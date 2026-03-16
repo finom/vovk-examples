@@ -14,7 +14,7 @@ export default class JSONLinesResponderService {
       { message: ' that' },
       { message: ' uses' },
       { message: ' JSONLines' },
-      { message: 'Response' },
+      { message: 'Responder' },
       { message: ' instance' },
       { message: '!' },
     ];
