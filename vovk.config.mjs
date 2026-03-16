@@ -33,7 +33,7 @@ const config = {
       reExports: {
         'default as ProgressiveExample': './src/app/progressive/ProgressiveExample.tsx',
         'default as JSONLinesExample': './src/app/jsonlines/JSONLinesExample.tsx',
-        'default as JSONLinesResponseExample': './src/app/jsonlines-response/JSONLinesResponseExample.tsx',
+        'default as JSONLinesResponseExample': './src/app/jsonlines-responder/JSONLinesResponderExample.tsx',
         'default as PollExample': './src/app/polling/PollExample.tsx',
         'getGithubFile, default as getGithubFiles': '@/lib/getGithubFiles.ts',
       },
