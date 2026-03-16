@@ -22,9 +22,10 @@ This example uses [JSONLinesResponder](https://vovk.dev/jsonlines#jsonlinesrespo
 <Tabs items={['JSONLinesResponderService.ts', 'JSONLinesResponderController.ts', 'JSONLinesResponderExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderService.ts" repository="finom/vovk-examples"
-import type { JSONLinesResponder } from 'vovk';
+import type { JSONLinesResponder, VovkIteration } from 'vovk';
+import type JSONLinesResponderController from './JSONLinesResponderController.ts';
 
-export type Token = { message: string };
+type Token = VovkIteration<typeof JSONLinesResponderController.streamTokens>;
 
 export default class JSONLinesResponderService {
   static async streamTokens(responder: JSONLinesResponder<Token>) {
@@ -55,8 +56,9 @@ export default class JSONLinesResponderService {
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderController.ts" repository="finom/vovk-examples"
-import { prefix, get, operation, JSONLinesResponder } from 'vovk';
-import JSONLinesResponderService, { type Token } from './JSONLinesResponderService.ts';
+import { prefix, get, operation, JSONLinesResponder, procedure, VovkIteration } from 'vovk';
+import JSONLinesResponderService from './JSONLinesResponderService.ts';
+import z from 'zod';
 
 @prefix('jsonlines-responder')
 export default class JSONLinesResponderController {
@@ -65,13 +67,15 @@ export default class JSONLinesResponderController {
     description: 'Stream tokens to the client using Response object',
   })
   @get('tokens', { cors: true })
-  static async streamTokens(req: Request) {
-    const responder = new JSONLinesResponder<Token>(req);
+  static streamTokens = procedure({
+    iteration: z.object({ message: z.string() }),
+  }).handle(async function* () {
+    const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>();
 
     void JSONLinesResponderService.streamTokens(responder);
 
     return responder;
-  }
+  })
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderController.ts)*

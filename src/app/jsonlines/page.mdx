@@ -22,9 +22,8 @@ JSONLines streaming with [async generators](https://developer.mozilla.org/en-US/
 <Tabs items={['JSONLinesController.ts', 'JSONLinesExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
-import { get, prefix, operation } from 'vovk';
-
-type Token = { message: string };
+import { get, prefix, operation, procedure, VovkIteration } from 'vovk';
+import z from 'zod';
 
 @prefix('jsonlines')
 export default class JSONLinesController {
@@ -33,8 +32,10 @@ export default class JSONLinesController {
     description: 'Stream tokens to the client',
   })
   @get('tokens', { cors: true })
-  static async *streamTokens() {
-    const tokens: Token[] = [
+  static streamTokens = procedure({
+    iteration: z.object({ message: z.string() }),
+  }).handle(async function* () {
+    const tokens: VovkIteration<typeof JSONLinesController.streamTokens>[] = [
       { message: 'Hello,' },
       { message: ' World' },
       { message: ' from' },
@@ -47,7 +48,7 @@ export default class JSONLinesController {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  }
+  })
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*

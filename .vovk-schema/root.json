@@ -17,19 +17,22 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "User full name"
+                  "description": "User full name",
+                  "example": "John Doe"
                 },
                 "age": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 120,
-                  "description": "User age"
+                  "description": "User age",
+                  "example": 30
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
-                  "description": "User email"
+                  "description": "User email",
+                  "example": "john.doe@example.com"
                 }
               },
               "required": [
@@ -109,19 +112,22 @@
               "properties": {
                 "name": {
                   "type": "string",
-                  "description": "User full name"
+                  "description": "User full name",
+                  "example": "John Doe"
                 },
                 "age": {
                   "type": "number",
                   "minimum": 0,
                   "maximum": 120,
-                  "description": "User age"
+                  "description": "User age",
+                  "example": 30
                 },
                 "email": {
                   "type": "string",
                   "format": "email",
                   "pattern": "^(?!\\.)(?!.*\\.\\.)([A-Za-z0-9_'+\\-\\.]*)[A-Za-z0-9_+-]@([A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
-                  "description": "User email"
+                  "description": "User email",
+                  "example": "john.doe@example.com"
                 }
               },
               "required": [
@@ -205,6 +211,7 @@
             "body": {
               "$schema": "https://json-schema.org/draft/2020-12/schema",
               "type": "object",
+              "description": "User object",
               "properties": {
                 "age": {
                   "type": "number",
@@ -442,12 +449,26 @@
       "prefix": "jsonlines",
       "handlers": {
         "streamTokens": {
-          "path": "tokens",
-          "httpMethod": "GET",
+          "validation": {
+            "iteration": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          },
           "operationObject": {
             "summary": "Stream tokens",
             "description": "Stream tokens to the client"
-          }
+          },
+          "path": "tokens",
+          "httpMethod": "GET"
         }
       }
     },
@@ -457,12 +478,26 @@
       "prefix": "jsonlines-responder",
       "handlers": {
         "streamTokens": {
-          "path": "tokens",
-          "httpMethod": "GET",
+          "validation": {
+            "iteration": {
+              "$schema": "https://json-schema.org/draft/2020-12/schema",
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "message"
+              ]
+            }
+          },
           "operationObject": {
             "summary": "Stream tokens using Response object",
             "description": "Stream tokens to the client using Response object"
-          }
+          },
+          "path": "tokens",
+          "httpMethod": "GET"
         }
       }
     },
