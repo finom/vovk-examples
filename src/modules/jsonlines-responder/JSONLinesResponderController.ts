@@ -1,5 +1,6 @@
-import { prefix, get, operation, JSONLinesResponder } from 'vovk';
-import JSONLinesResponderService, { type Token } from './JSONLinesResponderService.ts';
+import { prefix, get, operation, JSONLinesResponder, procedure, VovkIteration } from 'vovk';
+import JSONLinesResponderService from './JSONLinesResponderService.ts';
+import z from 'zod';
 
 @prefix('jsonlines-responder')
 export default class JSONLinesResponderController {
@@ -8,11 +9,13 @@ export default class JSONLinesResponderController {
     description: 'Stream tokens to the client using Response object',
   })
   @get('tokens', { cors: true })
-  static async streamTokens(req: Request) {
-    const responder = new JSONLinesResponder<Token>(req);
+  static streamTokens = procedure({
+    iteration: z.object({ message: z.string() }),
+  }).handle(async function* () {
+    const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>();
 
     void JSONLinesResponderService.streamTokens(responder);
 
     return responder;
-  }
+  })
 }

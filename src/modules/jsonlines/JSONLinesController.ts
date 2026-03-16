@@ -1,6 +1,5 @@
-import { get, prefix, operation } from 'vovk';
-
-type Token = { message: string };
+import { get, prefix, operation, procedure, VovkIteration } from 'vovk';
+import z from 'zod';
 
 @prefix('jsonlines')
 export default class JSONLinesController {
@@ -9,8 +8,10 @@ export default class JSONLinesController {
     description: 'Stream tokens to the client',
   })
   @get('tokens', { cors: true })
-  static async *streamTokens() {
-    const tokens: Token[] = [
+  static streamTokens = procedure({
+    iteration: z.object({ message: z.string() }),
+  }).handle(async function* () {
+    const tokens: VovkIteration<typeof JSONLinesController.streamTokens>[] = [
       { message: 'Hello,' },
       { message: ' World' },
       { message: ' from' },
@@ -23,5 +24,5 @@ export default class JSONLinesController {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  }
+  })
 }

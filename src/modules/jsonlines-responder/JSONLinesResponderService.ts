@@ -1,6 +1,7 @@
-import type { JSONLinesResponder } from 'vovk';
+import type { JSONLinesResponder, VovkIteration } from 'vovk';
+import type JSONLinesResponderController from './JSONLinesResponderController.ts';
 
-export type Token = { message: string };
+type Token = VovkIteration<typeof JSONLinesResponderController.streamTokens>;
 
 export default class JSONLinesResponderService {
   static async streamTokens(responder: JSONLinesResponder<Token>) {
