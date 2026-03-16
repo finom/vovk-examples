@@ -20,12 +20,22 @@ const config = {
       await build({
         entry,
         dts: true,
-        format: ['cjs', 'esm'],
+        format: 'esm',
         hash: false,
         fixedExtension: true,
         clean: true,
         outDir,
-        tsconfig: './tsconfig.bundle.json',
+        platform: 'neutral',
+        outExtensions: () => ({ js: '.js', dts: '.d.ts' }),
+        outputOptions: {
+          inlineDynamicImports: true,
+        },
+        inputOptions: {
+          resolve: {
+            mainFields: ['module', 'main'],
+          },
+        },
+        noExternal: ['!next/**'],
       });
     },
     outputConfig: {
