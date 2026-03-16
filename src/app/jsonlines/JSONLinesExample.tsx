@@ -9,6 +9,7 @@ export default function StreamExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setTokens([]);
           using stream = await JSONLinesRPC.streamTokens();

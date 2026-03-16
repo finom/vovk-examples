@@ -1,4 +1,4 @@
-import { get, prefix, operation, procedure, VovkIteration } from 'vovk';
+import { get, prefix, operation, procedure, type VovkIteration } from 'vovk';
 import z from 'zod';
 
 @prefix('jsonlines')
@@ -24,5 +24,5 @@ export default class JSONLinesController {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  })
+  });
 }

@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function Page() {
   const [input, setInput] = useState('');
 
-  const { messages, sendMessage, error, status } = useChat({
+  const { messages, sendMessage, error } = useChat({
     transport: new DefaultChatTransport({
       api: AiSdkRPC.chat.getURL(), // '/api/ai-sdk/chat',
     }),
@@ -34,7 +34,7 @@ export default function Page() {
       {error && <div>❌ {error.message}</div>}
       <div className="input-group">
         <input type="text" placeholder="Send a message..." value={input} onChange={(e) => setInput(e.target.value)} />
-        <button>Send</button>
+        <button type="button">Send</button>
       </div>
     </form>
   );

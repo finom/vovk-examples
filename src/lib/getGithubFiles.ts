@@ -9,7 +9,7 @@ async function performDirectGithubRequest(
 }
 
 export async function getGithubFile(path: string, { owner, repo, ref }: { owner: string; repo: string; ref: string }) {
-  let resp;
+  let resp: Response;
 
   try {
     resp = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${ref}&t=${Date.now()}`, {
@@ -17,7 +17,7 @@ export async function getGithubFile(path: string, { owner, repo, ref }: { owner:
         Accept: 'application/vnd.github.VERSION.raw',
       },
     });
-  } catch (e) {
+  } catch {
     // fallback in case if API limmit is exceeded
     return performDirectGithubRequest(path, { owner, repo, ref });
   }

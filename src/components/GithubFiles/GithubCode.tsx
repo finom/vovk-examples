@@ -40,6 +40,7 @@ const GithubCode = ({ githubFiles, owner, repo, ghRef, highlightLines, cutLines 
               height="1em"
               className="x:inline x:align-baseline x:shrink-0"
             >
+              <title>View on GitHub</title>
               <path d="M7 17L17 7"></path>
               <path d="M7 7h10v10"></path>
             </svg>

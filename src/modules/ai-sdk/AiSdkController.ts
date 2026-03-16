@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, post, prefix, operation, type VovkRequest } from 'vovk';
-import { streamText, convertToModelMessages, UIMessage } from 'ai';
+import { streamText, convertToModelMessages, type UIMessage } from 'ai';
 import { openai } from '@ai-sdk/openai';
 
 @prefix('ai-sdk')

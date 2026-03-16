@@ -21,7 +21,7 @@ export default function ProgressiveExample() {
 
   return (
     <>
-      <button onClick={load} disabled={isLoaded === false}>
+      <button type="button" onClick={load} disabled={isLoaded === false}>
         Load Users and Tasks Progressively {isLoaded ? 'Again' : ''}
       </button>
       {isLoaded !== null && <h2>Users</h2>}

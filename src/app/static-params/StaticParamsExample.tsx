@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { StaticParamsRPC } from '@/client';
-import { VovkParams, type VovkReturnType } from 'vovk';
+import type { VovkParams, VovkReturnType } from 'vovk';
 
 export default function StaticParamsExample() {
   const [serverResponse, setServerResponse] = useState<VovkReturnType<typeof StaticParamsRPC.getStaticParams>>();
@@ -10,8 +10,8 @@ export default function StaticParamsExample() {
 
   return (
     <>
-      <label>Section:</label>
-      <select value={section} onChange={(e) => setSection(e.target.value as typeof section)}>
+      <label htmlFor="section">Section:</label>
+      <select id="section" value={section} onChange={(e) => setSection(e.target.value as typeof section)}>
         {['a', 'b'].map((key: string) => (
           <option key={key} value={key}>
             {key}
@@ -19,8 +19,8 @@ export default function StaticParamsExample() {
         ))}
       </select>
       <br />
-      <label>Page:</label>
-      <select value={page} onChange={(e) => setPage(e.target.value as typeof page)}>
+      <label htmlFor="page">Page:</label>
+      <select id="page" value={page} onChange={(e) => setPage(e.target.value as typeof page)}>
         {['1', '2', '3'].map((key: string) => (
           <option key={key} value={key}>
             {key}
@@ -29,6 +29,7 @@ export default function StaticParamsExample() {
       </select>
       <br />
       <button
+        type="button"
         onClick={async () => {
           setServerResponse(await StaticParamsRPC.getStaticParams({ params: { section, page } }));
         }}

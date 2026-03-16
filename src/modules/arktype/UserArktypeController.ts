@@ -1,5 +1,5 @@
 import { type } from 'arktype';
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 
 @prefix('users-arktype')
 export default class UserArktypeController {
@@ -31,6 +31,6 @@ export default class UserArktypeController {
     console.log(`Updating user ${id}:`, { name, age, email, notify });
     return {
       success: true,
-    }
-  })
+    };
+  });
 }

@@ -15,12 +15,10 @@ export default function ZodHookFormExample() {
     formState: { errors },
   } = useForm<VovkBody<typeof UserZodRPC.updateUser>>({
     // @ts-expect-error This example isn't working as vovk-examples uses newer version of JSON Schema
-    resolver: ajvResolver(UserZodRPC.updateUser.schema.validation!.body, {
+    resolver: ajvResolver(UserZodRPC.updateUser.schema.validation.body, {
       formats: fastFormats,
     }),
   });
-
-  type r = VovkBody<typeof UserZodRPC.updateUser>;
 
   const onSubmit = async () => {
     setResponse(
@@ -38,10 +36,10 @@ export default function ZodHookFormExample() {
       {errors.name && <p>❌ {errors.name.message}</p>}
       <input type="text" placeholder="Email" {...register('email')} />
       {errors.email && <p>❌ {errors.email.message}</p>}
-      <label>Age:</label>
-      <input type="number" placeholder="Age" {...register('age', { valueAsNumber: true })} />
+      <label htmlFor="age">Age:</label>
+      <input type="number" id="age" placeholder="Age" {...register('age', { valueAsNumber: true })} />
       {errors.age && <p>❌ {errors.age.message}</p>}
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div>

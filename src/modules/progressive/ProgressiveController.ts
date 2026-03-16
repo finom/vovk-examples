@@ -27,10 +27,12 @@ export default class ProgressiveController {
       }),
     ]),
   }).handle(async (req) => {
-    const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(req);
+    const responder = new JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>(
+      req
+    );
 
     void ProgressiveService.streamProgressiveResponse(responder);
 
     return responder;
-  })
+  });
 }

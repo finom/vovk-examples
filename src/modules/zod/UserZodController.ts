@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 
 @prefix('users-zod')
 export default class UserZodController {

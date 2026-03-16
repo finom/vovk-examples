@@ -9,6 +9,7 @@ export default function ProxyExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setServerResponse(await ProxyRPC.getHello());
         }}

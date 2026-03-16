@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { GithubFile } from '@/types.ts';
+import type { GithubFile } from '@/types.ts';
 
 interface Props {
   githubFiles: GithubFile[];
@@ -16,27 +16,29 @@ const GithubTabs = ({ githubFiles, owner, repo, ghRef, id }: Props) => {
     <div className="pb-2 px-4 text-sm mb-1">
       {githubFiles.map(({ path }, i) => (
         <div key={path} className={`inline-block mr-4 mb-1`}>
-          <span
+          <button
             title={path}
+            type="button"
             className={`pb-0.5 cursor-pointer border-b-2 border-solid ${
               i === activeIndex
                 ? 'text-neutral-900 border-blue-500 dark:text-gray-100 dark:border-slate-500'
                 : 'text-slate-400 dark:text-[#525975] border-transparent'
             }`}
             onClick={() => {
-              document
-                .querySelectorAll(`#${id} .github-tab-content`)
-                .forEach((el) => el.classList[el.id === `tab-${id}-${i}` ? 'remove' : 'add']('hidden'));
+              document.querySelectorAll(`#${id} .github-tab-content`).forEach((el) => {
+                el.classList[el.id === `tab-${id}-${i}` ? 'remove' : 'add']('hidden');
+              });
               setActiveIndex(i);
             }}
           >
             {path.split('/').pop()}
-          </span>
+          </button>
           <a
             className="inline-block align-middle ml-1"
             href={`https://github.com/${owner}/${repo}/tree/${ghRef}/${path}`}
             target="_blank"
             title="View on GitHub"
+            rel="noopener"
           >
             <svg
               width="16"
@@ -46,6 +48,7 @@ const GithubTabs = ({ githubFiles, owner, repo, ghRef, id }: Props) => {
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <title>View on GitHub</title>
               <path
                 d="M14 11.9976C14 9.5059 11.683 7 8.85714 7C8.52241 7 7.41904 7.00001 7.14286 7.00001C4.30254 7.00001 2 9.23752 2 11.9976C2 14.376 3.70973 16.3664 6 16.8714C6.36756 16.9525 6.75006 16.9952 7.14286 16.9952"
                 stroke="currentColor"

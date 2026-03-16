@@ -28,8 +28,8 @@ export default class ProgressiveService {
     responder: JSONLinesResponder<VovkIteration<typeof ProgressiveController.streamProgressiveResponse>>
   ) {
     return Promise.all([
-      this.getUsers().then((users) => responder.send({ users })),
-      this.getTasks().then((tasks) => responder.send({ tasks })),
+      ProgressiveService.getUsers().then((users) => responder.send({ users })),
+      ProgressiveService.getTasks().then((tasks) => responder.send({ tasks })),
     ])
       .then(responder.close)
       .catch(responder.throw);

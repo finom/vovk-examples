@@ -1,4 +1,4 @@
-import { prefix, get, operation, JSONLinesResponder, procedure, VovkIteration } from 'vovk';
+import { prefix, get, operation, JSONLinesResponder, procedure, type VovkIteration } from 'vovk';
 import JSONLinesResponderService from './JSONLinesResponderService.ts';
 import z from 'zod';
 
@@ -11,11 +11,11 @@ export default class JSONLinesResponderController {
   @get('tokens', { cors: true })
   static streamTokens = procedure({
     iteration: z.object({ message: z.string() }),
-  }).handle(async function* () {
+  }).handle(async () => {
     const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>();
 
     void JSONLinesResponderService.streamTokens(responder);
 
     return responder;
-  })
+  });
 }

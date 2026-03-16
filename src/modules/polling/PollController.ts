@@ -11,14 +11,14 @@ export default class PollController {
     iteration: z.object({
       i: z.number(),
     }),
-  }).handle(async function*(req) {
-    let i = parseInt(req.vovk.query().i);
+  }).handle(async function* (req) {
+    let i = parseInt(req.vovk.query().i, 10);
     while (true) {
-        yield { i: ++i };
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-        if (!(i % 10)) {
-          break;
-        }
+      yield { i: ++i };
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      if (!(i % 10)) {
+        break;
       }
-    })
+    }
+  });
 }

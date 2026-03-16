@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 
 @prefix('form-zod')
 export default class FormZodController {
@@ -13,8 +13,13 @@ export default class FormZodController {
     body: z
       .object({
         email: z.email().meta({ description: 'User email' }),
-        resume: z.file().min(1).meta({ description: 'Resume file', examples: ['application/pdf'] }),
-        portfolioSamples: z.union([z.array(z.file().min(1)), z.file().min(1)]).meta({ description: 'Portfolio samples' }),
+        resume: z
+          .file()
+          .min(1)
+          .meta({ description: 'Resume file', examples: ['application/pdf'] }),
+        portfolioSamples: z
+          .union([z.array(z.file().min(1)), z.file().min(1)])
+          .meta({ description: 'Portfolio samples' }),
       })
       .meta({ description: 'User object' }),
     params: z.object({
@@ -55,6 +60,6 @@ export default class FormZodController {
         size: file.size,
         type: file.type,
       })),
-    }
-  })
+    };
+  });
 }

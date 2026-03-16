@@ -9,6 +9,7 @@ export default function BasicExampleWithService() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           const response = await BasicRPCWithService.getHello();
           setServerResponse(response);

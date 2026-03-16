@@ -10,6 +10,7 @@ const Nav = () => (
       <nav className="mx-auto flex h-full max-w-[90rem] items-center justify-end gap-2 pl-[max(env(safe-area-inset-left),1.5rem)] pr-[max(env(safe-area-inset-right),1.5rem)]">
         <Link className={`${css.link} flex mr-auto flex-col`} href="/">
           <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width={120} height="34.5" viewBox="0 0 320 92">
+            <title>Vovk.ts</title>
             <desc>Created with Fabric.js 5.3.0</desc>
             <defs />
             <g transform="matrix(0.1737995768 0 0 0.1737995768 39.8512941892 44.8611051276)" id="k3p4mJoS6tEew0Q_1_q7m">
@@ -86,6 +87,7 @@ const Nav = () => (
           target="_blank"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width={36} height={36}>
+            <title>NPM</title>
             <rect x="227.6" y="213.1" width="28.4" height="57.1" fill="currentColor" />
             <path
               fill="currentColor"

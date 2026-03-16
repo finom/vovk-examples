@@ -9,6 +9,7 @@ export default function BasicExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setServerResponse(await BasicRPC.getHello());
         }}

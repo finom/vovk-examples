@@ -46,6 +46,7 @@ async function updateGithubMDXCodeBlocks(mdxContent: string) {
     const attrs: Record<string, string> = {};
     const attrRe = /([a-zA-Z0-9_-]+)=(?:"([^"]+)"|'([^']+)'|([^\s"']+))/g;
     let m: RegExpExecArray | null;
+    // biome-ignore lint/suspicious/noAssignInExpressions: ignoring
     while ((m = attrRe.exec(fenceLine))) {
       const key = m[1];
       const val = m[2] ?? m[3] ?? m[4] ?? '';
@@ -59,6 +60,7 @@ async function updateGithubMDXCodeBlocks(mdxContent: string) {
 
   const matches: Array<RegExpExecArray> = [];
   let m: RegExpExecArray | null;
+  // biome-ignore lint/suspicious/noAssignInExpressions: ignoring
   while ((m = blockRe.exec(mdxContent))) matches.push(m);
 
   for (const match of matches) {
@@ -70,8 +72,8 @@ async function updateGithubMDXCodeBlocks(mdxContent: string) {
     out += mdxContent.slice(lastIndex, index);
 
     const attrs = parseAttrs(fenceLine);
-    const filename = attrs['filename'];
-    const repository = attrs['repository'];
+    const filename = attrs.filename;
+    const repository = attrs.repository;
 
     // Only process blocks that have both filename and repository
     if (!filename || !repository) {
@@ -109,11 +111,11 @@ async function updateGithubMDXCodeBlocks(mdxContent: string) {
     // Decide whether to update/add link
     let linkToUse = linkLine; // preserve if present and content not changed
     if (replaced || !linkLine) {
-      linkToUse = '\n' + expectedLink;
+      linkToUse = `\n${expectedLink}`;
     }
 
     // Reconstruct the block preserving the opening fence line
-    const rebuilt = '```' + fenceLine + '\n' + fetched + '\n```' + (linkToUse ?? '');
+    const rebuilt = `\`\`\`${fenceLine}\n${fetched}\n\`\`\`${linkToUse ?? ''}`;
 
     out += rebuilt;
     lastIndex = (index ?? 0) + match[0].length;

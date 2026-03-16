@@ -42,7 +42,9 @@ export function Example() {
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
-        <button onClick={() => mutation.mutate({ body: { greeting: userInput } })}>Mutate</button>
+        <button type="button" onClick={() => mutation.mutate({ body: { greeting: userInput } })}>
+          Mutate
+        </button>
       </div>
     </div>
   );

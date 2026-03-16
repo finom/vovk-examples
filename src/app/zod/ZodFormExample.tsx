@@ -32,8 +32,8 @@ export default function ZodFormExample() {
     <form onSubmit={onSubmit}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Age:</label>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label htmlFor="age">Age:</label>
+      <input id="age" type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
       <label className="block mb-4">
         <input
           type="checkbox"
@@ -43,7 +43,7 @@ export default function ZodFormExample() {
         />
         Disable client-side validation
       </label>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">

@@ -1,4 +1,4 @@
-import type { VovkBody, VovkOutput, VovkParams, VovkQuery } from 'vovk';
+import type { VovkBody, VovkParams, VovkQuery } from 'vovk';
 import type UserZodWithServiceController from './UserZodWithServiceController.ts';
 
 export default class UserZodService {

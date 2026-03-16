@@ -9,10 +9,11 @@ export default function ZodFormExample() {
   const ref = useRef<HTMLFormElement>(null);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!ref.current) return; // TS safeguard, should never happen
     try {
       setResponse(
         await FormZodRPC.submitForm({
-          body: new FormData(ref.current!),
+          body: new FormData(ref.current),
           params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
         })
       );
@@ -44,7 +45,7 @@ export default function ZodFormExample() {
       <br />
       <input type="file" multiple placeholder="Portfolio Samples" name="portfolioSamples" />
       <br />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">

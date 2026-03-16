@@ -61,7 +61,7 @@ const CodeBlock = ({ lineNumbers, className, children, highlightLines, cutLines 
 
   const code = newLines.join('\n');
   return (
-    <div className="border dark:!border-gray-800 text-sm">
+    <div className="border dark:border-gray-800! text-sm">
       <div data-theme="dark" className="hidden dark:block">
         <Code lang="tsx" className={className} lineNumbers={lineNumbers} extensions={[highlight]}>
           {code}

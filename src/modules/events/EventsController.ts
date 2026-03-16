@@ -1,4 +1,4 @@
-import { procedure, get, prefix, VovkIteration } from 'vovk';
+import { procedure, get, prefix } from 'vovk';
 import { z } from 'zod';
 
 const eventNames = [
@@ -37,7 +37,7 @@ export default class EventsController {
           timestamp: new Date().toISOString(),
           message: `This is a message for event "${event}"`,
         },
-      }
+      };
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
   });
