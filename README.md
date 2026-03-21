@@ -9,6 +9,8 @@
   <br>
   <strong>Back-end Framework for Next.js App Router</strong>
   <br />
+  <em>One codebase → type-safe clients, OpenAPI, and AI tools</em>
+  <br />
   <a href="https://vovk.dev/">Documentation</a>
   &nbsp;&nbsp;
   <a href="https://vovk.dev/quick-install">Quick Start</a>

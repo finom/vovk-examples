@@ -51,6 +51,7 @@ export default function ProxyExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setServerResponse(await ProxyRPC.getHello());
         }}
@@ -61,7 +62,6 @@ export default function ProxyExample() {
     </>
   );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/ProxyExample.tsx)*
 

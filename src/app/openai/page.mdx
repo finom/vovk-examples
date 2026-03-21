@@ -115,12 +115,13 @@ export default function OpenAiExample() {
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
-        <button disabled={!userInput}>Send</button>
+        <button type="button" disabled={!userInput}>
+          Send
+        </button>
       </div>
     </form>
   );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/openai/OpenAiExample.tsx)*
 

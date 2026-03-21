@@ -23,7 +23,7 @@ An example of a form with files using Zod validation. Notice that "portfolio sam
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/form/FormZodController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 
 @prefix('form-zod')
 export default class FormZodController {
@@ -37,8 +37,13 @@ export default class FormZodController {
     body: z
       .object({
         email: z.email().meta({ description: 'User email' }),
-        resume: z.file().min(1).meta({ description: 'Resume file', examples: ['application/pdf'] }),
-        portfolioSamples: z.union([z.array(z.file().min(1)), z.file().min(1)]).meta({ description: 'Portfolio samples' }),
+        resume: z
+          .file()
+          .min(1)
+          .meta({ description: 'Resume file', examples: ['application/pdf'] }),
+        portfolioSamples: z
+          .union([z.array(z.file().min(1)), z.file().min(1)])
+          .meta({ description: 'Portfolio samples' }),
       })
       .meta({ description: 'User object' }),
     params: z.object({
@@ -79,8 +84,8 @@ export default class FormZodController {
         size: file.size,
         type: file.type,
       })),
-    }
-  })
+    };
+  });
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/FormZodController.ts)*
@@ -98,10 +103,11 @@ export default function ZodFormExample() {
   const ref = useRef<HTMLFormElement>(null);
   const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!ref.current) return; // TS safeguard, should never happen
     try {
       setResponse(
         await FormZodRPC.submitForm({
-          body: new FormData(ref.current!),
+          body: new FormData(ref.current),
           params: { id: '5a279068-35d6-4d67-94e0-c21ef4052eea' },
         })
       );
@@ -133,7 +139,7 @@ export default function ZodFormExample() {
       <br />
       <input type="file" multiple placeholder="Portfolio Samples" name="portfolioSamples" />
       <br />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">

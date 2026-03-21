@@ -359,6 +359,7 @@
                     "push",
                     "none"
                   ],
+                  "type": "string",
                   "description": "Notification type"
                 }
               },

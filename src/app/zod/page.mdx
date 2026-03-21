@@ -23,7 +23,7 @@ Form input handling and [Zod](https://zod.dev/) validation. The request input is
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/zod/UserZodController.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 
 @prefix('users-zod')
 export default class UserZodController {
@@ -101,8 +101,8 @@ export default function ZodFormExample() {
     <form onSubmit={onSubmit}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Age:</label>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label htmlFor="age">Age:</label>
+      <input id="age" type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
       <label className="block mb-4">
         <input
           type="checkbox"
@@ -112,7 +112,7 @@ export default function ZodFormExample() {
         />
         Disable client-side validation
       </label>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">
@@ -125,7 +125,6 @@ export default function ZodFormExample() {
     </form>
   );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/ZodFormExample.tsx)*
   </Tabs.Tab>

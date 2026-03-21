@@ -56,7 +56,7 @@ export default class JSONLinesResponderService {
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderController.ts" repository="finom/vovk-examples"
-import { prefix, get, operation, JSONLinesResponder, procedure, VovkIteration } from 'vovk';
+import { prefix, get, operation, JSONLinesResponder, procedure, type VovkIteration } from 'vovk';
 import JSONLinesResponderService from './JSONLinesResponderService.ts';
 import z from 'zod';
 
@@ -69,13 +69,13 @@ export default class JSONLinesResponderController {
   @get('tokens', { cors: true })
   static streamTokens = procedure({
     iteration: z.object({ message: z.string() }),
-  }).handle(async function* () {
+  }).handle(async () => {
     const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>();
 
     void JSONLinesResponderService.streamTokens(responder);
 
     return responder;
-  })
+  });
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderController.ts)*
@@ -93,6 +93,7 @@ export default function StreamExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setTokens([]);
           using stream = await JSONLinesResponderRPC.streamTokens();

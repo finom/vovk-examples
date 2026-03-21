@@ -22,7 +22,7 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 <Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
-import { procedure, prefix, post, operation, type VovkOutput } from 'vovk';
+import { procedure, prefix, post, operation } from 'vovk';
 import { toStandardJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
 
@@ -34,26 +34,34 @@ export default class UserValibotController {
   })
   @post('{id}')
   static updateUser = procedure({
-    body: toStandardJsonSchema(v.pipe(
+    body: toStandardJsonSchema(
+      v.pipe(
+        v.object({
+          name: v.pipe(v.string(), v.description('User full name')),
+          age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
+          email: v.pipe(v.string(), v.email(), v.description('User email')),
+        }),
+        v.description('User object')
+      )
+    ),
+    params: toStandardJsonSchema(
       v.object({
-        name: v.pipe(v.string(), v.description('User full name')),
-        age: v.pipe(v.number(), v.minValue(0), v.maxValue(120), v.description('User age')),
-        email: v.pipe(v.string(), v.email(), v.description('User email')),
-      }),
-      v.description('User object')
-    )),
-    params: toStandardJsonSchema(v.object({
-      id: v.pipe(v.string(), v.uuid(), v.description('User ID')),
-    })),
-    query: toStandardJsonSchema(v.object({
-      notify: v.pipe(v.picklist(['email', 'push', 'none']), v.description('Notification type')),
-    })),
-    output: toStandardJsonSchema(v.pipe(
+        id: v.pipe(v.string(), v.uuid(), v.description('User ID')),
+      })
+    ),
+    query: toStandardJsonSchema(
       v.object({
-        success: v.pipe(v.boolean(), v.description('Success status')),
-      }),
-      v.description('Response object')
-    )),
+        notify: v.pipe(v.picklist(['email', 'push', 'none']), v.description('Notification type')),
+      })
+    ),
+    output: toStandardJsonSchema(
+      v.pipe(
+        v.object({
+          success: v.pipe(v.boolean(), v.description('Success status')),
+        }),
+        v.description('Response object')
+      )
+    ),
   }).handle(async (req, { id }) => {
     const { name, age, email } = await req.json();
     const notify = req.nextUrl.searchParams.get('notify');
@@ -62,8 +70,8 @@ export default class UserValibotController {
     console.log(`Updating user ${id}:`, { name, age, email, notify });
     return {
       success: true,
-    }
-   });
+    };
+  });
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*
@@ -104,8 +112,8 @@ export default function ValibotFormExample() {
     <form onSubmit={onSubmit}>
       <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} />
       <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Age:</label>
-      <input type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
+      <label htmlFor="age">Age:</label>
+      <input id="age" type="number" placeholder="Age" value={age} onChange={(e) => setAge(e.target.valueAsNumber)} />
       <label className="block mb-4">
         <input
           type="checkbox"
@@ -115,7 +123,7 @@ export default function ValibotFormExample() {
         />
         Disable client-side validation
       </label>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">
@@ -128,7 +136,6 @@ export default function ValibotFormExample() {
     </form>
   );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)*
 

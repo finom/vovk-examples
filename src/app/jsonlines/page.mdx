@@ -22,7 +22,7 @@ JSONLines streaming with [async generators](https://developer.mozilla.org/en-US/
 <Tabs items={['JSONLinesController.ts', 'JSONLinesExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
-import { get, prefix, operation, procedure, VovkIteration } from 'vovk';
+import { get, prefix, operation, procedure, type VovkIteration } from 'vovk';
 import z from 'zod';
 
 @prefix('jsonlines')
@@ -48,7 +48,7 @@ export default class JSONLinesController {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  })
+  });
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
@@ -66,6 +66,7 @@ export default function StreamExample() {
   return (
     <>
       <button
+        type="button"
         onClick={async () => {
           setTokens([]);
           using stream = await JSONLinesRPC.streamTokens();
@@ -84,7 +85,6 @@ export default function StreamExample() {
     </>
   );
 }
-
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/JSONLinesExample.tsx)*
 

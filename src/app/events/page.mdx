@@ -22,7 +22,7 @@ Type-safe alternative to Server-Sent Events (SSE) using Vovk.ts JSONLines for st
 <Tabs items={['EventsController.ts', 'EventsExample.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/events/EventsController.ts" repository="finom/vovk-examples"
-import { procedure, get, prefix, VovkIteration } from 'vovk';
+import { procedure, get, prefix } from 'vovk';
 import { z } from 'zod';
 
 const eventNames = [
@@ -61,7 +61,7 @@ export default class EventsController {
           timestamp: new Date().toISOString(),
           message: `This is a message for event "${event}"`,
         },
-      }
+      };
       await new Promise((resolve) => setTimeout(resolve, 2000));
     }
   });
@@ -74,29 +74,34 @@ export default class EventsController {
 'use client';
 import { useCallback, useRef, useState } from 'react';
 import { EventsRPC } from '@/client';
-import type { VovkIteration, VovkOutput } from 'vovk';
+import type { VovkIteration } from 'vovk';
 
 export default function EventsExample() {
-  const [eventPayload, setEventPayload] = useState<VovkIteration<typeof EventsRPC.streamEvents>['payload'] | null>(null);
+  const [eventPayload, setEventPayload] = useState<VovkIteration<typeof EventsRPC.streamEvents>['payload'] | null>(
+    null
+  );
   const [eventName, setEventName] = useState<VovkIteration<typeof EventsRPC.streamEvents>['event'] | null>(null);
-  const abortRef = useRef<() => void | null>(null);
+  const abortRef = useRef<() => void>(null);
 
   const streamEvents = useCallback(async () => {
     abortRef.current?.();
-      while (true) {
-        using events = await EventsRPC.streamEvents();
-        abortRef.current = events.abortSilently;
-        for await (const { event, payload } of events) {
-          setEventName(event);
-          setEventPayload(payload);
-        }
+    while (true) {
+      using events = await EventsRPC.streamEvents();
+      abortRef.current = events.abortSilently;
+      for await (const { event, payload } of events) {
+        setEventName(event);
+        setEventPayload(payload);
       }
+    }
   }, []);
 
   return (
     <div>
-      <button onClick={streamEvents}>Stream Events</button>
-      <br /><br />
+      <button type="button" onClick={streamEvents}>
+        Stream Events
+      </button>
+      <br />
+      <br />
       <h2>Latest Event:</h2>
       <pre>{eventName || 'No event yet'}</pre>
       <br />

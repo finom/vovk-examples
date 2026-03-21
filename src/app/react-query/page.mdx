@@ -50,7 +50,7 @@ export default class BasicController {
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
-import { get, prefix, operation, procedure, VovkIteration } from 'vovk';
+import { get, prefix, operation, procedure, type VovkIteration } from 'vovk';
 import z from 'zod';
 
 @prefix('jsonlines')
@@ -76,7 +76,7 @@ export default class JSONLinesController {
       yield token;
       await new Promise((resolve) => setTimeout(resolve, 300));
     }
-  })
+  });
 }
 ```
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
@@ -128,7 +128,9 @@ export function Example() {
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
-        <button onClick={() => mutation.mutate({ body: { greeting: userInput } })}>Mutate</button>
+        <button type="button" onClick={() => mutation.mutate({ body: { greeting: userInput } })}>
+          Mutate
+        </button>
       </div>
     </div>
   );
