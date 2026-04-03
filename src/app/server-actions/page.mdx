@@ -1,0 +1,115 @@
+---
+title: Server Actions with .fn()
+description: Using Vovk.ts Local Procedure Calls inside Next.js Server Actions
+---
+
+import { Tabs } from 'nextra/components';
+import ServerActionFormExample from './ServerActionFormExample';
+import Example from '@/components/Example';
+
+# Server Actions with `.fn()`
+
+An example of using Vovk.ts Local Procedure Calls (`.fn()`) inside Next.js Server Actions. The `.fn()` method calls the controller handler directly on the server without making an HTTP request. When the controller uses `contentType: ['multipart/form-data']`, `.fn()` automatically parses FormData.
+
+This example reuses the same `FormZodController` from the [Form with Files](/form) example, but calls it via `.fn()` in a server action instead of the RPC client.
+
+## Result
+
+<Example>
+  <ServerActionFormExample />
+</Example>
+
+## Code
+
+<Tabs items={['actions.ts', 'ServerActionFormExample.tsx', 'FormZodController.ts']}>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/app/server-actions/actions.ts" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/server-actions/actions.ts)*
+  </Tabs.Tab>
+  <Tabs.Tab>
+```tsx showLineNumbers copy filename="src/app/server-actions/ServerActionFormExample.tsx" repository="finom/vovk-examples"
+404: Not Found
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/server-actions/ServerActionFormExample.tsx)*
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+```ts showLineNumbers copy filename="src/modules/form/FormZodController.ts" repository="finom/vovk-examples"
+import { z } from 'zod';
+import { procedure, prefix, post, operation } from 'vovk';
+
+@prefix('form-zod')
+export default class FormZodController {
+  @operation({
+    summary: 'Submit form (Zod)',
+    description: 'Submit form with Zod validation',
+  })
+  @post('{id}')
+  static submitForm = procedure({
+    contentType: ['multipart/form-data'],
+    body: z
+      .object({
+        email: z.email().meta({ description: 'User email' }),
+        resume: z
+          .file()
+          .min(1)
+          .meta({ description: 'Resume file', examples: ['application/pdf'] }),
+        portfolioSamples: z
+          .union([z.array(z.file().min(1)), z.file().min(1)])
+          .meta({ description: 'Portfolio samples' }),
+      })
+      .meta({ description: 'User object' }),
+    params: z.object({
+      id: z.uuid().meta({ description: 'User ID' }),
+    }),
+    output: z
+      .object({
+        email: z.email().meta({ description: 'User email' }),
+        resume: z.object({
+          name: z.string().meta({ description: 'Resume file name', examples: ['resume.pdf'] }),
+          size: z.number().min(0).meta({ description: 'Resume file size' }),
+          type: z.string().meta({ description: 'Resume file type', examples: ['application/pdf'] }),
+        }),
+        portfolioSamples: z
+          .object({
+            name: z.string().meta({ description: 'Portfolio sample file name', examples: ['portfolio.zip'] }),
+            size: z.number().min(0).meta({ description: 'Portfolio sample file size' }),
+            type: z.string().meta({ description: 'Portfolio sample file type', examples: ['application/zip'] }),
+          })
+          .array()
+          .meta({ description: 'Array of portfolio sample files' }),
+      })
+      .meta({ description: 'Response object' }),
+  }).handle(async (req) => {
+    const { resume, portfolioSamples, email } = await req.vovk.body();
+
+    console.log('portfolioSamples:', portfolioSamples);
+
+    return {
+      email,
+      resume: {
+        name: resume.name,
+        size: resume.size,
+        type: resume.type,
+      },
+      portfolioSamples: (Array.isArray(portfolioSamples) ? portfolioSamples : [portfolioSamples]).map((file) => ({
+        name: file.name,
+        size: file.size,
+        type: file.type,
+      })),
+    };
+  });
+}
+```
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/FormZodController.ts)*
+
+  </Tabs.Tab>
+</Tabs>
+
+## Related Documentation
+
+- [Controller & Procedure](https://vovk.dev/procedure)
+- [`.fn()` Local Procedure Calls](https://vovk.dev/fn)
+- [Form with Files Example](/form)

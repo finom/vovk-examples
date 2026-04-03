@@ -69,8 +69,8 @@ export default class JSONLinesResponderController {
   @get('tokens', { cors: true })
   static streamTokens = procedure({
     iteration: z.object({ message: z.string() }),
-  }).handle(async () => {
-    const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>();
+  }).handle(async (req) => {
+    const responder = new JSONLinesResponder<VovkIteration<typeof JSONLinesResponderController.streamTokens>>(req);
 
     void JSONLinesResponderService.streamTokens(responder);
 

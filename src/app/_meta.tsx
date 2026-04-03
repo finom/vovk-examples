@@ -20,6 +20,7 @@ const meta: MetaRecord = {
   'static-params': 'Static Params',
   'react-query': 'React Query',
   form: 'Form with Files',
+  'server-actions': 'Server Actions with .fn()',
   '#validation': separator('Validation'),
   zod: 'Zod',
   valibot: 'Valibot',
