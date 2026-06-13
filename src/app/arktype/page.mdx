@@ -19,7 +19,7 @@ Form input handling and [Arktype](https://https://arktype.io/) validation. The r
 
 ## Code
 
-<Tabs items={['UserArktypeController.ts',  'ArktypeFormExample.tsx']}>
+<Tabs items={['user-arktype-controller.ts',  'arktype-form-example.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/arktype/user-arktype-controller.ts" repository="finom/vovk-examples"
 import { type } from 'arktype';
@@ -108,7 +108,7 @@ export default function ArktypeFormExample() {
         />
         Disable client-side validation
       </label>
-      <button type="button">Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">

@@ -34,7 +34,7 @@ export default function Page() {
       {error && <div>❌ {error.message}</div>}
       <div className="input-group">
         <input type="text" placeholder="Send a message..." value={input} onChange={(e) => setInput(e.target.value)} />
-        <button type="button">Send</button>
+        <button type="submit">Send</button>
       </div>
     </form>
   );

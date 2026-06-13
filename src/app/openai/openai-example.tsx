@@ -58,7 +58,7 @@ export default function OpenAiExample() {
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
-        <button type="button" disabled={!userInput}>
+        <button type="submit" disabled={!userInput}>
           Send
         </button>
       </div>
