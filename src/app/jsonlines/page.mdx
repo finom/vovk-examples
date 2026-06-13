@@ -4,8 +4,8 @@ description: JSONLines streaming example with async generators
 ---
 
 import { Tabs } from 'nextra/components';
-import JSONLinesExample from './JSONLinesExample';
-import Example from '@/components/Example';
+import JSONLinesExample from './json-lines-example';
+import Example from '@/components/example';
 
 # JSONLines Example
 
@@ -21,7 +21,7 @@ JSONLines streaming with [async generators](https://developer.mozilla.org/en-US/
 
 <Tabs items={['JSONLinesController.ts', 'JSONLinesExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/jsonlines/json-lines-controller.ts" repository="finom/vovk-examples"
 import { get, prefix, operation, procedure, type VovkIteration } from 'vovk';
 import z from 'zod';
 
@@ -51,10 +51,10 @@ export default class JSONLinesController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/json-lines-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/jsonlines/JSONLinesExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/jsonlines/json-lines-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { JSONLinesRPC } from '@/client';
@@ -86,7 +86,7 @@ export default function StreamExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/JSONLinesExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines/json-lines-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

@@ -1,5 +1,5 @@
 import { prefix, get, operation, JSONLinesResponder, procedure, type VovkIteration } from 'vovk';
-import JSONLinesResponderService from './JSONLinesResponderService.ts';
+import JSONLinesResponderService from './json-lines-responder-service.ts';
 import z from 'zod';
 
 @prefix('jsonlines-responder')

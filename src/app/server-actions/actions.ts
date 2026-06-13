@@ -1,6 +1,6 @@
 'use server';
 
-import FormZodController from '@/modules/form/FormZodController.js';
+import FormZodController from '@/modules/form/form-zod-controller.js';
 
 export async function submitFormAction(_prevState: unknown, formData: FormData) {
   try {

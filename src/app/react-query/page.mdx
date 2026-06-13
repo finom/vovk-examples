@@ -4,8 +4,8 @@ description: Mutation, query, and streamed query using React Query
 ---
 
 import { Tabs } from 'nextra/components';
-import ReactQueryExample from './ReactQueryExample';
-import Example from '@/components/Example';
+import ReactQueryExample from './react-query-example';
+import Example from '@/components/example';
 
 # React Query Example
 
@@ -21,7 +21,7 @@ Demonstrates mutation, query, and [streamed query](https://vovk.dev/jsonlines) u
 
 <Tabs items={['BasicController.ts', 'JSONLinesController.ts', 'ReactQueryExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/basic/BasicController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/basic/basic-controller.ts" repository="finom/vovk-examples"
 import { get, post, prefix, operation, type VovkRequest } from 'vovk';
 
 @prefix('basic')
@@ -46,10 +46,10 @@ export default class BasicController {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/BasicController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/basic-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/jsonlines/JSONLinesController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/jsonlines/json-lines-controller.ts" repository="finom/vovk-examples"
 import { get, prefix, operation, procedure, type VovkIteration } from 'vovk';
 import z from 'zod';
 
@@ -79,11 +79,11 @@ export default class JSONLinesController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/JSONLinesController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines/json-lines-controller.ts)*
 
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/react-query/ReactQueryExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/react-query/react-query-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { BasicRPC, JSONLinesRPC } from '@/client';
 import {
@@ -146,7 +146,7 @@ export default function ReactQueryExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/react-query/ReactQueryExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/react-query/react-query-example.tsx)*
   </Tabs.Tab>
 </Tabs>
 

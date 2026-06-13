@@ -4,8 +4,8 @@ description: Polling Ticker Example
 ---
 
 import { Tabs } from 'nextra/components';
-import PollExample from './PollExample';
-import Example from '@/components/Example';
+import PollExample from './poll-example';
+import Example from '@/components/example';
 
 # Polling Ticker Example
 
@@ -21,7 +21,7 @@ Demonstrates infinite server polling ticker in a `while(true){:ts}` loop that's 
 
 <Tabs items={['PollController.ts', 'PollExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/polling/PollController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/polling/poll-controller.ts" repository="finom/vovk-examples"
 import { procedure, get, prefix } from 'vovk';
 import { z } from 'zod';
 
@@ -47,10 +47,10 @@ export default class PollController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/polling/PollController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/polling/poll-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/polling/PollExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/polling/poll-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useEffect, useState } from 'react';
 import { PollRPC } from '@/client';
@@ -80,7 +80,7 @@ export default function PollExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/polling/PollExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/polling/poll-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

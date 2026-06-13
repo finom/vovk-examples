@@ -1,6 +1,6 @@
 import { procedure, get, JSONLinesResponder, prefix, type VovkIteration } from 'vovk';
 import { z } from 'zod';
-import ProgressiveService from './ProgressiveService.ts';
+import ProgressiveService from './progressive-service.ts';
 
 @prefix('progressive')
 export default class ProgressiveController {

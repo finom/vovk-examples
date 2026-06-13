@@ -4,8 +4,8 @@ description: Valibot validation example with client and server-side validation
 ---
 
 import { Tabs } from 'nextra/components';
-import ValibotFormExample from './ValibotFormExample';
-import Example from '@/components/Example';
+import ValibotFormExample from './valibot-form-example';
+import Example from '@/components/example';
 
 # Valibot Validation Example
 
@@ -21,7 +21,7 @@ Form input handling and [Valibot](https://valibot.dev/) validation. The request 
 
 <Tabs items={['UserValibotController.ts', 'ValibotFormExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/valibot/UserValibotController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/valibot/user-valibot-controller.ts" repository="finom/vovk-examples"
 import { procedure, prefix, post, operation } from 'vovk';
 import { toStandardJsonSchema } from '@valibot/to-json-schema';
 import * as v from 'valibot';
@@ -74,10 +74,10 @@ export default class UserValibotController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/UserValibotController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/valibot/user-valibot-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/valibot/ValibotFormExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/valibot/valibot-form-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState, type FormEvent } from 'react';
 import { UserValibotRPC } from '@/client';
@@ -137,7 +137,7 @@ export default function ValibotFormExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/ValibotFormExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/valibot/valibot-form-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

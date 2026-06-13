@@ -1,20 +1,20 @@
 import { initSegment } from 'vovk';
 
-import OpenAiController from '../../../modules/openai/OpenAiController.ts';
-import BasicController from '../../../modules/basic/BasicController.ts';
-import BasicControllerWithService from '../../../modules/basic-with-service/BasicControllerWithService.ts';
-import JSONLinesController from '../../../modules/jsonlines/JSONLinesController.ts';
-import JSONLinesResponderController from '../../../modules/jsonlines-responder/JSONLinesResponderController.ts';
-import AiSdkController from '../../../modules/ai-sdk/AiSdkController.ts';
-import ProxyController from '../../../modules/proxy/ProxyController.ts';
-import UserZodController from '../../../modules/zod/UserZodController.ts';
-import PollController from '../../../modules/polling/PollController.ts';
-import UserArktypeController from '../../../modules/arktype/UserArktypeController.ts';
-import UserValibotController from '../../../modules/valibot/UserValibotController.ts';
-import ProgressiveController from '../../../modules/progressive/ProgressiveController.ts';
-import UserZodWithServiceController from '../../../modules/zod-with-service/UserZodWithServiceController.ts';
-import FormZodController from '../../../modules/form/FormZodController.ts';
-import EventsController from '@/modules/events/EventsController.ts';
+import OpenAiController from '../../../modules/openai/openai-controller.ts';
+import BasicController from '../../../modules/basic/basic-controller.ts';
+import BasicControllerWithService from '../../../modules/basic-with-service/basic-controller-with-service.ts';
+import JSONLinesController from '../../../modules/jsonlines/json-lines-controller.ts';
+import JSONLinesResponderController from '../../../modules/jsonlines-responder/json-lines-responder-controller.ts';
+import AiSdkController from '../../../modules/ai-sdk/ai-sdk-controller.ts';
+import ProxyController from '../../../modules/proxy/proxy-controller.ts';
+import UserZodController from '../../../modules/zod/user-zod-controller.ts';
+import PollController from '../../../modules/polling/poll-controller.ts';
+import UserArktypeController from '../../../modules/arktype/user-arktype-controller.ts';
+import UserValibotController from '../../../modules/valibot/user-valibot-controller.ts';
+import ProgressiveController from '../../../modules/progressive/progressive-controller.ts';
+import UserZodWithServiceController from '../../../modules/zod-with-service/user-zod-with-service-controller.ts';
+import FormZodController from '../../../modules/form/form-zod-controller.ts';
+import EventsController from '@/modules/events/events-controller.ts';
 
 export const maxDuration = 60;
 

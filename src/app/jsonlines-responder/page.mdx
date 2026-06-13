@@ -4,8 +4,8 @@ description: Streaming with JSONLinesResponder instance for more control over th
 ---
 
 import { Tabs } from 'nextra/components';
-import JSONLinesResponderExample from './JSONLinesResponderExample';
-import Example from '@/components/Example';
+import JSONLinesResponderExample from './json-lines-responder-example';
+import Example from '@/components/example';
 
 # Streaming with JSONLinesResponder Object
 
@@ -21,9 +21,9 @@ This example uses [JSONLinesResponder](https://vovk.dev/jsonlines#jsonlinesrespo
 
 <Tabs items={['JSONLinesResponderService.ts', 'JSONLinesResponderController.ts', 'JSONLinesResponderExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderService.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/jsonlines-responder/json-lines-responder-service.ts" repository="finom/vovk-examples"
 import type { JSONLinesResponder, VovkIteration } from 'vovk';
-import type JSONLinesResponderController from './JSONLinesResponderController.ts';
+import type JSONLinesResponderController from './json-lines-responder-controller.ts';
 
 type Token = VovkIteration<typeof JSONLinesResponderController.streamTokens>;
 
@@ -52,12 +52,12 @@ export default class JSONLinesResponderService {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderService.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/json-lines-responder-service.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/jsonlines-responder/JSONLinesResponderController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/jsonlines-responder/json-lines-responder-controller.ts" repository="finom/vovk-examples"
 import { prefix, get, operation, JSONLinesResponder, procedure, type VovkIteration } from 'vovk';
-import JSONLinesResponderService from './JSONLinesResponderService.ts';
+import JSONLinesResponderService from './json-lines-responder-service.ts';
 import z from 'zod';
 
 @prefix('jsonlines-responder')
@@ -78,11 +78,11 @@ export default class JSONLinesResponderController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/JSONLinesResponderController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/jsonlines-responder/json-lines-responder-controller.ts)*
 
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/jsonlines-responder/JSONLinesResponderExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/jsonlines-responder/json-lines-responder-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { JSONLinesResponderRPC } from '@/client';
@@ -113,7 +113,7 @@ export default function StreamExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines-responder/JSONLinesResponderExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/jsonlines-responder/json-lines-responder-example.tsx)*
   </Tabs.Tab>
 </Tabs>
 

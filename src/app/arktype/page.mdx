@@ -4,8 +4,8 @@ description: Arktype validation example with client and server-side validation
 ---
 
 import { Tabs } from 'nextra/components';
-import ArktypeFormExample from './ArktypeFormExample';
-import Example from '@/components/Example';
+import ArktypeFormExample from './arktype-form-example';
+import Example from '@/components/example';
 
 # Arktype Validation Example
 
@@ -21,7 +21,7 @@ Form input handling and [Arktype](https://https://arktype.io/) validation. The r
 
 <Tabs items={['UserArktypeController.ts',  'ArktypeFormExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/arktype/UserArktypeController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/arktype/user-arktype-controller.ts" repository="finom/vovk-examples"
 import { type } from 'arktype';
 import { procedure, prefix, post, operation } from 'vovk';
 
@@ -59,10 +59,10 @@ export default class UserArktypeController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/arktype/UserArktypeController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/arktype/user-arktype-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/arktype/ArktypeFormExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/arktype/arktype-form-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState, type FormEvent } from 'react';
 import { UserArktypeRPC } from '@/client';
@@ -122,7 +122,7 @@ export default function ArktypeFormExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/arktype/ArktypeFormExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/arktype/arktype-form-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

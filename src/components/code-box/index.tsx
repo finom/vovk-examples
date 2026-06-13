@@ -1,5 +1,5 @@
-import Title from './Title.tsx';
-import CodeBlock from '../GithubFiles/CodeBlock.tsx';
+import Title from './title.tsx';
+import CodeBlock from '../github-files/code-block.tsx';
 
 interface Props {
   title: string;

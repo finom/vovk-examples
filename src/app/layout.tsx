@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { getPageMap } from 'nextra/page-map';
 import 'nextra-theme-docs/style.css';
 import './globals.css';
-import VovkLogo from '@/components/VovkLogo.tsx';
+import VovkLogo from '@/components/vovk-logo.tsx';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://examples.vovk.dev'),

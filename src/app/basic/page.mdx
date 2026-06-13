@@ -4,8 +4,8 @@ description: Basic Example of Vovk.ts Controller
 ---
 
 import { Tabs } from 'nextra/components';
-import BasicExample from './BasicExample';
-import Example from '@/components/Example';
+import BasicExample from './basic-example';
+import Example from '@/components/example';
 
 # Basic Controller Example
 
@@ -21,7 +21,7 @@ A basic example of the Vovk.ts controller with no validation.
 
 <Tabs items={['BasicController.ts', 'BasicExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/basic/BasicController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/basic/basic-controller.ts" repository="finom/vovk-examples"
 import { get, post, prefix, operation, type VovkRequest } from 'vovk';
 
 @prefix('basic')
@@ -46,10 +46,10 @@ export default class BasicController {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/BasicController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic/basic-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/basic/BasicExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/basic/basic-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { BasicRPC } from '@/client';
@@ -73,7 +73,7 @@ export default function BasicExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic/BasicExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic/basic-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

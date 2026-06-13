@@ -4,8 +4,8 @@ description: Form with Files Example using Zod validation
 ---
 
 import { Tabs } from 'nextra/components';
-import ZodFormExample from './ZodFormWithFilesExample';
-import Example from '@/components/Example';
+import ZodFormExample from './zod-form-with-files-example';
+import Example from '@/components/example';
 
 # Form with Files Example
 
@@ -21,7 +21,7 @@ An example of a form with files using Zod validation. Notice that "portfolio sam
 
 <Tabs items={['FormZodController.ts', 'ZodFormWithFilesExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/form/FormZodController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/form/form-zod-controller.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { procedure, prefix, post, operation } from 'vovk';
 
@@ -88,10 +88,10 @@ export default class FormZodController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/FormZodController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/form-zod-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/form/ZodFormWithFilesExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/form/zod-form-with-files-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useRef, useState, type FormEvent } from 'react';
 import { FormZodRPC } from '@/client';
@@ -153,7 +153,7 @@ export default function ZodFormExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/form/ZodFormWithFilesExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/form/zod-form-with-files-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

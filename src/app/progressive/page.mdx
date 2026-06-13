@@ -4,8 +4,8 @@ description: Progressive Response example
 ---
 
 import { Tabs } from 'nextra/components';
-import ProgressiveExample from './ProgressiveExample';
-import Example from '@/components/Example';
+import ProgressiveExample from './progressive-example';
+import Example from '@/components/example';
 
 # Progressive Response example
 
@@ -21,9 +21,9 @@ Demonstrates an experimental feature called "Progressive Response" that implemen
 
 <Tabs items={['ProgressiveService.ts', 'ProgressiveController.ts', 'ProgressiveExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveService.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/progressive/progressive-service.ts" repository="finom/vovk-examples"
 import type { JSONLinesResponder, VovkIteration } from 'vovk';
-import type ProgressiveController from './ProgressiveController.ts';
+import type ProgressiveController from './progressive-controller.ts';
 
 export default class ProgressiveService {
   static async getUsers() {
@@ -60,13 +60,13 @@ export default class ProgressiveService {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveService.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/progressive-service.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/progressive/ProgressiveController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/progressive/progressive-controller.ts" repository="finom/vovk-examples"
 import { procedure, get, JSONLinesResponder, prefix, type VovkIteration } from 'vovk';
 import { z } from 'zod';
-import ProgressiveService from './ProgressiveService.ts';
+import ProgressiveService from './progressive-service.ts';
 
 @prefix('progressive')
 export default class ProgressiveController {
@@ -103,11 +103,11 @@ export default class ProgressiveController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/ProgressiveController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/progressive/progressive-controller.ts)*
 
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/progressive/ProgressiveExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/progressive/progressive-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { progressive, type VovkIteration } from 'vovk';
@@ -169,7 +169,7 @@ const ListSkeleton = () => (
   </ul>
 );
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/progressive/ProgressiveExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/progressive/progressive-example.tsx)*
   </Tabs.Tab>
 </Tabs>
 

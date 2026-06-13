@@ -4,8 +4,8 @@ description: Usage of OpenAI TypeScript API showcasing async generators and JSON
 ---
 
 import { Tabs } from 'nextra/components';
-import OpenAiExample from './OpenAiExample';
-import Example from '@/components/Example';
+import OpenAiExample from './openai-example';
+import Example from '@/components/example';
 
 # OpenAI Chat Example
 
@@ -21,7 +21,7 @@ Text streaming with [OpenAI TypeScript API Library](https://npmjs.com/package/op
 
 <Tabs items={['OpenAiController.ts', 'OpenAiExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/openai/OpenAiController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/openai/openai-controller.ts" repository="finom/vovk-examples"
 import { type VovkRequest, post, prefix, operation, HttpException, HttpStatus } from 'vovk';
 import OpenAI from 'openai';
 
@@ -51,10 +51,10 @@ export default class OpenAiController {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/openai/OpenAiController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/openai/openai-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/openai/OpenAiExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/openai/openai-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { OpenAiRPC } from '@/client';
@@ -123,7 +123,7 @@ export default function OpenAiExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/openai/OpenAiExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/openai/openai-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

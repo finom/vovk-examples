@@ -4,8 +4,8 @@ description: Using Vovk.ts Local Procedure Calls inside Next.js Server Actions
 ---
 
 import { Tabs } from 'nextra/components';
-import ServerActionFormExample from './ServerActionFormExample';
-import Example from '@/components/Example';
+import ServerActionFormExample from './server-action-form-example';
+import Example from '@/components/example';
 
 # Server Actions with `.fn()`
 
@@ -26,7 +26,7 @@ This example reuses the same `FormZodController` from the [Form with Files](/for
 ```ts showLineNumbers copy filename="src/app/server-actions/actions.ts" repository="finom/vovk-examples"
 'use server';
 
-import FormZodController from '@/modules/form/FormZodController.js';
+import FormZodController from '@/modules/form/form-zod-controller.js';
 
 export async function submitFormAction(_prevState: unknown, formData: FormData) {
   try {
@@ -44,7 +44,7 @@ export async function submitFormAction(_prevState: unknown, formData: FormData) 
 *[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/server-actions/actions.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/server-actions/ServerActionFormExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/server-actions/server-action-form-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useActionState } from 'react';
 import { submitFormAction } from './actions.js';
@@ -89,11 +89,11 @@ export default function ServerActionFormExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/server-actions/ServerActionFormExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/server-actions/server-action-form-example.tsx)*
 
   </Tabs.Tab>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/form/FormZodController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/form/form-zod-controller.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { procedure, prefix, post, operation } from 'vovk';
 
@@ -160,7 +160,7 @@ export default class FormZodController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/FormZodController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/form/form-zod-controller.ts)*
 
   </Tabs.Tab>
 </Tabs>

@@ -4,8 +4,8 @@ description: A Proxy Endpoint Example
 ---
 
 import { Tabs } from 'nextra/components';
-import ProxyExample from './ProxyExample';
-import Example from '@/components/Example';
+import ProxyExample from './proxy-example';
+import Example from '@/components/example';
 
 # Proxy Endpoint Example
 
@@ -21,7 +21,7 @@ A proxy endpoint for [vovk.dev/api/hello/greeting.json](https://vovk.dev/api/hel
 
 <Tabs items={['ProxyController.ts', 'ProxyExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/proxy/ProxyController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/proxy/proxy-controller.ts" repository="finom/vovk-examples"
 import { get, prefix, operation } from 'vovk';
 
 @prefix('proxy')
@@ -36,10 +36,10 @@ export default class ProxyController {
   }
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/proxy/ProxyController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/proxy/proxy-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/proxy/ProxyExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/proxy/proxy-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { ProxyRPC } from '@/client';
@@ -63,7 +63,7 @@ export default function ProxyExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/ProxyExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/proxy/proxy-example.tsx)*
 
   </Tabs.Tab>
 </Tabs>

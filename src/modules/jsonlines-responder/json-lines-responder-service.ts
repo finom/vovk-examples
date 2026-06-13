@@ -1,5 +1,5 @@
 import type { JSONLinesResponder, VovkIteration } from 'vovk';
-import type JSONLinesResponderController from './JSONLinesResponderController.ts';
+import type JSONLinesResponderController from './json-lines-responder-controller.ts';
 
 type Token = VovkIteration<typeof JSONLinesResponderController.streamTokens>;
 

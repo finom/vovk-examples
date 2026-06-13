@@ -1,6 +1,6 @@
 import { readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { getGithubFile } from '../src/lib/getGithubFiles.ts';
+import { getGithubFile } from '../src/lib/get-github-files.ts';
 
 /*
 PROMPT:

@@ -4,8 +4,8 @@ description: A basic example of the Vovk.ts controller with a service
 ---
 
 import { Tabs } from 'nextra/components';
-import BasicExampleWithService from './BasicExampleWithService';
-import Example from '@/components/Example';
+import BasicExampleWithService from './basic-example-with-service';
+import Example from '@/components/example';
 
 # Basic Controller with Service Example
 
@@ -21,7 +21,7 @@ A basic example of the Vovk.ts controller and a service with no validation.
 
 <Tabs items={['BasicService.ts', 'BasicControllerWithService.ts', 'BasicExampleWithService.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/basic-with-service/BasicService.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/basic-with-service/basic-service.ts" repository="finom/vovk-examples"
 export default class BasicService {
   static getHello() {
     return { greeting: 'Hello world from a service!' };
@@ -29,12 +29,12 @@ export default class BasicService {
 }
 
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicService.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/basic-service.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/basic-with-service/BasicControllerWithService.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/basic-with-service/basic-controller-with-service.ts" repository="finom/vovk-examples"
 import { get, prefix, operation } from 'vovk';
-import BasicService from './BasicService.ts';
+import BasicService from './basic-service.ts';
 
 @prefix('basic-with-service')
 export default class BasicControllerWithService {
@@ -49,11 +49,11 @@ export default class BasicControllerWithService {
 }
 
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/BasicControllerWithService.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/basic-with-service/basic-controller-with-service.ts)*
 
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/basic-with-service/BasicExampleWithService.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/basic-with-service/basic-example-with-service.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { BasicRPCWithService } from '@/client';
@@ -78,7 +78,7 @@ export default function BasicExampleWithService() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic-with-service/BasicExampleWithService.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/basic-with-service/basic-example-with-service.tsx)*
   </Tabs.Tab>
 </Tabs>
 

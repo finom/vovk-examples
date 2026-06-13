@@ -1,5 +1,5 @@
 import { get, prefix, operation } from 'vovk';
-import BasicService from './BasicService.ts';
+import BasicService from './basic-service.ts';
 
 @prefix('basic-with-service')
 export default class BasicControllerWithService {

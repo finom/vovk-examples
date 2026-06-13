@@ -4,8 +4,8 @@ description: Static params example with "staticParams" decorator option
 ---
 
 import { Tabs } from 'nextra/components';
-import StaticParamsExample from './StaticParamsExample';
-import Example from '@/components/Example';
+import StaticParamsExample from './static-params-example';
+import Example from '@/components/example';
 
 # Static Params Example
 
@@ -21,7 +21,7 @@ This example demonstrates a [static API](https://vovk.dev/segment#static) repres
 
 <Tabs items={['StaticParamsController.ts', 'StaticParamsExample.tsx', 'route.ts']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/static/staticParams/StaticParamsController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/static/static-params/static-params-controller.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { procedure, prefix, get, operation } from 'vovk';
 
@@ -51,10 +51,10 @@ export default class StaticParamsController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/static/staticParams/StaticParamsController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/static/static-params/static-params-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/static-params/StaticParamsExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/static-params/static-params-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState } from 'react';
 import { StaticParamsRPC } from '@/client';
@@ -98,13 +98,13 @@ export default function StaticParamsExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/static-params/StaticParamsExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/static-params/static-params-example.tsx)*
   </Tabs.Tab>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/app/api/static/[[...vovk]]/route.ts" repository="finom/vovk-examples"
 import { controllersToStaticParams, initSegment } from 'vovk';
-import OpenApiController from '../../../../modules/static/openapi/OpenApiController.ts';
-import StaticParamsController from '../../../../modules/static/staticParams/StaticParamsController.ts';
+import OpenApiController from '../../../../modules/static/openapi/openapi-controller.ts';
+import StaticParamsController from '../../../../modules/static/static-params/static-params-controller.ts';
 
 const controllers = {
   OpenApiRPC: OpenApiController,

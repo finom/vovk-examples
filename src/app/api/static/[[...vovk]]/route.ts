@@ -1,6 +1,6 @@
 import { controllersToStaticParams, initSegment } from 'vovk';
-import OpenApiController from '../../../../modules/static/openapi/OpenApiController.ts';
-import StaticParamsController from '../../../../modules/static/staticParams/StaticParamsController.ts';
+import OpenApiController from '../../../../modules/static/openapi/openapi-controller.ts';
+import StaticParamsController from '../../../../modules/static/static-params/static-params-controller.ts';
 
 const controllers = {
   OpenApiRPC: OpenApiController,

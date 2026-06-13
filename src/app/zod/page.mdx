@@ -4,8 +4,8 @@ description: Zod validation example with client and server-side validation
 ---
 
 import { Tabs } from 'nextra/components';
-import ZodFormExample from './ZodFormExample';
-import Example from '@/components/Example';
+import ZodFormExample from './zod-form-example';
+import Example from '@/components/example';
 
 # Zod Validation Example
 
@@ -21,7 +21,7 @@ Form input handling and [Zod](https://zod.dev/) validation. The request input is
 
 <Tabs items={['UserZodController.ts', 'ZodFormExample.tsx']}>
   <Tabs.Tab>
-```ts showLineNumbers copy filename="src/modules/zod/UserZodController.ts" repository="finom/vovk-examples"
+```ts showLineNumbers copy filename="src/modules/zod/user-zod-controller.ts" repository="finom/vovk-examples"
 import { z } from 'zod';
 import { procedure, prefix, post, operation } from 'vovk';
 
@@ -63,10 +63,10 @@ export default class UserZodController {
   });
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/UserZodController.ts)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/modules/zod/user-zod-controller.ts)*
   </Tabs.Tab>
   <Tabs.Tab>
-```tsx showLineNumbers copy filename="src/app/zod/ZodFormExample.tsx" repository="finom/vovk-examples"
+```tsx showLineNumbers copy filename="src/app/zod/zod-form-example.tsx" repository="finom/vovk-examples"
 'use client';
 import { useState, type FormEvent } from 'react';
 import { UserZodRPC } from '@/client';
@@ -126,7 +126,7 @@ export default function ZodFormExample() {
   );
 }
 ```
-*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/ZodFormExample.tsx)*
+*[The code above is fetched from GitHub repository.](https://github.com/finom/vovk-examples/blob/main/src/app/zod/zod-form-example.tsx)*
   </Tabs.Tab>
 </Tabs>
 

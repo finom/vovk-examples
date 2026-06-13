@@ -1,6 +1,6 @@
-import GithubTabs from './GithubTabs.tsx';
+import GithubTabs from './github-tabs.tsx';
 import type { GithubFile } from '@/types.ts';
-import CodeBlock from './CodeBlock.tsx';
+import CodeBlock from './code-block.tsx';
 import { useId } from 'react';
 import Link from 'next/link.js';
 

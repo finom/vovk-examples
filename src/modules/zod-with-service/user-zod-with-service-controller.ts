@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { procedure, prefix, post, operation } from 'vovk';
-import UserZodService from './UserZodService.ts';
+import UserZodService from './user-zod-service.ts';
 
 @prefix('users-zod-with-service')
 export default class UserZodWithServiceController {
