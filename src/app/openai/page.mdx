@@ -19,7 +19,7 @@ Text streaming with [OpenAI TypeScript API Library](https://npmjs.com/package/op
 
 ## Code
 
-<Tabs items={['OpenAiController.ts', 'OpenAiExample.tsx']}>
+<Tabs items={['openai-controller.ts', 'openai-example.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/openai/openai-controller.ts" repository="finom/vovk-examples"
 import { type VovkRequest, post, prefix, operation, HttpException, HttpStatus } from 'vovk';
@@ -115,7 +115,7 @@ export default function OpenAiExample() {
           value={userInput}
           onChange={(e) => setUserInput(e.currentTarget.value)}
         />
-        <button type="button" disabled={!userInput}>
+        <button type="submit" disabled={!userInput}>
           Send
         </button>
       </div>

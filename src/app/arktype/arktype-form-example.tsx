@@ -43,7 +43,7 @@ export default function ArktypeFormExample() {
         />
         Disable client-side validation
       </label>
-      <button type="button">Submit</button>
+      <button type="submit">Submit</button>
 
       {response && (
         <div className="text-left">

@@ -19,7 +19,7 @@ The `result.toUIMessageStreamResponse` method returns a `Response` object, which
 
 ## Code
 
-<Tabs items={['AiSdkController.ts', 'AiSdkExample.tsx']}>
+<Tabs items={['ai-sdk-controller.ts', 'ai-sdk-example.tsx']}>
   <Tabs.Tab>
 ```ts showLineNumbers copy filename="src/modules/ai-sdk/ai-sdk-controller.ts" repository="finom/vovk-examples"
 import { HttpException, HttpStatus, post, prefix, operation, type VovkRequest } from 'vovk';
@@ -90,7 +90,7 @@ export default function Page() {
       {error && <div>❌ {error.message}</div>}
       <div className="input-group">
         <input type="text" placeholder="Send a message..." value={input} onChange={(e) => setInput(e.target.value)} />
-        <button type="button">Send</button>
+        <button type="submit">Send</button>
       </div>
     </form>
   );
