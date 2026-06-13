@@ -76,7 +76,7 @@ export const getOgFonts = async () => ({
     {
       name: 'InterSemibold',
       data: await (
-        await fetch(new URL(`../../fonts/Inter/static/Inter_24pt-SemiBold.ttf`, import.meta.url))
+        await fetch(new URL(`../../fonts/Inter-SemiBold-og-subset.ttf`, import.meta.url))
       ).arrayBuffer(),
       style: 'normal',
       weight: 400,
