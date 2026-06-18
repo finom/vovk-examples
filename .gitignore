@@ -39,3 +39,4 @@ tmp
 dist
 
 src/client
+config.bat
