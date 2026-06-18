@@ -190,14 +190,15 @@
 }
 
 /*
-  Editorial display headings: the soft Fraunces serif for the page title and
-  section heads gives the docs a designed, magazine-like feel while the body
-  stays in a clean grotesque. Scoped to the content <article> (Nextra wraps MDX
-  there) so the navbar, sidebar, and TOC keep the sans. h3+ also stay sans for a
-  clear hierarchy.
+  Editorial display headings: the soft Fraunces serif for the page title,
+  section heads, and sub-section / Steps headings (h1–h3) gives the docs a
+  designed, magazine-like feel while the body stays in a clean grotesque.
+  Scoped to the content <article> (Nextra wraps MDX there) so the navbar,
+  sidebar, and TOC keep the sans; h4–h6 stay sans for a clear hierarchy.
 */
 article h1,
-article h2 {
+article h2,
+article h3 {
   font-family: var(--font-display), ui-serif, Georgia, 'Times New Roman', serif;
   font-optical-sizing: auto;
   letter-spacing: -0.02em;
