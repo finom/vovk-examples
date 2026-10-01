@@ -1,5 +1,11 @@
 import { HttpException, HttpStatus, post, prefix, operation, type VovkRequest } from 'vovk';
-import { streamText, convertToModelMessages, type UIMessage } from 'ai';
+import {
+  streamText,
+  convertToModelMessages,
+  createUIMessageStreamResponse,
+  toUIMessageStream,
+  type UIMessage,
+} from 'ai';
 import { openai } from '@ai-sdk/openai';
 
 @prefix('ai-sdk')
@@ -18,10 +24,12 @@ export default class AiSdkController {
       throw new HttpException(HttpStatus.BAD_REQUEST, `You can only send ${LIMIT} messages at a time`);
     }
 
-    return streamText({
+    const result = streamText({
       model: openai('gpt-5-nano'),
       system: 'You are a helpful assistant.',
       messages: await convertToModelMessages(messages),
-    }).toUIMessageStreamResponse();
+    });
+
+    return createUIMessageStreamResponse({ stream: toUIMessageStream({ stream: result.stream }) });
   }
 }

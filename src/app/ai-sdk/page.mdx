@@ -9,7 +9,7 @@ import Example from '@/components/example';
 
 # Vercel AI SDK Example
 
-The `result.toUIMessageStreamResponse` method returns a `Response` object, which is forwarded directly to the Next.js route handler. On the client side, you can use the `useChat` hook to consume the stream and render chat messages seamlessly, as it's outlined in the [AI SDK](https://github.com/vercel/ai) documentation.
+The `toUIMessageStream` and `createUIMessageStreamResponse` helpers turn the result into a `Response` object, which is forwarded directly to the Next.js route handler. On the client side, you can use the `useChat` hook to consume the stream and render chat messages seamlessly, as it's outlined in the [AI SDK](https://github.com/vercel/ai) documentation.
 
 ## Result
 
