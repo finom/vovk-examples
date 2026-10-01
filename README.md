@@ -1,3 +1,11 @@
+# vovk-examples has moved
+
+This repository is archived. The code now lives in the Vovk.ts repository:
+
+**https://github.com/finom/vovk/tree/main/examples/kitchen-sink**
+
+---
+
 <p align="center">
   <a href="https://vovk.dev">
     <picture>
